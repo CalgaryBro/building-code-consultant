@@ -1,0 +1,1591 @@
+{
+  "metadata": {
+    "generated_at": "2026-01-09T12:45:38.652085",
+    "source_file": "data/permits/sdab-decisions.json",
+    "total_records_analyzed": 1433,
+    "description": "SDAB Issues Checklist with citations for building permit applications",
+    "note": "This checklist is derived from historical SDAB decisions and should be used as guidance only"
+  },
+  "summary_statistics": {
+    "total_cases": 1433,
+    "overall_outcomes": {
+      "WITHDRAWN": 205,
+      "DENIED": 416,
+      "ALLOWED IN PART": 297,
+      "ALLOWED": 322,
+      "STRUCK": 104,
+      "Unknown": 89
+    },
+    "appeals_of_refusals": {
+      "total": 498,
+      "success_rate": 38.8
+    },
+    "appeals_of_approvals": {
+      "total": 925,
+      "success_rate": 45.8
+    }
+  },
+  "issues": [
+    {
+      "issue_id": "SDAB-001",
+      "issue_type": "single_residential",
+      "display_name": "Single Residential",
+      "description": "Single residential property development with variance requests. Common issues include setbacks, height, and lot coverage.",
+      "frequency": 318,
+      "risk_level": "MODERATE",
+      "success_rate_percent": 66.4,
+      "typical_outcomes": {
+        "allowed": 79,
+        "denied": 89,
+        "allowed_in_part": 97,
+        "withdrawn": 36,
+        "struck": 16
+      },
+      "common_property_types": {
+        "Single Residential": 318
+      },
+      "key_factors_for_approval": [
+        "Site constraints justify requested variances",
+        "Development pattern consistent with neighborhood",
+        "Minimal impact on neighboring properties",
+        "Hardship or practical difficulty demonstrated",
+        "Design quality appropriate for area"
+      ],
+      "key_factors_for_denial": [
+        "Variance too significant without justification",
+        "Development out of character for neighborhood",
+        "Significant neighbor impact not addressed",
+        "No hardship demonstrated",
+        "Precedent-setting concerns"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2014-0061",
+          "outcome": "ALLOWED",
+          "year": "2014",
+          "address": "184 TARADALE DR NE",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2017-0074",
+          "outcome": "ALLOWED",
+          "year": "2017",
+          "address": "11 PANATELLA LN NW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2014-0176",
+          "outcome": "DENIED",
+          "year": "2014",
+          "address": "623 LAKE SIMCOE CL SE",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2017-0008",
+          "outcome": "DENIED",
+          "year": "2017",
+          "address": "711 5 Street NE",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2017-0067",
+          "outcome": "ALLOWED IN PART",
+          "year": "2017",
+          "address": "7542 17 Avenue SW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Single Residential"
+        }
+      ],
+      "recommendation": "Document site constraints thoroughly, analyze neighborhood development patterns for precedent, prepare responses to neighbor concerns, consider voluntary conditions to mitigate impacts."
+    },
+    {
+      "issue_id": "SDAB-002",
+      "issue_type": "commercial",
+      "display_name": "Commercial",
+      "description": "Commercial property development or change of use. Issues include parking, signage, hours of operation, and compatibility.",
+      "frequency": 182,
+      "risk_level": "MODERATE",
+      "success_rate_percent": 66.7,
+      "typical_outcomes": {
+        "allowed": 63,
+        "denied": 46,
+        "allowed_in_part": 29,
+        "withdrawn": 37,
+        "struck": 7
+      },
+      "common_property_types": {
+        "Commercial": 182
+      },
+      "key_factors_for_approval": [
+        "Commercial use appropriate for zone",
+        "Adequate parking provision",
+        "Signage compliant or justified variance",
+        "Hours of operation reasonable for area",
+        "No undue impact on adjacent residential"
+      ],
+      "key_factors_for_denial": [
+        "Incompatible use for zone or area",
+        "Parking inadequate without justification",
+        "Signage excessive or inappropriate",
+        "Hours of operation concern for neighbors",
+        "Significant impact on residential properties"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2016-0013",
+          "outcome": "ALLOWED",
+          "year": "2016",
+          "address": "21605 6 St SE",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2015-0075",
+          "outcome": "ALLOWED",
+          "year": "2015",
+          "address": "6520 Falconridge BV NE",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2014-0091",
+          "outcome": "DENIED",
+          "year": "2014",
+          "address": "727 42 AV SE",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2015-0101",
+          "outcome": "DENIED",
+          "year": "2015",
+          "address": "2625 78 AV SE",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2016-0107",
+          "outcome": "ALLOWED IN PART",
+          "year": "2016",
+          "address": "2210 2 ST SW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Commercial"
+        }
+      ],
+      "recommendation": "Verify zoning permits proposed use, prepare parking analysis, document signage compliance, propose operating conditions if adjacent to residential."
+    },
+    {
+      "issue_id": "SDAB-003",
+      "issue_type": "other",
+      "display_name": "Other",
+      "description": "Other development types not specifically categorized. Review specific circumstances of each case.",
+      "frequency": 151,
+      "risk_level": "MODERATE",
+      "success_rate_percent": 56.9,
+      "typical_outcomes": {
+        "allowed": 24,
+        "denied": 44,
+        "allowed_in_part": 34,
+        "withdrawn": 25,
+        "struck": 14
+      },
+      "common_property_types": {
+        "Single Residential": 45,
+        "Other": 25,
+        "Industrial": 23
+      },
+      "key_factors_for_approval": [
+        "Specific circumstances warrant variance",
+        "No undue impact on neighbors",
+        "Public interest served",
+        "Compliance with intent of bylaws",
+        "Unique hardship demonstrated"
+      ],
+      "key_factors_for_denial": [
+        "No justification for variance",
+        "Undue impact on neighbors",
+        "Public interest not served",
+        "Non-compliance with regulations",
+        "No hardship shown"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2018-0097",
+          "outcome": "ALLOWED",
+          "year": "2018",
+          "address": "7216 BOW CR NW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Subdivision"
+        },
+        {
+          "decision_number": "SDAB-2019-0037",
+          "outcome": "ALLOWED",
+          "year": "2019",
+          "address": "11308 86 Street SE",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Other"
+        },
+        {
+          "decision_number": "SDAB-2019-0016",
+          "outcome": "DENIED",
+          "year": "2019",
+          "address": "6632 Silver Ridge Road NW",
+          "key_reasoning": "Appeal denied - DA/SA had ORDER. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2018-0145",
+          "outcome": "DENIED",
+          "year": "2018",
+          "address": "3823 18 Street SW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2018-0028",
+          "outcome": "ALLOWED IN PART",
+          "year": "2018",
+          "address": "122 & 124 10 ST NW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Commercial"
+        }
+      ],
+      "recommendation": "Clearly articulate reasons for variance, document special circumstances, address all neighbor concerns, demonstrate compliance with bylaw intent."
+    },
+    {
+      "issue_id": "SDAB-004",
+      "issue_type": "single_detached_dwelling",
+      "display_name": "Single Detached Dwelling",
+      "description": "Single detached dwelling development with potential variances to setbacks, height, or lot coverage.",
+      "frequency": 116,
+      "risk_level": "MEDIUM",
+      "success_rate_percent": 52.3,
+      "typical_outcomes": {
+        "allowed": 23,
+        "denied": 42,
+        "allowed_in_part": 23,
+        "withdrawn": 4,
+        "struck": 12
+      },
+      "common_property_types": {
+        "Single Residential": 96,
+        "Residential": 8,
+        "Residential - Grade-Oriented Infill": 7
+      },
+      "key_factors_for_approval": [
+        "Development pattern consistent with neighborhood",
+        "Variance requested is minimal and justified",
+        "Site constraints or hardship demonstrated",
+        "Design compatible with streetscape",
+        "Minimal impact on adjacent properties"
+      ],
+      "key_factors_for_denial": [
+        "Excessive variance from bylaw requirements",
+        "Significant impact on neighboring properties",
+        "No demonstrated hardship or site constraint",
+        "Development out of character for neighborhood",
+        "Strong opposition from affected neighbors"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2023-0045",
+          "outcome": "ALLOWED",
+          "year": "2023",
+          "address": "6914 Livingstone Drive SW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2022-0028",
+          "outcome": "ALLOWED",
+          "year": "2022",
+          "address": "5208 Dalcroft Crescent NW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2024-0021",
+          "outcome": "DENIED",
+          "year": "2024",
+          "address": "6140 Bow Crescent Nw",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2022-0050",
+          "outcome": "DENIED",
+          "year": "2022",
+          "address": "41 Rockhaven Green NW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2024-0006",
+          "outcome": "ALLOWED IN PART",
+          "year": "2024",
+          "address": "820 James McKevitt Road SW",
+          "key_reasoning": "Partial approval - DA/SA had Approved. Board imposed conditions or partial modifications.",
+          "property_type": "Single Residential"
+        }
+      ],
+      "recommendation": "Document any site constraints justifying variances, analyze neighborhood development patterns, prepare responses to potential neighbor concerns, consider pre-application consultation with neighbors."
+    },
+    {
+      "issue_id": "SDAB-005",
+      "issue_type": "cannabis",
+      "display_name": "Cannabis",
+      "description": "Cannabis retail establishment development permit. Strict separation distance requirements from schools, parks, and other cannabis stores.",
+      "frequency": 112,
+      "risk_level": "MEDIUM",
+      "success_rate_percent": 40.8,
+      "typical_outcomes": {
+        "allowed": 25,
+        "denied": 42,
+        "allowed_in_part": 4,
+        "withdrawn": 31,
+        "struck": 10
+      },
+      "common_property_types": {
+        "Commercial": 97,
+        "Mixed Use": 8,
+        "Direct Control District": 5
+      },
+      "key_factors_for_approval": [
+        "All separation distances from schools (150m+) verified and compliant",
+        "No over-concentration of cannabis stores in the area",
+        "Appropriate commercial location and zoning",
+        "Security measures and operating plan provided",
+        "No sensitive uses within required buffer distances"
+      ],
+      "key_factors_for_denial": [
+        "Within prohibited distance of schools or child care facilities",
+        "Too many existing cannabis stores in proximity",
+        "Inadequate separation from parks or recreation facilities",
+        "Community opposition based on concentration concerns",
+        "Location in residential-adjacent area with concerns"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2018-0093",
+          "outcome": "ALLOWED",
+          "year": "2018",
+          "address": "8220 Centre ST NE",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2018-0109",
+          "outcome": "ALLOWED",
+          "year": "2018",
+          "address": "#E & #F, 9827 Horton RD SW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2018-0155",
+          "outcome": "DENIED",
+          "year": "2018",
+          "address": "212-11245 Valley Ridge Drive NW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2018-0101",
+          "outcome": "DENIED",
+          "year": "2018",
+          "address": "5512 Macleod TR SW",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2018-0173",
+          "outcome": "ALLOWED IN PART",
+          "year": "2018",
+          "address": "2903 Brentwood Blvd. NW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Commercial"
+        }
+      ],
+      "recommendation": "Conduct thorough separation distance analysis, verify no schools within 150m (property line to property line), check for existing cannabis stores within 300m, prepare community benefit statement and security plan."
+    },
+    {
+      "issue_id": "SDAB-006",
+      "issue_type": "secondary_suite",
+      "display_name": "Secondary Suite",
+      "description": "Secondary suite within residential property requiring development permit. Issues typically involve parking, safety codes, and impact on neighborhood character.",
+      "frequency": 93,
+      "risk_level": "MEDIUM",
+      "success_rate_percent": 52.1,
+      "typical_outcomes": {
+        "allowed": 25,
+        "denied": 35,
+        "allowed_in_part": 13,
+        "withdrawn": 9,
+        "struck": 7
+      },
+      "common_property_types": {
+        "Single Residential": 83,
+        "Other": 3,
+        "Residential": 3
+      },
+      "key_factors_for_approval": [
+        "Dedicated off-street parking provided or demonstrated as not necessary",
+        "Full compliance with building and safety codes",
+        "Minimal impact on neighborhood character and streetscape",
+        "Adequate egress and fire separation demonstrated",
+        "Support or no objection from immediate neighbors"
+      ],
+      "key_factors_for_denial": [
+        "Insufficient parking for proposed density",
+        "Non-compliance with fire safety or building code requirements",
+        "Significant change to residential character",
+        "Strong community opposition with valid concerns",
+        "Unauthorized construction or unpermitted work"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2019-0039",
+          "outcome": "ALLOWED",
+          "year": "2019",
+          "address": "56 Martinridge Way NE",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2019-0002",
+          "outcome": "ALLOWED",
+          "year": "2019",
+          "address": "604 Templeside Road NE",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2021-0066",
+          "outcome": "DENIED",
+          "year": "2021",
+          "address": "87 Sienna Hills View SW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2020-0047",
+          "outcome": "DENIED",
+          "year": "2020",
+          "address": "43 Redstone Blvd NE",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2024-0017",
+          "outcome": "ALLOWED IN PART",
+          "year": "2024",
+          "address": "1711 48 AV SW",
+          "key_reasoning": "Partial approval - DA/SA had Approved. Board imposed conditions or partial modifications.",
+          "property_type": "Single Residential"
+        }
+      ],
+      "recommendation": "Ensure dedicated parking space, demonstrate full safety code compliance, prepare response to potential neighbor concerns about parking and density. Consider pre-application neighbor consultation."
+    },
+    {
+      "issue_id": "SDAB-007",
+      "issue_type": "multi_residential_development",
+      "display_name": "Multi-Residential Development",
+      "description": "Multi-residential development such as apartment buildings, condominiums, or townhouse complexes. Issues include density, parking, and design.",
+      "frequency": 60,
+      "risk_level": "MODERATE",
+      "success_rate_percent": 63.6,
+      "typical_outcomes": {
+        "allowed": 9,
+        "denied": 12,
+        "allowed_in_part": 12,
+        "withdrawn": 13,
+        "struck": 6
+      },
+      "common_property_types": {
+        "Multi-Residential": 43,
+        "Single Residential": 6,
+        "Direct Control": 5
+      },
+      "key_factors_for_approval": [
+        "Density appropriate for zoning and location",
+        "Adequate parking provision or justified reduction",
+        "Design compatible with neighborhood context",
+        "Traffic impact assessment acceptable",
+        "Amenities and landscaping adequate"
+      ],
+      "key_factors_for_denial": [
+        "Excessive density for the zone or location",
+        "Significant parking shortfall without justification",
+        "Design incompatible with surrounding development",
+        "Unacceptable traffic impacts",
+        "Inadequate amenity space or landscaping"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2020-0040",
+          "outcome": "ALLOWED",
+          "year": "2020",
+          "address": "52 Bermuda Rd NW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2022-0052",
+          "outcome": "ALLOWED",
+          "year": "2022",
+          "address": "2204 35 Street SW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Multi-Residential"
+        },
+        {
+          "decision_number": "SDAB-2022-0024",
+          "outcome": "DENIED",
+          "year": "2022",
+          "address": "2003, 2009, 2015 22 Street SW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Multi-Residential"
+        },
+        {
+          "decision_number": "SDAB-2019-0008",
+          "outcome": "DENIED",
+          "year": "2019",
+          "address": "320 Meredith Road NE",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Multi-Residential"
+        },
+        {
+          "decision_number": "SDAB-2022-0009",
+          "outcome": "ALLOWED IN PART",
+          "year": "2022",
+          "address": "1825 50 St SE, 2005 50 St SE",
+          "key_reasoning": "Partial approval - DA/SA had Approved. Board imposed conditions or partial modifications.",
+          "property_type": "Direct Control"
+        }
+      ],
+      "recommendation": "Prepare comprehensive traffic impact assessment, demonstrate parking adequacy or justify reductions, provide quality design documentation, conduct community engagement early in process."
+    },
+    {
+      "issue_id": "SDAB-008",
+      "issue_type": "accessory_residential_building",
+      "display_name": "Accessory Residential Building",
+      "description": "Accessory building such as garage suite, laneway home, or garden suite. Key issues include setbacks, height, shadowing, and privacy.",
+      "frequency": 56,
+      "risk_level": "MEDIUM",
+      "success_rate_percent": 48.6,
+      "typical_outcomes": {
+        "allowed": 4,
+        "denied": 18,
+        "allowed_in_part": 13,
+        "withdrawn": 7,
+        "struck": 4
+      },
+      "common_property_types": {
+        "Single Residential": 40,
+        "Residential": 8,
+        "Residential - Grade-Oriented Infill": 3
+      },
+      "key_factors_for_approval": [
+        "Minimal shadow impact on neighboring properties demonstrated",
+        "Privacy screening or mitigation measures proposed",
+        "Site constraints justify any variance requested",
+        "Height and massing compatible with neighborhood",
+        "Adequate separation from principal dwelling maintained"
+      ],
+      "key_factors_for_denial": [
+        "Excessive height or mass for the lot size",
+        "Significant overlooking or privacy concerns",
+        "Shadow impact on neighboring outdoor spaces",
+        "Non-compliance with setback requirements without justification",
+        "Design incompatible with neighborhood character"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2024-0018",
+          "outcome": "ALLOWED",
+          "year": "2024",
+          "address": "52 Glenside DR SW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2025-0043",
+          "outcome": "ALLOWED",
+          "year": "2025",
+          "address": "20 Glenway Drive SW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2020-0006",
+          "outcome": "DENIED",
+          "year": "2020",
+          "address": "25 Manor Road SW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2019-0021",
+          "outcome": "DENIED",
+          "year": "2019",
+          "address": "1440 Child Avenue NE",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2024-0032",
+          "outcome": "ALLOWED IN PART",
+          "year": "2024",
+          "address": "502 9A Street NE",
+          "key_reasoning": "Partial approval - DA/SA had Approved. Board imposed conditions or partial modifications.",
+          "property_type": "Single Residential"
+        }
+      ],
+      "recommendation": "Prepare shadow studies for affected neighboring properties, document site constraints, propose privacy screening measures, and demonstrate compatibility with neighborhood development patterns."
+    },
+    {
+      "issue_id": "SDAB-009",
+      "issue_type": "sign",
+      "display_name": "Sign",
+      "description": "Sign variance or permit for commercial or advertising signage. Issues include size, illumination, safety, and visual impact.",
+      "frequency": 50,
+      "risk_level": "MODERATE",
+      "success_rate_percent": 61.4,
+      "typical_outcomes": {
+        "allowed": 25,
+        "denied": 17,
+        "allowed_in_part": 2,
+        "withdrawn": 4,
+        "struck": 0
+      },
+      "common_property_types": {
+        "Commercial": 33,
+        "Direct Control": 9,
+        "Industrial": 5
+      },
+      "key_factors_for_approval": [
+        "Sign size and height appropriate for location",
+        "No safety concerns (sight lines, distraction)",
+        "Illumination levels acceptable",
+        "Consistent with area signage patterns",
+        "Temporary nature of sign if applicable"
+      ],
+      "key_factors_for_denial": [
+        "Excessive size or height for location",
+        "Safety concerns regarding traffic sight lines",
+        "Light pollution or glare issues",
+        "Visual blight or incompatible design",
+        "Non-compliance with sign district regulations"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2017-0028",
+          "outcome": "ALLOWED",
+          "year": "2017",
+          "address": "4815 MacLeod Trail SW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2017-0089",
+          "outcome": "ALLOWED",
+          "year": "2017",
+          "address": "4310 Macleod Trail SW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2017-0010",
+          "outcome": "DENIED",
+          "year": "2017",
+          "address": "12800 MacLeod Trail SE",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2017-0055",
+          "outcome": "DENIED",
+          "year": "2017",
+          "address": "907 Glenmore Trail SW",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2024-0035",
+          "outcome": "ALLOWED IN PART",
+          "year": "2024",
+          "address": "3415\u00a032\u00a0Street\u00a0NE",
+          "key_reasoning": "Partial approval - DA/SA had Refused. Board imposed conditions or partial modifications.",
+          "property_type": "Industrial"
+        }
+      ],
+      "recommendation": "Provide photomontages showing sign in context, demonstrate safety compliance, show consistency with existing area signage, address any illumination concerns with technical specifications."
+    },
+    {
+      "issue_id": "SDAB-010",
+      "issue_type": "rowhouse_building",
+      "display_name": "Rowhouse Building",
+      "description": "Rowhouse or townhouse development project. Common issues include parking, lot coverage, and design compatibility.",
+      "frequency": 49,
+      "risk_level": "LOW",
+      "success_rate_percent": 71.8,
+      "typical_outcomes": {
+        "allowed": 7,
+        "denied": 11,
+        "allowed_in_part": 21,
+        "withdrawn": 4,
+        "struck": 4
+      },
+      "common_property_types": {
+        "Single Residential": 18,
+        "Residential": 15,
+        "Multi-Residential": 10
+      },
+      "key_factors_for_approval": [
+        "Parking requirements met or justified variance",
+        "Lot coverage within acceptable limits",
+        "Design fits neighborhood context",
+        "Appropriate density for location",
+        "Landscaping and amenities adequate"
+      ],
+      "key_factors_for_denial": [
+        "Insufficient parking provision",
+        "Excessive lot coverage",
+        "Design does not fit neighborhood character",
+        "Over-density for location",
+        "Inadequate outdoor amenity space"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2020-0070",
+          "outcome": "ALLOWED",
+          "year": "2020",
+          "address": "1619 8 AVENUE NW",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Multi-Residential"
+        },
+        {
+          "decision_number": "SDAB-2024-0085",
+          "outcome": "ALLOWED",
+          "year": "2024",
+          "address": "7136 36 Avenue NW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2025-0053",
+          "outcome": "DENIED",
+          "year": "2025",
+          "address": "1102 - 21 Avenue NW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Residential"
+        },
+        {
+          "decision_number": "SDAB-2025-0054",
+          "outcome": "DENIED",
+          "year": "2025",
+          "address": "1636 19 Avenue NW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2023-0042",
+          "outcome": "ALLOWED IN PART",
+          "year": "2023",
+          "address": "2703 Morley Trail NW",
+          "key_reasoning": "Partial approval - DA/SA had Approved. Board imposed conditions or partial modifications.",
+          "property_type": "Multi-Residential"
+        }
+      ],
+      "recommendation": "Address all parking requirements clearly, prepare lot coverage calculations, demonstrate design compatibility with neighborhood, provide landscape plan."
+    },
+    {
+      "issue_id": "SDAB-011",
+      "issue_type": "home_occupation",
+      "display_name": "Home Occupation",
+      "description": "Home-based business or occupation requiring development permit. Issues include traffic, parking, noise, and maintaining residential character.",
+      "frequency": 41,
+      "risk_level": "MEDIUM",
+      "success_rate_percent": 50.0,
+      "typical_outcomes": {
+        "allowed": 3,
+        "denied": 15,
+        "allowed_in_part": 12,
+        "withdrawn": 9,
+        "struck": 1
+      },
+      "common_property_types": {
+        "Single Residential": 35,
+        "Multi Residential": 3,
+        "Commercial": 1
+      },
+      "key_factors_for_approval": [
+        "Business operation does not change residential character",
+        "No significant increase in traffic or parking demand",
+        "No external signs or indication of business",
+        "Limited customer visits per day",
+        "Operating hours compatible with residential area"
+      ],
+      "key_factors_for_denial": [
+        "Commercial nature evident from exterior",
+        "Excessive traffic or parking impacts",
+        "Noise, odor, or other disturbances to neighbors",
+        "Business scale exceeds home occupation limits",
+        "Multiple employees or customers on-site"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2023-0009",
+          "outcome": "ALLOWED",
+          "year": "2023",
+          "address": "4604\u00c2\u00a080\u00c2\u00a0Street NW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2023-0051",
+          "outcome": "ALLOWED",
+          "year": "2023",
+          "address": "70\u00c2\u00a0Hogarth Crescent\u00c2\u00a0SW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2018-0193",
+          "outcome": "DENIED",
+          "year": "2018",
+          "address": "2015 Briar CR NW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2021-0058",
+          "outcome": "DENIED",
+          "year": "2021",
+          "address": "60 Edgeland Rise NW",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2018-0166",
+          "outcome": "ALLOWED IN PART",
+          "year": "2018",
+          "address": "2234 27 Avenue SW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Single Residential"
+        }
+      ],
+      "recommendation": "Document business operations clearly, show traffic and parking will not impact neighbors, maintain residential character, prepare operating plan with hours and customer limits."
+    },
+    {
+      "issue_id": "SDAB-012",
+      "issue_type": "multi_residential",
+      "display_name": "Multi Residential",
+      "description": "Multi-residential development including townhouses, apartments, or condominiums.",
+      "frequency": 32,
+      "risk_level": "LOW",
+      "success_rate_percent": 76.9,
+      "typical_outcomes": {
+        "allowed": 5,
+        "denied": 6,
+        "allowed_in_part": 15,
+        "withdrawn": 5,
+        "struck": 1
+      },
+      "common_property_types": {
+        "Multi Residential": 32
+      },
+      "key_factors_for_approval": [
+        "Density justified by location and zoning",
+        "Adequate amenity provision",
+        "Quality design demonstrated",
+        "Parking requirements addressed",
+        "Traffic impact acceptable"
+      ],
+      "key_factors_for_denial": [
+        "Over-density for location",
+        "Design quality concerns",
+        "Inadequate amenities",
+        "Parking shortfall",
+        "Unacceptable traffic impact"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2014-0060",
+          "outcome": "ALLOWED",
+          "year": "2014",
+          "address": "69 31 AV SW",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Multi Residential"
+        },
+        {
+          "decision_number": "SDAB-2015-0142",
+          "outcome": "ALLOWED",
+          "year": "2015",
+          "address": "4804 Edmonton TR NE",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Multi Residential"
+        },
+        {
+          "decision_number": "SDAB-2014-0105",
+          "outcome": "DENIED",
+          "year": "2014",
+          "address": "3515 21 ST SW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Multi Residential"
+        },
+        {
+          "decision_number": "SDAB-2014-0157",
+          "outcome": "DENIED",
+          "year": "2014",
+          "address": "139 28 AV NW",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Multi Residential"
+        },
+        {
+          "decision_number": "SDAB-2016-0083",
+          "outcome": "ALLOWED IN PART",
+          "year": "2016",
+          "address": "3511 21 ST SW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Multi Residential"
+        }
+      ],
+      "recommendation": "Justify density with location analysis, document amenity provision, prepare quality design package, address parking and traffic comprehensively."
+    },
+    {
+      "issue_id": "SDAB-013",
+      "issue_type": "single_detached_dwelling_w/_accessory_residential_building",
+      "display_name": "Single Detached Dwelling w/ Accessory Residential Building",
+      "description": "Combined development of single detached dwelling with accessory residential building such as garage suite or backyard suite.",
+      "frequency": 30,
+      "risk_level": "MEDIUM",
+      "success_rate_percent": 42.1,
+      "typical_outcomes": {
+        "allowed": 4,
+        "denied": 11,
+        "allowed_in_part": 4,
+        "withdrawn": 5,
+        "struck": 4
+      },
+      "common_property_types": {
+        "Single Residential": 25,
+        "Residential": 4,
+        "Direct Control": 1
+      },
+      "key_factors_for_approval": [
+        "Combined impact acceptable for lot",
+        "Lot size adequate for both structures",
+        "Privacy concerns addressed with screening",
+        "Parking requirements met",
+        "Design compatibility with neighborhood"
+      ],
+      "key_factors_for_denial": [
+        "Combined impact too great for lot",
+        "Lot size inadequate",
+        "Significant privacy concerns",
+        "Insufficient parking",
+        "Overdevelopment of site"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2020-0019",
+          "outcome": "ALLOWED",
+          "year": "2020",
+          "address": "9804 Elbow Drive SW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2022-0016",
+          "outcome": "ALLOWED",
+          "year": "2022",
+          "address": "3419 6 Street SW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2022-0041",
+          "outcome": "DENIED",
+          "year": "2022",
+          "address": "110 Scarboro Avenue SW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2023-0070",
+          "outcome": "DENIED",
+          "year": "2023",
+          "address": "602 Sifton Boulevard SW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2021-0047",
+          "outcome": "ALLOWED IN PART",
+          "year": "2021",
+          "address": "1615 7A STREET NW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Single Residential"
+        }
+      ],
+      "recommendation": "Document combined impact, demonstrate lot adequacy, propose privacy screening, prepare comprehensive site plan showing both structures."
+    },
+    {
+      "issue_id": "SDAB-014",
+      "issue_type": "cannabis_store",
+      "display_name": "Cannabis Store",
+      "description": "Cannabis store development permit with strict separation distance requirements from schools, other cannabis stores, and sensitive uses.",
+      "frequency": 21,
+      "risk_level": "MEDIUM",
+      "success_rate_percent": 50.0,
+      "typical_outcomes": {
+        "allowed": 4,
+        "denied": 5,
+        "allowed_in_part": 1,
+        "withdrawn": 1,
+        "struck": 6
+      },
+      "common_property_types": {
+        "Commercial": 18,
+        "Mixed Use": 2,
+        "Multi-Residential": 1
+      },
+      "key_factors_for_approval": [
+        "Verified 150m+ separation from school property boundaries",
+        "No other cannabis stores within 300m radius",
+        "Appropriate commercial location",
+        "Comprehensive security plan provided",
+        "Operating hours compatible with area"
+      ],
+      "key_factors_for_denial": [
+        "School within prohibited separation distance",
+        "Over-concentration of cannabis retail in area",
+        "Proximity to child care, recreation, or community facilities",
+        "Inadequate security measures",
+        "Community opposition regarding sensitive land uses"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2021-0034",
+          "outcome": "ALLOWED",
+          "year": "2021",
+          "address": "110 13 Avenue NW (Bldg: 114 13 Avenue NW)",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2025-0014",
+          "outcome": "ALLOWED",
+          "year": "2025",
+          "address": "2105-19605 Walden Boulevard SE",
+          "key_reasoning": "Appeal allowed - DA/SA had Refused. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2019-0069",
+          "outcome": "DENIED",
+          "year": "2019",
+          "address": "3719 17 Avenue SE",
+          "key_reasoning": "Appeal denied - DA/SA had REFUSED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Mixed Use"
+        },
+        {
+          "decision_number": "SDAB-2021-0070",
+          "outcome": "DENIED",
+          "year": "2021",
+          "address": "Entryway: 1601 14 ST SW (Building: 1609 14 ST SW)",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2021-0038",
+          "outcome": "ALLOWED IN PART",
+          "year": "2021",
+          "address": "7744 Elbow Drive SW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Commercial"
+        }
+      ],
+      "recommendation": "Obtain professional survey confirming all separation distances, map all existing cannabis stores and sensitive uses, prepare detailed security and operation plans, conduct community engagement."
+    },
+    {
+      "issue_id": "SDAB-015",
+      "issue_type": "liquor_store",
+      "display_name": "Liquor Store",
+      "description": "Liquor store development permit. Separation requirements from schools, community facilities, and other liquor stores apply.",
+      "frequency": 20,
+      "risk_level": "HIGH",
+      "success_rate_percent": 38.5,
+      "typical_outcomes": {
+        "allowed": 5,
+        "denied": 8,
+        "allowed_in_part": 0,
+        "withdrawn": 2,
+        "struck": 3
+      },
+      "common_property_types": {
+        "Commercial": 11,
+        "Direct Control": 4,
+        "Mixed Use": 4
+      },
+      "key_factors_for_approval": [
+        "All separation distances met",
+        "No over-concentration of liquor stores",
+        "Appropriate commercial location",
+        "Security measures provided",
+        "Community need demonstrated"
+      ],
+      "key_factors_for_denial": [
+        "Within prohibited distance of sensitive uses",
+        "Over-concentration in area",
+        "Security concerns not addressed",
+        "Community opposition based on concentration",
+        "Location inappropriate for liquor retail"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2018-0019",
+          "outcome": "ALLOWED",
+          "year": "2018",
+          "address": "3908 17 Ave SE",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2022-0063",
+          "outcome": "ALLOWED",
+          "year": "2022",
+          "address": "1323 9 Avenue SE",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Direct Control"
+        },
+        {
+          "decision_number": "SDAB-2023-0014",
+          "outcome": "DENIED",
+          "year": "2023",
+          "address": "1323 9 Avenue SE",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Direct Control"
+        },
+        {
+          "decision_number": "SDAB-2021-0001",
+          "outcome": "DENIED",
+          "year": "2021",
+          "address": "950 McPherson Square NE (Building Suite: 49, 53, & 57 9 Street NE)",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        }
+      ],
+      "recommendation": "Map all liquor stores and sensitive uses, verify separation distances, prepare security plan, document community consultation."
+    },
+    {
+      "issue_id": "SDAB-016",
+      "issue_type": "semi_detached_dwelling",
+      "display_name": "Semi-Detached Dwelling",
+      "description": "Semi-detached or duplex dwelling development. Issues include lot coverage, setbacks, and neighborhood character.",
+      "frequency": 17,
+      "risk_level": "LOW",
+      "success_rate_percent": 78.6,
+      "typical_outcomes": {
+        "allowed": 4,
+        "denied": 3,
+        "allowed_in_part": 7,
+        "withdrawn": 0,
+        "struck": 3
+      },
+      "common_property_types": {
+        "Single Residential": 11,
+        "Residential": 4,
+        "Multi-Residential": 1
+      },
+      "key_factors_for_approval": [
+        "Fits neighborhood character",
+        "Appropriate lot coverage",
+        "Setback variances minimal and justified",
+        "Parking adequate",
+        "Design quality appropriate"
+      ],
+      "key_factors_for_denial": [
+        "Does not fit neighborhood character",
+        "Excessive lot coverage",
+        "Setback variances too significant",
+        "Parking inadequate",
+        "Design incompatible with streetscape"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2025-0015",
+          "outcome": "ALLOWED",
+          "year": "2025",
+          "address": "601 22 Avenue SW",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Multi-Residential"
+        },
+        {
+          "decision_number": "SDAB-2020-0002",
+          "outcome": "ALLOWED",
+          "year": "2020",
+          "address": "224 8 Avenue NE",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2020-0043",
+          "outcome": "DENIED",
+          "year": "2020",
+          "address": "5008 22 Avenue NW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2024-0047",
+          "outcome": "DENIED",
+          "year": "2024",
+          "address": "10907 Elbow Drive SW",
+          "key_reasoning": "Appeal denied - DA/SA had Refused. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2019-0023",
+          "outcome": "ALLOWED IN PART",
+          "year": "2019",
+          "address": "4923 21 Avenue NW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Single Residential"
+        }
+      ],
+      "recommendation": "Analyze neighborhood character, prepare lot coverage calculations, document setback variances needed, show design compatibility."
+    },
+    {
+      "issue_id": "SDAB-017",
+      "issue_type": "retail_and_consumer_service",
+      "display_name": "Retail and Consumer Service",
+      "description": "Retail or consumer service commercial development. Issues include zoning compatibility, traffic, and hours of operation.",
+      "frequency": 15,
+      "risk_level": "HIGH",
+      "success_rate_percent": 37.5,
+      "typical_outcomes": {
+        "allowed": 3,
+        "denied": 5,
+        "allowed_in_part": 0,
+        "withdrawn": 5,
+        "struck": 1
+      },
+      "common_property_types": {
+        "Commercial": 8,
+        "Direct Control": 4,
+        "Mixed Use": 2
+      },
+      "key_factors_for_approval": [
+        "Appropriate for commercial zone",
+        "Traffic impact manageable",
+        "Hours of operation reasonable",
+        "Parking adequate",
+        "No undue impact on residential"
+      ],
+      "key_factors_for_denial": [
+        "Inappropriate for zone",
+        "Traffic impact excessive",
+        "Hours of operation concern",
+        "Parking inadequate",
+        "Impact on residential neighbors"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2023-0011",
+          "outcome": "ALLOWED",
+          "year": "2023",
+          "address": "2700 3 Avenue SE",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Industrial"
+        },
+        {
+          "decision_number": "SDAB-2021-0090",
+          "outcome": "ALLOWED",
+          "year": "2021",
+          "address": "1114 Gladstone Road NW (1110-1126 Gladstone Rd NW)",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Direct Control"
+        },
+        {
+          "decision_number": "SDAB-2020-0012",
+          "outcome": "DENIED",
+          "year": "2020",
+          "address": "5425 Falsbridge Dr NE",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        },
+        {
+          "decision_number": "SDAB-2023-0021",
+          "outcome": "DENIED",
+          "year": "2023",
+          "address": "1110, 1114, 1120, 1124, & 1126 Gladstone Road NW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Commercial"
+        }
+      ],
+      "recommendation": "Verify zoning compatibility, prepare traffic analysis, document proposed hours, address any residential interface concerns."
+    },
+    {
+      "issue_id": "SDAB-018",
+      "issue_type": "mixed_use",
+      "display_name": "Mixed Use",
+      "description": "Mixed use development combining residential and commercial uses.",
+      "frequency": 12,
+      "risk_level": "LOW",
+      "success_rate_percent": 87.5,
+      "typical_outcomes": {
+        "allowed": 4,
+        "denied": 1,
+        "allowed_in_part": 3,
+        "withdrawn": 3,
+        "struck": 1
+      },
+      "common_property_types": {
+        "Mixed Use": 12
+      },
+      "key_factors_for_approval": [
+        "Appropriate mix of uses for location",
+        "Parking adequate for all uses",
+        "Design quality high",
+        "Transit supportive location",
+        "Amenities provided"
+      ],
+      "key_factors_for_denial": [
+        "Inappropriate mix for location",
+        "Parking inadequate",
+        "Design quality concerns",
+        "Conflicts between uses",
+        "Density excessive"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2014-0007",
+          "outcome": "ALLOWED",
+          "year": "2014",
+          "address": "307 35 AV NE",
+          "key_reasoning": "Appeal allowed - DA/SA had APPROVED. Board found grounds to allow the development.",
+          "property_type": "Mixed Use"
+        },
+        {
+          "decision_number": "SDAB-2015-0099",
+          "outcome": "ALLOWED",
+          "year": "2015",
+          "address": "83 Hillary CR SW",
+          "key_reasoning": "Appeal allowed - DA/SA had REFUSED. Board found grounds to allow the development.",
+          "property_type": "Mixed Use"
+        },
+        {
+          "decision_number": "SDAB-2016-0018",
+          "outcome": "DENIED",
+          "year": "2016",
+          "address": "2016 34 Av SW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Mixed Use"
+        },
+        {
+          "decision_number": "SDAB-2015-0084",
+          "outcome": "ALLOWED IN PART",
+          "year": "2015",
+          "address": "1020 9 AV SE",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Mixed Use"
+        }
+      ],
+      "recommendation": "Demonstrate appropriate use mix, address parking for all uses, provide quality design, show transit accessibility."
+    },
+    {
+      "issue_id": "SDAB-019",
+      "issue_type": "subdivision",
+      "display_name": "Subdivision",
+      "description": "Subdivision of land into smaller parcels. Issues include lot sizes, access, and infrastructure.",
+      "frequency": 9,
+      "risk_level": "MODERATE",
+      "success_rate_percent": 60.0,
+      "typical_outcomes": {
+        "allowed": 1,
+        "denied": 2,
+        "allowed_in_part": 2,
+        "withdrawn": 4,
+        "struck": 0
+      },
+      "common_property_types": {
+        "Subdivision": 9
+      },
+      "key_factors_for_approval": [
+        "Lot sizes appropriate for zone",
+        "Adequate access provided",
+        "Infrastructure adequate",
+        "Compatible with area development",
+        "No adverse impact on neighbors"
+      ],
+      "key_factors_for_denial": [
+        "Lot sizes too small",
+        "Inadequate access",
+        "Infrastructure concerns",
+        "Incompatible with neighborhood",
+        "Adverse impact on existing properties"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2014-0056",
+          "outcome": "ALLOWED",
+          "year": "2014",
+          "address": "13011 53 ST NW",
+          "key_reasoning": "Appeal allowed - DA/SA had DEEMED REFUSED. Board found grounds to allow the development.",
+          "property_type": "Subdivision"
+        },
+        {
+          "decision_number": "SDAB-2014-0158",
+          "outcome": "DENIED",
+          "year": "2014",
+          "address": "6909 MACLEOD TR SW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Subdivision"
+        },
+        {
+          "decision_number": "SDAB-2014-0009",
+          "outcome": "DENIED",
+          "year": "2014",
+          "address": "2727 84 ST SE",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Subdivision"
+        },
+        {
+          "decision_number": "SDAB-2017-0075",
+          "outcome": "ALLOWED IN PART",
+          "year": "2017",
+          "address": "435 PATINA PL SW",
+          "key_reasoning": "Partial approval - DA/SA had APPROVED. Board imposed conditions or partial modifications.",
+          "property_type": "Subdivision"
+        }
+      ],
+      "recommendation": "Ensure lot sizes meet requirements, demonstrate adequate access, address infrastructure needs, show compatibility with area."
+    },
+    {
+      "issue_id": "SDAB-020",
+      "issue_type": "child_care_service",
+      "display_name": "Child Care Service",
+      "description": "Child care or daycare facility development permit. Issues include traffic, outdoor space, and neighbor concerns.",
+      "frequency": 8,
+      "risk_level": "MODERATE",
+      "success_rate_percent": 57.1,
+      "typical_outcomes": {
+        "allowed": 1,
+        "denied": 3,
+        "allowed_in_part": 3,
+        "withdrawn": 0,
+        "struck": 1
+      },
+      "common_property_types": {
+        "Direct Control": 2,
+        "Single Residential": 2,
+        "Multi-Residential": 1
+      },
+      "key_factors_for_approval": [
+        "Safe drop-off and pick-up area provided",
+        "Adequate outdoor play space",
+        "Neighbor concerns addressed",
+        "Traffic management plan provided",
+        "Operating hours appropriate"
+      ],
+      "key_factors_for_denial": [
+        "Unsafe traffic conditions",
+        "Inadequate outdoor space",
+        "Unaddressed neighbor concerns",
+        "Insufficient parking for parents",
+        "Incompatible with residential character"
+      ],
+      "sample_citations": [
+        {
+          "decision_number": "SDAB-2025-0139",
+          "outcome": "ALLOWED",
+          "year": "2025",
+          "address": "8500 Macleod Trail SE (Building: #222S 8500 Macleod Trail SE)",
+          "key_reasoning": "Appeal allowed - DA/SA had Approved. Board found grounds to allow the development.",
+          "property_type": "Commercial - Corridor 1"
+        },
+        {
+          "decision_number": "SDAB-2019-0052",
+          "outcome": "DENIED",
+          "year": "2019",
+          "address": "9 Evansborough GR NW",
+          "key_reasoning": "Appeal denied - DA/SA had APPROVED. Board upheld original decision or found grounds to deny.",
+          "property_type": "Single Residential"
+        },
+        {
+          "decision_number": "SDAB-2025-0010",
+          "outcome": "DENIED",
+          "year": "2025",
+          "address": "7107 26 Avenue SW",
+          "key_reasoning": "Appeal denied - DA/SA had Approved. Board upheld original decision or found grounds to deny.",
+          "property_type": "Direct Control"
+        },
+        {
+          "decision_number": "SDAB-2023-0078",
+          "outcome": "ALLOWED IN PART",
+          "year": "2023",
+          "address": "1410 1 Street SE",
+          "key_reasoning": "Partial approval - DA/SA had Approved. Board imposed conditions or partial modifications.",
+          "property_type": "Direct Control"
+        }
+      ],
+      "recommendation": "Design safe drop-off/pick-up areas, demonstrate adequate outdoor space, conduct neighbor consultation, prepare traffic management plan."
+    }
+  ],
+  "general_guidance": {
+    "appeal_success_factors": [
+      "Demonstrate unique hardship or site constraints that justify the variance",
+      "Show minimal impact on neighboring properties (shadow, privacy, views)",
+      "Provide evidence of neighborhood context and compatibility with existing development",
+      "Address all objections raised by neighbors or the City with specific responses",
+      "Document compliance with the intent of bylaws even if not the letter",
+      "Present professional supporting documentation (surveys, shadow studies, traffic analyses)",
+      "Conduct early consultation with neighbors to address concerns proactively",
+      "Propose conditions or mitigations to reduce impacts"
+    ],
+    "common_denial_reasons": [
+      "Excessive variance from required standards without justification",
+      "Significant unmitigated impact on neighboring properties",
+      "Non-compliance with safety or separation requirements",
+      "Insufficient justification or hardship evidence",
+      "Strong community opposition with substantive concerns",
+      "Precedent-setting concerns for neighborhood",
+      "Development out of character with established area",
+      "Non-compliance with mandatory requirements (fire, building code)"
+    ],
+    "preparation_tips": [
+      "Attend pre-application meetings with the City planning department",
+      "Conduct early consultation with immediate neighbors",
+      "Prepare detailed responses to anticipated objections",
+      "Research and cite precedent decisions for similar cases",
+      "Consider hiring professionals (planners, architects) for complex applications",
+      "Review and understand all relevant Land Use Bylaw sections",
+      "Document site constraints with professional surveys if applicable",
+      "Prepare visual materials (renderings, shadow studies) to illustrate proposals"
+    ],
+    "appeal_process_notes": {
+      "timeline": "Appeals must typically be filed within 21 days of decision",
+      "documentation": "Bring all relevant drawings, reports, and correspondence to hearing",
+      "representation": "Applicants may represent themselves or hire a planner/lawyer",
+      "neighbor_notification": "Neighbors are typically notified of appeal hearings",
+      "decision_timing": "SDAB decisions are usually issued within 15 days of hearing"
+    },
+    "year_over_year_trends": {
+      "note": "Success rates have varied over time based on policy changes and board composition",
+      "historical": "2014-2017 showed higher success rates (65-70%)",
+      "recent_trend": "2018-2023 showed lower success rates (47-52%), while 2024-2025 show improvement (57-69%)",
+      "implication": "Recent decisions may be more favorable, but thorough preparation remains essential"
+    },
+    "risk_level_guidance": {
+      "HIGH": "Less than 40% success rate - extensive preparation and strong justification needed",
+      "MEDIUM": "40-55% success rate - moderate risk, thorough documentation recommended",
+      "MODERATE": "55-70% success rate - reasonable chance of success with good preparation",
+      "LOW": "Above 70% success rate - favorable odds, but preparation still important"
+    }
+  }
+}

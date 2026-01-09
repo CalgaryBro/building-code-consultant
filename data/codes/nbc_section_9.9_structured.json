@@ -1,0 +1,732 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE) 2023",
+    "section": "9.9",
+    "section_title": "Means of Egress",
+    "pages": "855-867",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual verification",
+    "source_file": "NBC-AE-2023.pdf",
+    "verification_status": "pending_professional_review"
+  },
+  "articles": [
+    {
+      "article_number": "9.9.1.3",
+      "title": "Occupant Load",
+      "subsection": "9.9.1 General",
+      "requirements": [
+        {
+          "id": "9.9.1.3-1",
+          "element": "occupant_load_calculation",
+          "requirement_type": "procedural",
+          "description": "Occupant load from Table 3.1.17.1 unless fewer persons can be shown",
+          "exact_quote": "the occupant load of a floor area or part of a floor area shall be the number of persons for which such areas are designed, but not fewer than that determined from Table 3.1.17.1",
+          "applies_to": ["non_dwelling_units"],
+          "source_sentence": "9.9.1.3.(1)"
+        },
+        {
+          "id": "9.9.1.3-2",
+          "element": "occupant_load_dwelling",
+          "requirement_type": "dimensional",
+          "description": "Occupant load for dwelling units",
+          "exact_value": "2 persons per bedroom or sleeping area",
+          "exact_quote": "The occupant load for dwelling units shall be based on 2 persons per bedroom or sleeping area",
+          "applies_to": ["dwelling_units"],
+          "source_sentence": "9.9.1.3.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.3.2",
+      "title": "Exit Width",
+      "subsection": "9.9.3 Dimensions of Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.3.2-1",
+          "element": "exit_width",
+          "requirement_type": "dimensional",
+          "description": "Minimum width of exit facilities (except doors and corridors)",
+          "min_value": 900,
+          "unit": "mm",
+          "exact_quote": "the width of every exit facility shall be not less than 900 mm",
+          "applies_to": ["exit_facilities"],
+          "exceptions": ["doors", "corridors"],
+          "source_sentence": "9.9.3.2.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.3.3",
+      "title": "Width of Corridors",
+      "subsection": "9.9.3 Dimensions of Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.3.3-1",
+          "element": "corridor_width",
+          "requirement_type": "dimensional",
+          "description": "Minimum width of public corridors and exit corridors",
+          "min_value": 1100,
+          "unit": "mm",
+          "exact_quote": "The width of every public corridor, corridor used by the public, and exit corridor shall be not less than 1100 mm",
+          "applies_to": ["public_corridors", "exit_corridors"],
+          "source_sentence": "9.9.3.3.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.3.4",
+      "title": "Clear Height",
+      "subsection": "9.9.3 Dimensions of Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.3.4-1",
+          "element": "exit_headroom",
+          "requirement_type": "dimensional",
+          "description": "Minimum clear height in exits and access to exits",
+          "min_value": 2.1,
+          "unit": "m",
+          "exact_quote": "the minimum clear height in exits and access to exits shall be 2.1 m",
+          "applies_to": ["exits", "access_to_exits"],
+          "exceptions": ["stairways", "doorways", "storage garages"],
+          "source_sentence": "9.9.3.4.(1)"
+        },
+        {
+          "id": "9.9.3.4-2",
+          "element": "exit_headroom_garage",
+          "requirement_type": "dimensional",
+          "description": "Minimum clear height in storage garages",
+          "min_value": 2,
+          "unit": "m",
+          "exact_quote": "The clear height in exits and access to exits in storage garages shall be not less than 2 m",
+          "applies_to": ["storage_garages"],
+          "source_sentence": "9.9.3.4.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.4.2",
+      "title": "Fire Separations for Exits",
+      "subsection": "9.9.4 Fire Protection of Exits",
+      "requirements": [
+        {
+          "id": "9.9.4.2-1b",
+          "element": "exit_fire_separation",
+          "requirement_type": "performance",
+          "description": "Fire separation for exits where no floor assembly above",
+          "min_value": 45,
+          "unit": "min",
+          "exact_quote": "a fire separation having a fire-resistance rating not less than the greater of i) that required by Subsection 9.10.8. for the floor assembly below, or ii) 45 min",
+          "applies_to": ["exit_enclosures"],
+          "source_sentence": "9.9.4.2.(1)(b)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.4.7",
+      "title": "Stairways in 2 Storey, Group D or E Buildings",
+      "subsection": "9.9.4 Fire Protection of Exits",
+      "requirements": [
+        {
+          "id": "9.9.4.7-1c",
+          "element": "suite_area_no_exit_stair",
+          "requirement_type": "dimensional",
+          "description": "Maximum suite area per storey for non-exit stairways",
+          "max_value": 100,
+          "unit": "m2",
+          "condition": "2-storey D or E occupancy, building <= 2 storeys",
+          "exact_quote": "the area occupied by the suite is not greater than 100 m2 per storey",
+          "applies_to": ["group_d", "group_e"],
+          "source_sentence": "9.9.4.7.(1)(c)"
+        },
+        {
+          "id": "9.9.4.7-1d",
+          "element": "travel_distance_no_exit_stair",
+          "requirement_type": "dimensional",
+          "description": "Maximum travel distance for non-exit stairways",
+          "max_value": 25,
+          "unit": "m",
+          "condition": "2-storey D or E occupancy",
+          "exact_quote": "the maximum travel distance from any point in the suite to an exterior exit is not greater than 25 m",
+          "applies_to": ["group_d", "group_e"],
+          "source_sentence": "9.9.4.7.(1)(d)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.5.3",
+      "title": "Obstructions in Public Corridors",
+      "subsection": "9.9.5 Obstructions and Hazards in Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.5.3-1",
+          "element": "corridor_obstruction",
+          "requirement_type": "dimensional",
+          "description": "Maximum projection of obstructions into corridors",
+          "max_value": 100,
+          "unit": "mm",
+          "height_range": "within 1980 mm of floor",
+          "exact_quote": "obstructions located within 1980 mm of the floor shall not project horizontally more than 100 mm into exit passageways, corridors used by the public or public corridors",
+          "applies_to": ["public_corridors", "exit_passageways"],
+          "source_sentence": "9.9.5.3.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.5.5",
+      "title": "Obstructions in Means of Egress",
+      "subsection": "9.9.5 Obstructions and Hazards in Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.5.5-1",
+          "element": "minimum_egress_width",
+          "requirement_type": "dimensional",
+          "description": "Minimum width of restricted egress",
+          "min_value": 750,
+          "unit": "mm",
+          "exact_quote": "No obstructions such as posts or turnstiles shall be placed so as to restrict the width of a required means of egress from a floor area or part of a floor area to less than 750 mm unless an alternate unobstructed means of egress is provided",
+          "applies_to": ["means_of_egress"],
+          "source_sentence": "9.9.5.5.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.6.2",
+      "title": "Clear Opening Height at Doorways",
+      "subsection": "9.9.6 Doors in a Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.6.2-1",
+          "element": "door_height",
+          "requirement_type": "dimensional",
+          "description": "Clear opening height of exit doorways",
+          "min_value": 2030,
+          "unit": "mm",
+          "exact_quote": "the clear opening height of doorways shall be not less than 2030 mm high",
+          "applies_to": ["exit_doors", "public_corridor_doors"],
+          "source_sentence": "9.9.6.2.(1)"
+        },
+        {
+          "id": "9.9.6.2-2",
+          "element": "door_height_under_closer",
+          "requirement_type": "dimensional",
+          "description": "Clear opening height under door closers",
+          "min_value": 1980,
+          "unit": "mm",
+          "exact_quote": "The clear opening height under door closers and other devices in doorways described in Sentence (1) shall be not less than 1980 mm",
+          "applies_to": ["exit_doors", "public_corridor_doors"],
+          "source_sentence": "9.9.6.2.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.6.3",
+      "title": "Clear Opening Width at Doorways",
+      "subsection": "9.9.6 Doors in a Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.6.3-2a",
+          "element": "door_width_single",
+          "requirement_type": "dimensional",
+          "description": "Minimum width of single-leaf exit door",
+          "min_value": 800,
+          "unit": "mm",
+          "exact_quote": "not less than 800 mm wide where there is only one door leaf",
+          "applies_to": ["exit_doors_single_leaf"],
+          "source_sentence": "9.9.6.3.(2)(a)"
+        },
+        {
+          "id": "9.9.6.3-2b",
+          "element": "door_width_multiple_single_active",
+          "requirement_type": "dimensional",
+          "description": "Minimum width with multiple leaves, one active",
+          "min_value": 800,
+          "unit": "mm",
+          "exact_quote": "not less than 800 mm wide where multiple-leaf doors are installed with only one active leaf having a latching mechanism",
+          "applies_to": ["exit_doors_multiple_leaf_single_active"],
+          "source_sentence": "9.9.6.3.(2)(b)"
+        },
+        {
+          "id": "9.9.6.3-2c",
+          "element": "door_width_multiple_two_active",
+          "requirement_type": "dimensional",
+          "description": "Minimum width with multiple leaves, two active",
+          "min_value": 1210,
+          "unit": "mm",
+          "exact_quote": "not less than 1210 mm wide where multiple-leaf doors are installed with two active leaves",
+          "applies_to": ["exit_doors_multiple_leaf_two_active"],
+          "source_sentence": "9.9.6.3.(2)(c)"
+        },
+        {
+          "id": "9.9.6.3-3a",
+          "element": "door_leaf_width_single_active",
+          "requirement_type": "dimensional",
+          "description": "Minimum width of single active leaf",
+          "min_value": 810,
+          "unit": "mm",
+          "exact_quote": "no active leaf shall be less than 810 mm wide where only one leaf is active",
+          "applies_to": ["exit_doors_multiple_leaf"],
+          "source_sentence": "9.9.6.3.(3)(a)"
+        },
+        {
+          "id": "9.9.6.3-3b",
+          "element": "door_leaf_width_two_active",
+          "requirement_type": "dimensional",
+          "description": "Minimum width of each leaf when two active",
+          "min_value": 610,
+          "unit": "mm",
+          "exact_quote": "no single leaf shall be less than 610 mm wide where two leaves are active",
+          "applies_to": ["exit_doors_multiple_leaf_two_active"],
+          "source_sentence": "9.9.6.3.(3)(b)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.6.6",
+      "title": "Nearness of Doors to Stairs",
+      "subsection": "9.9.6 Doors in a Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.6.6-1",
+          "element": "door_to_stair_distance",
+          "requirement_type": "dimensional",
+          "description": "Minimum distance from stair riser to door edge during swing",
+          "min_value": 300,
+          "unit": "mm",
+          "exact_quote": "the distance between a stair riser and the leading edge of a door during its swing, except for doors serving a single dwelling unit or a house with a secondary suite, shall be not less than 300 mm",
+          "applies_to": ["exit_doors"],
+          "exceptions": ["single_dwelling_unit", "house_with_secondary_suite"],
+          "source_sentence": "9.9.6.6.(1)"
+        },
+        {
+          "id": "9.9.6.6-2",
+          "element": "exit_door_step_height",
+          "requirement_type": "dimensional",
+          "description": "Maximum step height at exit door (ice/snow conditions)",
+          "max_value": 150,
+          "unit": "mm",
+          "condition": "danger of blockage from ice or snow",
+          "exact_quote": "an exit door, including doors serving a single dwelling unit, may open onto not more than one step, provided the riser of such a step does not exceed 150 mm",
+          "applies_to": ["exterior_exit_doors"],
+          "source_sentence": "9.9.6.6.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.6.7",
+      "title": "Door Latching, Locking and Opening Mechanisms",
+      "subsection": "9.9.6 Doors in a Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.6.7-3",
+          "element": "door_hardware_height",
+          "requirement_type": "dimensional",
+          "description": "Height of door release hardware",
+          "min_value": 900,
+          "max_value": 1100,
+          "unit": "mm",
+          "exact_quote": "Door release hardware on doors in a means of egress shall be installed 900 mm to 1100 mm above the finished floor",
+          "applies_to": ["doors_in_means_of_egress"],
+          "source_sentence": "9.9.6.7.(3)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.6.8",
+      "title": "Effort Required to Open",
+      "subsection": "9.9.6 Doors in a Means of Egress",
+      "requirements": [
+        {
+          "id": "9.9.6.8-1",
+          "element": "door_opening_force",
+          "requirement_type": "performance",
+          "description": "Maximum force to open exit door",
+          "max_value": 90,
+          "unit": "N",
+          "exact_quote": "when the latch is released the door will open in the direction of exit travel under a force of not more than 90 N applied to the door release hardware",
+          "applies_to": ["exit_doors"],
+          "exceptions": ["single_dwelling_unit", "house_with_secondary_suite"],
+          "source_sentence": "9.9.6.8.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.7.3",
+      "title": "Dead-End Corridors",
+      "subsection": "9.9.7 Access to Exits",
+      "requirements": [
+        {
+          "id": "9.9.7.3-1",
+          "element": "dead_end_corridor_length",
+          "requirement_type": "dimensional",
+          "description": "Maximum length of dead-end corridor",
+          "max_value": 6,
+          "unit": "m",
+          "exact_quote": "a dead-end corridor is permitted provided it is not more than 6 m long",
+          "applies_to": ["public_corridors"],
+          "exceptions": ["dead-end entirely within suite"],
+          "source_sentence": "9.9.7.3.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.7.4",
+      "title": "Number and Spacing of Egress Doors",
+      "subsection": "9.9.7 Access to Exits",
+      "full_text": "Except for dwelling units, at least 2 egress doors shall be provided when the area of a room or suite, or the distance measured from any point within the room or suite to the nearest egress door, exceeds the values in Table 9.9.7.4.",
+      "requirements": [
+        {
+          "id": "9.9.7.4-C",
+          "element": "single_egress_area",
+          "requirement_type": "dimensional",
+          "description": "Maximum area for single egress - Group C (except dwelling units)",
+          "max_value": 100,
+          "unit": "m2",
+          "max_travel_distance": 15,
+          "travel_unit": "m",
+          "exact_quote": "Group C (except dwelling units) - Max Area 100 m2, Max Distance 15 m",
+          "applies_to": ["group_c_non_dwelling"],
+          "source_table": "Table 9.9.7.4"
+        },
+        {
+          "id": "9.9.7.4-D",
+          "element": "single_egress_area",
+          "requirement_type": "dimensional",
+          "description": "Maximum area for single egress - Group D",
+          "max_value": 200,
+          "unit": "m2",
+          "max_travel_distance": 25,
+          "travel_unit": "m",
+          "exact_quote": "Group D - Max Area 200 m2, Max Distance 25 m",
+          "applies_to": ["group_d"],
+          "source_table": "Table 9.9.7.4"
+        },
+        {
+          "id": "9.9.7.4-E",
+          "element": "single_egress_area",
+          "requirement_type": "dimensional",
+          "description": "Maximum area for single egress - Group E",
+          "max_value": 150,
+          "unit": "m2",
+          "max_travel_distance": 15,
+          "travel_unit": "m",
+          "exact_quote": "Group E - Max Area 150 m2, Max Distance 15 m",
+          "applies_to": ["group_e"],
+          "source_table": "Table 9.9.7.4"
+        },
+        {
+          "id": "9.9.7.4-F2",
+          "element": "single_egress_area",
+          "requirement_type": "dimensional",
+          "description": "Maximum area for single egress - Group F, Division 2",
+          "max_value": 150,
+          "unit": "m2",
+          "max_travel_distance": 10,
+          "travel_unit": "m",
+          "exact_quote": "Group F Division 2 - Max Area 150 m2, Max Distance 10 m",
+          "applies_to": ["group_f_div2"],
+          "source_table": "Table 9.9.7.4"
+        },
+        {
+          "id": "9.9.7.4-F3",
+          "element": "single_egress_area",
+          "requirement_type": "dimensional",
+          "description": "Maximum area for single egress - Group F, Division 3",
+          "max_value": 200,
+          "unit": "m2",
+          "max_travel_distance": 15,
+          "travel_unit": "m",
+          "exact_quote": "Group F Division 3 - Max Area 200 m2, Max Distance 15 m",
+          "applies_to": ["group_f_div3"],
+          "source_table": "Table 9.9.7.4"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.8.2",
+      "title": "Number of Required Exits",
+      "subsection": "9.9.8 Exits from Floor Areas",
+      "requirements": [
+        {
+          "id": "9.9.8.2-1a",
+          "element": "travel_distance_to_exit",
+          "requirement_type": "dimensional",
+          "description": "Maximum travel distance - business and personal services",
+          "max_value": 40,
+          "unit": "m",
+          "exact_quote": "40 m in the case of business and personal services occupancies",
+          "applies_to": ["group_d"],
+          "source_sentence": "9.9.8.2.(1)(a)"
+        },
+        {
+          "id": "9.9.8.2-1b",
+          "element": "travel_distance_to_exit",
+          "requirement_type": "dimensional",
+          "description": "Maximum travel distance - sprinklered floor areas",
+          "max_value": 45,
+          "unit": "m",
+          "condition": "floor area is sprinklered",
+          "exact_quote": "45 m for all occupancies where the floor area is sprinklered",
+          "applies_to": ["sprinklered"],
+          "source_sentence": "9.9.8.2.(1)(b)"
+        },
+        {
+          "id": "9.9.8.2-1c",
+          "element": "travel_distance_to_exit",
+          "requirement_type": "dimensional",
+          "description": "Maximum travel distance - all other occupancies",
+          "max_value": 30,
+          "unit": "m",
+          "exact_quote": "30 m for all other occupancies",
+          "applies_to": ["other_occupancies"],
+          "source_sentence": "9.9.8.2.(1)(c)"
+        },
+        {
+          "id": "9.9.8.2-2",
+          "element": "single_exit_occupant_limit",
+          "requirement_type": "dimensional",
+          "description": "Maximum occupant load for single exit",
+          "max_value": 60,
+          "unit": "persons",
+          "condition": "1-2 storey building height",
+          "exact_quote": "a single exit is permitted from each storey in buildings of 1 and 2 storeys in building height provided the floor area and travel distance requirements conform... and the total occupant load served by an exit facility does not exceed 60 persons",
+          "applies_to": ["1_2_storey_buildings"],
+          "source_sentence": "9.9.8.2.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.8.5",
+      "title": "Exiting through a Lobby",
+      "subsection": "9.9.8 Exits from Floor Areas",
+      "requirements": [
+        {
+          "id": "9.9.8.5-2",
+          "element": "lobby_height_above_grade",
+          "requirement_type": "dimensional",
+          "description": "Maximum lobby height above grade",
+          "max_value": 4.5,
+          "unit": "m",
+          "exact_quote": "The lobby referred to in Sentence (1) shall be not more than 4.5 m above grade",
+          "applies_to": ["exit_lobbies"],
+          "source_sentence": "9.9.8.5.(2)"
+        },
+        {
+          "id": "9.9.8.5-2b",
+          "element": "lobby_travel_distance",
+          "requirement_type": "dimensional",
+          "description": "Maximum travel distance through lobby",
+          "max_value": 15,
+          "unit": "m",
+          "exact_quote": "the path of travel through the lobby to the outdoors shall not exceed 15 m",
+          "applies_to": ["exit_lobbies"],
+          "source_sentence": "9.9.8.5.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.9.1",
+      "title": "Travel Limit to Exits or Egress Doors",
+      "subsection": "9.9.9 Egress from Dwelling Units",
+      "requirements": [
+        {
+          "id": "9.9.9.1-1b",
+          "element": "exit_door_height_above_grade",
+          "requirement_type": "dimensional",
+          "description": "Maximum height of exit doorway above ground",
+          "max_value": 1.5,
+          "unit": "m",
+          "exact_quote": "an exit doorway not more than 1.5 m above adjacent ground level",
+          "applies_to": ["dwelling_unit_exits"],
+          "source_sentence": "9.9.9.1.(1)(b)"
+        },
+        {
+          "id": "9.9.9.1-2a",
+          "element": "egress_window_size",
+          "requirement_type": "dimensional",
+          "description": "Minimum egress window dimensions",
+          "min_height": 1,
+          "min_width": 0.55,
+          "unit": "m",
+          "exact_quote": "an openable window providing an unobstructed opening of not less than 1 m in height and 0.55 m in width",
+          "applies_to": ["dwelling_units_not_above_other_suite"],
+          "source_sentence": "9.9.9.1.(2)(a)"
+        },
+        {
+          "id": "9.9.9.1-2b-i",
+          "element": "egress_window_sill_height",
+          "requirement_type": "dimensional",
+          "description": "Maximum egress window sill height above floor",
+          "max_value": 1,
+          "unit": "m",
+          "exact_quote": "located so that the sill is not more than 1 m above the floor",
+          "applies_to": ["dwelling_units_not_above_other_suite"],
+          "source_sentence": "9.9.9.1.(2)(b)(i)"
+        },
+        {
+          "id": "9.9.9.1-2b-ii",
+          "element": "egress_window_height_above_ground",
+          "requirement_type": "dimensional",
+          "description": "Maximum egress window sill height above ground",
+          "max_value": 7,
+          "unit": "m",
+          "exact_quote": "located so that the sill is not more than 7 m above adjacent ground level",
+          "applies_to": ["dwelling_units_not_above_other_suite"],
+          "source_sentence": "9.9.9.1.(2)(b)(ii)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.10.1",
+      "title": "Egress Windows or Doors for Bedrooms",
+      "subsection": "9.9.10 Egress from Bedrooms",
+      "requirements": [
+        {
+          "id": "9.9.10.1-2a",
+          "element": "bedroom_egress_window_area",
+          "requirement_type": "dimensional",
+          "description": "Minimum bedroom egress window area",
+          "min_value": 0.35,
+          "unit": "m2",
+          "min_dimension": 380,
+          "min_dimension_unit": "mm",
+          "exact_quote": "The window referred to in Sentence (1) shall provide an unobstructed opening of not less than 0.35 m2 in area with no dimension less than 380 mm",
+          "applies_to": ["bedrooms"],
+          "exceptions": ["sprinklered suites"],
+          "source_sentence": "9.9.10.1.(2)(a)"
+        },
+        {
+          "id": "9.9.10.1-3",
+          "element": "window_well_clearance",
+          "requirement_type": "dimensional",
+          "description": "Minimum clearance in front of window in window well",
+          "min_value": 760,
+          "unit": "mm",
+          "exact_quote": "Where a window required in Sentence (1) opens into a window well, a clearance of not less than 760 mm shall be provided in front of the window",
+          "applies_to": ["bedroom_windows_in_wells"],
+          "source_sentence": "9.9.10.1.(3)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.11.5",
+      "title": "Floor Numbering",
+      "subsection": "9.9.11 Signs",
+      "requirements": [
+        {
+          "id": "9.9.11.5-1b",
+          "element": "floor_number_height",
+          "requirement_type": "dimensional",
+          "description": "Minimum height of floor number numerals",
+          "min_value": 60,
+          "unit": "mm",
+          "exact_quote": "not less than 60 mm high, raised approximately 0.8 mm above the surface",
+          "applies_to": ["exit_stairshafts"],
+          "source_sentence": "9.9.11.5.(1)(b)"
+        },
+        {
+          "id": "9.9.11.5-1c",
+          "element": "floor_number_location",
+          "requirement_type": "dimensional",
+          "description": "Location of floor number",
+          "height": 1500,
+          "max_distance_from_door": 300,
+          "unit": "mm",
+          "exact_quote": "located 1500 mm from the finished floor and not more than 300 mm from the door",
+          "applies_to": ["exit_stairshafts"],
+          "source_sentence": "9.9.11.5.(1)(c)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.12.2",
+      "title": "Required Lighting in Egress Facilities",
+      "subsection": "9.9.12 Lighting",
+      "requirements": [
+        {
+          "id": "9.9.12.2-1",
+          "element": "egress_lighting_average",
+          "requirement_type": "performance",
+          "description": "Average illumination level in egress",
+          "min_value": 50,
+          "unit": "lx",
+          "exact_quote": "Every exit, public corridor or corridor providing access to exit for the public shall be equipped to provide illumination to an average level of not less than 50 lx at floor or tread level",
+          "applies_to": ["exits", "public_corridors"],
+          "source_sentence": "9.9.12.2.(1)"
+        },
+        {
+          "id": "9.9.12.2-2",
+          "element": "egress_lighting_minimum",
+          "requirement_type": "performance",
+          "description": "Minimum illumination level in egress",
+          "min_value": 10,
+          "unit": "lx",
+          "exact_quote": "The minimum value of the illumination required by Sentence (1) shall be not less than 10 lx",
+          "applies_to": ["exits", "public_corridors"],
+          "source_sentence": "9.9.12.2.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.9.12.3",
+      "title": "Emergency Lighting",
+      "subsection": "9.9.12 Lighting",
+      "requirements": [
+        {
+          "id": "9.9.12.3-3",
+          "element": "emergency_lighting_duration",
+          "requirement_type": "performance",
+          "description": "Minimum duration of emergency lighting",
+          "min_value": 30,
+          "unit": "min",
+          "exact_quote": "Lighting required in Sentence (1) shall be designed to be automatically actuated for a period of at least 30 min when the electric lighting in the affected area is interrupted",
+          "applies_to": ["emergency_lighting"],
+          "source_sentence": "9.9.12.3.(3)"
+        },
+        {
+          "id": "9.9.12.3-4",
+          "element": "emergency_lighting_average",
+          "requirement_type": "performance",
+          "description": "Average illumination from emergency lighting",
+          "min_value": 10,
+          "unit": "lx",
+          "exact_quote": "Illumination from lighting required in Sentence (1) shall be provided to average levels of not less than 10 lx at floor or tread level",
+          "applies_to": ["emergency_lighting"],
+          "source_sentence": "9.9.12.3.(4)"
+        },
+        {
+          "id": "9.9.12.3-5",
+          "element": "emergency_lighting_minimum",
+          "requirement_type": "performance",
+          "description": "Minimum illumination from emergency lighting",
+          "min_value": 1,
+          "unit": "lx",
+          "exact_quote": "The minimum value of the illumination required by Sentence (4) shall be not less than 1 lx",
+          "applies_to": ["emergency_lighting"],
+          "source_sentence": "9.9.12.3.(5)"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_articles_extracted": 21,
+    "total_requirements": 45,
+    "key_dimensions": {
+      "exit_width": "900 mm min",
+      "corridor_width": "1100 mm min",
+      "exit_headroom": "2.1 m min",
+      "door_height": "2030 mm min (1980 mm under closer)",
+      "door_width_single": "800 mm min",
+      "door_hardware_height": "900-1100 mm",
+      "door_opening_force": "90 N max",
+      "dead_end_corridor": "6 m max",
+      "travel_distance_general": "30 m max",
+      "travel_distance_sprinklered": "45 m max",
+      "travel_distance_group_d": "40 m max",
+      "single_exit_occupant_limit": "60 persons max",
+      "bedroom_egress_window": "0.35 m2 min, 380mm min dimension",
+      "egress_lighting": "50 lx average, 10 lx min",
+      "emergency_lighting": "30 min duration, 10 lx average, 1 lx min"
+    }
+  }
+}

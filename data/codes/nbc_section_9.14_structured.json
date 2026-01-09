@@ -1,0 +1,437 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.14",
+    "section_title": "Drainage",
+    "pages": "913-916",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 18,
+    "subsections": [
+      "9.14.1 - Scope",
+      "9.14.2 - Foundation Drainage",
+      "9.14.3 - Drainage Tile and Pipe",
+      "9.14.4 - Granular Drainage Layer",
+      "9.14.5 - Drainage Disposal",
+      "9.14.6 - Surface Drainage"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.14.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.14.1.1-1",
+          "element": "scope",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to subsurface drainage and to surface drainage",
+          "exact_quote": "This Section applies to subsurface drainage and to surface drainage"
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.1.2",
+      "title": "Crawl Spaces",
+      "requirements": [
+        {
+          "id": "9.14.1.2-1",
+          "element": "crawl_space_drainage",
+          "requirement_type": "reference",
+          "description": "Drainage for crawl spaces shall conform to Section 9.18",
+          "exact_quote": "Drainage for crawl spaces shall conform to Section 9.18",
+          "references": ["Section 9.18"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.1.3",
+      "title": "Floors-on-Ground",
+      "requirements": [
+        {
+          "id": "9.14.1.3-1",
+          "element": "floor_on_ground_drainage",
+          "requirement_type": "reference",
+          "description": "Drainage requirements beneath floors-on-ground shall conform to Section 9.16",
+          "exact_quote": "Drainage requirements beneath floors-on-ground shall conform to Section 9.16",
+          "references": ["Section 9.16"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.2.1",
+      "title": "Foundation Wall Drainage",
+      "requirements": [
+        {
+          "id": "9.14.2.1-1",
+          "element": "foundation_wall_drainage",
+          "requirement_type": "prescriptive",
+          "description": "Unless it can be shown to be unnecessary, the bottom of every exterior foundation wall shall be drained by drainage tile or pipe laid around the exterior of the foundation in conformance with Subsection 9.14.3 or by a layer of gravel or crushed rock in conformance with Subsection 9.14.4",
+          "exact_quote": "Unless it can be shown to be unnecessary, the bottom of every exterior foundation wall shall be drained by drainage tile or pipe laid around the exterior of the foundation in conformance with Subsection 9.14.3 or by a layer of gravel or crushed rock in conformance with Subsection 9.14.4",
+          "references": ["Subsection 9.14.3", "Subsection 9.14.4"],
+          "conditions": ["unless shown to be unnecessary"]
+        },
+        {
+          "id": "9.14.2.1-2",
+          "element": "mineral_fibre_insulation_or_crushed_rock_backfill",
+          "requirement_type": "prescriptive",
+          "description": "Where mineral fibre insulation or crushed rock backfill is provided adjacent to the exterior surface of a foundation wall, the insulation or backfill shall extend to the footing level to facilitate the drainage of groundwater to the foundation's drainage system",
+          "exact_quote": "the insulation or backfill shall extend to the footing level to facilitate the drainage of groundwater to the foundation's drainage system",
+          "conditions": ["mineral fibre insulation or crushed rock backfill adjacent to foundation wall"]
+        },
+        {
+          "id": "9.14.2.1-3",
+          "element": "pyritic_material_in_crushed_rock",
+          "requirement_type": "performance",
+          "description": "Any pyritic material in the crushed rock shall be limited to a concentration that will not damage the building to a degree that would adversely affect its stability or the performance of assemblies",
+          "exact_quote": "any pyritic material in the crushed rock shall be limited to a concentration that will not damage the building to a degree that would adversely affect its stability or the performance of assemblies",
+          "references": ["Sentence 9.12.3.3.(2)", "Note A-9.4.4.4.(1)"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.3.1",
+      "title": "Material Standards",
+      "requirements": [
+        {
+          "id": "9.14.3.1-1",
+          "element": "drain_tile_and_pipe_standards",
+          "requirement_type": "prescriptive",
+          "description": "Drain tile and drain pipe for foundation drainage shall conform to applicable standards",
+          "exact_quote": "Drain tile and drain pipe for foundation drainage shall conform to",
+          "applicable_standards": [
+            {
+              "standard": "ASTM C4",
+              "title": "Standard Specification for Clay Drain Tile and Perforated Clay Drain Tile"
+            },
+            {
+              "standard": "ASTM C412M",
+              "title": "Standard Specification for Concrete Drain Tile"
+            },
+            {
+              "standard": "ASTM C444M",
+              "title": "Standard Specification for Perforated Concrete Pipe"
+            },
+            {
+              "standard": "ASTM C700",
+              "title": "Standard Specification for Vitrified Clay Pipe, Extra Strength, Standard Strength, and Perforated"
+            },
+            {
+              "standard": "BNQ 3624-115",
+              "title": "Polyethylene (PE) Pipe and Fittings for Soil and Foundation Drainage"
+            },
+            {
+              "standard": "CSA B182.1",
+              "title": "Plastic drain and sewer pipe and pipe fittings"
+            },
+            {
+              "standard": "CAN/CSA-G401",
+              "title": "Corrugated steel pipe products"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.3.2",
+      "title": "Minimum Size",
+      "requirements": [
+        {
+          "id": "9.14.3.2-1",
+          "element": "drain_tile_pipe_minimum_diameter",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Drain tile or pipe used for foundation drainage shall be not less than 100 mm in diameter",
+          "exact_quote": "Drain tile or pipe used for foundation drainage shall be not less than 100 mm in diam."
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.3.3",
+      "title": "Installation",
+      "requirements": [
+        {
+          "id": "9.14.3.3-1",
+          "element": "drain_tile_placement",
+          "requirement_type": "prescriptive",
+          "description": "Drain tile or pipe shall be laid on undisturbed or well-compacted soil so that the top of the tile or pipe is below the bottom of the floor slab or the ground cover of the crawl space",
+          "exact_quote": "Drain tile or pipe shall be laid on undisturbed or well-compacted soil so that the top of the tile or pipe is below the bottom of the floor slab or the ground cover of the crawl space"
+        },
+        {
+          "id": "9.14.3.3-2",
+          "element": "butt_joint_spacing",
+          "requirement_type": "dimensional",
+          "min_value": 6,
+          "max_value": 10,
+          "unit": "mm",
+          "description": "Drain tile or pipe with butt joints shall be laid with 6 mm to 10 mm open joints",
+          "exact_quote": "Drain tile or pipe with butt joints shall be laid with 6 mm to 10 mm open joints"
+        },
+        {
+          "id": "9.14.3.3-3",
+          "element": "joint_covering",
+          "requirement_type": "prescriptive",
+          "description": "The top half of joints shall be covered with sheathing paper, 0.10 mm polyethylene or No. 15 asphalt or tar-saturated felt",
+          "exact_quote": "The top half of joints referred to in Sentence (2) shall be covered with sheathing paper, 0.10 mm polyethylene or No. 15 asphalt or tar-saturated felt",
+          "acceptable_materials": [
+            "sheathing paper",
+            "0.10 mm polyethylene",
+            "No. 15 asphalt or tar-saturated felt"
+          ]
+        },
+        {
+          "id": "9.14.3.3-4",
+          "element": "drain_pipe_gravel_cover",
+          "requirement_type": "dimensional",
+          "min_value": 150,
+          "unit": "mm",
+          "description": "The top and sides of drain pipe or tile shall be covered with not less than 150 mm of crushed stone or other coarse clean granular material containing not more than 10% of material that will pass a 4 mm sieve",
+          "exact_quote": "The top and sides of drain pipe or tile shall be covered with not less than 150 mm of crushed stone or other coarse clean granular material containing not more than 10% of material that will pass a 4 mm sieve",
+          "material_specifications": {
+            "type": "crushed stone or coarse clean granular material",
+            "max_fines_content": "10%",
+            "fines_sieve_size": "4 mm"
+          }
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.4.1",
+      "title": "Type of Granular Material",
+      "requirements": [
+        {
+          "id": "9.14.4.1-1",
+          "element": "granular_drainage_material",
+          "requirement_type": "prescriptive",
+          "description": "Granular material used to drain the bottom of a foundation shall consist of a continuous layer of crushed stone or other coarse clean granular material containing not more than 10% of material that will pass a 4 mm sieve, and no pyritic material in a concentration that will damage the building",
+          "exact_quote": "Granular material used to drain the bottom of a foundation shall consist of a continuous layer of crushed stone or other coarse clean granular material containing a) not more than 10% of material that will pass a 4 mm sieve, and b) no pyritic material in a concentration that will damage the building to a degree that would adversely affect its stability or the performance of assemblies",
+          "material_specifications": {
+            "type": "crushed stone or coarse clean granular material",
+            "max_fines_content": "10%",
+            "fines_sieve_size": "4 mm",
+            "pyritic_material": "not permitted in damaging concentrations"
+          }
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.4.2",
+      "title": "Installation",
+      "requirements": [
+        {
+          "id": "9.14.4.2-1",
+          "element": "granular_layer_depth",
+          "requirement_type": "dimensional",
+          "min_value": 125,
+          "unit": "mm",
+          "description": "Granular material shall be laid on undisturbed or compacted soil to a minimum depth of not less than 125 mm beneath the footing of the building",
+          "exact_quote": "Granular material described in Article 9.14.4.1. shall be laid on undisturbed or compacted soil to a minimum depth of not less than 125 mm beneath the footing of the building"
+        },
+        {
+          "id": "9.14.4.2-2",
+          "element": "granular_layer_extension",
+          "requirement_type": "dimensional",
+          "min_value": 300,
+          "unit": "mm",
+          "description": "Granular layer shall extend not less than 300 mm beyond the outside edge of the footings",
+          "exact_quote": "and extend not less than 300 mm beyond the outside edge of the footings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.4.3",
+      "title": "Grading",
+      "requirements": [
+        {
+          "id": "9.14.4.3-1",
+          "element": "excavation_grading_for_drainage",
+          "requirement_type": "prescriptive",
+          "description": "The bottom of an excavation drained by a granular layer shall be graded so that the entire area described in Article 9.14.4.2 is drained to a sump conforming to Article 9.14.5.2",
+          "exact_quote": "The bottom of an excavation drained by a granular layer shall be graded so that the entire area described in Article 9.14.4.2. is drained to a sump conforming to Article 9.14.5.2",
+          "references": ["Article 9.14.4.2", "Article 9.14.5.2"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.4.4",
+      "title": "Wet Site Conditions",
+      "requirements": [
+        {
+          "id": "9.14.4.4-1",
+          "element": "wet_site_granular_material",
+          "requirement_type": "dimensional",
+          "min_value": 125,
+          "unit": "mm",
+          "description": "Where because of wet site conditions soil becomes mixed with the granular drainage material, sufficient additional granular material shall be provided so that the top 125 mm are kept free of soil",
+          "exact_quote": "Where because of wet site conditions soil becomes mixed with the granular drainage material, sufficient additional granular material shall be provided so that the top 125 mm are kept free of soil",
+          "conditions": ["wet site conditions"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.5.1",
+      "title": "Drainage Disposal",
+      "requirements": [
+        {
+          "id": "9.14.5.1-1",
+          "element": "foundation_drain_disposal",
+          "requirement_type": "prescriptive",
+          "description": "Foundation drains shall drain to a sewer, drainage ditch or dry well",
+          "exact_quote": "Foundation drains shall drain to a sewer, drainage ditch or dry well",
+          "acceptable_disposal_methods": [
+            "sewer",
+            "drainage ditch",
+            "dry well"
+          ]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.5.2",
+      "title": "Sump Pits",
+      "requirements": [
+        {
+          "id": "9.14.5.2-1",
+          "element": "sump_pit_depth",
+          "requirement_type": "dimensional",
+          "min_value": 750,
+          "unit": "mm",
+          "description": "Where a sump pit is provided it shall be not less than 750 mm deep",
+          "exact_quote": "Where a sump pit is provided it shall be a) not less than 750 mm deep"
+        },
+        {
+          "id": "9.14.5.2-2",
+          "element": "sump_pit_area",
+          "requirement_type": "dimensional",
+          "min_value": 0.25,
+          "unit": "m2",
+          "description": "Sump pit shall be not less than 0.25 m2 in area",
+          "exact_quote": "b) not less than 0.25 m2 in area"
+        },
+        {
+          "id": "9.14.5.2-3",
+          "element": "sump_pit_cover",
+          "requirement_type": "prescriptive",
+          "description": "Sump pit shall be provided with a cover",
+          "exact_quote": "c) provided with a cover"
+        },
+        {
+          "id": "9.14.5.2-4",
+          "element": "sump_pit_cover_child_resistant",
+          "requirement_type": "prescriptive",
+          "description": "Covers for sump pits shall be designed to resist removal by children",
+          "exact_quote": "Covers for sump pits shall be designed a) to resist removal by children"
+        },
+        {
+          "id": "9.14.5.2-5",
+          "element": "sump_pit_cover_airtight",
+          "requirement_type": "prescriptive",
+          "description": "Covers for sump pits shall be designed to be airtight in accordance with Sentence 9.25.3.3.(7)",
+          "exact_quote": "b) to be airtight in accordance with Sentence 9.25.3.3.(7)",
+          "references": ["Sentence 9.25.3.3.(7)"]
+        },
+        {
+          "id": "9.14.5.2-6",
+          "element": "automatic_sump_pump",
+          "requirement_type": "prescriptive",
+          "description": "Where gravity drainage is not practical, an automatic sump pump shall be provided to discharge the water from the sump pit into a sewer, drainage ditch or dry well",
+          "exact_quote": "Where gravity drainage is not practical, an automatic sump pump shall be provided to discharge the water from the sump pit described in Sentence (1) into a sewer, drainage ditch or dry well",
+          "conditions": ["gravity drainage not practical"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.5.3",
+      "title": "Dry Wells",
+      "requirements": [
+        {
+          "id": "9.14.5.3-1",
+          "element": "dry_well_groundwater_condition",
+          "requirement_type": "prescriptive",
+          "description": "Dry wells may be used only when located in areas where the natural groundwater level is below the bottom of the dry well",
+          "exact_quote": "Dry wells may be used only when located in areas where the natural groundwater level is below the bottom of the dry well"
+        },
+        {
+          "id": "9.14.5.3-2",
+          "element": "dry_well_distance_from_foundation",
+          "requirement_type": "dimensional",
+          "min_value": 5,
+          "unit": "m",
+          "description": "Dry wells shall be not less than 5 m from the building foundation and located so that drainage is away from the building",
+          "exact_quote": "Dry wells shall be not less than 5 m from the building foundation and located so that drainage is away from the building"
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.6.1",
+      "title": "Surface Drainage",
+      "requirements": [
+        {
+          "id": "9.14.6.1-1",
+          "element": "building_site_drainage",
+          "requirement_type": "prescriptive",
+          "description": "The building shall be located or the building site graded so that water will not accumulate at or near the building",
+          "exact_quote": "The building shall be located or the building site graded so that water will not accumulate at or near the building"
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.6.2",
+      "title": "Drainage away from Wells or Septic Disposal Beds",
+      "requirements": [
+        {
+          "id": "9.14.6.2-1",
+          "element": "drainage_away_from_water_supply",
+          "requirement_type": "prescriptive",
+          "description": "Surface drainage shall be directed away from the location of a water supply well or septic tank disposal bed",
+          "exact_quote": "Surface drainage shall be directed away from the location of a water supply well or septic tank disposal bed"
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.6.3",
+      "title": "Window Wells",
+      "requirements": [
+        {
+          "id": "9.14.6.3-1",
+          "element": "window_well_drainage",
+          "requirement_type": "prescriptive",
+          "description": "Every window well shall be drained to the footing level or other suitable location",
+          "exact_quote": "Every window well shall be drained to the footing level or other suitable location"
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.6.4",
+      "title": "Catch Basin",
+      "requirements": [
+        {
+          "id": "9.14.6.4-1",
+          "element": "driveway_catch_basin",
+          "requirement_type": "prescriptive",
+          "description": "Where runoff water from a driveway is likely to accumulate or enter a garage, a catch basin shall be installed to provide adequate drainage",
+          "exact_quote": "Where runoff water from a driveway is likely to accumulate or enter a garage, a catch basin shall be installed to provide adequate drainage",
+          "conditions": ["runoff water from driveway likely to accumulate or enter garage"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.14.6.5",
+      "title": "Downspouts",
+      "requirements": [
+        {
+          "id": "9.14.6.5-1",
+          "element": "downspout_requirements",
+          "requirement_type": "reference",
+          "description": "Downspouts shall conform to Article 9.26.18.2",
+          "exact_quote": "Downspouts shall conform to Article 9.26.18.2",
+          "references": ["Article 9.26.18.2"]
+        }
+      ]
+    }
+  ]
+}

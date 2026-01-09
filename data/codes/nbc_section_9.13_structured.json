@@ -1,0 +1,563 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.13",
+    "section_title": "Dampproofing, Waterproofing and Soil Gas Control",
+    "pages": "908-913",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 13,
+    "subsections": [
+      "9.13.1 - General",
+      "9.13.2 - Dampproofing",
+      "9.13.3 - Waterproofing",
+      "9.13.4 - Soil Gas Control"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.13.1.1",
+      "title": "Scope and Application",
+      "requirements": [
+        {
+          "id": "9.13.1.1-1",
+          "element": "section_scope",
+          "requirement_type": "prescriptive",
+          "description": "This Section presents measures to control the ingress of water, moisture and soil gases into buildings",
+          "exact_quote": "This Section presents measures to control the ingress of water, moisture and soil gases into buildings"
+        },
+        {
+          "id": "9.13.1.1-2",
+          "element": "dampproofing_scope",
+          "requirement_type": "prescriptive",
+          "description": "Subsection 9.13.2 applies to below-ground walls, floors-on-ground and roofs of underground structures that are not subject to hydrostatic pressure",
+          "exact_quote": "Subsection 9.13.2. applies to below-ground walls, floors-on-ground and roofs of underground structures that are not subject to hydrostatic pressure"
+        },
+        {
+          "id": "9.13.1.1-3",
+          "element": "waterproofing_scope",
+          "requirement_type": "prescriptive",
+          "description": "Subsection 9.13.3 applies to below-ground walls, floors-on-ground and roofs of underground structures that are subject to hydrostatic pressure",
+          "exact_quote": "Subsection 9.13.3. applies to below-ground walls, floors-on-ground and roofs of underground structures that are subject to hydrostatic pressure"
+        },
+        {
+          "id": "9.13.1.1-4",
+          "element": "soil_gas_control_scope",
+          "requirement_type": "prescriptive",
+          "description": "Subsection 9.13.4 applies to walls, roofs and floors that are in contact with the ground",
+          "exact_quote": "Subsection 9.13.4. applies to walls, roofs and floors that are in contact with the ground"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.2.1",
+      "title": "Required Dampproofing",
+      "requirements": [
+        {
+          "id": "9.13.2.1-1",
+          "element": "foundation_wall_dampproofing",
+          "requirement_type": "prescriptive",
+          "description": "Where exterior finished ground level is higher than interior ground level, exterior surfaces of foundation walls below ground level shall be dampproofed",
+          "exact_quote": "where the exterior finished ground level is at a higher elevation than the ground level inside the foundation walls, exterior surfaces of foundation walls below ground level shall be dampproofed",
+          "conditions": ["exterior ground higher than interior ground level"],
+          "exceptions": ["Article 9.13.3.1"]
+        },
+        {
+          "id": "9.13.2.1-2",
+          "element": "floor_on_ground_dampproofing",
+          "requirement_type": "prescriptive",
+          "description": "Floors-on-ground shall be dampproofed",
+          "exact_quote": "floors-on-ground shall be dampproofed",
+          "exceptions": ["Sentence (3)", "Article 9.13.3.1"]
+        },
+        {
+          "id": "9.13.2.1-3",
+          "element": "floor_dampproofing_exemption_garage",
+          "requirement_type": "exception",
+          "description": "Dampproofing not required for floors in garages",
+          "exact_quote": "floors in garages"
+        },
+        {
+          "id": "9.13.2.1-4",
+          "element": "floor_dampproofing_exemption_unenclosed",
+          "requirement_type": "exception",
+          "description": "Dampproofing not required for floors in unenclosed portions of buildings",
+          "exact_quote": "floors in unenclosed portions of buildings"
+        },
+        {
+          "id": "9.13.2.1-5",
+          "element": "floor_dampproofing_exemption_granular",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Dampproofing not required for floors installed over not less than 100mm of coarse clean granular material containing not more than 10% of material that will pass a 4mm sieve",
+          "exact_quote": "floors installed over not less than 100mm of coarse clean granular material containing not more than 10% of material that will pass a 4mm sieve"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.2.2",
+      "title": "Dampproofing Materials",
+      "requirements": [
+        {
+          "id": "9.13.2.2-1",
+          "element": "dampproofing_material_performance",
+          "requirement_type": "performance",
+          "description": "Materials installed to provide required dampproofing shall be capable of protecting assemblies against moisture transfer from the ground, compatible with adjoining materials, and resistant to mechanisms of deterioration",
+          "exact_quote": "Materials installed to provide required dampproofing shall be capable of protecting assemblies against moisture transfer from the ground, compatible with adjoining materials, and resistant to mechanisms of deterioration that may reasonably be expected"
+        },
+        {
+          "id": "9.13.2.2-2",
+          "element": "dampproofing_standard_astm_d1227",
+          "requirement_type": "prescriptive",
+          "description": "Exterior dampproofing materials shall conform to ASTM D1227/D1227M, Type III, Class I",
+          "exact_quote": "ASTM D1227/D1227M, Standard Specification for Emulsified Asphalt Used as a Protective Coating for Roofing, Type III, Class I",
+          "reference_standard": "ASTM D1227/D1227M"
+        },
+        {
+          "id": "9.13.2.2-3",
+          "element": "dampproofing_standard_astm_d4479",
+          "requirement_type": "prescriptive",
+          "description": "Exterior dampproofing materials shall conform to ASTM D4479/D4479M, Type III",
+          "exact_quote": "ASTM D4479/D4479M, Standard Specification for Asphalt Roof Coatings – Asbestos-Free, Type III",
+          "reference_standard": "ASTM D4479/D4479M"
+        },
+        {
+          "id": "9.13.2.2-4",
+          "element": "dampproofing_standard_cgsb_51_34",
+          "requirement_type": "prescriptive",
+          "description": "Exterior dampproofing materials shall conform to CAN/CGSB-51.34-M, Vapour Barrier, Polyethylene Sheet for Use in Building Construction",
+          "exact_quote": "CAN/CGSB-51.34-M, Vapour Barrier, Polyethylene Sheet for Use in Building Construction",
+          "reference_standard": "CAN/CGSB-51.34-M"
+        },
+        {
+          "id": "9.13.2.2-5",
+          "element": "dampproofing_standard_csa_a123_4",
+          "requirement_type": "prescriptive",
+          "description": "Exterior dampproofing materials shall conform to CAN/CSA-A123.4, Asphalt for Constructing Built-Up Roof Coverings and Waterproofing Systems",
+          "exact_quote": "CAN/CSA-A123.4, Asphalt for Constructing Built-Up Roof Coverings and Waterproofing Systems",
+          "reference_standard": "CAN/CSA-A123.4"
+        },
+        {
+          "id": "9.13.2.2-6",
+          "element": "dampproofing_permeance_requirement",
+          "requirement_type": "dimensional",
+          "max_value": 43,
+          "unit": "ng/(Pa×s×m2)",
+          "description": "Alternative dampproofing materials shall have a water vapour permeance of not more than 43 ng/(Pa×s×m²) when tested in accordance with Procedure A (wet cup) of ASTM E96/E96M",
+          "exact_quote": "have a water vapour permeance of not more than 43 ng/(Pa×s×m²) when tested in accordance with Procedure A (wet cup) of ASTM E96/E96M",
+          "reference_standard": "ASTM E96/E96M"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.2.3",
+      "title": "Preparation of Surface",
+      "requirements": [
+        {
+          "id": "9.13.2.3-1",
+          "element": "masonry_parge_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 6,
+          "unit": "mm",
+          "description": "Unit masonry walls to be dampproofed shall be parged on the exterior face below ground level with not less than 6mm of mortar conforming to Section 9.20, coved over the footing",
+          "exact_quote": "Unit masonry walls to be dampproofed shall be parged on the exterior face below ground level with not less than 6mm of mortar conforming to Section 9.20. coved over the footing"
+        },
+        {
+          "id": "9.13.2.3-2",
+          "element": "concrete_wall_preparation",
+          "requirement_type": "prescriptive",
+          "description": "Concrete walls to be dampproofed shall have holes and recesses sealed with cement mortar or a mastic or sealant that is suitable for vertical applications and compatible with the dampproofing material",
+          "exact_quote": "Concrete walls to be dampproofed shall have holes and recesses sealed with cement mortar or a mastic or sealant that is suitable for vertical applications and compatible with the dampproofing material"
+        },
+        {
+          "id": "9.13.2.3-3",
+          "element": "surface_preparation_cleanliness",
+          "requirement_type": "prescriptive",
+          "description": "The surface required to be dampproofed shall be clean and dry and free of ice, snow, frost, dust, dirt, oil, grease, cracks, projections and depressions, loose particles and debris",
+          "exact_quote": "The surface required to be dampproofed shall be clean and dry and free of ice, snow, frost, dust, dirt, oil, grease, cracks, projections and depressions, loose particles and debris that could be detrimental to the performance of the material to be applied"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.2.4",
+      "title": "Application of Dampproofing Material",
+      "requirements": [
+        {
+          "id": "9.13.2.4-1",
+          "element": "dampproofing_coverage_extent",
+          "requirement_type": "prescriptive",
+          "description": "Exterior dampproofing shall be applied from finished ground level to the top of the exterior of the footing",
+          "exact_quote": "Exterior dampproofing shall be applied from finished ground level to the top of the exterior of the footing"
+        },
+        {
+          "id": "9.13.2.4-2",
+          "element": "dampproofing_manufacturer_instructions",
+          "requirement_type": "prescriptive",
+          "description": "Dampproofing shall be installed in accordance with the manufacturer's instructions with regard to surface priming, conditions during application, application quantity and rate, and curing times",
+          "exact_quote": "dampproofing shall be installed in accordance with the manufacturer's instructions with regard to surface priming, conditions during application, application quantity and rate, and curing times"
+        },
+        {
+          "id": "9.13.2.4-3",
+          "element": "dampproofing_joint_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Joints, cracks and penetrations shall be sealed to maintain the continuity of the dampproofing, where the dampproofing material is not capable of bridging such discontinuities",
+          "exact_quote": "Joints, cracks and penetrations shall be sealed to maintain the continuity of the dampproofing, where the dampproofing material is not capable of bridging such discontinuities"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.2.5",
+      "title": "Moisture Protection for Interior Finishes",
+      "requirements": [
+        {
+          "id": "9.13.2.5-1",
+          "element": "interior_moisture_protection_required",
+          "requirement_type": "prescriptive",
+          "description": "The interior surface of foundation walls below ground level shall be protected by means that minimize the ingress of moisture from the foundation wall into interior spaces, where a separate interior finish is applied or wood members are placed in contact with such walls",
+          "exact_quote": "The interior surface of foundation walls below ground level shall be protected by means that minimize the ingress of moisture from the foundation wall into interior spaces"
+        },
+        {
+          "id": "9.13.2.5-2",
+          "element": "interior_membrane_extent",
+          "requirement_type": "prescriptive",
+          "description": "Where the protection consists of membranes or coatings, the membrane or coating shall extend from the basement floor surface up to the highest extent of the interior insulation or finish, but not higher than the exterior finished ground level",
+          "exact_quote": "the membrane or coating shall extend from the basement floor surface up to the highest extent of the interior insulation or finish, but not higher than the exterior finished ground level"
+        },
+        {
+          "id": "9.13.2.5-3",
+          "element": "interior_membrane_permeance_limit",
+          "requirement_type": "dimensional",
+          "min_value": 170,
+          "unit": "ng/(Pa×s×m2)",
+          "description": "No membrane or coating with a permeance less than 170 ng/(Pa×s×m²) shall be applied to the interior surface of the foundation wall above ground level between the insulation and the foundation wall",
+          "exact_quote": "no membrane or coating with a permeance less than 170 ng/(Pa×s×m²) shall be applied to the interior surface of the foundation wall above ground level between the insulation and the foundation wall"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.2.6",
+      "title": "Floor Dampproofing System",
+      "requirements": [
+        {
+          "id": "9.13.2.6-1",
+          "element": "floor_dampproofing_polystyrene",
+          "requirement_type": "prescriptive",
+          "description": "Where dampproofing is installed between a floor-on-ground and a finished floor, it shall consist of rigid extruded/expanded polystyrene with sealed or ship-lapped joints that has sufficient compressive strength to support the floor assembly and complies with water vapour permeance requirements",
+          "exact_quote": "rigid extruded/expanded polystyrene with sealed or ship-lapped joints that has sufficient compressive strength to support the floor assembly, and a water vapour permeance complying with Clause 9.13.2.2.(2)(b)"
+        },
+        {
+          "id": "9.13.2.6-2",
+          "element": "floor_dampproofing_polyethylene_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 0.05,
+          "unit": "mm",
+          "description": "Polyethylene dampproofing for floors-on-ground shall be not less than 0.05mm thick",
+          "exact_quote": "polyethylene not less than 0.05mm thick"
+        },
+        {
+          "id": "9.13.2.6-3",
+          "element": "floor_dampproofing_polyethylene_lap",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Polyethylene dampproofing joints shall be lapped not less than 100mm",
+          "exact_quote": "with joints lapped not less than 100mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.3.1",
+      "title": "Required Waterproofing",
+      "requirements": [
+        {
+          "id": "9.13.3.1-1",
+          "element": "waterproofing_hydrostatic",
+          "requirement_type": "prescriptive",
+          "description": "Where hydrostatic pressure occurs, waterproofing is required for assemblies separating interior space from the ground to prevent the ingress of water into building assemblies and interior spaces",
+          "exact_quote": "Where hydrostatic pressure occurs, waterproofing is required for assemblies separating interior space from the ground to prevent the ingress of water into building assemblies and interior spaces",
+          "conditions": ["hydrostatic pressure present"]
+        },
+        {
+          "id": "9.13.3.1-2",
+          "element": "waterproofing_underground_roofs",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing is required for roofs of underground structures to prevent the ingress of water into building assemblies and interior spaces",
+          "exact_quote": "Waterproofing is required for roofs of underground structures to prevent the ingress of water into building assemblies and interior spaces"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.3.2",
+      "title": "Waterproofing Materials",
+      "requirements": [
+        {
+          "id": "9.13.3.2-1",
+          "element": "waterproofing_material_performance",
+          "requirement_type": "performance",
+          "description": "Materials installed to provide required waterproofing shall be compatible with adjoining materials and resistant to mechanisms of deterioration that may reasonably be expected",
+          "exact_quote": "Materials installed to provide required waterproofing shall be compatible with adjoining materials, and resistant to mechanisms of deterioration that may reasonably be expected"
+        },
+        {
+          "id": "9.13.3.2-2",
+          "element": "waterproofing_standard_astm_d1227",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing materials shall conform to ASTM D1227/D1227M",
+          "exact_quote": "ASTM D1227/D1227M, Standard Specification for Emulsified Asphalt Used as a Protective Coating for Roofing",
+          "reference_standard": "ASTM D1227/D1227M"
+        },
+        {
+          "id": "9.13.3.2-3",
+          "element": "waterproofing_standard_astm_d3019",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing materials shall conform to ASTM D3019/D3019M for lap cement with asphalt roll roofing, non-fibered and fibered (Types I and III)",
+          "exact_quote": "ASTM D3019/D3019M, Standard Specification for Lap Cement Used with Asphalt Roll Roofing, Non-Fibered, and Fibered",
+          "reference_standard": "ASTM D3019/D3019M"
+        },
+        {
+          "id": "9.13.3.2-4",
+          "element": "waterproofing_standard_astm_d4479",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing materials shall conform to ASTM D4479/D4479M with reinforcing material",
+          "exact_quote": "ASTM D4479/D4479M, Standard Specification for Asphalt Roof Coatings – Asbestos-Free, in which case, they shall be installed in accordance with Sentence 9.13.3.3.(3) and with reinforcing material",
+          "reference_standard": "ASTM D4479/D4479M"
+        },
+        {
+          "id": "9.13.3.2-5",
+          "element": "waterproofing_standard_astm_d4637",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing materials shall conform to ASTM D4637/D4637M for EPDM sheet",
+          "exact_quote": "ASTM D4637/D4637M, Standard Specification for EPDM Sheet Used In Single-Ply Roof Membrane",
+          "reference_standard": "ASTM D4637/D4637M"
+        },
+        {
+          "id": "9.13.3.2-6",
+          "element": "waterproofing_standard_astm_d4811",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing materials shall conform to ASTM D4811/D4811M for nonvulcanized rubber sheet",
+          "exact_quote": "ASTM D4811/D4811M, Standard Specification for Nonvulcanized (Uncured) Rubber Sheet Used as Roof Flashing",
+          "reference_standard": "ASTM D4811/D4811M"
+        },
+        {
+          "id": "9.13.3.2-7",
+          "element": "waterproofing_standard_astm_d6878",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing materials shall conform to ASTM D6878/D6878M for TPO sheet roofing",
+          "exact_quote": "ASTM D6878/D6878M, Standard Specification for Thermoplastic Polyolefin Based Sheet Roofing",
+          "reference_standard": "ASTM D6878/D6878M"
+        },
+        {
+          "id": "9.13.3.2-8",
+          "element": "waterproofing_standard_cgsb_37_gp_9ma",
+          "requirement_type": "prescriptive",
+          "description": "Where a primer is required, it shall conform to CGSB 37-GP-9Ma",
+          "exact_quote": "CGSB 37-GP-9Ma, Primer, Asphalt, Unfilled, for Asphalt Roofing, Dampproofing and Waterproofing, where a primer is required",
+          "reference_standard": "CGSB 37-GP-9Ma"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.3.3",
+      "title": "Preparation of Surface",
+      "requirements": [
+        {
+          "id": "9.13.3.3-1",
+          "element": "waterproofing_surface_manufacturer",
+          "requirement_type": "prescriptive",
+          "description": "Surfaces to be waterproofed shall be prepared in accordance with the instructions of the waterproofing material manufacturer",
+          "exact_quote": "Surfaces to be waterproofed shall be prepared in accordance with the instructions of the waterproofing material manufacturer"
+        },
+        {
+          "id": "9.13.3.3-2",
+          "element": "waterproofing_icf_instructions",
+          "requirement_type": "prescriptive",
+          "description": "Where the waterproofing material is to be applied on ICF walls, the instructions of the ICF wall manufacturer shall be followed",
+          "exact_quote": "Where the waterproofing material is to be applied on ICF walls, the instructions of the ICF wall manufacturer shall be followed"
+        },
+        {
+          "id": "9.13.3.3-3",
+          "element": "waterproofing_masonry_parge",
+          "requirement_type": "dimensional",
+          "min_value": 6,
+          "unit": "mm",
+          "description": "Unit masonry walls that are to be waterproofed shall be parged on exterior surfaces below ground level with not less than 6mm of mortar conforming to Section 9.20, coved over the footing",
+          "exact_quote": "Unit masonry walls that are to be waterproofed shall be parged on exterior surfaces below ground level with not less than 6mm of mortar conforming to Section 9.20. coved over the footing"
+        },
+        {
+          "id": "9.13.3.3-4",
+          "element": "waterproofing_concrete_prep",
+          "requirement_type": "prescriptive",
+          "description": "Concrete walls that are to be waterproofed shall have all holes and recesses sealed with mortar or waterproofing material",
+          "exact_quote": "Concrete walls that are to be waterproofed shall have all holes and recesses sealed with mortar or waterproofing material"
+        },
+        {
+          "id": "9.13.3.3-5",
+          "element": "waterproofing_surface_cleanliness",
+          "requirement_type": "prescriptive",
+          "description": "Surfaces required to be waterproofed shall be clean and dry and free of ice, snow, frost, dust, dirt, oil, grease, cracks, projections and depressions, loose particles and debris",
+          "exact_quote": "Surfaces required to be waterproofed shall be clean and dry and free of ice, snow, frost, dust, dirt, oil, grease, cracks, projections and depressions, loose particles and debris that could be detrimental to the performance of the waterproofing material"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.3.4",
+      "title": "Application of Waterproofing Membranes",
+      "requirements": [
+        {
+          "id": "9.13.3.4-1",
+          "element": "waterproofing_manufacturer_instructions",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing shall be installed in accordance with the manufacturer's instructions with regard to surface priming, conditions during application, required number of layers of reinforcing fabric, application quantity and rate, and curing times",
+          "exact_quote": "waterproofing shall be installed in accordance with the manufacturer's instructions with regard to surface priming, conditions during application, the required number of layers of reinforcing fabric on foundation, footings, floors, walls and structural slabs, application quantity and rate, and curing times"
+        },
+        {
+          "id": "9.13.3.4-2",
+          "element": "waterproofing_continuity",
+          "requirement_type": "prescriptive",
+          "description": "Waterproofing shall be continuous across joints and at junctions between different building elements",
+          "exact_quote": "Waterproofing shall be continuous across joints and at junctions between different building elements"
+        },
+        {
+          "id": "9.13.3.4-3",
+          "element": "waterproofing_protection",
+          "requirement_type": "prescriptive",
+          "description": "The waterproofed surface shall be protected with a suitable material to minimize mechanical damage during backfilling",
+          "exact_quote": "The waterproofed surface shall be protected with a suitable material to minimize mechanical damage during backfilling"
+        },
+        {
+          "id": "9.13.3.4-4",
+          "element": "waterproofing_dry_conditions",
+          "requirement_type": "prescriptive",
+          "description": "The area in which the waterproofing is to be carried out shall be kept free of water during the application and curing of the waterproofing system",
+          "exact_quote": "The area in which the waterproofing is to be carried out shall be kept free of water during the application and curing of the waterproofing system"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.3.5",
+      "title": "Floor Waterproofing System",
+      "requirements": [
+        {
+          "id": "9.13.3.5-1",
+          "element": "floor_waterproofing_concrete_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 75,
+          "unit": "mm",
+          "description": "Basement floors-on-ground to be waterproofed shall have a system of membrane waterproofing provided between 2 layers of concrete, each of which shall be not less than 75mm thick",
+          "exact_quote": "Basement floors-on-ground to be waterproofed shall have a system of membrane waterproofing provided between 2 layers of concrete, each of which shall be not less than 75mm thick"
+        },
+        {
+          "id": "9.13.3.5-2",
+          "element": "floor_wall_membrane_continuity",
+          "requirement_type": "prescriptive",
+          "description": "The floor membrane shall be made continuous with the wall membrane to form a complete seal",
+          "exact_quote": "with the floor membrane made continuous with the wall membrane to form a complete seal"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.4.1",
+      "title": "Application and Scope",
+      "requirements": [
+        {
+          "id": "9.13.4.1-1",
+          "element": "soil_gas_control_scope",
+          "requirement_type": "prescriptive",
+          "description": "This Subsection applies to wall, roof and floor assemblies separating conditioned space from the ground, and the rough-in to allow the future protection of conditioned space from soil gases",
+          "exact_quote": "This Subsection applies to wall, roof and floor assemblies separating conditioned space from the ground, and the rough-in to allow the future protection of conditioned space from soil gases"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.4.2",
+      "title": "Addressing Radon",
+      "requirements": [
+        {
+          "id": "9.13.4.2-1",
+          "element": "radon_rough_in_residential",
+          "requirement_type": "prescriptive",
+          "description": "Buildings and dwelling units and buildings containing residential occupancies shall be provided with the rough-in for a radon extraction system conforming to Article 9.13.4.3",
+          "exact_quote": "dwelling units and buildings containing residential occupancies shall be provided with the rough-in for a radon extraction system conforming to Article 9.13.4.3"
+        },
+        {
+          "id": "9.13.4.2-2",
+          "element": "radon_non_residential_options",
+          "requirement_type": "prescriptive",
+          "description": "Where buildings are used for occupancies other than residential, protection from radon ingress and the means to address high radon concentrations shall conform to Article 9.13.4.3 or Parts 5 and 6",
+          "exact_quote": "Where buildings are used for occupancies other than those described in Sentence (2), protection from radon ingress and the means to address high radon concentrations in the future shall conform to Article 9.13.4.3, or Parts 5 and 6"
+        }
+      ]
+    },
+    {
+      "article_number": "9.13.4.3",
+      "title": "Providing for the Rough-in for a Subfloor Depressurization System",
+      "requirements": [
+        {
+          "id": "9.13.4.3-1",
+          "element": "subfloor_depressurization_options",
+          "requirement_type": "prescriptive",
+          "description": "Floors-on-ground shall be provided with a rough-in for subfloor depressurization consisting of either a gas-permeable layer with an inlet and outlet, or clean granular material and a pipe",
+          "exact_quote": "Floors-on-ground shall be provided with a rough-in for subfloor depressurization consisting of a gas-permeable layer, an inlet and an outlet as described in Sentence (2), or clean granular material and a pipe as described in Sentence (3)"
+        },
+        {
+          "id": "9.13.4.3-2",
+          "element": "gas_permeable_layer_system",
+          "requirement_type": "prescriptive",
+          "description": "The rough-in shall include a gas-permeable layer installed in the space between the air barrier and the ground to allow the depressurization of that space",
+          "exact_quote": "a gas-permeable layer installed in the space between the air barrier and the ground to allow the depressurization of that space"
+        },
+        {
+          "id": "9.13.4.3-3",
+          "element": "inlet_requirement",
+          "requirement_type": "prescriptive",
+          "description": "An inlet that allows for the effective depressurization of the gas-permeable layer shall be provided",
+          "exact_quote": "an inlet that allows for the effective depressurization of the gas-permeable layer"
+        },
+        {
+          "id": "9.13.4.3-4",
+          "element": "outlet_requirements",
+          "requirement_type": "prescriptive",
+          "description": "An outlet in the conditioned space shall permit connection to depressurization equipment, be sealed to maintain the integrity of the air barrier system, and be clearly labeled for radon removal",
+          "exact_quote": "an outlet in the conditioned space that permits connection to depressurization equipment, is sealed to maintain the integrity of the air barrier system, and is clearly labeled to indicate that it is intended only for the removal of radon from below the floor-on-ground"
+        },
+        {
+          "id": "9.13.4.3-5",
+          "element": "granular_pipe_system_diameter",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "The pipe for the granular material system shall be not less than 100mm in diameter",
+          "exact_quote": "a pipe not less than 100mm in diameter installed through the floor"
+        },
+        {
+          "id": "9.13.4.3-6",
+          "element": "pipe_termination_granular",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "The bottom end of the pipe shall open into the granular layer at or near the centre of the floor with not less than 100mm of granular material projecting beyond the terminus of the pipe",
+          "exact_quote": "its bottom end opens into the granular layer required in Clause (a) at or near the centre of the floor and not less than 100mm of granular material projects beyond the terminus of the pipe measured along its axis"
+        },
+        {
+          "id": "9.13.4.3-7",
+          "element": "pipe_top_requirements",
+          "requirement_type": "prescriptive",
+          "description": "The top end of the pipe shall permit connection to depressurization equipment and be provided with an airtight cap",
+          "exact_quote": "its top end permits connection to depressurization equipment and is provided with an airtight cap"
+        },
+        {
+          "id": "9.13.4.3-8",
+          "element": "pipe_labeling_interval",
+          "requirement_type": "dimensional",
+          "max_value": 1.8,
+          "unit": "m",
+          "description": "The pipe shall be clearly labeled near the cap and every 1.8m and at every change in direction to indicate that it is intended only for the removal of radon",
+          "exact_quote": "the pipe is clearly labeled near the cap and, if applicable, every 1.8m and at every change in direction to indicate that it is intended only for the removal of radon"
+        }
+      ]
+    }
+  ]
+}

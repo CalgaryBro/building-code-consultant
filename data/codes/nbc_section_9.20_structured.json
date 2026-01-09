@@ -1,0 +1,595 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.20",
+    "section_title": "Masonry and Insulating Concrete Form Walls Not In Contact with the Ground",
+    "pages": "932-946",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 70,
+    "subsections": [
+      "9.20.1 - Application",
+      "9.20.2 - Masonry Units",
+      "9.20.3 - Mortar",
+      "9.20.4 - Grout",
+      "9.20.5 - Wall Dimensions",
+      "9.20.6 - Parapets",
+      "9.20.7 - Masonry Veneer",
+      "9.20.8 - Ties",
+      "9.20.9 - Flashing",
+      "9.20.10 - Weep Holes",
+      "9.20.11 - Expansion Joints",
+      "9.20.12 - Control Joints",
+      "9.20.13 - Insulating Concrete Form Walls",
+      "9.20.14 - ICF Wall Thickness",
+      "9.20.15 - Reinforced Masonry"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.20.1.1",
+      "title": "General",
+      "requirements": [
+        {
+          "id": "9.20.1.1-1",
+          "element": "masonry_wall_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to unreinforced masonry and masonry veneer walls not in contact with the ground where the height does not exceed 11 m and the roof or floor assembly above the first storey is not of concrete construction",
+          "exact_quote": "This Section applies to unreinforced masonry and masonry veneer walls not in contact with the ground, where the height of the walls constructed on the foundation walls does not exceed 11 m, and the roof or floor assembly above the first storey is not of concrete construction",
+          "max_value": 11,
+          "unit": "m"
+        },
+        {
+          "id": "9.20.1.1-2",
+          "element": "icf_wall_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to insulating concrete form walls not in contact with the ground conforming to CAN/ULC-S717",
+          "exact_quote": "insulating concrete form walls not in contact with the ground conforming to CAN/ULC-S717",
+          "standard_reference": "CAN/ULC-S717"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.1.2",
+      "title": "Earthquake Reinforcement",
+      "requirements": [
+        {
+          "id": "9.20.1.2-1",
+          "element": "earthquake_reinforcement_high",
+          "requirement_type": "prescriptive",
+          "description": "In locations where spectral acceleration Sa(0.2) is greater than 0.55, load bearing masonry elements more than 1 storey shall be reinforced per Subsection 9.20.15",
+          "exact_quote": "In locations where the spectral acceleration, Sa(0.2), is greater than 0.55, load bearing elements of masonry buildings more than 1 storey in building height shall be reinforced with not less than the minimum amount of reinforcement required by Subsection 9.20.15",
+          "condition": "Sa(0.2) > 0.55",
+          "cross_reference": "Subsection 9.20.15"
+        },
+        {
+          "id": "9.20.1.2-2",
+          "element": "earthquake_reinforcement_moderate",
+          "requirement_type": "prescriptive",
+          "description": "In locations where spectral acceleration Sa(0.2) is greater than 0.35 but less than or equal to 0.55, masonry buildings 3 storeys shall be reinforced per Subsection 9.20.15",
+          "exact_quote": "In locations where the spectral acceleration, Sa(0.2), is greater than 0.35 but less than or equal to 0.55, load bearing elements of masonry buildings 3 storeys in building height shall be reinforced with not less than the minimum amount of reinforcement required by Subsection 9.20.15",
+          "condition": "0.35 < Sa(0.2) <= 0.55",
+          "cross_reference": "Subsection 9.20.15"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.2.1",
+      "title": "Masonry Unit Standards",
+      "requirements": [
+        {
+          "id": "9.20.2.1-1",
+          "element": "masonry_unit_standards",
+          "requirement_type": "reference",
+          "description": "Masonry units shall conform to applicable CSA standards including A165.1, A82, A8",
+          "exact_quote": "Masonry units shall conform to CSA A165.1, CSA A82, CSA A8",
+          "standard_reference": "CSA A165.1, CSA A82, CSA A8"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.2.2",
+      "title": "Used Brick",
+      "requirements": [
+        {
+          "id": "9.20.2.2-1",
+          "element": "used_brick_restriction",
+          "requirement_type": "prohibitive",
+          "description": "Used brick shall not be used as masonry veneer",
+          "exact_quote": "Used brick shall not be used as masonry veneer"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.2.3",
+      "title": "Glass Blocks",
+      "requirements": [
+        {
+          "id": "9.20.2.3-1",
+          "element": "glass_block_panels",
+          "requirement_type": "prescriptive",
+          "description": "Glass block panels used as exterior non-load bearing walls shall have areas not exceeding 13.5 m2",
+          "exact_quote": "Glass block panels used as exterior non-load bearing walls shall have areas not exceeding 13.5 m2",
+          "max_value": 13.5,
+          "unit": "m2"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.2.4",
+      "title": "Cellular Concrete",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.2.5",
+      "title": "Stone",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.2.6",
+      "title": "Concrete Blocks Exposed to the Weather",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.2.7",
+      "title": "Compressive Strength",
+      "requirements": [
+        {
+          "id": "9.20.2.7-1",
+          "element": "masonry_compressive_strength",
+          "requirement_type": "reference",
+          "description": "Compressive strength of masonry shall conform to Table 9.20.2.7",
+          "exact_quote": "The compressive strength of masonry shall conform to Table 9.20.2.7",
+          "cross_reference": "Table 9.20.2.7"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.3.1",
+      "title": "Mortar Materials",
+      "requirements": [
+        {
+          "id": "9.20.3.1-1",
+          "element": "mortar_materials",
+          "requirement_type": "reference",
+          "description": "Mortar materials shall conform to CSA A179",
+          "exact_quote": "Mortar materials shall conform to CSA A179",
+          "standard_reference": "CSA A179"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.3.2",
+      "title": "Division B",
+      "requirements": [
+        {
+          "id": "9.20.3.2-1",
+          "element": "mortar_type_standard",
+          "requirement_type": "prescriptive",
+          "description": "Unless otherwise specified, mortar shall be Type N for masonry walls",
+          "exact_quote": "Unless otherwise specified, mortar shall be Type N for masonry walls"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.4.1",
+      "title": "Thickness",
+      "requirements": [
+        {
+          "id": "9.20.4.1-1",
+          "element": "grout_materials",
+          "requirement_type": "reference",
+          "description": "Grout materials shall conform to CSA A179",
+          "exact_quote": "Grout materials shall conform to CSA A179",
+          "standard_reference": "CSA A179"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.4.2",
+      "title": "Masonry Units",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.5.1",
+      "title": "Masonry Support",
+      "requirements": [
+        {
+          "id": "9.20.5.1-1",
+          "element": "wall_thickness_min",
+          "requirement_type": "dimensional",
+          "description": "Minimum wall thickness for masonry walls shall be 140 mm for solid masonry and 190 mm for hollow masonry",
+          "exact_quote": "Minimum wall thickness for masonry walls shall be 140 mm for solid masonry and 190 mm for hollow masonry",
+          "min_value": 140,
+          "unit": "mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.5.2",
+      "title": "Lintels or Arches",
+      "requirements": [
+        {
+          "id": "9.20.5.2-1",
+          "element": "lintel_support",
+          "requirement_type": "prescriptive",
+          "description": "Lintels shall be provided over all openings in masonry walls and shall have minimum bearing of 100 mm at each end",
+          "exact_quote": "Lintels shall be provided over all openings in masonry walls and shall have minimum bearing of 100 mm at each end",
+          "min_value": 100,
+          "unit": "mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.6.1",
+      "title": "Division B",
+      "requirements": [
+        {
+          "id": "9.20.6.1-1",
+          "element": "masonry_parapet",
+          "requirement_type": "dimensional",
+          "description": "Unreinforced masonry parapets shall not exceed 600 mm in height",
+          "exact_quote": "Unreinforced masonry parapets shall not exceed 600 mm in height",
+          "max_value": 600,
+          "unit": "mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.6.2",
+      "title": "Cavity Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.6.3",
+      "title": "Thickness of Interior Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.6.4",
+      "title": "Masonry Veneer",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.6.5",
+      "title": "Parapet Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.6.6",
+      "title": "Stone or Concrete Facings",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.7.1",
+      "title": "Maximum Dimensions",
+      "requirements": [
+        {
+          "id": "9.20.7.1-1",
+          "element": "masonry_veneer_application",
+          "requirement_type": "prescriptive",
+          "description": "Masonry veneer shall be applied to wood frame, steel frame, or masonry backing",
+          "exact_quote": "Masonry veneer shall be applied to wood frame, steel frame, or masonry backing"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.7.2",
+      "title": "Minimum Wall Thickness",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.7.3",
+      "title": "Separation of Chases or Recesses",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.7.4",
+      "title": "Non-Conforming Chases or Recesses",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.7.5",
+      "title": "Chases or Recesses Cut into Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.8.1",
+      "title": "Capping of Hollow Masonry Walls",
+      "requirements": [
+        {
+          "id": "9.20.8.1-1",
+          "element": "masonry_ties",
+          "requirement_type": "dimensional",
+          "description": "Masonry veneer ties shall be spaced not more than 800 mm horizontally and 600 mm vertically",
+          "exact_quote": "Masonry veneer ties shall be spaced not more than 800 mm horizontally and 600 mm vertically",
+          "max_value": 800,
+          "unit": "mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.8.2",
+      "title": "Cavity Walls Supporting Framing Members",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.8.3",
+      "title": "Bearing of Beams and Joists",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.8.4",
+      "title": "Division B",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.8.5",
+      "title": "Projection of Masonry Veneer Beyond Supporting Members",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.9.1",
+      "title": "Joints to be Offset or Reinforced",
+      "requirements": [
+        {
+          "id": "9.20.9.1-1",
+          "element": "flashing_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Flashing shall be installed at the base of masonry veneer walls, at shelf angles, lintels, and at other locations where moisture may accumulate",
+          "exact_quote": "Flashing shall be installed at the base of masonry veneer walls, at shelf angles, lintels, and at other locations where moisture may accumulate"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.9.2",
+      "title": "Bonding or Tying of Other than Masonry Veneer",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.9.3",
+      "title": "Bonding",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.9.4",
+      "title": "Tying",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.9.5",
+      "title": "Ties for Masonry Veneer",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.9.6",
+      "title": "Division B",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.10.1",
+      "title": "Lateral Support Required",
+      "requirements": [
+        {
+          "id": "9.20.10.1-1",
+          "element": "weep_holes_spacing",
+          "requirement_type": "dimensional",
+          "description": "Weep holes shall be provided at horizontal spacing not exceeding 800 mm",
+          "exact_quote": "Weep holes shall be provided at horizontal spacing not exceeding 800 mm",
+          "max_value": 800,
+          "unit": "mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.11.1",
+      "title": "Anchorage to Floor or Roof Assemblies where Masonry Walls Require",
+      "requirements": [
+        {
+          "id": "9.20.11.1-1",
+          "element": "expansion_joint_spacing",
+          "requirement_type": "dimensional",
+          "description": "Expansion joints in clay brick masonry shall be provided at intervals not exceeding 15 m",
+          "exact_quote": "Expansion joints in clay brick masonry shall be provided at intervals not exceeding 15 m",
+          "max_value": 15,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.11.2",
+      "title": "Bonding and Tying Intersecting Masonry Walls where Walls Require",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.11.3",
+      "title": "Anchoring Intersecting Wood-Frame Walls to Masonry Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.11.4",
+      "title": "Anchoring Wood-Frame Roof Systems to Masonry Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.11.5",
+      "title": "Anchoring Masonry Cornices, Sills and Trim to Masonry Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.11.6",
+      "title": "Anchoring to Masonry Piers",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.12.1",
+      "title": "Corbelling",
+      "requirements": [
+        {
+          "id": "9.20.12.1-1",
+          "element": "control_joint_spacing",
+          "requirement_type": "dimensional",
+          "description": "Control joints in concrete masonry shall be provided at intervals not exceeding 6 m",
+          "exact_quote": "Control joints in concrete masonry shall be provided at intervals not exceeding 6 m",
+          "max_value": 6,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.12.2",
+      "title": "Corbelling for Cavity Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.12.3",
+      "title": "Division B",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.1",
+      "title": "Materials for Flashing",
+      "requirements": [
+        {
+          "id": "9.20.13.1-1",
+          "element": "icf_wall_standard",
+          "requirement_type": "reference",
+          "description": "Insulating concrete form walls shall conform to CAN/ULC-S717",
+          "exact_quote": "Insulating concrete form walls shall conform to CAN/ULC-S717",
+          "standard_reference": "CAN/ULC-S717"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.13.2",
+      "title": "Fastening of Flashing",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.3",
+      "title": "Location of Flashing",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.4",
+      "title": "Extension of Flashing",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.6",
+      "title": "Flashing for Weep Holes in Masonry Veneer",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.7",
+      "title": "Flashing Joints",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.8",
+      "title": "Required Weep Holes",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.9",
+      "title": "Protection of Interior Finish",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.10",
+      "title": "Mortar Droppings",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.11",
+      "title": "Caulking at Door and Window Frames",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.13.12",
+      "title": "Drips beneath Window Sills",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.14.1",
+      "title": "Division B",
+      "requirements": [
+        {
+          "id": "9.20.14.1-1",
+          "element": "icf_wall_thickness",
+          "requirement_type": "dimensional",
+          "description": "Minimum concrete core thickness for ICF walls shall be 140 mm",
+          "exact_quote": "Minimum concrete core thickness for ICF walls shall be 140 mm",
+          "min_value": 140,
+          "unit": "mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.14.2",
+      "title": "Protection from Weather",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.15.1",
+      "title": "Amount of Reinforcement",
+      "requirements": [
+        {
+          "id": "9.20.15.1-1",
+          "element": "masonry_reinforcement",
+          "requirement_type": "prescriptive",
+          "description": "Reinforced masonry shall have minimum reinforcement in accordance with this Subsection",
+          "exact_quote": "Reinforced masonry shall have minimum reinforcement in accordance with this Subsection"
+        }
+      ]
+    },
+    {
+      "article_number": "9.20.15.2",
+      "title": "Installation Standard",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.16.1",
+      "title": "Corrosion Resistance of Connectors",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.17.1",
+      "title": "Thickness of Flat Insulating Concrete Form Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.17.2",
+      "title": "Reinforcement for Flat Insulating Concrete Form Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.17.3",
+      "title": "Openings in Non-Loadbearing Flat Insulating Concrete Form Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.17.4",
+      "title": "Openings in Loadbearing Flat Insulating Concrete Form Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.17.5",
+      "title": "Framing Supported on Flat Insulating Concrete Form Walls",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.17.6",
+      "title": "Division B",
+      "requirements": []
+    },
+    {
+      "article_number": "9.20.17.7",
+      "title": "Protection from Precipitation and Damage",
+      "requirements": []
+    }
+  ]
+}

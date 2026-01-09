@@ -1,0 +1,242 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.12",
+    "section_title": "Excavation",
+    "pages": "906-908",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 8,
+    "subsections": [
+      "9.12.1 - General",
+      "9.12.2 - Depth",
+      "9.12.3 - Backfill",
+      "9.12.4 - Trenches beneath Footings"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.12.1.1",
+      "title": "Removal of Topsoil and Organic Matter",
+      "requirements": [
+        {
+          "id": "9.12.1.1-1",
+          "element": "topsoil_removal",
+          "requirement_type": "prescriptive",
+          "description": "Topsoil and vegetable matter in all unexcavated areas under a building shall be removed",
+          "exact_quote": "The topsoil and vegetable matter in all unexcavated areas under a building shall be removed"
+        },
+        {
+          "id": "9.12.1.1-2",
+          "element": "termite_debris_removal_depth",
+          "requirement_type": "dimensional",
+          "min_value": 300,
+          "unit": "mm",
+          "description": "In termite-prone areas, stumps, roots and wood debris shall be removed to depth of not less than 300mm",
+          "exact_quote": "all stumps, roots and other wood debris shall be removed from the soil to a depth of not less than 300mm in unexcavated areas under a building",
+          "conditions": ["termite infestation area"]
+        },
+        {
+          "id": "9.12.1.1-3",
+          "element": "excavation_bottom_organic",
+          "requirement_type": "prescriptive",
+          "description": "The bottom of every excavation shall be free of all organic material",
+          "exact_quote": "The bottom of every excavation shall be free of all organic material"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.1.2",
+      "title": "Standing Water",
+      "requirements": [
+        {
+          "id": "9.12.1.2-1",
+          "element": "standing_water_removal",
+          "requirement_type": "prescriptive",
+          "description": "Excavations shall be kept free of standing water",
+          "exact_quote": "Excavations shall be kept free of standing water"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.1.3",
+      "title": "Protection from Freezing",
+      "requirements": [
+        {
+          "id": "9.12.1.3-1",
+          "element": "freezing_protection",
+          "requirement_type": "prescriptive",
+          "description": "The bottom of excavations shall be kept from freezing throughout the entire construction period",
+          "exact_quote": "The bottom of excavations shall be kept from freezing throughout the entire construction period"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.2.1",
+      "title": "Excavation to Undisturbed Soil",
+      "requirements": [
+        {
+          "id": "9.12.2.1-1",
+          "element": "foundation_undisturbed_soil",
+          "requirement_type": "prescriptive",
+          "description": "Excavations for foundations shall extend to undisturbed soil",
+          "exact_quote": "Excavations for foundations shall extend to undisturbed soil"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.2.2",
+      "title": "Minimum Depth of Foundations",
+      "requirements": [
+        {
+          "id": "9.12.2.2-1",
+          "element": "foundation_depth_clay_heated",
+          "requirement_type": "dimensional",
+          "min_value": 1.2,
+          "unit": "m",
+          "description": "Minimum foundation depth for clay or undefined soils with heated basement or crawl space",
+          "exact_quote": "Clay or soils not clearly defined: 1.2 m",
+          "conditions": ["clay or undefined soil", "heated basement or crawl space"]
+        },
+        {
+          "id": "9.12.2.2-2",
+          "element": "foundation_depth_clay_unheated",
+          "requirement_type": "dimensional",
+          "min_value": 1.2,
+          "unit": "m",
+          "description": "Minimum foundation depth for clay or undefined soils with no heated space - 1.2m but not less than frost penetration depth",
+          "exact_quote": "1.2m but not less than the depth of frost penetration",
+          "conditions": ["clay or undefined soil", "no heated space"]
+        },
+        {
+          "id": "9.12.2.2-3",
+          "element": "foundation_depth_silt_unheated",
+          "requirement_type": "performance",
+          "description": "Silt with no heated space - below depth of frost penetration required",
+          "exact_quote": "Silt: Below the depth of frost penetration",
+          "conditions": ["silt soil", "no heated space"]
+        },
+        {
+          "id": "9.12.2.2-4",
+          "element": "accessory_building_exemption_area",
+          "requirement_type": "dimensional",
+          "max_value": 55,
+          "unit": "m2",
+          "description": "Foundation depth exemption for accessory buildings with max 55 m2 area, 1 storey, non-masonry",
+          "exact_quote": "accessory buildings not more than 55 m² in building area",
+          "conditions": ["non-masonry", "max 1 storey", "floor joists max 600mm from ground"]
+        },
+        {
+          "id": "9.12.2.2-5",
+          "element": "accessory_building_joist_clearance",
+          "requirement_type": "dimensional",
+          "max_value": 600,
+          "unit": "mm",
+          "description": "Distance from finished ground to underside of floor joists for accessory building exemption",
+          "exact_quote": "where the distance from finished ground to the underside of the floor joists is not more than 600mm"
+        },
+        {
+          "id": "9.12.2.2-6",
+          "element": "deck_platform_exemption_area",
+          "requirement_type": "dimensional",
+          "max_value": 55,
+          "unit": "m2",
+          "description": "Foundation depth exemption for decks/platforms not more than 55 m2 area",
+          "exact_quote": "decks and other accessible exterior platforms not more than 55 m² in area",
+          "conditions": ["max 1 storey", "not supporting roof", "not attached unless differential movement addressed"]
+        },
+        {
+          "id": "9.12.2.2-7",
+          "element": "deck_access_clearance",
+          "requirement_type": "dimensional",
+          "min_value": 600,
+          "unit": "mm",
+          "description": "Clear height and width for deck re-levelling access passageways",
+          "exact_quote": "passageways with a clear height under the platform of not less than 600mm and a width of not less than 600mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.3.1",
+      "title": "Placement of Backfill",
+      "requirements": [
+        {
+          "id": "9.12.3.1-1",
+          "element": "backfill_placement",
+          "requirement_type": "prescriptive",
+          "description": "Backfill shall be placed to avoid damaging the foundation wall, drainage tile, thermal insulation and waterproofing/dampproofing",
+          "exact_quote": "Backfill shall be placed to avoid damaging the foundation wall, the drainage tile, externally applied thermal insulation and waterproofing or dampproofing of the wall"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.3.2",
+      "title": "Grading of Backfill",
+      "requirements": [
+        {
+          "id": "9.12.3.2-1",
+          "element": "backfill_grading",
+          "requirement_type": "prescriptive",
+          "description": "Backfill shall be graded to prevent drainage towards the foundation after settling",
+          "exact_quote": "Backfill shall be graded to prevent drainage towards the foundation after settling"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.3.3",
+      "title": "Deleterious Debris and Boulders",
+      "requirements": [
+        {
+          "id": "9.12.3.3-1",
+          "element": "backfill_zone_depth",
+          "requirement_type": "dimensional",
+          "min_value": 600,
+          "unit": "mm",
+          "description": "Backfill within 600mm of foundation shall be free of deleterious debris",
+          "exact_quote": "Backfill that is within 600mm of the foundation shall be free of deleterious debris"
+        },
+        {
+          "id": "9.12.3.3-2",
+          "element": "boulder_max_size",
+          "requirement_type": "dimensional",
+          "max_value": 250,
+          "unit": "mm",
+          "description": "Maximum boulder diameter in backfill within 600mm of foundation",
+          "exact_quote": "boulders larger than 250mm diam."
+        },
+        {
+          "id": "9.12.3.3-3",
+          "element": "pyritic_material_prohibition",
+          "requirement_type": "prescriptive",
+          "description": "Backfill shall not contain pyritic material or material susceptible to ice lensing in concentrations that will damage the building",
+          "exact_quote": "backfill shall not contain pyritic material or material that is susceptible to ice lensing in concentrations that will damage the building"
+        }
+      ]
+    },
+    {
+      "article_number": "9.12.4.1",
+      "title": "Support of Footings",
+      "requirements": [
+        {
+          "id": "9.12.4.1-1",
+          "element": "trench_concrete_strength",
+          "requirement_type": "dimensional",
+          "min_value": 10,
+          "unit": "MPa",
+          "description": "Concrete fill in trenches beneath footings for sewers/water mains shall have strength not less than 10 MPa",
+          "exact_quote": "filled with concrete having a strength not less than 10 MPa to support the footing"
+        },
+        {
+          "id": "9.12.4.1-2",
+          "element": "trench_compaction",
+          "requirement_type": "prescriptive",
+          "description": "Soil in trenches beneath footings shall be compacted by tamping up to the level of the footing base",
+          "exact_quote": "The soil in trenches beneath footings for sewers and water mains shall be compacted by tamping up to the level of the footing base"
+        }
+      ]
+    }
+  ]
+}

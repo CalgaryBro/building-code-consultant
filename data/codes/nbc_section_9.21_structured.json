@@ -1,0 +1,717 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.21",
+    "section_title": "Masonry and Concrete Chimneys and Flues",
+    "pages": "946-951",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 22,
+    "subsections": [
+      "9.21.1 - General",
+      "9.21.2 - Chimney Flues",
+      "9.21.3 - Chimney Lining",
+      "9.21.4 - Masonry and Concrete Chimney Construction",
+      "9.21.5 - Clearance from Combustible Construction"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.21.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.21.1.1-1",
+          "element": "chimney_application_scope",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to rectangular masonry or concrete chimneys not more than 12 m in height serving fireplaces or serving appliances having a combined total rated heat output of 120 kW or less, and flue pipes connected to such chimneys",
+          "exact_quote": "This Section applies to a) rectangular masonry or concrete chimneys not more than 12 m in height serving fireplaces or serving appliances having a combined total rated heat output of 120 kW or less, and b) flue pipes connected to such chimneys"
+        },
+        {
+          "id": "9.21.1.1-2",
+          "element": "chimney_max_height",
+          "requirement_type": "dimensional",
+          "max_value": 12,
+          "unit": "m",
+          "description": "Maximum height of rectangular masonry or concrete chimneys covered by this section",
+          "exact_quote": "rectangular masonry or concrete chimneys not more than 12 m in height"
+        },
+        {
+          "id": "9.21.1.1-3",
+          "element": "chimney_max_heat_output",
+          "requirement_type": "dimensional",
+          "max_value": 120,
+          "unit": "kW",
+          "description": "Maximum combined total rated heat output of appliances served by chimneys under this section",
+          "exact_quote": "serving appliances having a combined total rated heat output of 120 kW or less"
+        },
+        {
+          "id": "9.21.1.1-4",
+          "element": "other_chimney_reference",
+          "requirement_type": "reference",
+          "description": "Other chimneys, gas vents and flue pipes for fuel-burning appliances shall conform to Subsection 9.33.10",
+          "exact_quote": "Chimneys, other than those described in Sentence (1), gas vents and flue pipes serving gas-, oil- or solid-fuel-burning appliances... shall conform to Subsection 9.33.10",
+          "cross_reference": "Subsection 9.33.10"
+        },
+        {
+          "id": "9.21.1.1-5",
+          "element": "part_3_chimney_reference",
+          "requirement_type": "reference",
+          "description": "Chimneys and flue pipes not covered by Part 9 shall conform to Section 6.3",
+          "exact_quote": "Chimneys and flue pipes other than those described in Sentences (1) and (2) shall conform to Section 6.3",
+          "cross_reference": "Section 6.3"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.1.2",
+      "title": "Chimney or Flue Pipe Walls",
+      "requirements": [
+        {
+          "id": "9.21.1.2-1",
+          "element": "chimney_wall_construction",
+          "requirement_type": "prescriptive",
+          "description": "The walls of any chimney or flue pipe shall be constructed so as to be smoke- and flame-tight",
+          "exact_quote": "The walls of any chimney or flue pipe shall be constructed so as to be smoke- and flame-tight"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.2.1",
+      "title": "Chimney Flue Limitations",
+      "requirements": [
+        {
+          "id": "9.21.2.1-1",
+          "element": "fireplace_flue_limitation",
+          "requirement_type": "prohibition",
+          "description": "A chimney flue that serves a fireplace or incinerator shall not serve any other appliance",
+          "exact_quote": "A chimney flue that serves a fireplace or incinerator shall not serve any other appliance"
+        },
+        {
+          "id": "9.21.2.1-2",
+          "element": "solid_fuel_gas_prohibition",
+          "requirement_type": "prohibition",
+          "description": "A chimney flue that serves a solid-fuel-burning appliance shall not be connected to a natural-gas- or propane-fired appliance",
+          "exact_quote": "A chimney flue that serves a solid-fuel-burning appliance shall not be connected to a natural-gas- or propane-fired appliance"
+        },
+        {
+          "id": "9.21.2.1-3",
+          "element": "solid_fuel_oil_prohibition",
+          "requirement_type": "prohibition",
+          "description": "A chimney flue that serves a solid-fuel-burning appliance shall not be connected to an oil-burning appliance unless both are certified for such installation",
+          "exact_quote": "A chimney flue that serves a solid-fuel-burning appliance shall not be connected to an oil-burning appliance unless the solid-fuel-burning appliance is certified for such installation and the installation of both appliances meets the requirements of the relevant standards referenced in Article 9.33.5.2",
+          "cross_reference": "Article 9.33.5.2"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.2.2",
+      "title": "Connections of More Than One Appliance",
+      "requirements": [
+        {
+          "id": "9.21.2.2-1",
+          "element": "multiple_appliance_draft",
+          "requirement_type": "reference",
+          "description": "Where two or more fuel-burning appliances are connected to the same chimney flue, adequate draft shall be provided conforming to Subsection 9.33.10",
+          "exact_quote": "where two or more fuel-burning appliances are connected to the same chimney flue, the connections shall be made as described in Sentences (2) to (4) and an adequate draft shall be provided for the connected appliances in conformance with the requirements of the relevant standards listed in Subsection 9.33.10",
+          "cross_reference": "Subsection 9.33.10"
+        },
+        {
+          "id": "9.21.2.2-2",
+          "element": "multiple_appliance_same_storey",
+          "requirement_type": "prescriptive",
+          "description": "Where 2 or more fuel-burning appliances are connected to the same chimney flue, the appliances shall be located on the same storey",
+          "exact_quote": "Where 2 or more fuel-burning appliances are connected to the same chimney flue, the appliances shall be located on the same storey"
+        },
+        {
+          "id": "9.21.2.2-3",
+          "element": "solid_fuel_connection_position",
+          "requirement_type": "prescriptive",
+          "description": "The connection for a solid-fuel-burning appliance shall be made below connections for appliances burning other fuels",
+          "exact_quote": "The connection referred to in Sentence (2) for a solid-fuel-burning appliance shall be made below connections for appliances burning other fuels"
+        },
+        {
+          "id": "9.21.2.2-4",
+          "element": "liquid_fuel_connection_position",
+          "requirement_type": "prescriptive",
+          "description": "The connection for a liquid-fuel-burning appliance shall be made below any connections for appliances burning natural gas or propane",
+          "exact_quote": "The connection referred to in Sentence (2) for a liquid-fuel-burning appliance shall be made below any connections for appliances burning natural gas or propane"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.2.3",
+      "title": "Inclined Chimney Flues",
+      "requirements": [
+        {
+          "id": "9.21.2.3-1",
+          "element": "chimney_flue_inclination",
+          "requirement_type": "dimensional",
+          "max_value": 45,
+          "unit": "degrees",
+          "description": "Chimney flues shall not be inclined more than 45 degrees to the vertical",
+          "exact_quote": "Chimney flues shall not be inclined more than 45 degrees to the vertical"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.2.4",
+      "title": "Size of Chimney Flues",
+      "requirements": [
+        {
+          "id": "9.21.2.4-1",
+          "element": "chimney_flue_size_standards",
+          "requirement_type": "reference",
+          "description": "Except for chimneys serving fireplaces, the size of a chimney flue shall conform to the appliance installation standards referenced in Sentences 9.33.5.2.(1) and 9.33.5.3.(1)",
+          "exact_quote": "Except for chimneys serving fireplaces, the size of a chimney flue shall conform to the requirements of the appliance installation standards referenced in Sentences 9.33.5.2.(1) and 9.33.5.3.(1)",
+          "cross_reference": "Sentences 9.33.5.2.(1) and 9.33.5.3.(1)"
+        },
+        {
+          "id": "9.21.2.4-2",
+          "element": "single_appliance_flue_area",
+          "requirement_type": "prescriptive",
+          "description": "Where a chimney flue serves only one appliance, the flue area shall be at least equal to that of the flue pipe connected to it",
+          "exact_quote": "Where a chimney flue serves only one appliance, the flue area shall be at least equal to that of the flue pipe connected to it"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.2.5",
+      "title": "Fireplace Chimneys",
+      "requirements": [
+        {
+          "id": "9.21.2.5-1",
+          "element": "fireplace_flue_size",
+          "requirement_type": "reference",
+          "description": "The size of a chimney flue serving a masonry fireplace shall conform to Table 9.21.2.5.-A or 9.21.2.5.-B",
+          "exact_quote": "The size of a chimney flue serving a masonry fireplace shall conform to Table 9.21.2.5.-A or 9.21.2.5.-B",
+          "cross_reference": "Table 9.21.2.5.-A, Table 9.21.2.5.-B"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.2.6",
+      "title": "Oval Chimney Flues",
+      "requirements": [
+        {
+          "id": "9.21.2.6-1",
+          "element": "oval_flue_dimensions",
+          "requirement_type": "dimensional",
+          "ratio": "2/3",
+          "description": "The width of an oval chimney flue shall be not less than two-thirds its breadth",
+          "exact_quote": "The width of an oval chimney flue shall be not less than two-thirds its breadth"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.1",
+      "title": "Lining Materials",
+      "requirements": [
+        {
+          "id": "9.21.3.1-1",
+          "element": "chimney_lining_materials",
+          "requirement_type": "material",
+          "allowed_values": ["clay", "concrete", "firebrick", "metal"],
+          "description": "Every masonry or concrete chimney shall have a lining of clay, concrete, firebrick or metal",
+          "exact_quote": "Every masonry or concrete chimney shall have a lining of clay, concrete, firebrick or metal"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.2",
+      "title": "Joints in Chimney Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.2-1",
+          "element": "liner_joint_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Joints of chimney liners shall be sealed to provide a barrier to the passage of flue gases and condensate into the cavity between the liner and the surrounding masonry",
+          "exact_quote": "Joints of chimney liners shall be sealed to provide a barrier to the passage of flue gases and condensate into the cavity between the liner and the surrounding masonry"
+        },
+        {
+          "id": "9.21.3.2-2",
+          "element": "liner_joint_finish",
+          "requirement_type": "prescriptive",
+          "description": "Joints of clay, concrete or firebrick chimney liners shall be struck flush to provide a straight, smooth, aligned chimney flue",
+          "exact_quote": "Joints of clay, concrete or firebrick chimney liners shall be struck flush to provide a straight, smooth, aligned chimney flue"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.3",
+      "title": "Clay Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.3-1",
+          "element": "clay_liner_standard",
+          "requirement_type": "reference",
+          "description": "Clay liners shall conform to CAN/CSA-A324-M, Clay Flue Liners",
+          "exact_quote": "Clay liners shall conform to CAN/CSA-A324-M, \"Clay Flue Liners\"",
+          "standard_reference": "CAN/CSA-A324-M"
+        },
+        {
+          "id": "9.21.3.3-2",
+          "element": "clay_liner_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 15.9,
+          "unit": "mm",
+          "description": "Clay liners shall be not less than 15.9 mm thick",
+          "exact_quote": "Liners referred to in Sentence (1) shall be not less than 15.9 mm thick"
+        },
+        {
+          "id": "9.21.3.3-3",
+          "element": "clay_liner_temperature_resistance",
+          "requirement_type": "performance",
+          "min_value": 1100,
+          "unit": "degrees C",
+          "description": "Clay liners shall be capable of resisting, without softening or cracking, a temperature of 1100 degrees C",
+          "exact_quote": "shall be capable of resisting, without softening or cracking, a temperature of 1100 degrees C"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.4",
+      "title": "Firebrick Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.4-1",
+          "element": "firebrick_liner_standard",
+          "requirement_type": "reference",
+          "description": "Firebrick liners shall conform to ASTM C27, Standard Classification of Fireclay and High-Alumina Refractory Brick",
+          "exact_quote": "Firebrick liners shall conform to ASTM C27, \"Standard Classification of Fireclay and High-Alumina Refractory Brick\"",
+          "standard_reference": "ASTM C27"
+        },
+        {
+          "id": "9.21.3.4-2",
+          "element": "firebrick_liner_mortar",
+          "requirement_type": "reference",
+          "description": "Firebrick liners shall be laid with high temperature cement mortar conforming to CAN/CGSB-10.3, Air Setting Refractory Mortar",
+          "exact_quote": "Firebrick liners shall be laid with high temperature cement mortar conforming to CAN/CGSB-10.3, \"Air Setting Refractory Mortar\"",
+          "standard_reference": "CAN/CGSB-10.3"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.5",
+      "title": "Concrete Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.5-1",
+          "element": "concrete_liner_standard",
+          "requirement_type": "reference",
+          "description": "Concrete flue liners shall conform to Clause 4.2.6.4 of CAN/CSA-A405-M, Design and Construction of Masonry Chimneys and Fireplaces",
+          "exact_quote": "Concrete flue liners shall conform to Clause 4.2.6.4 of CAN/CSA-A405-M, \"Design and Construction of Masonry Chimneys and Fireplaces\"",
+          "standard_reference": "CAN/CSA-A405-M"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.6",
+      "title": "Metal Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.6-1",
+          "element": "metal_liner_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 0.3,
+          "unit": "mm",
+          "material": "stainless steel",
+          "description": "Metal liners shall be constructed of not less than 0.3 mm thick stainless steel",
+          "exact_quote": "Metal liners shall be constructed of not less than 0.3 mm thick stainless steel"
+        },
+        {
+          "id": "9.21.3.6-2",
+          "element": "metal_liner_appliance_limitation",
+          "requirement_type": "prescriptive",
+          "description": "Metal liners shall only be used in chimneys serving gas- or oil-burning appliances",
+          "exact_quote": "Metal liners referred to in Sentence (1) shall only be used in chimneys serving gas- or oil-burning appliances"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.7",
+      "title": "Installation of Chimney Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.7-1",
+          "element": "liner_installation_timing",
+          "requirement_type": "prescriptive",
+          "description": "Chimney liners shall be installed when the surrounding masonry or concrete is placed",
+          "exact_quote": "Chimney liners shall be installed when the surrounding masonry or concrete is placed"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.8",
+      "title": "Spaces between Liners and Surrounding Masonry",
+      "requirements": [
+        {
+          "id": "9.21.3.8-1",
+          "element": "liner_masonry_gap",
+          "requirement_type": "dimensional",
+          "min_value": 10,
+          "unit": "mm",
+          "description": "A space not less than 10 mm wide shall be left between a chimney liner and surrounding masonry",
+          "exact_quote": "A space not less than 10 mm wide shall be left between a chimney liner and surrounding masonry"
+        },
+        {
+          "id": "9.21.3.8-2",
+          "element": "liner_gap_mortar_prohibition",
+          "requirement_type": "prohibition",
+          "description": "The space between liner and masonry shall not be filled with mortar",
+          "exact_quote": "The space required in Sentence (1) shall not be filled with mortar"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.9",
+      "title": "Mortar for Chimney Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.9-1",
+          "element": "solid_fuel_liner_mortar",
+          "requirement_type": "material",
+          "description": "Chimney liners for solid-fuel-burning appliances shall be laid in high temperature cement mortar (CAN/CGSB-10.3) or 1:3 Portland cement to sand mortar",
+          "exact_quote": "Chimney liners used in chimneys for solid-fuel-burning appliances shall be laid in a full bed of a) high temperature cement mortar conforming to CAN/CGSB-10.3, \"Air Setting Refractory Mortar,\" or b) mortar consisting of 1 part Portland cement to 3 parts sand by volume",
+          "standard_reference": "CAN/CGSB-10.3"
+        },
+        {
+          "id": "9.21.3.9-2",
+          "element": "gas_oil_liner_mortar",
+          "requirement_type": "material",
+          "description": "Chimney liners for oil- or gas-burning appliances shall be laid in 1:3 Portland cement to sand mortar",
+          "exact_quote": "Chimney liners used in chimneys for oil- or gas-burning appliances shall be laid in a full bed of mortar consisting of 1 part Portland cement to 3 parts sand by volume"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.3.10",
+      "title": "Extension of Chimney Liners",
+      "requirements": [
+        {
+          "id": "9.21.3.10-1",
+          "element": "liner_bottom_extension",
+          "requirement_type": "dimensional",
+          "min_value": 200,
+          "unit": "mm",
+          "description": "Chimney liners shall extend from a point not less than 200 mm below the lowest flue pipe connection",
+          "exact_quote": "Chimney liners shall extend from a point not less than 200 mm below the lowest flue pipe connection"
+        },
+        {
+          "id": "9.21.3.10-2",
+          "element": "liner_top_extension_min",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "mm",
+          "description": "Chimney liners shall extend not less than 50 mm above the chimney cap",
+          "exact_quote": "to a point not less than 50 mm... above the chimney cap"
+        },
+        {
+          "id": "9.21.3.10-3",
+          "element": "liner_top_extension_max",
+          "requirement_type": "dimensional",
+          "max_value": 100,
+          "unit": "mm",
+          "description": "Chimney liners shall extend not more than 100 mm above the chimney cap",
+          "exact_quote": "to a point... not more than 100 mm above the chimney cap"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.1",
+      "title": "Unit Masonry",
+      "requirements": [
+        {
+          "id": "9.21.4.1-1",
+          "element": "chimney_masonry_reference",
+          "requirement_type": "reference",
+          "description": "Unit masonry shall conform to Section 9.20",
+          "exact_quote": "Unit masonry shall conform to Section 9.20",
+          "cross_reference": "Section 9.20"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.2",
+      "title": "Concrete",
+      "requirements": [
+        {
+          "id": "9.21.4.2-1",
+          "element": "chimney_concrete_reference",
+          "requirement_type": "reference",
+          "description": "Concrete shall conform to Section 9.3",
+          "exact_quote": "Concrete shall conform to Section 9.3",
+          "cross_reference": "Section 9.3"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.3",
+      "title": "Footings",
+      "requirements": [
+        {
+          "id": "9.21.4.3-1",
+          "element": "chimney_footing_reference",
+          "requirement_type": "reference",
+          "description": "Footings for masonry chimneys and concrete chimneys shall conform to Section 9.15",
+          "exact_quote": "Footings for masonry chimneys and concrete chimneys shall conform to Section 9.15",
+          "cross_reference": "Section 9.15"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.4",
+      "title": "Height of Chimney Flues",
+      "requirements": [
+        {
+          "id": "9.21.4.4-1",
+          "element": "flue_height_above_roof_contact",
+          "requirement_type": "dimensional",
+          "min_value": 900,
+          "unit": "mm",
+          "description": "A chimney flue shall extend not less than 900 mm above the highest point at which the chimney comes in contact with the roof",
+          "exact_quote": "A chimney flue shall extend not less than a) 900 mm above the highest point at which the chimney comes in contact with the roof"
+        },
+        {
+          "id": "9.21.4.4-2",
+          "element": "flue_height_above_nearby_roof",
+          "requirement_type": "dimensional",
+          "min_value": 600,
+          "unit": "mm",
+          "description": "A chimney flue shall extend not less than 600 mm above the highest roof surface or structure within 3 m of the chimney",
+          "exact_quote": "600 mm above the highest roof surface or structure within 3 m of the chimney"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.5",
+      "title": "Lateral Stability",
+      "requirements": [
+        {
+          "id": "9.21.4.5-1",
+          "element": "chimney_lateral_bracing",
+          "requirement_type": "reference",
+          "description": "Chimneys shall be braced in accordance with Subsection 4.3.2. to provide lateral stability under wind loads",
+          "exact_quote": "Except as provided in Sentence (2), chimneys shall be braced in accordance with Subsection 4.3.2. to provide lateral stability under wind loads",
+          "cross_reference": "Subsection 4.3.2"
+        },
+        {
+          "id": "9.21.4.5-2",
+          "element": "chimney_bracing_exemption_dimension",
+          "requirement_type": "dimensional",
+          "min_value": 400,
+          "unit": "mm",
+          "description": "A chimney need not be laterally braced if no horizontal outside dimension is less than 400 mm",
+          "exact_quote": "A chimney need not be laterally braced provided a) no horizontal outside dimension is less than 400 mm"
+        },
+        {
+          "id": "9.21.4.5-3",
+          "element": "chimney_bracing_exemption_height",
+          "requirement_type": "dimensional",
+          "max_value": 3.6,
+          "unit": "m",
+          "description": "A chimney need not be laterally braced if it extends not more than 3.6 m above a roof or masonry wall",
+          "exact_quote": "the chimney extends not more than 3.6 m above a roof or the masonry wall of which it forms a part"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.6",
+      "title": "Chimney Caps",
+      "requirements": [
+        {
+          "id": "9.21.4.6-1",
+          "element": "chimney_cap_material",
+          "requirement_type": "material",
+          "allowed_values": ["reinforced concrete", "masonry", "metal"],
+          "description": "The top of a chimney shall have a waterproof cap of reinforced concrete, masonry or metal",
+          "exact_quote": "The top of a chimney shall have a waterproof cap of reinforced concrete, masonry or metal"
+        },
+        {
+          "id": "9.21.4.6-2",
+          "element": "chimney_cap_drip",
+          "requirement_type": "dimensional",
+          "min_value": 25,
+          "unit": "mm",
+          "description": "The chimney cap shall slope from the lining and be provided with a drip not less than 25 mm from the chimney wall",
+          "exact_quote": "The cap required in Sentence (1) shall slope from the lining and be provided with a drip not less than 25 mm from the chimney wall"
+        },
+        {
+          "id": "9.21.4.6-3",
+          "element": "concrete_cap_bond_break",
+          "requirement_type": "prescriptive",
+          "description": "Cast-in-place concrete caps shall be separated from the chimney liner by a bond break and be sealed at that location",
+          "exact_quote": "Cast-in-place concrete caps shall be separated from the chimney liner by a bond break and be sealed at that location"
+        },
+        {
+          "id": "9.21.4.6-4",
+          "element": "precast_cap_flashing",
+          "requirement_type": "prescriptive",
+          "description": "Jointed precast concrete or masonry chimney caps shall have flashing installed beneath the cap extending from the liner to the drip edge",
+          "exact_quote": "Jointed precast concrete or masonry chimney caps shall have flashing installed beneath the cap extending from the liner to the drip edge"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.7",
+      "title": "Cleanout",
+      "requirements": [
+        {
+          "id": "9.21.4.7-1",
+          "element": "cleanout_opening",
+          "requirement_type": "prescriptive",
+          "description": "A cleanout opening with a metal frame and a tight-fitting metal door shall be installed near the base of the chimney flue",
+          "exact_quote": "A cleanout opening with a metal frame and a tight-fitting metal door shall be installed near the base of the chimney flue"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.8",
+      "title": "Wall Thickness",
+      "requirements": [
+        {
+          "id": "9.21.4.8-1",
+          "element": "masonry_chimney_wall_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 75,
+          "unit": "mm",
+          "description": "The walls of a masonry chimney shall be built of solid masonry units not less than 75 mm thick",
+          "exact_quote": "The walls of a masonry chimney shall be built of solid masonry units not less than 75 mm thick"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.9",
+      "title": "Separation of Flue Liners",
+      "requirements": [
+        {
+          "id": "9.21.4.9-1",
+          "element": "clay_liner_separation",
+          "requirement_type": "dimensional",
+          "min_value": 75,
+          "unit": "mm",
+          "description": "Flue liners in the same chimney shall be separated by not less than 75 mm of masonry or concrete where clay liners are used",
+          "exact_quote": "Flue liners in the same chimney shall be separated by not less than 75 mm of masonry or concrete exclusive of liners where clay liners are used"
+        },
+        {
+          "id": "9.21.4.9-2",
+          "element": "firebrick_liner_separation",
+          "requirement_type": "dimensional",
+          "min_value": 90,
+          "unit": "mm",
+          "description": "Flue liners in the same chimney shall be separated by not less than 90 mm of firebrick where firebrick liners are used",
+          "exact_quote": "or 90 mm of firebrick where firebrick liners are used"
+        },
+        {
+          "id": "9.21.4.9-3",
+          "element": "liner_lateral_movement",
+          "requirement_type": "prescriptive",
+          "description": "Flue liners shall be installed to prevent significant lateral movement",
+          "exact_quote": "Flue liners referred to in Sentence (1) shall be installed to prevent significant lateral movement"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.4.10",
+      "title": "Flashing",
+      "requirements": [
+        {
+          "id": "9.21.4.10-1",
+          "element": "chimney_flashing",
+          "requirement_type": "prescriptive",
+          "description": "Junctions with adjacent materials shall be adequately flashed to shed water",
+          "exact_quote": "Junctions with adjacent materials shall be adequately flashed to shed water"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.5.1",
+      "title": "Clearance from Combustible Materials",
+      "requirements": [
+        {
+          "id": "9.21.5.1-1",
+          "element": "interior_chimney_clearance",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "mm",
+          "description": "The clearance between interior masonry or concrete chimneys and combustible framing shall be not less than 50 mm",
+          "exact_quote": "The clearance between masonry or concrete chimneys and combustible framing shall be not less than a) 50 mm for interior chimneys"
+        },
+        {
+          "id": "9.21.5.1-2",
+          "element": "exterior_chimney_clearance",
+          "requirement_type": "dimensional",
+          "min_value": 12,
+          "unit": "mm",
+          "description": "The clearance between exterior masonry or concrete chimneys and combustible framing shall be not less than 12 mm",
+          "exact_quote": "b) 12 mm for exterior chimneys"
+        },
+        {
+          "id": "9.21.5.1-3",
+          "element": "cleanout_combustible_clearance",
+          "requirement_type": "dimensional",
+          "min_value": 150,
+          "unit": "mm",
+          "description": "A clearance of not less than 150 mm shall be provided between a cleanout opening and combustible material",
+          "exact_quote": "A clearance of not less than 150 mm shall be provided between a cleanout opening and combustible material"
+        },
+        {
+          "id": "9.21.5.1-4",
+          "element": "flooring_chimney_clearance",
+          "requirement_type": "dimensional",
+          "min_value": 12,
+          "unit": "mm",
+          "description": "Combustible flooring and subflooring shall have not less than a 12 mm clearance from masonry or concrete chimneys",
+          "exact_quote": "Combustible flooring and subflooring shall have not less than a 12 mm clearance from masonry or concrete chimneys"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.5.2",
+      "title": "Sealing of Spaces",
+      "requirements": [
+        {
+          "id": "9.21.5.2-1",
+          "element": "chimney_framing_space_sealing",
+          "requirement_type": "prescriptive",
+          "description": "All spaces between masonry or concrete chimneys and combustible framing shall be sealed top or bottom with noncombustible material",
+          "exact_quote": "All spaces between masonry or concrete chimneys and combustible framing shall be sealed top or bottom with noncombustible material"
+        }
+      ]
+    },
+    {
+      "article_number": "9.21.5.3",
+      "title": "Support of Joists or Beams",
+      "requirements": [
+        {
+          "id": "9.21.5.3-1",
+          "element": "joist_beam_support_clearance",
+          "requirement_type": "dimensional",
+          "min_value": 290,
+          "unit": "mm",
+          "description": "Joists or beams may be supported on masonry walls enclosing chimney flues if combustible members are separated from the flue by not less than 290 mm of solid masonry",
+          "exact_quote": "Joists or beams may be supported on masonry walls which enclose chimney flues provided the combustible members are separated from the flue by not less than 290 mm of solid masonry"
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "9.21.2.5.-A",
+      "title": "Diameter of Round Flues for Fireplace Chimneys",
+      "description": "Provides minimum and maximum flue diameters based on fireplace opening size and chimney height",
+      "columns": ["Fireplace Opening (m2)", "Chimney Height 3.0-4.5m", "Chimney Height 4.5-5.9m", "Chimney Height 5.9-8.9m", "Chimney Height 8.9-12m"],
+      "notes": "Each column shows min/max diameter in mm"
+    },
+    {
+      "table_id": "9.21.2.5.-B",
+      "title": "Rectangular Flue Sizes for Fireplace Chimneys",
+      "description": "Provides minimum and maximum rectangular flue sizes based on fireplace opening size and chimney height",
+      "columns": ["Fireplace Opening (m2)", "Chimney Height 3.0-4.5m", "Chimney Height 4.5-5.9m", "Chimney Height 5.9-8.9m", "Chimney Height 8.9-12m"],
+      "notes": "Dimensions shown as width x depth in mm"
+    }
+  ]
+}

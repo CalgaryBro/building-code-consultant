@@ -1,0 +1,347 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.7",
+    "section_title": "Windows, Doors and Skylights",
+    "pages": "838-842",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 15,
+    "subsections": [
+      "9.7.1 - General",
+      "9.7.2 - Required Windows, Doors and Skylights",
+      "9.7.3 - Performance of Windows, Doors and Skylights",
+      "9.7.4 - Manufactured Windows, Doors and Skylights",
+      "9.7.5 - Site-built Windows, Doors and Skylights",
+      "9.7.6 - Installation"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.7.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.7.1.1-1",
+          "element": "windows_doors_skylights_scope",
+          "requirement_type": "definitional",
+          "description": "Section 9.7 applies to windows, doors and skylights in buildings. Skylight refers to unit skylights, roof windows and tubular daylighting devices. Doors includes glazing in doors and sidelights for doors.",
+          "exact_quote": "This Section applies to windows, doors and skylights in buildings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.2.1",
+      "title": "Entrance Doors",
+      "requirements": [
+        {
+          "id": "9.7.2.1-1",
+          "element": "entrance_door_required",
+          "requirement_type": "prescriptive",
+          "description": "A door shall be provided at each entrance to a dwelling unit",
+          "exact_quote": "A door shall be provided at each entrance to a dwelling unit"
+        },
+        {
+          "id": "9.7.2.1-2",
+          "element": "entrance_door_viewer",
+          "requirement_type": "prescriptive",
+          "description": "Main entrance doors to dwelling units shall be provided with a door viewer or transparent glazing in the door, or a sidelight",
+          "exact_quote": "Main entrance doors to dwelling units shall be provided with a door viewer or transparent glazing in the door, or a sidelight"
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.2.3",
+      "title": "Doors for Storage Garages",
+      "requirements": [
+        {
+          "id": "9.7.2.3-1",
+          "element": "garage_egress_door_height",
+          "requirement_type": "dimensional",
+          "min_value": 1980,
+          "unit": "mm",
+          "description": "Storage garage egress door minimum height",
+          "exact_quote": "at least one egress door not less than 1980mm high"
+        },
+        {
+          "id": "9.7.2.3-2",
+          "element": "garage_egress_door_width",
+          "requirement_type": "dimensional",
+          "min_value": 760,
+          "unit": "mm",
+          "description": "Storage garage egress door minimum width, swinging on vertical axis",
+          "exact_quote": "at least one egress door not less than 760mm wide, swinging on a vertical axis, shall be installed to serve a storage garage"
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.3.1",
+      "title": "General Performance Expectations",
+      "requirements": [
+        {
+          "id": "9.7.3.1-1",
+          "element": "window_door_performance",
+          "requirement_type": "performance",
+          "description": "Windows, doors and skylights separating conditioned space from unconditioned space or exterior shall resist precipitation ingress, wind loads, control air leakage, resist insects/vermin, resist forced entry where required, and be easily operable",
+          "exact_quote": "windows, doors and skylights and their components separating conditioned space from unconditioned space or the exterior shall be designed, constructed and installed so that, when in the closed position, they resist the ingress of precipitation, resist wind loads, control air leakage, resist the ingress of insects and vermin"
+        },
+        {
+          "id": "9.7.3.1-2",
+          "element": "storm_door_air_leakage_min",
+          "requirement_type": "dimensional",
+          "min_value": 5,
+          "unit": "m3/h/m",
+          "description": "Storm doors for sliding doors minimum allowable air leakage rate",
+          "exact_quote": "control air leakage to a minimum allowable 5 m³h/m"
+        },
+        {
+          "id": "9.7.3.1-3",
+          "element": "storm_door_air_leakage_max",
+          "requirement_type": "dimensional",
+          "max_value": 8.35,
+          "unit": "m3/h/m",
+          "description": "Storm doors for sliding doors maximum allowable air leakage rate",
+          "exact_quote": "maximum allowable 8.35 m³h/m"
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.3.3",
+      "title": "Thermal Characteristics of Windows, Doors and Skylights",
+      "requirements": [
+        {
+          "id": "9.7.3.3-1",
+          "element": "thermal_break_required",
+          "requirement_type": "prescriptive",
+          "description": "Metal frames and sash of windows, doors and skylights shall incorporate a thermal break",
+          "exact_quote": "Metal frames and sash of windows, doors and skylights shall incorporate a thermal break"
+        },
+        {
+          "id": "9.7.3.3-2",
+          "element": "window_door_u_value_warm",
+          "requirement_type": "dimensional",
+          "max_value": 2.5,
+          "unit": "W/(m2*K)",
+          "description": "Maximum U-value for windows and doors where January design temperature is warmer than -15C",
+          "exact_quote": "Windows and doors: max. U-value 2.5 W/(m²×K) [warmer than -15°C]",
+          "conditions": ["January design temp > -15C"]
+        },
+        {
+          "id": "9.7.3.3-3",
+          "element": "window_door_u_value_moderate",
+          "requirement_type": "dimensional",
+          "max_value": 2.0,
+          "unit": "W/(m2*K)",
+          "description": "Maximum U-value for windows and doors where January design temperature is between -15C and -30C",
+          "exact_quote": "Windows and doors: max. U-value 2.0 W/(m²×K) [between -15°C and -30°C]",
+          "conditions": ["January design temp -15C to -30C"]
+        },
+        {
+          "id": "9.7.3.3-4",
+          "element": "window_door_u_value_cold",
+          "requirement_type": "dimensional",
+          "max_value": 1.7,
+          "unit": "W/(m2*K)",
+          "description": "Maximum U-value for windows and doors where January design temperature is colder than -30C (Calgary)",
+          "exact_quote": "Windows and doors: max. U-value 1.7 W/(m²×K) [colder than -30°C]",
+          "conditions": ["January design temp < -30C"]
+        },
+        {
+          "id": "9.7.3.3-5",
+          "element": "skylight_u_value_warm",
+          "requirement_type": "dimensional",
+          "max_value": 3.5,
+          "unit": "W/(m2*K)",
+          "description": "Maximum U-value for skylights where January design temperature is warmer than -15C",
+          "exact_quote": "Skylights: max. U-value 3.5 W/(m²×K) [warmer than -15°C]"
+        },
+        {
+          "id": "9.7.3.3-6",
+          "element": "skylight_u_value_moderate",
+          "requirement_type": "dimensional",
+          "max_value": 3.0,
+          "unit": "W/(m2*K)",
+          "description": "Maximum U-value for skylights where January design temperature is between -15C and -30C",
+          "exact_quote": "Skylights: max. U-value 3.0 W/(m²×K) [between -15°C and -30°C]"
+        },
+        {
+          "id": "9.7.3.3-7",
+          "element": "skylight_u_value_cold",
+          "requirement_type": "dimensional",
+          "max_value": 2.7,
+          "unit": "W/(m2*K)",
+          "description": "Maximum U-value for skylights where January design temperature is colder than -30C (Calgary)",
+          "exact_quote": "Skylights: max. U-value 2.7 W/(m²×K) [colder than -30°C]"
+        },
+        {
+          "id": "9.7.3.3-8",
+          "element": "window_door_temp_index_cold",
+          "requirement_type": "dimensional",
+          "min_value": 77,
+          "unit": "I",
+          "description": "Minimum temperature index for windows and doors where January design temperature is colder than -30C",
+          "exact_quote": "min. I 77 [colder than -30°C]"
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.4.2",
+      "title": "General (Manufactured)",
+      "requirements": [
+        {
+          "id": "9.7.4.2-1",
+          "element": "manufactured_window_standard",
+          "requirement_type": "reference",
+          "description": "Manufactured and pre-assembled windows, doors and skylights shall conform to AAMA/WDMA/CSA 101/I.S.2/A440 (North American Fenestration Standard) and CSA A440S1 (Canadian Supplement)",
+          "exact_quote": "Manufactured and pre-assembled windows, doors and skylights and their installation shall conform to AAMA/WDMA/CSA 101/I.S.2/A440",
+          "referenced_standards": ["AAMA/WDMA/CSA 101/I.S.2/A440", "CSA A440S1"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.4.3",
+      "title": "Performance Requirements (Manufactured)",
+      "requirements": [
+        {
+          "id": "9.7.4.3-1",
+          "element": "minimum_performance_class",
+          "requirement_type": "prescriptive",
+          "description": "The minimum level of performance required for windows, doors and skylights shall be Performance Class R",
+          "exact_quote": "The minimum level of performance required for windows, doors and skylights shall be that of the Performance Class R"
+        },
+        {
+          "id": "9.7.4.3-2",
+          "element": "exterior_wood_door_standard",
+          "requirement_type": "reference",
+          "description": "Exterior wood doors shall conform to CAN/CSA-O132.2 Series (Wood Flush Doors)",
+          "exact_quote": "Exterior wood doors shall conform to CAN/CSA-O132.2 Series, Wood Flush Doors",
+          "referenced_standards": ["CAN/CSA-O132.2"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.5.2",
+      "title": "Resistance to Forced Entry for Doors",
+      "requirements": [
+        {
+          "id": "9.7.5.2-1",
+          "element": "forced_entry_door_scope",
+          "requirement_type": "definitional",
+          "description": "Forced entry requirements apply to swinging entrance doors to dwelling units, doors between dwelling units and attached garages, and doors providing access from storage garage to dwelling unit",
+          "exact_quote": "This Article applies to swinging entrance doors to dwelling units, swinging doors between dwelling units and attached garages or other ancillary spaces, and swinging doors that provide access directly or indirectly from a storage garage to a dwelling unit"
+        },
+        {
+          "id": "9.7.5.2-2",
+          "element": "wood_door_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 45,
+          "unit": "mm",
+          "description": "Wood doors for forced entry resistance shall be solid core or stile-and-rail type, not less than 45mm thick",
+          "exact_quote": "wood doors shall be solid core or stile-and-rail type, be not less than 45mm thick"
+        },
+        {
+          "id": "9.7.5.2-3",
+          "element": "wood_door_panel_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 19,
+          "unit": "mm",
+          "description": "Stile-and-rail type wood doors shall have panel thickness not less than 19mm",
+          "exact_quote": "if of the stile-and-rail type, have a panel thickness of not less than 19mm"
+        },
+        {
+          "id": "9.7.5.2-4",
+          "element": "deadbolt_pins",
+          "requirement_type": "dimensional",
+          "min_value": 5,
+          "unit": "pins",
+          "description": "Deadbolt lock cylinder shall have no fewer than 5 pins",
+          "exact_quote": "a deadbolt lock with a cylinder having no fewer than 5 pins"
+        },
+        {
+          "id": "9.7.5.2-5",
+          "element": "bolt_throw_length",
+          "requirement_type": "dimensional",
+          "min_value": 25,
+          "unit": "mm",
+          "description": "Deadbolt throw shall be not less than 25mm long",
+          "exact_quote": "a bolt throw not less than 25mm long"
+        },
+        {
+          "id": "9.7.5.2-6",
+          "element": "double_door_bolt_engagement",
+          "requirement_type": "dimensional",
+          "min_value": 15,
+          "unit": "mm",
+          "description": "Inactive leaf in double doors shall have heavy-duty bolt stop with engagement not less than 15mm",
+          "exact_quote": "heavy-duty bolts top and bottom having an engagement of not less than 15mm"
+        },
+        {
+          "id": "9.7.5.2-7",
+          "element": "hinge_screw_length_wood",
+          "requirement_type": "dimensional",
+          "min_value": 25,
+          "unit": "mm",
+          "description": "Hinges for wood doors shall be fastened with wood screws not less than 25mm long",
+          "exact_quote": "hinges for doors shall be fastened to wood doors with wood screws not less than 25mm long"
+        },
+        {
+          "id": "9.7.5.2-8",
+          "element": "hinge_penetration_frame",
+          "requirement_type": "dimensional",
+          "min_value": 30,
+          "unit": "mm",
+          "description": "At least 2 screws per hinge shall penetrate not less than 30mm into solid wood frame",
+          "exact_quote": "at least 2 screws per hinge penetrate not less than 30mm into solid wood"
+        },
+        {
+          "id": "9.7.5.2-9",
+          "element": "strike_plate_penetration",
+          "requirement_type": "dimensional",
+          "min_value": 30,
+          "unit": "mm",
+          "description": "Strike plates for deadbolts shall be fastened to wood frames with screws penetrating not less than 30mm into solid wood",
+          "exact_quote": "Strike plates for deadbolts shall be fastened to wood frames with wood screws that penetrate not less than 30mm into solid wood"
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.5.3",
+      "title": "Resistance to Forced Entry for Windows",
+      "requirements": [
+        {
+          "id": "9.7.5.3-1",
+          "element": "window_forced_entry_height",
+          "requirement_type": "dimensional",
+          "max_value": 2,
+          "unit": "m",
+          "description": "Windows within 2m of adjacent ground level shall conform to forced entry resistance requirements",
+          "exact_quote": "In dwelling units, windows, any part of which is located within 2m of adjacent ground level, shall conform to the requirements for resistance to forced entry"
+        }
+      ]
+    },
+    {
+      "article_number": "9.7.6.1",
+      "title": "Installation of Windows, Doors and Skylights",
+      "requirements": [
+        {
+          "id": "9.7.6.1-1",
+          "element": "installation_standard",
+          "requirement_type": "reference",
+          "description": "Installation of windows, doors and skylights shall conform to CSA A440.4 (Window, door, and skylight installation)",
+          "exact_quote": "The installation of windows, doors and skylights shall conform to CSA A440.4, Window, door, and skylight installation",
+          "referenced_standards": ["CSA A440.4"]
+        },
+        {
+          "id": "9.7.6.1-2",
+          "element": "air_barrier_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Windows, doors and skylights shall be sealed to air barriers",
+          "exact_quote": "Windows, doors and skylights shall be sealed to air barriers"
+        }
+      ]
+    }
+  ]
+}

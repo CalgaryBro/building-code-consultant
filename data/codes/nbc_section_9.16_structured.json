@@ -1,0 +1,276 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.16",
+    "section_title": "Floors-on-Ground",
+    "pages": "925-927",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 11,
+    "subsections": [
+      "9.16.1 - Scope",
+      "9.16.2 - Material beneath Floors",
+      "9.16.3 - Drainage",
+      "9.16.4 - Concrete",
+      "9.16.5 - Wood"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.16.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.16.1.1-1",
+          "element": "application_scope",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to floors supported on ground or on granular fill that do not provide structural support for the superstructure",
+          "exact_quote": "This Section applies to floors supported on ground or on granular fill that do not provide structural support for the superstructure"
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.1.2",
+      "title": "Structural Floors",
+      "requirements": [
+        {
+          "id": "9.16.1.2-1",
+          "element": "structural_floor_design",
+          "requirement_type": "reference",
+          "description": "Floors-on-ground that support loads from the superstructure shall be designed in conformance with Part 4",
+          "exact_quote": "Floors-on-ground that support loads from the superstructure shall be designed in conformance with Part 4",
+          "cross_reference": "Part 4",
+          "conditions": ["supports superstructure loads"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.1.3",
+      "title": "Required Floors-on-Ground",
+      "requirements": [
+        {
+          "id": "9.16.1.3-1",
+          "element": "required_floor_on_ground",
+          "requirement_type": "prescriptive",
+          "description": "All spaces within dwelling units, except crawl spaces, shall be provided with a floor-on-ground where access is provided and no structural floor is provided",
+          "exact_quote": "All spaces within dwelling units, except crawl spaces, shall be provided with a floor-on-ground, where a) access is provided to the space, and b) a floor supported by the structure is not provided",
+          "conditions": ["dwelling units", "access provided", "no structural floor"],
+          "exceptions": ["crawl spaces"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.1.4",
+      "title": "Dampproofing and Waterproofing",
+      "requirements": [
+        {
+          "id": "9.16.1.4-1",
+          "element": "dampproofing_waterproofing",
+          "requirement_type": "reference",
+          "description": "Dampproofing and waterproofing shall conform to Section 9.13",
+          "exact_quote": "Dampproofing and waterproofing shall conform to Section 9.13",
+          "cross_reference": "Section 9.13"
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.2.1",
+      "title": "Required Installation of Granular Material",
+      "requirements": [
+        {
+          "id": "9.16.2.1-1",
+          "element": "granular_layer_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum thickness of coarse clean granular material beneath floors-on-ground",
+          "exact_quote": "not less than 100 mm of coarse clean granular material containing not more than 10% of material that will pass a 4 mm sieve shall be placed beneath floors-on-ground"
+        },
+        {
+          "id": "9.16.2.1-2",
+          "element": "granular_material_fines_content",
+          "requirement_type": "dimensional",
+          "max_value": 10,
+          "unit": "%",
+          "description": "Maximum percentage of material that will pass a 4 mm sieve in granular fill",
+          "exact_quote": "coarse clean granular material containing not more than 10% of material that will pass a 4 mm sieve"
+        },
+        {
+          "id": "9.16.2.1-3",
+          "element": "granular_material_exemptions",
+          "requirement_type": "prescriptive",
+          "description": "Granular material need not be installed under slabs in garages, carports, accessory buildings, or certain industrial buildings",
+          "exact_quote": "Granular material need not be installed under a) slabs in garages, carports or accessory buildings, or b) buildings of industrial occupancy where the nature of the process contained therein permits or requires the use of large openings in the building envelope even during the winter",
+          "exceptions": ["garages", "carports", "accessory buildings", "industrial with large envelope openings"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.2.2",
+      "title": "Support of Floors",
+      "requirements": [
+        {
+          "id": "9.16.2.2-1",
+          "element": "moisture_susceptible_fill_prohibition",
+          "requirement_type": "prescriptive",
+          "description": "Material susceptible to volume changes from moisture or chemical-microbiological oxidation shall not be used as fill in damaging concentrations",
+          "exact_quote": "Material that is susceptible to changes in volume due to variations in moisture content or chemical-microbiological oxidation shall not be used as fill beneath floors-on-ground in a concentration that will damage the building to a degree that would adversely affect its stability or the performance of assemblies",
+          "cross_reference": "Article 9.4.4.4"
+        },
+        {
+          "id": "9.16.2.2-2",
+          "element": "freeze_susceptible_fill_prohibition",
+          "requirement_type": "prescriptive",
+          "description": "Material susceptible to volume changes from freezing shall not be used as fill beneath floors subject to freezing",
+          "exact_quote": "Material that is susceptible to changes in volume due to freezing shall not be used as fill beneath floors-on-ground that will be subjected to freezing temperatures",
+          "cross_reference": "Article 9.4.4.4"
+        },
+        {
+          "id": "9.16.2.2-3",
+          "element": "fill_compaction_required",
+          "requirement_type": "prescriptive",
+          "description": "Fill beneath floors-on-ground shall be compacted except for clean coarse aggregate",
+          "exact_quote": "Except as provided in Sentence (4), fill beneath floors-on-ground shall be compacted"
+        },
+        {
+          "id": "9.16.2.2-4",
+          "element": "fill_compaction_exemption",
+          "requirement_type": "prescriptive",
+          "description": "Fill need not be compacted where material is clean coarse aggregate with not more than 10% passing 4 mm sieve",
+          "exact_quote": "Fill beneath floors-on-ground need not be compacted where the material is clean coarse aggregate containing not more than 10% of material that will pass a 4 mm sieve",
+          "conditions": ["clean coarse aggregate", "max 10% passing 4 mm sieve"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.3.1",
+      "title": "Control of Water Ingress",
+      "requirements": [
+        {
+          "id": "9.16.3.1-1",
+          "element": "water_ingress_prevention",
+          "requirement_type": "prescriptive",
+          "description": "Water ingress underneath a floor-on-ground shall be prevented by grading or drainage",
+          "exact_quote": "Except as provided in Article 9.16.3.2. or where it can be shown to be unnecessary, ingress of water underneath a floor-on-ground shall be prevented by grading or drainage",
+          "cross_reference": "Article 9.16.3.2"
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.3.2",
+      "title": "Hydrostatic Pressure",
+      "requirements": [
+        {
+          "id": "9.16.3.2-1",
+          "element": "hydrostatic_pressure_design",
+          "requirement_type": "prescriptive",
+          "description": "Where groundwater may cause hydrostatic pressure beneath floor, it shall be poured concrete designed to resist such pressures",
+          "exact_quote": "Where groundwater levels may cause hydrostatic pressure beneath a floor-on-ground, the floor-on-ground shall be a) a poured concrete slab, and b) designed to resist such pressures",
+          "conditions": ["groundwater causes hydrostatic pressure"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.3.3",
+      "title": "Floor Drains",
+      "requirements": [
+        {
+          "id": "9.16.3.3-1",
+          "element": "floor_drain_slope",
+          "requirement_type": "prescriptive",
+          "description": "When floor drains are required, floor surface shall be sloped so no water can accumulate",
+          "exact_quote": "When floor drains are required (see Section 9.31.), the floor surface shall be sloped so that no water can accumulate",
+          "cross_reference": "Section 9.31",
+          "conditions": ["floor drains required"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.4.1",
+      "title": "Surface Finish",
+      "requirements": [
+        {
+          "id": "9.16.4.1-1",
+          "element": "concrete_floor_finish",
+          "requirement_type": "prescriptive",
+          "description": "The finished surface of concrete floor slabs shall be trowelled smooth and even",
+          "exact_quote": "The finished surface of concrete floor slabs shall be trowelled smooth and even"
+        },
+        {
+          "id": "9.16.4.1-2",
+          "element": "dry_cement_prohibition",
+          "requirement_type": "prescriptive",
+          "description": "Dry cement shall not be added to floor surfaces to absorb surplus water",
+          "exact_quote": "Dry cement shall not be added to the floor surfaces to absorb surplus water"
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.4.2",
+      "title": "Topping Course",
+      "requirements": [
+        {
+          "id": "9.16.4.2-1",
+          "element": "topping_course_mix",
+          "requirement_type": "prescriptive",
+          "description": "Topping course shall consist of 1 part cement to 2.5 parts clean well-graded sand by volume, with water/cement ratio approximately equal to base slab",
+          "exact_quote": "When a topping course is provided for a concrete floor slab, it shall consist of 1 part cement to 2.5 parts clean, well graded sand by volume, with a water/cement ratio approximately equal to that of the base slab"
+        },
+        {
+          "id": "9.16.4.2-2",
+          "element": "topping_course_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 20,
+          "unit": "mm",
+          "description": "Minimum concrete topping thickness",
+          "exact_quote": "When concrete topping is provided, it shall not be less than 20 mm thick"
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.4.3",
+      "title": "Thickness",
+      "requirements": [
+        {
+          "id": "9.16.4.3-1",
+          "element": "concrete_slab_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 75,
+          "unit": "mm",
+          "description": "Minimum concrete slab thickness exclusive of topping",
+          "exact_quote": "Concrete slabs shall not be less than 75 mm thick exclusive of concrete topping"
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.4.4",
+      "title": "Bond Break",
+      "requirements": [
+        {
+          "id": "9.16.4.4-1",
+          "element": "bond_break_required",
+          "requirement_type": "prescriptive",
+          "description": "A bond-breaking material shall be placed between the slab and footings or rock",
+          "exact_quote": "A bond-breaking material shall be placed between the slab and footings or rock"
+        }
+      ]
+    },
+    {
+      "article_number": "9.16.5.1",
+      "title": "Wood-Frame Floors",
+      "requirements": [
+        {
+          "id": "9.16.5.1-1",
+          "element": "wood_floor_standard",
+          "requirement_type": "reference",
+          "description": "Wood floors-on-ground shall conform to CSA S406",
+          "exact_quote": "Floors-on-ground constructed of wood shall conform to CSA S406, \"Specification of permanent wood foundations for housing and small buildings.\"",
+          "standard_reference": "CSA S406"
+        }
+      ]
+    }
+  ]
+}

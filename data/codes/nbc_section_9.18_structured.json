@@ -1,0 +1,382 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.18",
+    "section_title": "Crawl Spaces",
+    "pages": "929-931",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 9,
+    "subsections": [
+      "9.18.1 - General",
+      "9.18.2 - Access",
+      "9.18.3 - Ventilation",
+      "9.18.4 - Clearance",
+      "9.18.5 - Drainage",
+      "9.18.6 - Ground Cover",
+      "9.18.7 - Fire Protection"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.18.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.18.1.1-1",
+          "element": "crawl_space_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to crawl spaces whose exterior walls have less than 25% of their total area above exterior ground level open to the outdoors",
+          "exact_quote": "This Section applies to crawl spaces whose exterior walls have less than 25% of their total area above exterior ground level open to the outdoors"
+        },
+        {
+          "id": "9.18.1.1-2",
+          "element": "crawl_space_max_open_area",
+          "requirement_type": "dimensional",
+          "max_value": 25,
+          "unit": "%",
+          "description": "Maximum percentage of exterior wall area above ground level open to outdoors for crawl space classification",
+          "exact_quote": "crawl spaces whose exterior walls have less than 25% of their total area above exterior ground level open to the outdoors"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.1.2",
+      "title": "Foundations",
+      "requirements": [
+        {
+          "id": "9.18.1.2-1",
+          "element": "crawl_space_foundation",
+          "requirement_type": "reference",
+          "description": "Foundations enclosing crawl spaces shall conform to Section 9.15",
+          "exact_quote": "Foundations enclosing crawl spaces shall conform to Section 9.15",
+          "cross_reference": "Section 9.15"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.1.3",
+      "title": "Heated and Unheated Crawl Spaces",
+      "requirements": [
+        {
+          "id": "9.18.1.3-1",
+          "element": "heated_crawl_space_definition",
+          "requirement_type": "prescriptive",
+          "description": "Crawl space is considered heated if used as hot air plenum, contains unsealed/uninsulated heating ducts, or is not separated from heated space per Section 9.25",
+          "exact_quote": "Crawl spaces shall be considered to be heated where the space a) is used as a hot air plenum, b) contains heating ducts that are not sealed and insulated to minimize heat loss to the space, or c) is not separated from heated space in accordance with Section 9.25"
+        },
+        {
+          "id": "9.18.1.3-2",
+          "element": "heated_crawl_space_heating_reference",
+          "requirement_type": "reference",
+          "description": "Heating of heated crawl spaces shall conform to Section 9.33",
+          "exact_quote": "Heating of heated crawl spaces shall conform to Section 9.33",
+          "cross_reference": "Section 9.33"
+        },
+        {
+          "id": "9.18.1.3-3",
+          "element": "heated_crawl_space_insulation",
+          "requirement_type": "reference",
+          "description": "Insulation, air barrier system and vapour barrier shall be installed in walls of heated crawl spaces per Section 9.25",
+          "exact_quote": "Insulation, an air barrier system and a vapour barrier shall be installed in the walls of heated crawl spaces in accordance with Section 9.25",
+          "cross_reference": "Section 9.25"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.2.1",
+      "title": "Access Openings",
+      "requirements": [
+        {
+          "id": "9.18.2.1-1",
+          "element": "access_opening_single_dwelling",
+          "requirement_type": "dimensional",
+          "min_value": 500,
+          "unit": "mm",
+          "description": "Minimum access opening size for crawl space serving single dwelling unit (500 mm by 700 mm)",
+          "exact_quote": "An access opening of not less than 500 mm by 700 mm shall be provided to each crawl space where the crawl space serves a single dwelling unit"
+        },
+        {
+          "id": "9.18.2.1-2",
+          "element": "access_opening_other",
+          "requirement_type": "dimensional",
+          "min_value": 550,
+          "unit": "mm",
+          "description": "Minimum access opening size for other crawl spaces (550 mm by 900 mm)",
+          "exact_quote": "not less than 550 mm by 900 mm for other crawl spaces"
+        },
+        {
+          "id": "9.18.2.1-3",
+          "element": "access_opening_closure",
+          "requirement_type": "prescriptive",
+          "description": "Access openings shall be fitted with door or hatch, except when crawl space is heated and access is from adjacent heated space",
+          "exact_quote": "Access openings shall be fitted with a door or hatch, except when the crawl space is heated and the access opening into the crawl space is from an adjacent heated space"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.3.1",
+      "title": "Ventilation of Unheated Crawl Spaces",
+      "requirements": [
+        {
+          "id": "9.18.3.1-1",
+          "element": "unheated_crawl_space_ventilation",
+          "requirement_type": "prescriptive",
+          "description": "Unheated crawl spaces shall be ventilated by natural or mechanical means",
+          "exact_quote": "Unheated crawl spaces shall be ventilated by natural or mechanical means"
+        },
+        {
+          "id": "9.18.3.1-2",
+          "element": "natural_vent_area_ratio",
+          "requirement_type": "dimensional",
+          "min_value": 0.1,
+          "unit": "m2",
+          "description": "Minimum unobstructed vent area for natural ventilation: 0.1 m2 per 50 m2 of floor area (1/500 ratio)",
+          "exact_quote": "ventilation shall be provided to the outside air by not less than 0.1 m2 of unobstructed vent area for every 50 m2 of floor area"
+        },
+        {
+          "id": "9.18.3.1-3",
+          "element": "vent_distribution",
+          "requirement_type": "prescriptive",
+          "description": "Vents shall be uniformly distributed on opposite sides of building and designed to prevent entry of snow, rain and insects",
+          "exact_quote": "Vents shall be a) uniformly distributed on opposite sides of the building, and b) designed to prevent the entry of snow, rain and insects"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.3.2",
+      "title": "Ventilation of Heated Crawl Spaces",
+      "requirements": [
+        {
+          "id": "9.18.3.2-1",
+          "element": "heated_crawl_space_ventilation",
+          "requirement_type": "reference",
+          "description": "Heated crawl spaces shall be ventilated in accordance with Section 9.32",
+          "exact_quote": "Heated crawl spaces shall be ventilated in accordance with Section 9.32",
+          "cross_reference": "Section 9.32"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.4.1",
+      "title": "Access Way to Services",
+      "requirements": [
+        {
+          "id": "9.18.4.1-1",
+          "element": "service_access_way_height",
+          "requirement_type": "dimensional",
+          "min_value": 600,
+          "unit": "mm",
+          "description": "Minimum height of access way to equipment requiring service in crawl space",
+          "exact_quote": "an access way with a height and width of not less than 600 mm shall be provided from the access door to the equipment"
+        },
+        {
+          "id": "9.18.4.1-2",
+          "element": "service_access_way_width",
+          "requirement_type": "dimensional",
+          "min_value": 600,
+          "unit": "mm",
+          "description": "Minimum width of access way to equipment requiring service in crawl space",
+          "exact_quote": "an access way with a height and width of not less than 600 mm"
+        },
+        {
+          "id": "9.18.4.1-3",
+          "element": "service_clearance",
+          "requirement_type": "dimensional",
+          "min_value": 900,
+          "unit": "mm",
+          "description": "Minimum clearance on service side(s) of equipment in crawl space",
+          "exact_quote": "for a distance of 900 mm on the side or sides of the equipment to be serviced"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.5.1",
+      "title": "Drainage",
+      "requirements": [
+        {
+          "id": "9.18.5.1-1",
+          "element": "crawl_space_drainage",
+          "requirement_type": "prescriptive",
+          "description": "Water ingress into crawl space shall be controlled by grading or drainage except where shown unnecessary",
+          "exact_quote": "Except where it can be shown to be unnecessary, the ingress of water into a crawl space shall be controlled by grading or drainage"
+        },
+        {
+          "id": "9.18.5.1-2",
+          "element": "foundation_wall_drainage_reference",
+          "requirement_type": "reference",
+          "description": "Drainage of foundation walls shall conform to Article 9.14.2.1",
+          "exact_quote": "Drainage of foundation walls shall conform to Article 9.14.2.1",
+          "cross_reference": "Article 9.14.2.1"
+        },
+        {
+          "id": "9.18.5.1-3",
+          "element": "ground_cover_drainage_reference",
+          "requirement_type": "reference",
+          "description": "Drainage of ground cover or floor-on-ground in crawl space shall conform to Subsection 9.16.3",
+          "exact_quote": "Drainage of the ground cover or floor-on-ground in the crawl space shall conform to Subsection 9.16.3",
+          "cross_reference": "Subsection 9.16.3"
+        },
+        {
+          "id": "9.18.5.1-4",
+          "element": "drains_reference",
+          "requirement_type": "reference",
+          "description": "Drains shall conform to Section 9.14",
+          "exact_quote": "Drains shall conform to Section 9.14",
+          "cross_reference": "Section 9.14"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.6.1",
+      "title": "Ground Cover in Unheated Crawl Spaces",
+      "requirements": [
+        {
+          "id": "9.18.6.1-1",
+          "element": "unheated_ground_cover_asphalt",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "mm",
+          "description": "Minimum asphalt thickness for unheated crawl space ground cover",
+          "exact_quote": "a ground cover shall be provided consisting of not less than a) 50 mm of asphalt"
+        },
+        {
+          "id": "9.18.6.1-2",
+          "element": "unheated_ground_cover_concrete",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum 15 MPa Portland cement concrete thickness for unheated crawl space ground cover",
+          "exact_quote": "100 mm of 15 MPa Portland cement concrete"
+        },
+        {
+          "id": "9.18.6.1-3",
+          "element": "unheated_ground_cover_roofing",
+          "requirement_type": "material",
+          "description": "Type S roll roofing is acceptable for unheated crawl space ground cover",
+          "exact_quote": "Type S roll roofing"
+        },
+        {
+          "id": "9.18.6.1-4",
+          "element": "unheated_ground_cover_polyethylene",
+          "requirement_type": "dimensional",
+          "min_value": 0.10,
+          "unit": "mm",
+          "description": "Minimum polyethylene thickness for unheated crawl space ground cover",
+          "exact_quote": "0.10 mm polyethylene"
+        },
+        {
+          "id": "9.18.6.1-5",
+          "element": "unheated_ground_cover_lap",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum lap for sheet-type ground cover joints in unheated crawl spaces",
+          "exact_quote": "Joints in sheet-type ground cover required in Sentence (1) shall be lapped not less than 100 mm and weighted down"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.6.2",
+      "title": "Ground Cover in Heated Crawl Spaces",
+      "requirements": [
+        {
+          "id": "9.18.6.2-1",
+          "element": "heated_ground_cover_polyethylene",
+          "requirement_type": "dimensional",
+          "min_value": 0.15,
+          "unit": "mm",
+          "description": "Minimum polyethylene sheet thickness for heated crawl space ground cover",
+          "exact_quote": "a ground cover consisting of not less than 0.15 mm polyethylene sheet conforming to CAN/CGSB-51.34-M",
+          "standard_reference": "CAN/CGSB-51.34-M"
+        },
+        {
+          "id": "9.18.6.2-2",
+          "element": "heated_ground_cover_lap",
+          "requirement_type": "dimensional",
+          "min_value": 300,
+          "unit": "mm",
+          "description": "Minimum lap for ground cover joints in heated crawl spaces",
+          "exact_quote": "The ground cover required in Sentence (1) shall have its joints lapped not less than 300 mm"
+        },
+        {
+          "id": "9.18.6.2-3",
+          "element": "heated_ground_cover_treatment",
+          "requirement_type": "prescriptive",
+          "description": "Heated crawl space ground cover joints shall be sealed and weighted down or covered with min 50 mm concrete",
+          "exact_quote": "a) be sealed and evenly weighted down, or b) be covered with concrete not less than 50 mm thick"
+        },
+        {
+          "id": "9.18.6.2-4",
+          "element": "heated_ground_cover_concrete_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "mm",
+          "description": "Minimum concrete thickness over heated crawl space ground cover",
+          "exact_quote": "be covered with concrete not less than 50 mm thick"
+        },
+        {
+          "id": "9.18.6.2-5",
+          "element": "heated_ground_cover_perimeter_seal",
+          "requirement_type": "prescriptive",
+          "description": "Perimeter of heated crawl space ground cover shall be sealed to foundation wall",
+          "exact_quote": "The perimeter of the ground cover required in Sentence (1) shall be sealed to the foundation wall"
+        },
+        {
+          "id": "9.18.6.2-6",
+          "element": "heated_ground_cover_penetration_seal",
+          "requirement_type": "prescriptive",
+          "description": "All penetrations of heated crawl space ground cover shall be sealed against air leakage",
+          "exact_quote": "All penetrations of the ground cover required in Sentence (1) shall be sealed against air leakage",
+          "cross_reference": "Subsection 9.25.3"
+        }
+      ]
+    },
+    {
+      "article_number": "9.18.7.1",
+      "title": "Crawl Spaces as Warm Air Plenums",
+      "requirements": [
+        {
+          "id": "9.18.7.1-1",
+          "element": "plenum_crawl_space_limitation",
+          "requirement_type": "prescriptive",
+          "description": "Only crawl spaces under 1-storey portions of dwelling units shall be used as warm-air plenums",
+          "exact_quote": "Only crawl spaces under 1-storey portions of dwelling units shall be used as warm-air plenums"
+        },
+        {
+          "id": "9.18.7.1-2",
+          "element": "plenum_enclosing_material",
+          "requirement_type": "material",
+          "description": "Enclosing material in crawl spaces used as plenums shall be noncombustible",
+          "exact_quote": "Enclosing material in crawl spaces described in Sentence (1) shall be noncombustible"
+        },
+        {
+          "id": "9.18.7.1-3",
+          "element": "plenum_register_protection",
+          "requirement_type": "prescriptive",
+          "description": "Combustible ground cover in plenum crawl spaces shall be protected beneath register openings with noncombustible material",
+          "exact_quote": "Combustible ground cover in crawl spaces described in Sentence (1) shall be protected beneath each register opening with noncombustible material"
+        },
+        {
+          "id": "9.18.7.1-4",
+          "element": "register_protection_extension",
+          "requirement_type": "dimensional",
+          "min_value": 300,
+          "unit": "mm",
+          "description": "Noncombustible register protection shall extend not less than 300 mm beyond register opening projection",
+          "exact_quote": "The noncombustible register protection described in Sentence (3) shall a) extend not less than 300 mm beyond the projection of the register opening"
+        },
+        {
+          "id": "9.18.7.1-5",
+          "element": "register_protection_edges",
+          "requirement_type": "prescriptive",
+          "description": "Noncombustible register protection shall have up-turned edges",
+          "exact_quote": "have up-turned edges"
+        }
+      ]
+    }
+  ]
+}

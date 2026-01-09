@@ -1,0 +1,905 @@
+{
+  "metadata": {
+    "generated_date": "2026-01-09T12:45:43.539514",
+    "source_file": "development-permits.json",
+    "total_permits_analyzed": 188019,
+    "total_refused_permits": 4293,
+    "refusal_rate": 2.28,
+    "data_coverage": "City of Calgary Development Permits",
+    "purpose": "Preventive checklist to help avoid common permit refusal reasons"
+  },
+  "summary": {
+    "top_refusal_reasons": [
+      {
+        "category": "other_violations",
+        "count": 995
+      },
+      {
+        "category": "signage_issues",
+        "count": 778
+      },
+      {
+        "category": "setback_violation",
+        "count": 685
+      },
+      {
+        "category": "change_of_use",
+        "count": 469
+      },
+      {
+        "category": "home_occupation",
+        "count": 454
+      }
+    ],
+    "most_affected_zones": {
+      "R-1": 883,
+      "DC": 611,
+      "R-2": 557,
+      "R-C1": 347,
+      "R-C2": 300,
+      "I-2": 138,
+      "R-1N": 99,
+      "C-3": 96,
+      "C-1": 72,
+      "R-1A": 66
+    }
+  },
+  "checklist_items": [
+    {
+      "issue_id": "DP-REF-001",
+      "issue_category": "other_violations",
+      "description": "Other development permit violations not categorized above",
+      "frequency": 995,
+      "common_zones_affected": [
+        "R-2",
+        "R-1",
+        "DC",
+        "R-C1",
+        "R-C2",
+        "RM-4",
+        "I-2",
+        "C-3",
+        "R-1A",
+        "RM-2"
+      ],
+      "typical_deficiency": "Various bylaw non-compliance issues",
+      "code_references": [
+        "Land Use Bylaw 1P2007"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-03624",
+          "description": "NEW: SEMI-DETACHED DWELLING",
+          "zone": "M-CG d72",
+          "address": "404 11A ST NW",
+          "applied_date": "2025-06-21",
+          "community": "HILLHURST"
+        },
+        {
+          "permit_number": "DP2025-03208",
+          "description": "ADDITION: SINGLE DETACHED DWELLING (MAIN FLOOR - REAR AND EAST ELEVATION)",
+          "zone": "R-CG",
+          "address": "1036 MARTINDALE BV NE",
+          "applied_date": "2025-05-30",
+          "community": "MARTINDALE"
+        },
+        {
+          "permit_number": "DP2025-02364",
+          "description": "ADDITION: SINGLE DETACHED DWELLING (COVERED PATIO - REAR)",
+          "zone": "R-CG",
+          "address": "1810 BOWNESS RD NW",
+          "applied_date": "2025-04-22",
+          "community": "HILLHURST"
+        },
+        {
+          "permit_number": "DP2025-02191",
+          "description": "NEW: SINGLE DETACHED DWELLING",
+          "zone": "R-CG",
+          "address": "423 46 AV SW",
+          "applied_date": "2025-04-15",
+          "community": "ELBOYA"
+        },
+        {
+          "permit_number": "DP2024-06487",
+          "description": "TEMPORARY USE: GENERAL INDUSTRIAL - LIGHT (SEA CANS - 2 (1 YEAR))",
+          "zone": "I-B f0.5",
+          "address": "#135 6424 36 ST NE",
+          "applied_date": "2024-09-06",
+          "community": "WESTWINDS"
+        }
+      ],
+      "prevention_tips": [
+        "Review all applicable bylaw sections",
+        "Consider pre-application meeting",
+        "Hire experienced permit consultant",
+        "Check DC (Direct Control) district specific rules"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-002",
+      "issue_category": "signage_issues",
+      "description": "Sign violations including digital signs, third-party advertising, and sign dimensions",
+      "frequency": 778,
+      "common_zones_affected": [
+        "DC",
+        "I-2",
+        "C-3",
+        "CM-2",
+        "I-G",
+        "C-6",
+        "C-COR3 f1.0h12",
+        "C-1",
+        "UR",
+        "C-3(23)"
+      ],
+      "typical_deficiency": "Sign type not permitted or exceeds size limits",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Part 7 - Signs",
+        "Sign Guidelines"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-04742",
+          "description": "TEMPORARY USE: SIGN - CLASS G (DIGITAL THIRD PARTY ADVERTISING SIGN - WITH ELECTRIC VEHICLE CHARGING FACILITY) ",
+          "zone": "C-COR2 f0.35h10",
+          "address": "920 36 ST NE",
+          "applied_date": "2025-08-15",
+          "community": "MARLBOROUGH"
+        },
+        {
+          "permit_number": "DP2025-04569",
+          "description": "TEMPORARY USE: SIGN - CLASS F & G (THIRD PARTY ADVERTISING SIGN - NORTH FACE, DIGITAL THIRD PARTY ADVERTISING SIGN - SOUTH FACE)",
+          "zone": "C-COR3 f3.0h46",
+          "address": "4400 MACLEOD TR SW",
+          "applied_date": "2025-08-07",
+          "community": "MANCHESTER"
+        },
+        {
+          "permit_number": "DP2025-02198",
+          "description": "TEMPORARY USE: SIGNS (DIGITAL THIRD PARTY ADVERTISING BILLBOARD)",
+          "zone": "DC",
+          "address": "156 CROWFOOT GA NW",
+          "applied_date": "2025-04-15",
+          "community": "ARBOUR LAKE"
+        },
+        {
+          "permit_number": "DP2024-06033",
+          "description": "TEMPORARY USE: SIGN - CLASS F (THIRD PARTY ADVERTISING SIGN - 5 YEARS)",
+          "zone": "I-G",
+          "address": "3514 73 AV SE",
+          "applied_date": "2024-08-19",
+          "community": "FOOTHILLS"
+        },
+        {
+          "permit_number": "DP2023-08289",
+          "description": "TEMPORARY USE: SIGN - CLASS F (THIRD PARTY ADVERTISING SIGN)",
+          "zone": "CC-X",
+          "address": "324 12 AV SW",
+          "applied_date": "2023-11-23",
+          "community": "BELTLINE"
+        }
+      ],
+      "prevention_tips": [
+        "Identify sign classification (A through G)",
+        "Verify sign type permitted in your zone",
+        "Check maximum sign area and height",
+        "Third-party advertising requires special approval"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-003",
+      "issue_category": "setback_violation",
+      "description": "Building setback or yard requirement violations",
+      "frequency": 685,
+      "common_zones_affected": [
+        "R-1",
+        "R-2",
+        "R-C1",
+        "R-C2",
+        "R-1N",
+        "R-1A",
+        "DC",
+        "R-C1N",
+        "R-2A",
+        "RS-1"
+      ],
+      "typical_deficiency": "Structure placed too close to property line",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Part 5 - Residential Districts",
+        "LUB Section 43 - Setback Requirements"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-03763",
+          "description": "RELAXATION: SINGLE DETACHED DWELLING (EXISTING) - BUILDING SETBACK FROM REAR PROPERTY LINE, PROJECTIONS INTO REAR SETBACK",
+          "zone": "R-CG",
+          "address": "35 WINDSOR CR SW",
+          "applied_date": "2025-06-27",
+          "community": "WINDSOR PARK"
+        },
+        {
+          "permit_number": "DP2025-01452",
+          "description": "RELAXATION: DECK (EXISTING) - PROJECTION INTO SIDE SETBACK",
+          "zone": "R-G",
+          "address": "69 MASTERS RO SE",
+          "applied_date": "2025-03-12",
+          "community": "MAHOGANY"
+        },
+        {
+          "permit_number": "DP2025-01220",
+          "description": "RELAXATION: ACCESSORY RESIDENTIAL BUILDING (EXISTING PERGOLA) - SEPARATION FROM MAIN RESIDENTIAL BUILDING, (EXISTING SHEDS) - BUILDING SETBACK FROM SIDE PROPERTY LINE",
+          "zone": "R-CG",
+          "address": "48 MIDGLEN DR SE",
+          "applied_date": "2025-03-04",
+          "community": "MIDNAPORE"
+        },
+        {
+          "permit_number": "DP2024-03516",
+          "description": "RELAXATION: ACCESSORY RESIDENTIAL BUILDING - BUILDING SETBACK FROM MAIN BUILDING",
+          "zone": "R-CG",
+          "address": "5947 COACH HILL RD SW",
+          "applied_date": "2024-05-16",
+          "community": "COACH HILL"
+        },
+        {
+          "permit_number": "DP2023-08577",
+          "description": "ADDITION: SINGLE DETACHED DWELLING (SIDE CARPORT) - PROJECTION INTO SIDE SETBACK",
+          "zone": "R-C1",
+          "address": "1423 90 AV SW",
+          "applied_date": "2023-12-06",
+          "community": "HAYSBORO"
+        }
+      ],
+      "prevention_tips": [
+        "Verify all setback requirements for your zone before design",
+        "Consider applying for a relaxation early in the process",
+        "Hire a surveyor to confirm property lines",
+        "Review eaves and projection rules separately"
+      ],
+      "relaxation_success_rate": 0.92
+    },
+    {
+      "issue_id": "DP-REF-004",
+      "issue_category": "change_of_use",
+      "description": "Land use change not permitted or requires discretionary approval",
+      "frequency": 469,
+      "common_zones_affected": [
+        "DC",
+        "C-3",
+        "C-1",
+        "C-N2",
+        "I-2",
+        "C-COR3 f1.0h12",
+        "I-G",
+        "CC-COR",
+        "C-C1",
+        "C-COR1 f3.0h23"
+      ],
+      "typical_deficiency": "Proposed use not listed or requires special approval in zone",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Part 5 - District Regulations"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-02341",
+          "description": "CHANGE OF USE: SOCIAL ORGANIZATION",
+          "zone": "I-G",
+          "address": "#104 2750 22 ST NE",
+          "applied_date": "2025-04-22",
+          "community": "SOUTH AIRWAYS"
+        },
+        {
+          "permit_number": "DP2025-00110",
+          "description": "CHANGE OF USE: LIQUOR STORE",
+          "zone": "C-COR1 f3.0h23",
+          "address": "1535 5 ST SW",
+          "applied_date": "2025-01-08",
+          "community": "BELTLINE"
+        },
+        {
+          "permit_number": "DP2024-08999",
+          "description": "REVISION: LIQUOR STORE (CHANGE OF USE TO DP2023-03911)",
+          "zone": "MU-2 f4.0h34",
+          "address": "630 1 AV NE",
+          "applied_date": "2024-12-23",
+          "community": "BRIDGELAND/RIVERSIDE"
+        },
+        {
+          "permit_number": "DP2024-08687",
+          "description": "CHANGE OF USE: INDOOR RECREATION FACILITY, RETAIL AND CONSUMER SERVICE",
+          "zone": "I-G",
+          "address": "932 72 AV NE",
+          "applied_date": "2024-12-12",
+          "community": "DEERFOOT BUSINESS CENTRE"
+        },
+        {
+          "permit_number": "DP2024-08304",
+          "description": "CHANGE OF USE: PLACE OF WORSHIP - SMALL",
+          "zone": "C-COR2 f2.0h12",
+          "address": "2008 36 ST SE",
+          "applied_date": "2024-11-25",
+          "community": "FOREST LAWN"
+        }
+      ],
+      "prevention_tips": [
+        "Verify use is permitted in your land use district",
+        "Check distance separation for cannabis/liquor stores",
+        "Review parking requirements for new use",
+        "Consider pre-application consultation"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-005",
+      "issue_category": "home_occupation",
+      "description": "Home-based business violations including Class 2 operations",
+      "frequency": 454,
+      "common_zones_affected": [
+        "R-1",
+        "R-C1",
+        "R-2",
+        "R-C2",
+        "DC",
+        "UR",
+        "RM-5",
+        "R-1N",
+        "S-FUD",
+        "R-1A"
+      ],
+      "typical_deficiency": "Business type or scale not permitted as home occupation",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Section 83 - Home Occupation"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-03852",
+          "description": "TEMPORARY USE: HOME OCCUPATION - CLASS 2 (CONSTRUCTION CONSULTANT)",
+          "zone": "R-CG",
+          "address": "338 DOUGLASDALE PT SE",
+          "applied_date": "2025-07-03",
+          "community": "DOUGLASDALE/GLEN"
+        },
+        {
+          "permit_number": "DP2025-02176",
+          "description": "TEMPORARY USE: HOME OCCUPATION - CLASS 2 (RETAIL SALES)",
+          "zone": "R-CG",
+          "address": "459 WOODBINE BV SW",
+          "applied_date": "2025-04-14",
+          "community": "WOODBINE"
+        },
+        {
+          "permit_number": "DP2025-00526",
+          "description": "TEMPORARY USE: HOME OCCUPATION - CLASS 2 (BARBER)",
+          "zone": "R-CG",
+          "address": "271 CORAL SPRINGS ME NE",
+          "applied_date": "2025-01-30",
+          "community": "CORAL SPRINGS"
+        },
+        {
+          "permit_number": "DP2024-06373",
+          "description": "TEMPORARY USE: HOME OCCUPATION - CLASS 2 (FOOD PREPARATION) - 12 MONTHS",
+          "zone": "R-G",
+          "address": "23 WALDEN CO SE",
+          "applied_date": "2024-09-03",
+          "community": "WALDEN"
+        },
+        {
+          "permit_number": "DP2024-03647",
+          "description": "TEMPORARY USE: HOME OCCUPATION - CLASS 2 (FOOD TRUCK) - 1 YEAR",
+          "zone": "R-CG",
+          "address": "222 LAGUNA CI NE",
+          "applied_date": "2024-05-23",
+          "community": "MONTEREY PARK"
+        }
+      ],
+      "prevention_tips": [
+        "Review home occupation class requirements",
+        "Ensure no external evidence of business",
+        "Limit client visits and employee count",
+        "Verify business type is permitted"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-006",
+      "issue_category": "accessory_building",
+      "description": "Accessory building size, location, or separation violations",
+      "frequency": 258,
+      "common_zones_affected": [
+        "R-1",
+        "R-2",
+        "R-C2",
+        "R-C1",
+        "DC",
+        "M-CG d72",
+        "R-2A",
+        "RM-4",
+        "R-1A",
+        "R-CG"
+      ],
+      "typical_deficiency": "Building too large, too close to main building, or in wrong location",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Section 78 - Accessory Residential Buildings"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-00947",
+          "description": "ADDITION: ACCESSORY RESIDENTIAL BUILDING (MAIN FLOOR - NORTH SIDE, 2ND FLOOR); CHANGE OF USE: RETAIL AND CONSUMER SERVICE",
+          "zone": "H-GO",
+          "address": "3401 51 ST SW",
+          "applied_date": "2025-02-19",
+          "community": "GLENBROOK"
+        },
+        {
+          "permit_number": "DP2024-07386",
+          "description": "NEW: TOWNHOUSE (1 BUILDING), ACCESSORY RESIDENTIAL BUILDING (GARAGE)",
+          "zone": "R-CG",
+          "address": "2603 3 AV NW",
+          "applied_date": "2024-10-16",
+          "community": "WEST HILLHURST"
+        },
+        {
+          "permit_number": "DP2024-00635",
+          "description": "NEW: SEMI-DETACHED DWELLING, ACCESSORY BUILDING (GARAGE)",
+          "zone": "DC",
+          "address": "2805 31 ST SW",
+          "applied_date": "2024-01-28",
+          "community": "KILLARNEY/GLENGARRY"
+        },
+        {
+          "permit_number": "DP2022-05416",
+          "description": "NEW: SINGLE DETACHED DWELLING (WEST DWELLING), ACCESSORY RESIDENTIAL BUILDING (GARAGE)",
+          "zone": "R-C2",
+          "address": "44 COLLINGWOOD PL NW",
+          "applied_date": "2022-08-02",
+          "community": "COLLINGWOOD"
+        },
+        {
+          "permit_number": "DP2022-05156",
+          "description": "NEW: SINGLE DETACHED DWELLING (EAST PARCEL), ACCESSORY RESIDENTIAL BUILDING (GARAGE)",
+          "zone": "R-C2",
+          "address": "44 COLLINGWOOD PL NW",
+          "applied_date": "2022-07-21",
+          "community": "COLLINGWOOD"
+        }
+      ],
+      "prevention_tips": [
+        "Verify maximum floor area for accessory buildings",
+        "Check separation distance from main building",
+        "Ensure not located in front setback",
+        "Review height limits for accessory structures"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-007",
+      "issue_category": "height_violation",
+      "description": "Building or structure height violations including fences and accessory buildings",
+      "frequency": 240,
+      "common_zones_affected": [
+        "R-1",
+        "R-C1",
+        "R-2",
+        "R-C2",
+        "R-CG",
+        "R-1N",
+        "DC",
+        "RM-2",
+        "RM-4",
+        "C-1"
+      ],
+      "typical_deficiency": "Structure exceeds maximum height for zone or type",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Part 5",
+        "LUB Section 44 - Height Regulations"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-03759",
+          "description": "RELAXATION: FENCE - HEIGHT",
+          "zone": "R-CG",
+          "address": "2027 BRIAR CR NW",
+          "applied_date": "2025-06-27",
+          "community": "HOUNSFIELD HEIGHTS/BRIAR HILL"
+        },
+        {
+          "permit_number": "DP2024-06899",
+          "description": "RELAXATION: FENCE - HEIGHT",
+          "zone": "R-CG",
+          "address": "4707 MEMORIAL DR SE",
+          "applied_date": "2024-09-23",
+          "community": "FOREST HEIGHTS"
+        },
+        {
+          "permit_number": "DP2024-02751",
+          "description": "RELAXATION: ACCESSORY RESIDENTIAL BUILDING (TREEHOUSE) - LOCATED IN FLOODWAY, FINISHED FLOOR HEIGHT, BALCONY, HEIGHT ABOVE GRADE",
+          "zone": "R-CG",
+          "address": "906 RIVERDALE AV SW",
+          "applied_date": "2024-04-19",
+          "community": "ELBOW PARK"
+        },
+        {
+          "permit_number": "DP2024-00755",
+          "description": "RELAXATION: RETAINING WALL, FENCE - HEIGHT",
+          "zone": "R-CG",
+          "address": "1936 29 AV SW",
+          "applied_date": "2024-02-02",
+          "community": "SOUTH CALGARY"
+        },
+        {
+          "permit_number": "DP2023-08723",
+          "description": "RELAXATION: FENCE (EXISTING) - HEIGHT",
+          "zone": "R-C1N",
+          "address": "107 MCKENNA CR SE",
+          "applied_date": "2023-12-12",
+          "community": "MCKENZIE LAKE"
+        }
+      ],
+      "prevention_tips": [
+        "Confirm maximum height before design begins",
+        "Understand how height is measured (grade calculation)",
+        "Check fence height limits in front vs rear yards",
+        "Verify accessory building height restrictions"
+      ],
+      "relaxation_success_rate": 0.85
+    },
+    {
+      "issue_id": "DP-REF-008",
+      "issue_category": "secondary_suite",
+      "description": "Secondary suite or accessory dwelling unit issues",
+      "frequency": 154,
+      "common_zones_affected": [
+        "R-C2",
+        "R-1N",
+        "R-C1",
+        "R-CG",
+        "DC",
+        "R-1",
+        "R-2",
+        "R-C1N",
+        "M-CG d72",
+        "R-C1s"
+      ],
+      "typical_deficiency": "Lot size, width, or parking requirements not met",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Section 79",
+        "Secondary Suite Guidelines"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-04217",
+          "description": "NEW: SECONDARY SUITE (BASEMENT)",
+          "zone": "R-G",
+          "address": "223 CARRINGTON CI NW",
+          "applied_date": "2025-07-21",
+          "community": "CARRINGTON"
+        },
+        {
+          "permit_number": "DP2025-02043",
+          "description": "NEW: SECONDARY SUITE (BASEMENT)",
+          "zone": "DC",
+          "address": "65 NOLANFIELD WY NW",
+          "applied_date": "2025-04-08",
+          "community": "NOLAN HILL"
+        },
+        {
+          "permit_number": "DP2025-01782",
+          "description": "NEW: ROWHOUSE BUILDING (1 BUILDING), TOWNHOUSE (1 BUILDING), SECONDARY SUITE (7 SUITES), ACCESSORY RESIDENTIAL BUILDINGS (2 GARAGES)",
+          "zone": "R-CG",
+          "address": "4706 16 ST SW",
+          "applied_date": "2025-03-27",
+          "community": "ALTADORE"
+        },
+        {
+          "permit_number": "DP2025-01526",
+          "description": "NEW: ACCESSORY\u00a0RESIDENTIAL\u00a0BUILDING\u00a0(GARAGE),\u00a0BACKYARD\u00a0SUITE\u00a0(ABOVE\u00a0GARAGE)  ",
+          "zone": "R-CG",
+          "address": "2231 16 ST SE",
+          "applied_date": "2025-03-16",
+          "community": "INGLEWOOD"
+        },
+        {
+          "permit_number": "DP2025-00041",
+          "description": "NEW: ACCESSORY RESIDENTIAL BUILDING (GARAGE), BACKYARD SUITE (ABOVE GARAGE) ",
+          "zone": "R-CG",
+          "address": "2704 RUNDLELAWN RD NE",
+          "applied_date": "2025-01-05",
+          "community": "RUNDLE"
+        }
+      ],
+      "prevention_tips": [
+        "Verify lot width meets minimum requirements",
+        "Ensure parking stall requirements are met",
+        "Check for existing secondary suite restrictions",
+        "Review building code requirements separately"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-009",
+      "issue_category": "parking_deficiency",
+      "description": "Insufficient parking stalls or parking stall dimensions",
+      "frequency": 107,
+      "common_zones_affected": [
+        "DC",
+        "R-C2",
+        "R-2",
+        "R-1",
+        "CC-X",
+        "CM-2",
+        "I-2",
+        "C-2(12)",
+        "R-G",
+        "I-G"
+      ],
+      "typical_deficiency": "Required parking stalls not provided or stall size too small",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Part 6 - Parking",
+        "LUB Section 55-69 - Off-Street Parking"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2024-08055",
+          "description": "NEW: SECONDARY SUITE (BASEMENT) - PARKING STALL SIZE",
+          "zone": "R-G",
+          "address": "40 WOLF HOLLOW RD SE",
+          "applied_date": "2024-11-13",
+          "community": "WOLF WILLOW"
+        },
+        {
+          "permit_number": "DP2024-07938",
+          "description": "NEW: SECONDARY SUITE (BASEMENT) - PARKING STALL",
+          "zone": "R-G",
+          "address": "12 WOLF HOLLOW RD SE",
+          "applied_date": "2024-11-07",
+          "community": "WOLF WILLOW"
+        },
+        {
+          "permit_number": "DP2024-04218",
+          "description": "NEW: SECONDARY SUITE (BASEMENT) - PARKING STALL ",
+          "zone": "R-G",
+          "address": "100 CITYLINE SQ NE",
+          "applied_date": "2024-06-10",
+          "community": "CITYSCAPE"
+        },
+        {
+          "permit_number": "DP2023-08014",
+          "description": "NEW: SECONDARY SUITE (BASEMENT) - PARKING STALL DEPTH",
+          "zone": "DC",
+          "address": "10311 CITYSCAPE DR NE",
+          "applied_date": "2023-11-11",
+          "community": "CITYSCAPE"
+        },
+        {
+          "permit_number": "DP2023-02716",
+          "description": "NEW: SECONDARY SUITE (BASEMENT) - PARKING STALL",
+          "zone": "R-C2",
+          "address": "43 MIDVALLEY RI SE",
+          "applied_date": "2023-05-01",
+          "community": "MIDNAPORE"
+        }
+      ],
+      "prevention_tips": [
+        "Calculate parking requirements early",
+        "Verify stall dimensions (2.75m x 5.5m typical)",
+        "Consider tandem parking where permitted",
+        "Check if cash-in-lieu is available"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-010",
+      "issue_category": "driveway_access",
+      "description": "Driveway width, length, or access point violations",
+      "frequency": 104,
+      "common_zones_affected": [
+        "R-C2",
+        "R-1",
+        "R-C1",
+        "R-C1N",
+        "R-1N",
+        "R-CG",
+        "R-2",
+        "R-1s",
+        "R-G",
+        "M-CG d60"
+      ],
+      "typical_deficiency": "Driveway width or access location not compliant",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Section 54 - Driveway Requirements"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2025-03153",
+          "description": "RELAXATION: DRIVEWAY (ACCESS FROM BOWGLEN RD NW)",
+          "zone": "R-CG",
+          "address": "8343 BOWGLEN RD NW",
+          "applied_date": "2025-05-27",
+          "community": "BOWNESS"
+        },
+        {
+          "permit_number": "DP2025-02895",
+          "description": "RELAXATION: DRIVEWAY - WIDTH",
+          "zone": "R-G",
+          "address": "145 BRIDLERANGE CI SW",
+          "applied_date": "2025-05-15",
+          "community": "BRIDLEWOOD"
+        },
+        {
+          "permit_number": "DP2025-02758",
+          "description": "RELAXATION: DRIVEWAY (ACCESS FROM 8 AV SE)",
+          "zone": "R-CG",
+          "address": "1215 8 AV SE",
+          "applied_date": "2025-05-09",
+          "community": "INGLEWOOD"
+        },
+        {
+          "permit_number": "DP2024-08375",
+          "description": "RELAXATION: DRIVEWAY - WIDTH",
+          "zone": "R-CG",
+          "address": "167 CORAL SPRINGS PA NE",
+          "applied_date": "2024-11-28",
+          "community": "CORAL SPRINGS"
+        },
+        {
+          "permit_number": "DP2024-07273",
+          "description": "RELAXATION: DRIVEWAY (ACCESS FROM DOVERVILLE CR)",
+          "zone": "R-CG",
+          "address": "2964 DOVERVILLE CR SE",
+          "applied_date": "2024-10-11",
+          "community": "DOVER"
+        }
+      ],
+      "prevention_tips": [
+        "Verify maximum and minimum driveway widths",
+        "Check access restrictions on major roads",
+        "Ensure driveway length meets garage setback",
+        "Coordinate with Transportation for access approval"
+      ],
+      "relaxation_success_rate": null
+    },
+    {
+      "issue_id": "DP-REF-011",
+      "issue_category": "coverage_violation",
+      "description": "Parcel coverage or building coverage exceeds maximum limits",
+      "frequency": 37,
+      "common_zones_affected": [
+        "R-2",
+        "R-C2",
+        "R-1",
+        "R-C1",
+        "R-CG",
+        "R-1s",
+        "R-1A",
+        "RM-4",
+        "DC"
+      ],
+      "typical_deficiency": "Total building footprint exceeds percentage allowed",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Part 5",
+        "LUB Section 42 - Density and Building Size"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2023-07157",
+          "description": "RELAXATION: ACCESSORY RESIDENTIAL BUILDING (GARAGE) - BUILDING COVERAGE",
+          "zone": "R-CG",
+          "address": "27 FALWOOD WY NE",
+          "applied_date": "2023-10-11",
+          "community": "FALCONRIDGE"
+        },
+        {
+          "permit_number": "DP2023-03787",
+          "description": "NEW: ACCESSORY RESIDENTIAL BUILDING (GARAGE) - BUILDING COVERAGE",
+          "zone": "R-C1",
+          "address": "5936 BOW CR NW",
+          "applied_date": "2023-06-08",
+          "community": "BOWNESS"
+        },
+        {
+          "permit_number": "DP2022-02838",
+          "description": "ADDITION: SINGLE DETACHED DWELLING (REAR ATTACHED PERGOLA) - PARCEL COVERAGE",
+          "zone": "R-C2",
+          "address": "2110 52 AV SW",
+          "applied_date": "2022-04-26",
+          "community": "NORTH GLENMORE PARK"
+        },
+        {
+          "permit_number": "DP2016-4847",
+          "description": "REVISION: BACKYARD SUITE (CONVERT STORAGE TO LIVING SPACE IN BASEMENT) - FLOOR AREA RELAXATION",
+          "zone": "R-C2",
+          "address": "2301G 6 AV NW",
+          "applied_date": "2016-11-25",
+          "community": "WEST HILLHURST"
+        },
+        {
+          "permit_number": "DP2016-1597",
+          "description": "REVISION: BACKYARD SUITE (CHANGE IN FLOOR AREA FROM DP2013-1429)",
+          "zone": "R-C2",
+          "address": "2740 12 AV SE",
+          "applied_date": "2016-04-27",
+          "community": "ALBERT PARK/RADISSON HEIGHTS"
+        }
+      ],
+      "prevention_tips": [
+        "Calculate parcel coverage before design",
+        "Include all structures (main building, garage, deck)",
+        "Verify coverage includes overhangs per bylaw definitions",
+        "Consider variance application if slightly over"
+      ],
+      "relaxation_success_rate": 0.84
+    },
+    {
+      "issue_id": "DP-REF-012",
+      "issue_category": "fence_violation",
+      "description": "Fence or retaining wall height or location violations",
+      "frequency": 12,
+      "common_zones_affected": [
+        "R-1",
+        "R-C1",
+        "DC",
+        "C-N2",
+        "I-G",
+        "R-2",
+        "I-2",
+        "C-1",
+        "UR"
+      ],
+      "typical_deficiency": "Fence exceeds height limits, particularly in front yard",
+      "code_references": [
+        "Land Use Bylaw 1P2007 Section 49 - Fences"
+      ],
+      "sample_citations": [
+        {
+          "permit_number": "DP2023-00930",
+          "description": "RELAXATION: FENCE (FLOODWAY/FLOODFRINGE) - FENCE TO BE LOCATED IN FLOODWAY & FLOODFRINGE",
+          "zone": "R-C1",
+          "address": "10 MAJOR STEWART LN SE",
+          "applied_date": "2023-02-14",
+          "community": "INGLEWOOD"
+        },
+        {
+          "permit_number": "DP2018-1559",
+          "description": "CHANGES TO SITE PLAN: AUTOMOTIVE SERVICE (LANDSCAPING AND FENCE CHANGES)",
+          "zone": "DC",
+          "address": "#3123 5150 47 ST NE",
+          "applied_date": "2018-04-19",
+          "community": "WESTWINDS"
+        },
+        {
+          "permit_number": "DP2014-0630",
+          "description": "CHANGES TO SITE PLAN: MULTI-USE COMMERCIAL (FENCE REMOVAL)",
+          "zone": "C-N2",
+          "address": "2115 SIROCCO DR SW",
+          "applied_date": "2014-02-12",
+          "community": "SIGNAL HILL"
+        },
+        {
+          "permit_number": "DP2011-1430",
+          "description": "REVISION: CHANGES TO SITE PLAN (CHANGES TO LANDSCAPE FEATURES AND FENCE ON SOUTH BOUNDARY ONLY)",
+          "zone": "I-G",
+          "address": "1803 60 ST SE",
+          "applied_date": "2011-04-25",
+          "community": "FOREST LAWN INDUSTRIAL"
+        },
+        {
+          "permit_number": "DP2000-1578",
+          "description": "FENCE RELAXATION",
+          "zone": "R-2",
+          "address": "1125 COLGROVE AV NE",
+          "applied_date": "2000-05-02",
+          "community": "BRIDGELAND/RIVERSIDE"
+        }
+      ],
+      "prevention_tips": [
+        "Front yard fence limit typically 1.2m",
+        "Rear/side yard fence limit typically 1.85m",
+        "Retaining walls add to fence height calculation",
+        "Corner lot visibility requirements apply"
+      ],
+      "relaxation_success_rate": null
+    }
+  ]
+}

@@ -1,0 +1,576 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.15",
+    "section_title": "Footings and Foundations",
+    "pages": "916-924",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 25,
+    "subsections": [
+      "9.15.1 - Application",
+      "9.15.2 - General",
+      "9.15.3 - Footings",
+      "9.15.4 - Foundation Walls",
+      "9.15.5 - Support of Joists and Beams on Masonry Foundation Walls"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.15.1.1",
+      "title": "General",
+      "requirements": [
+        {
+          "id": "9.15.1.1-1",
+          "element": "application_scope",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to concrete or unit masonry foundation walls and concrete footings not subject to surcharge on stable soils with allowable bearing pressure of 75 kPa or greater",
+          "exact_quote": "concrete or unit masonry foundation walls and concrete footings not subject to surcharge on stable soils with an allowable bearing pressure of 75 kPa or greater",
+          "conditions": ["wood-frame or masonry construction", "bearing pressure >= 75 kPa"]
+        },
+        {
+          "id": "9.15.1.1-2",
+          "element": "flat_icf_max_storeys",
+          "requirement_type": "dimensional",
+          "max_value": 2,
+          "unit": "storeys",
+          "description": "Flat ICF foundation walls limited to buildings not more than 2 storeys in building height"
+        },
+        {
+          "id": "9.15.1.1-3",
+          "element": "flat_icf_max_floor_height",
+          "requirement_type": "dimensional",
+          "max_value": 3,
+          "unit": "m",
+          "description": "Maximum floor-to-floor height for flat ICF construction"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.1.2",
+      "title": "Permafrost",
+      "requirements": [
+        {
+          "id": "9.15.1.2-1",
+          "element": "permafrost_design",
+          "requirement_type": "reference",
+          "description": "Buildings on permafrost shall have foundations designed by a competent designer in accordance with Part 4",
+          "cross_reference": "Part 4"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.2.2",
+      "title": "Unit Masonry Construction",
+      "requirements": [
+        {
+          "id": "9.15.2.2-1",
+          "element": "concrete_block_strength",
+          "requirement_type": "dimensional",
+          "min_value": 15,
+          "unit": "MPa",
+          "description": "Concrete block minimum compressive strength over average net cross-sectional area",
+          "standard_reference": "CSA A165.1"
+        },
+        {
+          "id": "9.15.2.2-2",
+          "element": "reinforced_block_mortar",
+          "requirement_type": "material",
+          "description": "Mortar for reinforced concrete block foundation walls shall be Type S",
+          "standard_reference": "CAN/CSA-A179"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.2.3",
+      "title": "Pier-Type Foundations",
+      "requirements": [
+        {
+          "id": "9.15.2.3-1",
+          "element": "pier_max_spacing",
+          "requirement_type": "dimensional",
+          "max_value": 3.5,
+          "unit": "m",
+          "description": "Maximum pier spacing for 1 storey building foundations",
+          "conditions": ["1 storey building height"]
+        },
+        {
+          "id": "9.15.2.3-2",
+          "element": "pier_height_ratio",
+          "requirement_type": "prescriptive",
+          "description": "Pier height shall not exceed 3 times the least dimension at base"
+        },
+        {
+          "id": "9.15.2.3-3",
+          "element": "narrow_building_pier_orientation",
+          "requirement_type": "dimensional",
+          "max_value": 4.3,
+          "unit": "m",
+          "description": "For buildings 4.3m or less wide, concrete block piers shall be placed with longest dimension at right angles to building"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.3.1",
+      "title": "Footings Required",
+      "requirements": [
+        {
+          "id": "9.15.3.1-1",
+          "element": "footing_locations",
+          "requirement_type": "prescriptive",
+          "description": "Footings shall be provided under walls, pilasters, columns, piers, fireplaces and chimneys that bear on soil or rock"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.3.2",
+      "title": "Support of Footings",
+      "requirements": [
+        {
+          "id": "9.15.3.2-1",
+          "element": "footing_bearing",
+          "requirement_type": "prescriptive",
+          "description": "Footings shall rest on undisturbed soil, rock or compacted granular fill"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.3.3",
+      "title": "Application of Footing Width and Area Requirements",
+      "requirements": [
+        {
+          "id": "9.15.3.3-1",
+          "element": "joist_span_limit",
+          "requirement_type": "dimensional",
+          "max_value": 4.9,
+          "unit": "m",
+          "description": "Maximum joist span for prescriptive footing requirements"
+        },
+        {
+          "id": "9.15.3.3-2",
+          "element": "live_load_limit",
+          "requirement_type": "dimensional",
+          "max_value": 2.4,
+          "unit": "kPa",
+          "description": "Maximum specified live load for prescriptive footing requirements"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.3.4",
+      "title": "Basic Footing Widths and Areas",
+      "requirements": [
+        {
+          "id": "9.15.3.4-1",
+          "element": "exterior_wall_footing_1_floor",
+          "requirement_type": "dimensional",
+          "min_value": 250,
+          "unit": "mm",
+          "description": "Minimum strip footing width for exterior walls supporting 1 floor"
+        },
+        {
+          "id": "9.15.3.4-2",
+          "element": "exterior_wall_footing_2_floors",
+          "requirement_type": "dimensional",
+          "min_value": 350,
+          "unit": "mm",
+          "description": "Minimum strip footing width for exterior walls supporting 2 floors"
+        },
+        {
+          "id": "9.15.3.4-3",
+          "element": "exterior_wall_footing_3_floors",
+          "requirement_type": "dimensional",
+          "min_value": 450,
+          "unit": "mm",
+          "description": "Minimum strip footing width for exterior walls supporting 3 floors"
+        },
+        {
+          "id": "9.15.3.4-4",
+          "element": "interior_wall_footing_1_floor",
+          "requirement_type": "dimensional",
+          "min_value": 200,
+          "unit": "mm",
+          "description": "Minimum strip footing width for interior walls supporting 1 floor"
+        },
+        {
+          "id": "9.15.3.4-5",
+          "element": "interior_wall_footing_2_floors",
+          "requirement_type": "dimensional",
+          "min_value": 350,
+          "unit": "mm",
+          "description": "Minimum strip footing width for interior walls supporting 2 floors"
+        },
+        {
+          "id": "9.15.3.4-6",
+          "element": "interior_wall_footing_3_floors",
+          "requirement_type": "dimensional",
+          "min_value": 500,
+          "unit": "mm",
+          "description": "Minimum strip footing width for interior walls supporting 3 floors"
+        },
+        {
+          "id": "9.15.3.4-7",
+          "element": "column_footing_1_floor",
+          "requirement_type": "dimensional",
+          "min_value": 0.4,
+          "unit": "m2",
+          "description": "Minimum footing area for columns at 3m o.c. supporting 1 floor"
+        },
+        {
+          "id": "9.15.3.4-8",
+          "element": "column_footing_2_floors",
+          "requirement_type": "dimensional",
+          "min_value": 0.75,
+          "unit": "m2",
+          "description": "Minimum footing area for columns at 3m o.c. supporting 2 floors"
+        },
+        {
+          "id": "9.15.3.4-9",
+          "element": "column_footing_3_floors",
+          "requirement_type": "dimensional",
+          "min_value": 1.0,
+          "unit": "m2",
+          "description": "Minimum footing area for columns at 3m o.c. supporting 3 floors"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.3.5",
+      "title": "Adjustments to Footing Widths for Exterior Walls",
+      "requirements": [
+        {
+          "id": "9.15.3.5-1",
+          "element": "masonry_veneer_adjustment",
+          "requirement_type": "dimensional",
+          "value": 65,
+          "unit": "mm",
+          "description": "Footing width increase per storey of masonry veneer over wood-frame"
+        },
+        {
+          "id": "9.15.3.5-2",
+          "element": "masonry_construction_adjustment",
+          "requirement_type": "dimensional",
+          "value": 130,
+          "unit": "mm",
+          "description": "Footing width increase per storey of masonry construction"
+        },
+        {
+          "id": "9.15.3.5-3",
+          "element": "flat_icf_adjustment",
+          "requirement_type": "dimensional",
+          "value": 150,
+          "unit": "mm",
+          "description": "Footing width increase per storey of flat ICF wall construction"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.3.8",
+      "title": "Footing Thickness",
+      "requirements": [
+        {
+          "id": "9.15.3.8-1",
+          "element": "footing_min_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum footing thickness"
+        },
+        {
+          "id": "9.15.3.8-2",
+          "element": "footing_projection_rule",
+          "requirement_type": "prescriptive",
+          "description": "Footing thickness shall not be less than the width of footing projection beyond supported element"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.3.9",
+      "title": "Step Footings",
+      "requirements": [
+        {
+          "id": "9.15.3.9-1",
+          "element": "step_footing_max_rise",
+          "requirement_type": "dimensional",
+          "max_value": 600,
+          "unit": "mm",
+          "description": "Maximum vertical rise between horizontal portions of step footings"
+        },
+        {
+          "id": "9.15.3.9-2",
+          "element": "step_footing_min_run",
+          "requirement_type": "dimensional",
+          "min_value": 600,
+          "unit": "mm",
+          "description": "Minimum horizontal distance between risers of step footings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.4.2",
+      "title": "Foundation Wall Thickness and Required Lateral Support",
+      "requirements": [
+        {
+          "id": "9.15.4.2-1",
+          "element": "max_unsupported_height",
+          "requirement_type": "dimensional",
+          "max_value": 3.0,
+          "unit": "m",
+          "description": "Maximum unsupported height for foundation walls per Table 9.15.4.2.-A"
+        },
+        {
+          "id": "9.15.4.2-2",
+          "element": "icf_min_core_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 150,
+          "unit": "mm",
+          "description": "Minimum concrete core thickness in flat ICF foundation walls"
+        },
+        {
+          "id": "9.15.4.2-3",
+          "element": "bond_beam_bar_size",
+          "requirement_type": "material",
+          "description": "Continuous horizontal bond beam shall contain not less than one 15M bar"
+        },
+        {
+          "id": "9.15.4.2-4",
+          "element": "opening_width_threshold",
+          "requirement_type": "dimensional",
+          "min_value": 1.20,
+          "unit": "m",
+          "description": "Openings greater than 1.20m width require bond beam at sill and head"
+        },
+        {
+          "id": "9.15.4.2-5",
+          "element": "lateral_reinforcement_diameter",
+          "requirement_type": "dimensional",
+          "min_value": 3.8,
+          "unit": "mm",
+          "description": "Minimum diameter of ladder or truss-type lateral reinforcement (no. 9 ASWG)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.4.3",
+      "title": "Foundation Walls Considered to be Laterally Supported at the Top",
+      "requirements": [
+        {
+          "id": "9.15.4.3-1",
+          "element": "lateral_support_max_above_grade",
+          "requirement_type": "dimensional",
+          "max_value": 300,
+          "unit": "mm",
+          "description": "Maximum wall height above finished ground for lateral support by backfill on both sides"
+        },
+        {
+          "id": "9.15.4.3-2",
+          "element": "backfill_elevation_difference",
+          "requirement_type": "dimensional",
+          "max_value": 150,
+          "unit": "mm",
+          "description": "Maximum difference in finished ground levels on either side for lateral support"
+        },
+        {
+          "id": "9.15.4.3-3",
+          "element": "opening_unsupported_width",
+          "requirement_type": "dimensional",
+          "max_value": 1.2,
+          "unit": "m",
+          "description": "Openings more than 1.2m wide cause wall beneath to be considered laterally unsupported"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.4.5",
+      "title": "Reinforcement for Flat ICF Foundation Walls",
+      "requirements": [
+        {
+          "id": "9.15.4.5-1",
+          "element": "horizontal_rebar_top_placement",
+          "requirement_type": "dimensional",
+          "max_value": 300,
+          "unit": "mm",
+          "description": "Maximum distance from top of wall for first horizontal 10M bar in ICF walls"
+        },
+        {
+          "id": "9.15.4.5-2",
+          "element": "horizontal_rebar_spacing",
+          "requirement_type": "dimensional",
+          "value": 600,
+          "unit": "mm",
+          "description": "Spacing for horizontal 10M bars in ICF foundation walls"
+        },
+        {
+          "id": "9.15.4.5-3",
+          "element": "rebar_min_cover",
+          "requirement_type": "dimensional",
+          "min_value": 30,
+          "unit": "mm",
+          "description": "Minimum concrete cover from inside face for reinforcement in ICF walls"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.4.6",
+      "title": "Extension above Ground Level",
+      "requirements": [
+        {
+          "id": "9.15.4.6-1",
+          "element": "min_above_grade",
+          "requirement_type": "dimensional",
+          "min_value": 150,
+          "unit": "mm",
+          "description": "Minimum height of exterior foundation walls above finished ground level"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.4.7",
+      "title": "Reduction in Thickness",
+      "requirements": [
+        {
+          "id": "9.15.4.7-1",
+          "element": "joist_ledge_max_height",
+          "requirement_type": "dimensional",
+          "max_value": 350,
+          "unit": "mm",
+          "description": "Maximum height of reduced section for floor joist installation"
+        },
+        {
+          "id": "9.15.4.7-2",
+          "element": "joist_ledge_min_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 90,
+          "unit": "mm",
+          "description": "Minimum thickness of reduced section for floor joist installation"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.4.9",
+      "title": "Crack Control Joints",
+      "requirements": [
+        {
+          "id": "9.15.4.9-1",
+          "element": "wall_length_threshold",
+          "requirement_type": "dimensional",
+          "min_value": 25,
+          "unit": "m",
+          "description": "Minimum wall length requiring crack control joints"
+        },
+        {
+          "id": "9.15.4.9-2",
+          "element": "joint_max_spacing",
+          "requirement_type": "dimensional",
+          "max_value": 15,
+          "unit": "m",
+          "description": "Maximum spacing between crack control joints"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.5.1",
+      "title": "Support of Floor Joists",
+      "requirements": [
+        {
+          "id": "9.15.5.1-1",
+          "element": "hollow_masonry_capping_concrete",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "mm",
+          "description": "Minimum concrete capping for hollow masonry foundation walls supporting floor joists"
+        },
+        {
+          "id": "9.15.5.1-2",
+          "element": "solid_masonry_capping_height",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "mm",
+          "description": "Minimum height for 100% solid masonry unit capping"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.5.2",
+      "title": "Support of Beams",
+      "requirements": [
+        {
+          "id": "9.15.5.2-1",
+          "element": "beam_solid_masonry_depth",
+          "requirement_type": "dimensional",
+          "min_value": 190,
+          "unit": "mm",
+          "description": "Minimum depth of solid masonry beneath beams on masonry"
+        }
+      ]
+    },
+    {
+      "article_number": "9.15.5.3",
+      "title": "Pilasters",
+      "requirements": [
+        {
+          "id": "9.15.5.3-1",
+          "element": "pilaster_wall_threshold",
+          "requirement_type": "dimensional",
+          "max_value": 140,
+          "unit": "mm",
+          "description": "Pilasters required when beams frame into unit masonry walls 140mm or less thick"
+        },
+        {
+          "id": "9.15.5.3-2",
+          "element": "pilaster_min_size",
+          "requirement_type": "dimensional",
+          "description": "Minimum pilaster size 90mm x 290mm"
+        },
+        {
+          "id": "9.15.5.3-3",
+          "element": "pilaster_solid_top",
+          "requirement_type": "dimensional",
+          "min_value": 200,
+          "unit": "mm",
+          "description": "Minimum height of solid masonry at top of pilasters"
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "9.15.3.4",
+      "title": "Minimum Footing Sizes",
+      "description": "Prescriptive minimum footing widths for exterior/interior walls and areas for columns",
+      "data": {
+        "exterior_walls_mm": {"1_floor": 250, "2_floors": 350, "3_floors": 450},
+        "interior_walls_mm": {"1_floor": 200, "2_floors": 350, "3_floors": 500},
+        "column_area_m2_at_3m_oc": {"1_floor": 0.4, "2_floors": 0.75, "3_floors": 1.0}
+      }
+    },
+    {
+      "table_id": "9.15.4.2-A",
+      "title": "Thickness of Solid Concrete, Concrete Core in Flat Wall ICF and Unreinforced Concrete Block Foundation Walls",
+      "description": "Maximum height of finished ground above basement floor based on wall type and thickness"
+    },
+    {
+      "table_id": "9.15.4.2-B",
+      "title": "Reinforced Concrete Block Foundation Walls Laterally Supported at the Top",
+      "description": "Size and spacing of continuous vertical reinforcement for reinforced block walls"
+    },
+    {
+      "table_id": "9.15.4.5-A",
+      "title": "Vertical Reinforcement for 150mm Flat ICF Foundation Walls",
+      "description": "Minimum vertical reinforcement based on wall height and ground height above basement"
+    },
+    {
+      "table_id": "9.15.4.5-B",
+      "title": "Vertical Reinforcement for 190mm Flat ICF Foundation Walls",
+      "description": "Minimum vertical reinforcement based on wall height and ground height above basement"
+    },
+    {
+      "table_id": "9.15.4.5-C",
+      "title": "Vertical Reinforcement for 240mm Flat ICF Foundation Walls",
+      "description": "Minimum vertical reinforcement based on wall height and ground height above basement"
+    }
+  ]
+}

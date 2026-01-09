@@ -1,0 +1,1095 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE) 2023",
+    "section": "9.8",
+    "section_title": "Stairs, Ramps, Handrails and Guards",
+    "pages": "843-858",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual verification",
+    "source_file": "NBC-AE-2023.pdf",
+    "verification_status": "pending_professional_review",
+    "notes": "Values extracted from Division B, Part 9. All dimensions verified against source PDF text."
+  },
+  "articles": [
+    {
+      "article_number": "9.8.1.1",
+      "title": "General",
+      "subsection": "9.8.1 Application",
+      "full_text": "This Section applies to the design and construction of interior and exterior stairs, steps, ramps, handrails and guards.",
+      "requirements": []
+    },
+    {
+      "article_number": "9.8.2.1",
+      "title": "Stair Width",
+      "subsection": "9.8.2 Stair Dimensions",
+      "full_text": "Except as provided in Sentence (2) and Article 9.8.4.7., required exit stairs and public stairs serving buildings of residential occupancy shall have a width of not less than 900 mm.",
+      "requirements": [
+        {
+          "id": "9.8.2.1-1",
+          "element": "stair_width",
+          "requirement_type": "dimensional",
+          "description": "Exit stairs and public stairs for residential occupancy",
+          "min_value": 900,
+          "unit": "mm",
+          "exact_quote": "required exit stairs and public stairs serving buildings of residential occupancy shall have a width of not less than 900 mm",
+          "applies_to": ["residential"],
+          "exceptions": ["Article 9.8.4.7 (spiral stairs)"],
+          "source_sentence": "9.8.2.1.(1)"
+        },
+        {
+          "id": "9.8.2.1-2",
+          "element": "stair_width",
+          "requirement_type": "dimensional",
+          "description": "Exit stairs for single dwelling unit or house with secondary suite",
+          "min_value": 860,
+          "unit": "mm",
+          "exact_quote": "Exit stairs serving a single dwelling unit or a house with a secondary suite including their common spaces shall have a width of not less than 860 mm",
+          "applies_to": ["single_dwelling_unit", "house_with_secondary_suite"],
+          "source_sentence": "9.8.2.1.(2)"
+        },
+        {
+          "id": "9.8.2.1-3a",
+          "element": "stair_width",
+          "requirement_type": "dimensional",
+          "description": "Exit stairs for non-residential occupancy - minimum width",
+          "min_value": 900,
+          "unit": "mm",
+          "exact_quote": "required exit stairs and public stairs serving buildings of other than residential occupancy shall have a width of not less than the greater of a) 900 mm",
+          "applies_to": ["non_residential"],
+          "source_sentence": "9.8.2.1.(3)(a)"
+        },
+        {
+          "id": "9.8.2.1-3b",
+          "element": "stair_width",
+          "requirement_type": "dimensional",
+          "description": "Exit stairs for non-residential - per person calculation",
+          "formula": "8 mm per person based on occupant load (Table 3.1.17.1)",
+          "unit": "mm",
+          "exact_quote": "8 mm per person based on the occupant load limits specified in Table 3.1.17.1",
+          "applies_to": ["non_residential"],
+          "source_sentence": "9.8.2.1.(3)(b)"
+        },
+        {
+          "id": "9.8.2.1-4",
+          "element": "stair_width",
+          "requirement_type": "dimensional",
+          "description": "Interior stairs within dwelling unit and exterior stairs (not exit)",
+          "min_value": 860,
+          "unit": "mm",
+          "exact_quote": "at least one stair between each floor level within a dwelling unit, and exterior stairs serving a single dwelling unit except required exit stairs, shall have a width of not less than 860 mm",
+          "applies_to": ["dwelling_unit_interior", "dwelling_unit_exterior_non_exit"],
+          "source_sentence": "9.8.2.1.(4)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.2.2",
+      "title": "Height over Stairs",
+      "subsection": "9.8.2 Stair Dimensions",
+      "full_text": "The clear height over stairs shall be measured vertically, over the clear width of the stair, from a straight line tangent to the tread and landing nosings to the lowest point above.",
+      "requirements": [
+        {
+          "id": "9.8.2.2-2",
+          "element": "stair_headroom",
+          "requirement_type": "dimensional",
+          "description": "Clear height over stairs - general",
+          "min_value": 2050,
+          "unit": "mm",
+          "exact_quote": "the clear height over stairs shall not be less than 2050 mm",
+          "applies_to": ["general"],
+          "exceptions": ["single dwelling unit", "house with secondary suite", "Article 9.8.4.7"],
+          "source_sentence": "9.8.2.2.(2)"
+        },
+        {
+          "id": "9.8.2.2-3",
+          "element": "stair_headroom",
+          "requirement_type": "dimensional",
+          "description": "Clear height over stairs - single dwelling unit",
+          "min_value": 1950,
+          "unit": "mm",
+          "exact_quote": "the clear height over stairs serving a single dwelling unit or a house with a secondary suite including their common spaces shall not be less than 1950 mm",
+          "applies_to": ["single_dwelling_unit", "house_with_secondary_suite"],
+          "source_sentence": "9.8.2.2.(3)"
+        },
+        {
+          "id": "9.8.2.2-4",
+          "element": "stair_headroom",
+          "requirement_type": "dimensional",
+          "description": "Clear height over stairs - under beams/ducting in secondary suites",
+          "min_value": 1850,
+          "unit": "mm",
+          "exact_quote": "The clear height over stairs that are located under beams and ducting in secondary suites shall not be less than 1850 mm",
+          "applies_to": ["secondary_suite_under_beams"],
+          "source_sentence": "9.8.2.2.(4)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.3.2",
+      "title": "Minimum Number of Risers",
+      "subsection": "9.8.3 Stair Configurations",
+      "requirements": [
+        {
+          "id": "9.8.3.2-1",
+          "element": "riser_count",
+          "requirement_type": "dimensional",
+          "description": "Minimum risers in interior flights (except dwelling units)",
+          "min_value": 3,
+          "unit": "risers",
+          "exact_quote": "Except for stairs within a dwelling unit, at least 3 risers shall be provided in interior flights",
+          "applies_to": ["interior_flights_not_dwelling_unit"],
+          "source_sentence": "9.8.3.2.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.3.3",
+      "title": "Maximum Height of Stairs",
+      "subsection": "9.8.3 Stair Configurations",
+      "requirements": [
+        {
+          "id": "9.8.3.3-1",
+          "element": "flight_height",
+          "requirement_type": "dimensional",
+          "description": "Maximum vertical height of any flight",
+          "max_value": 3.7,
+          "unit": "m",
+          "exact_quote": "The vertical height of any flight of stairs shall not exceed 3.7 m",
+          "applies_to": ["all_stairs"],
+          "source_sentence": "9.8.3.3.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.4.1",
+      "title": "Dimensions for Risers",
+      "subsection": "9.8.4 Step Dimensions",
+      "full_text": "The rise, which is measured as the vertical nosing-to-nosing distance, shall comply with Table 9.8.4.1.",
+      "requirements": [
+        {
+          "id": "9.8.4.1-private",
+          "element": "riser_height",
+          "requirement_type": "dimensional",
+          "description": "Rise for private stairs (single dwelling, house with secondary suite, their garages)",
+          "min_value": 125,
+          "max_value": 200,
+          "unit": "mm",
+          "exact_quote": "Private stairs - Rise Max 200mm, Min 125mm",
+          "applies_to": ["private_stairs"],
+          "source_table": "Table 9.8.4.1"
+        },
+        {
+          "id": "9.8.4.1-public",
+          "element": "riser_height",
+          "requirement_type": "dimensional",
+          "description": "Rise for public stairs (all stairs not private or service)",
+          "min_value": 125,
+          "max_value": 180,
+          "unit": "mm",
+          "exact_quote": "Public stairs - Rise Max 180mm, Min 125mm",
+          "applies_to": ["public_stairs"],
+          "source_table": "Table 9.8.4.1"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.4.2",
+      "title": "Dimensions for Rectangular Treads",
+      "subsection": "9.8.4 Step Dimensions",
+      "requirements": [
+        {
+          "id": "9.8.4.2-private",
+          "element": "tread_run",
+          "requirement_type": "dimensional",
+          "description": "Run for rectangular treads - private stairs",
+          "min_value": 255,
+          "max_value": 355,
+          "unit": "mm",
+          "exact_quote": "Private stairs - Run Max 355mm, Min 255mm",
+          "applies_to": ["private_stairs"],
+          "source_table": "Table 9.8.4.2"
+        },
+        {
+          "id": "9.8.4.2-public",
+          "element": "tread_run",
+          "requirement_type": "dimensional",
+          "description": "Run for rectangular treads - public stairs",
+          "min_value": 280,
+          "max_value": null,
+          "unit": "mm",
+          "exact_quote": "Public stairs - Run No limit (max), Min 280mm",
+          "applies_to": ["public_stairs"],
+          "source_table": "Table 9.8.4.2"
+        },
+        {
+          "id": "9.8.4.2-2",
+          "element": "tread_depth",
+          "requirement_type": "dimensional",
+          "description": "Tread depth relative to run",
+          "formula": "depth >= run AND depth <= run + 25mm",
+          "unit": "mm",
+          "exact_quote": "The depth of a rectangular tread shall be not less than its run and not more than its run plus 25 mm",
+          "applies_to": ["all_rectangular_treads"],
+          "source_sentence": "9.8.4.2.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.4.3",
+      "title": "Dimensions of Tapered Treads",
+      "subsection": "9.8.4 Step Dimensions",
+      "requirements": [
+        {
+          "id": "9.8.4.3-1a",
+          "element": "tapered_tread_run_narrow",
+          "requirement_type": "dimensional",
+          "description": "Run at narrow end of tapered tread",
+          "min_value": 150,
+          "unit": "mm",
+          "exact_quote": "tapered treads shall have a run that is not less than 150 mm at the narrow end of the tread",
+          "applies_to": ["tapered_treads"],
+          "source_sentence": "9.8.4.3.(1)(a)"
+        },
+        {
+          "id": "9.8.4.3-1b",
+          "element": "tapered_tread_run_measurement",
+          "requirement_type": "dimensional",
+          "description": "Run measured at 300mm from handrail centerline",
+          "measurement_point": 300,
+          "unit": "mm",
+          "exact_quote": "complies with the dimensions stated in Table 9.8.4.2. when measured at a point 300 mm from the centreline of the handrail at the narrow end of the tread",
+          "applies_to": ["tapered_treads"],
+          "source_sentence": "9.8.4.3.(1)(b)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.4.4",
+      "title": "Uniformity and Tolerances for Risers, Runs and Treads",
+      "subsection": "9.8.4 Step Dimensions",
+      "requirements": [
+        {
+          "id": "9.8.4.4-1a",
+          "element": "riser_tolerance_adjacent",
+          "requirement_type": "dimensional",
+          "description": "Maximum tolerance between adjacent risers",
+          "max_value": 5,
+          "unit": "mm",
+          "exact_quote": "risers shall be of uniform height in any one flight, with a maximum tolerance of 5 mm between adjacent treads or landings",
+          "applies_to": ["all_stairs"],
+          "source_sentence": "9.8.4.4.(1)(a)"
+        },
+        {
+          "id": "9.8.4.4-1b",
+          "element": "riser_tolerance_flight",
+          "requirement_type": "dimensional",
+          "description": "Maximum tolerance between tallest and shortest risers in flight",
+          "max_value": 10,
+          "unit": "mm",
+          "exact_quote": "10 mm between the tallest and shortest risers in a flight",
+          "applies_to": ["all_stairs"],
+          "source_sentence": "9.8.4.4.(1)(b)"
+        },
+        {
+          "id": "9.8.4.4-3a",
+          "element": "tread_tolerance_adjacent",
+          "requirement_type": "dimensional",
+          "description": "Maximum tolerance between adjacent treads",
+          "max_value": 5,
+          "unit": "mm",
+          "exact_quote": "Rectangular treads shall have a uniform run with a maximum tolerance of 5 mm between adjacent treads",
+          "applies_to": ["rectangular_treads"],
+          "source_sentence": "9.8.4.4.(3)(a)"
+        },
+        {
+          "id": "9.8.4.4-3b",
+          "element": "tread_tolerance_flight",
+          "requirement_type": "dimensional",
+          "description": "Maximum tolerance between deepest and shallowest treads",
+          "max_value": 10,
+          "unit": "mm",
+          "exact_quote": "10 mm between the deepest and shallowest treads in a flight",
+          "applies_to": ["rectangular_treads"],
+          "source_sentence": "9.8.4.4.(3)(b)"
+        },
+        {
+          "id": "9.8.4.4-5",
+          "element": "tread_slope",
+          "requirement_type": "dimensional",
+          "description": "Maximum slope of treads",
+          "max_value": "1 in 50",
+          "ratio": 0.02,
+          "exact_quote": "The slope of treads shall not exceed 1 in 50",
+          "applies_to": ["all_treads"],
+          "source_sentence": "9.8.4.4.(5)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.4.6",
+      "title": "Winders",
+      "subsection": "9.8.4 Step Dimensions",
+      "requirements": [
+        {
+          "id": "9.8.4.6-1",
+          "element": "winder_angle",
+          "requirement_type": "dimensional",
+          "description": "Individual winder tread turn angle",
+          "allowed_values": [30, 45],
+          "unit": "degrees",
+          "exact_quote": "Individual treads in winders that converge on a centre point shall turn through an angle of a) 30 degrees with no deviation, or b) 45 degrees with no deviation",
+          "applies_to": ["winders"],
+          "source_sentence": "9.8.4.6.(1)"
+        },
+        {
+          "id": "9.8.4.6-2",
+          "element": "winder_set_turn",
+          "requirement_type": "dimensional",
+          "description": "Maximum turn per set of winders",
+          "max_value": 90,
+          "unit": "degrees",
+          "exact_quote": "Where winders are incorporated into a stair, each set shall not turn through more than 90 degrees",
+          "applies_to": ["winders"],
+          "source_sentence": "9.8.4.6.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.4.7",
+      "title": "Spiral Stairs",
+      "subsection": "9.8.4 Step Dimensions",
+      "requirements": [
+        {
+          "id": "9.8.4.7-1a",
+          "element": "spiral_stair_handrail_height",
+          "requirement_type": "dimensional",
+          "description": "Outer handrail height for spiral stairs",
+          "min_value": 1070,
+          "unit": "mm",
+          "exact_quote": "handrails on both sides, the outer handrail being not less than 1070 mm high",
+          "applies_to": ["spiral_stairs"],
+          "source_sentence": "9.8.4.7.(1)(a)"
+        },
+        {
+          "id": "9.8.4.7-1b",
+          "element": "spiral_stair_width",
+          "requirement_type": "dimensional",
+          "description": "Clear width between handrails for spiral stairs",
+          "min_value": 660,
+          "unit": "mm",
+          "exact_quote": "a clear width not less than 660 mm between the handrails",
+          "applies_to": ["spiral_stairs"],
+          "source_sentence": "9.8.4.7.(1)(b)"
+        },
+        {
+          "id": "9.8.4.7-1c",
+          "element": "spiral_stair_riser",
+          "requirement_type": "dimensional",
+          "description": "Maximum riser height for spiral stairs",
+          "max_value": 240,
+          "unit": "mm",
+          "exact_quote": "risers that are not more than 240 mm high",
+          "applies_to": ["spiral_stairs"],
+          "source_sentence": "9.8.4.7.(1)(c)"
+        },
+        {
+          "id": "9.8.4.7-1d",
+          "element": "spiral_stair_tread_depth",
+          "requirement_type": "dimensional",
+          "description": "Minimum tread depth at 300mm from handrail",
+          "min_value": 190,
+          "measurement_point": 300,
+          "unit": "mm",
+          "exact_quote": "treads that are a minimum of 190 mm deep at a point 300 mm from the centreline of the handrails at the narrower edge",
+          "applies_to": ["spiral_stairs"],
+          "source_sentence": "9.8.4.7.(1)(d)(i)"
+        },
+        {
+          "id": "9.8.4.7-1e",
+          "element": "spiral_stair_headroom",
+          "requirement_type": "dimensional",
+          "description": "Minimum clear height for spiral stairs",
+          "min_value": 1980,
+          "unit": "mm",
+          "exact_quote": "not less than 1980 mm clear height",
+          "applies_to": ["spiral_stairs"],
+          "source_sentence": "9.8.4.7.(1)(e)"
+        },
+        {
+          "id": "9.8.4.7-2",
+          "element": "spiral_stair_occupant_limit",
+          "requirement_type": "performance",
+          "description": "Spiral stairs as only egress - occupant limit",
+          "max_value": 3,
+          "unit": "persons",
+          "exact_quote": "Spiral stairs conforming to Sentence (1) are permitted to be used as the only means of egress where they serve not more than 3 persons",
+          "applies_to": ["spiral_stairs"],
+          "source_sentence": "9.8.4.7.(2)"
+        },
+        {
+          "id": "9.8.4.7-3",
+          "element": "spiral_stair_exit_prohibition",
+          "requirement_type": "procedural",
+          "description": "Spiral stairs cannot serve as exit",
+          "exact_quote": "Spiral stairs shall not serve as an exit",
+          "applies_to": ["spiral_stairs"],
+          "source_sentence": "9.8.4.7.(3)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.4.8",
+      "title": "Tread Nosings",
+      "subsection": "9.8.4 Step Dimensions",
+      "requirements": [
+        {
+          "id": "9.8.4.8-1",
+          "element": "nosing_edge",
+          "requirement_type": "dimensional",
+          "description": "Rounded or beveled edge extension",
+          "min_value": 6,
+          "max_value": 14,
+          "unit": "mm",
+          "exact_quote": "the top of the nosings of stair treads shall have a rounded or beveled edge extending not less than 6 mm and not more than 14 mm measured horizontally from the front of the nosing",
+          "applies_to": ["all_stair_treads"],
+          "source_sentence": "9.8.4.8.(1)"
+        },
+        {
+          "id": "9.8.4.8-2",
+          "element": "nosing_edge_resilient",
+          "requirement_type": "dimensional",
+          "description": "Minimum nosing edge with resilient material",
+          "min_value": 3,
+          "unit": "mm",
+          "exact_quote": "If resilient material is used to cover the nosing of a stair tread, the minimum extension of the rounded or beveled edge required by Sentence (1) is permitted to be reduced to 3 mm",
+          "applies_to": ["resilient_covered_treads"],
+          "source_sentence": "9.8.4.8.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.5.2",
+      "title": "Ramp Width",
+      "subsection": "9.8.5 Ramps",
+      "requirements": [
+        {
+          "id": "9.8.5.2-1",
+          "element": "ramp_width",
+          "requirement_type": "dimensional",
+          "description": "Minimum ramp width - general",
+          "min_value": 1100,
+          "unit": "mm",
+          "exact_quote": "ramps shall be not less than 1100 mm wide",
+          "applies_to": ["general_ramps"],
+          "source_sentence": "9.8.5.2.(1)"
+        },
+        {
+          "id": "9.8.5.2-2",
+          "element": "ramp_width",
+          "requirement_type": "dimensional",
+          "description": "Minimum ramp width - single dwelling unit",
+          "min_value": 860,
+          "unit": "mm",
+          "exact_quote": "Ramps serving a single dwelling unit or a house with a secondary suite including their common spaces shall be not less than 860 mm wide",
+          "applies_to": ["single_dwelling_unit", "house_with_secondary_suite"],
+          "source_sentence": "9.8.5.2.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.5.3",
+      "title": "Height over Ramps",
+      "subsection": "9.8.5 Ramps",
+      "requirements": [
+        {
+          "id": "9.8.5.3-1",
+          "element": "ramp_headroom",
+          "requirement_type": "dimensional",
+          "description": "Clear height over ramps - general",
+          "min_value": 2050,
+          "unit": "mm",
+          "exact_quote": "the clear height over ramps shall be not less than 2050 mm",
+          "applies_to": ["general_ramps"],
+          "source_sentence": "9.8.5.3.(1)"
+        },
+        {
+          "id": "9.8.5.3-2",
+          "element": "ramp_headroom",
+          "requirement_type": "dimensional",
+          "description": "Clear height over ramps - single dwelling unit",
+          "min_value": 1950,
+          "unit": "mm",
+          "exact_quote": "The clear height over ramps serving a single dwelling unit or a house with a secondary suite including their common spaces shall be not less than 1950 mm",
+          "applies_to": ["single_dwelling_unit", "house_with_secondary_suite"],
+          "source_sentence": "9.8.5.3.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.5.4",
+      "title": "Ramp Slope",
+      "subsection": "9.8.5 Ramps",
+      "requirements": [
+        {
+          "id": "9.8.5.4-1a",
+          "element": "ramp_slope",
+          "requirement_type": "dimensional",
+          "description": "Maximum slope for exterior ramps",
+          "max_value": "1 in 10",
+          "ratio": 0.10,
+          "exact_quote": "1 in 10 for exterior ramps",
+          "applies_to": ["exterior_ramps"],
+          "source_sentence": "9.8.5.4.(1)(a)"
+        },
+        {
+          "id": "9.8.5.4-1b",
+          "element": "ramp_slope",
+          "requirement_type": "dimensional",
+          "description": "Maximum slope for interior ramps - residential",
+          "max_value": "1 in 10",
+          "ratio": 0.10,
+          "exact_quote": "1 in 10 for interior ramps serving residential occupancies",
+          "applies_to": ["interior_ramps_residential"],
+          "source_sentence": "9.8.5.4.(1)(b)"
+        },
+        {
+          "id": "9.8.5.4-1c",
+          "element": "ramp_slope",
+          "requirement_type": "dimensional",
+          "description": "Maximum slope for industrial occupancies",
+          "max_value": "1 in 6",
+          "ratio": 0.167,
+          "exact_quote": "1 in 6 for industrial occupancies",
+          "applies_to": ["industrial_occupancies"],
+          "source_sentence": "9.8.5.4.(1)(c)"
+        },
+        {
+          "id": "9.8.5.4-1d",
+          "element": "ramp_slope",
+          "requirement_type": "dimensional",
+          "description": "Maximum slope for all other occupancies",
+          "max_value": "1 in 8",
+          "ratio": 0.125,
+          "exact_quote": "1 in 8 for all other occupancies",
+          "applies_to": ["other_occupancies"],
+          "source_sentence": "9.8.5.4.(1)(d)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.5.5",
+      "title": "Maximum Rise",
+      "subsection": "9.8.5 Ramps",
+      "requirements": [
+        {
+          "id": "9.8.5.5-1",
+          "element": "ramp_rise",
+          "requirement_type": "dimensional",
+          "description": "Maximum rise between floors/landings when slope > 1:12",
+          "max_value": 1500,
+          "unit": "mm",
+          "condition": "slope greater than 1 in 12",
+          "exact_quote": "Where the slope of the ramp is greater than 1 in 12, the maximum rise between floors or landings shall be 1500 mm",
+          "applies_to": ["steep_ramps"],
+          "source_sentence": "9.8.5.5.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.6.3",
+      "title": "Dimensions of Landings",
+      "subsection": "9.8.6 Landings",
+      "requirements": [
+        {
+          "id": "9.8.6.3-1",
+          "element": "landing_dimensions",
+          "requirement_type": "dimensional",
+          "description": "Landings as wide and long as stair/ramp width",
+          "formula": "width >= stair_width AND length >= stair_width",
+          "exact_quote": "landings shall be at least as wide and as long as the width of the stair or ramp in which they occur",
+          "applies_to": ["all_landings"],
+          "source_sentence": "9.8.6.3.(1)"
+        },
+        {
+          "id": "9.8.6.3-2",
+          "element": "landing_length",
+          "requirement_type": "dimensional",
+          "description": "Landing length for non-turning or <90 degree turn",
+          "max_value": 1100,
+          "unit": "mm",
+          "exact_quote": "Where the landing in a stairway or ramp does not turn or turns less than 90 degrees, the length of the landing need not be more than the lesser of a) the required width of the stair or ramp, or b) 1100 mm",
+          "applies_to": ["non_turning_landings"],
+          "source_sentence": "9.8.6.3.(2)"
+        },
+        {
+          "id": "9.8.6.3-6",
+          "element": "landing_slope",
+          "requirement_type": "dimensional",
+          "description": "Maximum landing slope",
+          "max_value": "1 in 50",
+          "ratio": 0.02,
+          "exact_quote": "The slope of landings shall not exceed 1 in 50",
+          "applies_to": ["all_landings"],
+          "source_sentence": "9.8.6.3.(6)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.6.4",
+      "title": "Height over Landings",
+      "subsection": "9.8.6 Landings",
+      "requirements": [
+        {
+          "id": "9.8.6.4-1",
+          "element": "landing_headroom",
+          "requirement_type": "dimensional",
+          "description": "Clear height over landings - general",
+          "min_value": 2050,
+          "unit": "mm",
+          "exact_quote": "the clear height over landings shall be not less than 2050 mm",
+          "applies_to": ["general_landings"],
+          "source_sentence": "9.8.6.4.(1)"
+        },
+        {
+          "id": "9.8.6.4-2",
+          "element": "landing_headroom",
+          "requirement_type": "dimensional",
+          "description": "Clear height over landings - single dwelling unit",
+          "min_value": 1950,
+          "unit": "mm",
+          "exact_quote": "The clear height over landings serving a single dwelling unit or a house with a secondary suite including their common spaces shall be not less than 1950 mm",
+          "applies_to": ["single_dwelling_unit", "house_with_secondary_suite"],
+          "source_sentence": "9.8.6.4.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.7.4",
+      "title": "Height of Handrails",
+      "subsection": "9.8.7 Handrails",
+      "requirements": [
+        {
+          "id": "9.8.7.4-2",
+          "element": "handrail_height",
+          "requirement_type": "dimensional",
+          "description": "Required handrail height range",
+          "min_value": 865,
+          "max_value": 1070,
+          "unit": "mm",
+          "exact_quote": "required handrails shall be 865 mm to 1070 mm high",
+          "applies_to": ["required_handrails"],
+          "source_sentence": "9.8.7.4.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.7.5",
+      "title": "Ergonomic Design",
+      "subsection": "9.8.7 Handrails",
+      "requirements": [
+        {
+          "id": "9.8.7.5-1a",
+          "element": "handrail_clearance",
+          "requirement_type": "dimensional",
+          "description": "Clearance between handrail and smooth surface",
+          "min_value": 50,
+          "unit": "mm",
+          "exact_quote": "The clearance between a handrail and the surface behind it shall be not less than 50 mm",
+          "applies_to": ["smooth_surfaces"],
+          "source_sentence": "9.8.7.5.(1)(a)"
+        },
+        {
+          "id": "9.8.7.5-1b",
+          "element": "handrail_clearance",
+          "requirement_type": "dimensional",
+          "description": "Clearance between handrail and rough/abrasive surface",
+          "min_value": 60,
+          "unit": "mm",
+          "exact_quote": "where said surface is rough or abrasive, 60 mm",
+          "applies_to": ["rough_abrasive_surfaces"],
+          "source_sentence": "9.8.7.5.(1)(b)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.7.6",
+      "title": "Projections into Stairs and Ramps",
+      "subsection": "9.8.7 Handrails",
+      "requirements": [
+        {
+          "id": "9.8.7.6-1",
+          "element": "handrail_projection",
+          "requirement_type": "dimensional",
+          "description": "Maximum handrail projection into required width",
+          "max_value": 100,
+          "unit": "mm",
+          "exact_quote": "Handrails and constructions below handrails, including handrail supports and stair stringers, shall not project more than 100 mm into the required width of a stair or ramp",
+          "applies_to": ["handrails_and_supports"],
+          "source_sentence": "9.8.7.6.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.7.3",
+      "title": "Termination of Handrails",
+      "subsection": "9.8.7 Handrails",
+      "requirements": [
+        {
+          "id": "9.8.7.3-2",
+          "element": "handrail_extension",
+          "requirement_type": "dimensional",
+          "description": "Horizontal extension beyond top and bottom of flight",
+          "min_value": 300,
+          "unit": "mm",
+          "exact_quote": "at least one handrail at the sides of a stair or ramp shall extend horizontally not less than 300 mm beyond the top and bottom of each flight or ramp",
+          "applies_to": ["stairs_not_serving_single_dwelling"],
+          "exceptions": ["stairs serving only one dwelling unit"],
+          "source_sentence": "9.8.7.3.(2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.7.7",
+      "title": "Design and Attachment of Handrails",
+      "subsection": "9.8.7 Handrails",
+      "requirements": [
+        {
+          "id": "9.8.7.7-1a",
+          "element": "handrail_load_concentrated",
+          "requirement_type": "performance",
+          "description": "Concentrated load resistance for all handrails",
+          "min_value": 0.9,
+          "unit": "kN",
+          "exact_quote": "a concentrated load of not less than 0.9 kN applied at any point and in any direction for all handrails",
+          "applies_to": ["all_handrails"],
+          "source_sentence": "9.8.7.7.(1)(a)"
+        },
+        {
+          "id": "9.8.7.7-1b",
+          "element": "handrail_load_uniform",
+          "requirement_type": "performance",
+          "description": "Uniform load resistance for handrails not in single dwelling",
+          "min_value": 0.7,
+          "unit": "kN/m",
+          "exact_quote": "for handrails other than those serving a single dwelling unit, a uniform load of not less than 0.7 kN/m",
+          "applies_to": ["non_dwelling_handrails"],
+          "source_sentence": "9.8.7.7.(1)(b)"
+        },
+        {
+          "id": "9.8.7.7-2a",
+          "element": "handrail_attachment_spacing",
+          "requirement_type": "dimensional",
+          "description": "Maximum attachment point spacing",
+          "max_value": 1.2,
+          "unit": "m",
+          "exact_quote": "the attachment points are spaced not more than 1.2 m apart measured on the horizontal plane",
+          "applies_to": ["wood_stud_attachment"],
+          "source_sentence": "9.8.7.7.(2)(a)"
+        },
+        {
+          "id": "9.8.7.7-2b",
+          "element": "handrail_attachment_end_distance",
+          "requirement_type": "dimensional",
+          "description": "Maximum distance from handrail end to first attachment",
+          "max_value": 300,
+          "unit": "mm",
+          "exact_quote": "the first attachment point at either end is located no more than 300 mm from the end of the handrail",
+          "applies_to": ["wood_stud_attachment"],
+          "source_sentence": "9.8.7.7.(2)(b)"
+        },
+        {
+          "id": "9.8.7.7-2c",
+          "element": "handrail_screw_penetration",
+          "requirement_type": "dimensional",
+          "description": "Minimum screw penetration into solid wood",
+          "min_value": 32,
+          "unit": "mm",
+          "screw_count": 2,
+          "screw_size": "No.8",
+          "exact_quote": "the fasteners consist of not less than 2 No.8 wood screws at each point, penetrating not less than 32 mm into solid wood",
+          "applies_to": ["wood_stud_attachment"],
+          "source_sentence": "9.8.7.7.(2)(c)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.8.1",
+      "title": "Required Guards",
+      "subsection": "9.8.8 Guards",
+      "requirements": [
+        {
+          "id": "9.8.8.1-1",
+          "element": "guard_trigger_height",
+          "requirement_type": "dimensional",
+          "description": "Elevation difference requiring guard",
+          "min_value": 600,
+          "unit": "mm",
+          "exact_quote": "shall be protected by a guard on each side that is not protected by a wall for the length where the difference in elevation is more than 600 mm between the walking surface and the adjacent surface within 1.2 m",
+          "applies_to": ["all_elevated_surfaces"],
+          "source_sentence": "9.8.8.1.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.8.3",
+      "title": "Height of Guards",
+      "subsection": "9.8.8 Guards",
+      "requirements": [
+        {
+          "id": "9.8.8.3-1",
+          "element": "guard_height",
+          "requirement_type": "dimensional",
+          "description": "Minimum guard height - general",
+          "min_value": 1070,
+          "unit": "mm",
+          "exact_quote": "all guards shall be not less than 1070 mm high",
+          "applies_to": ["general_guards"],
+          "source_sentence": "9.8.8.3.(1)"
+        },
+        {
+          "id": "9.8.8.3-2",
+          "element": "guard_height",
+          "requirement_type": "dimensional",
+          "description": "Minimum guard height - within dwelling units",
+          "min_value": 900,
+          "unit": "mm",
+          "exact_quote": "All guards within dwelling units or within houses with a secondary suite including their common spaces shall be not less than 900 mm high",
+          "applies_to": ["dwelling_units", "house_with_secondary_suite"],
+          "source_sentence": "9.8.8.3.(2)"
+        },
+        {
+          "id": "9.8.8.3-3",
+          "element": "guard_height",
+          "requirement_type": "dimensional",
+          "description": "Exterior guards for single dwelling when walking surface <=1800mm above ground",
+          "min_value": 900,
+          "unit": "mm",
+          "condition": "walking surface not more than 1800 mm above finished ground level",
+          "exact_quote": "Exterior guards serving not more than one dwelling unit or a house with a secondary suite including their common spaces shall be not less than 900 mm high where the walking surface served by the guard is not more than 1800 mm above the finished ground level",
+          "applies_to": ["exterior_guards_low_height"],
+          "source_sentence": "9.8.8.3.(3)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.8.5",
+      "title": "Openings in Guards",
+      "subsection": "9.8.8 Guards",
+      "requirements": [
+        {
+          "id": "9.8.8.5-1",
+          "element": "guard_opening",
+          "requirement_type": "dimensional",
+          "description": "Maximum opening size in guards",
+          "max_value": 100,
+          "unit": "mm",
+          "shape": "sphere",
+          "exact_quote": "openings through guards shall be of a size that prevents the passage of a spherical object having a diameter of 100 mm",
+          "applies_to": ["general_guards"],
+          "source_sentence": "9.8.8.5.(1)"
+        },
+        {
+          "id": "9.8.8.5-2",
+          "element": "guard_triangular_opening",
+          "requirement_type": "dimensional",
+          "description": "Maximum triangular opening at stairs",
+          "max_value": 150,
+          "unit": "mm",
+          "shape": "sphere",
+          "exact_quote": "the triangular openings formed by stair risers, stair treads and the bottom element of a required guard shall be of a size that prevents the passage of a 150 mm diam sphere",
+          "applies_to": ["stair_guards"],
+          "exceptions": ["industrial occupancies"],
+          "source_sentence": "9.8.8.5.(2)"
+        },
+        {
+          "id": "9.8.8.5-3",
+          "element": "guard_opening_industrial",
+          "requirement_type": "dimensional",
+          "description": "Maximum opening size for industrial guards",
+          "max_value": 535,
+          "unit": "mm",
+          "shape": "sphere",
+          "exact_quote": "guards in industrial occupancies are permitted to consist of a top railing, and one or more horizontal intermediate rails spaced such that the size of the openings through the guard prevents the passage of a spherical object having a diameter of 535 mm",
+          "applies_to": ["industrial_guards"],
+          "exceptions": ["storage garages"],
+          "source_sentence": "9.8.8.5.(3)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.8.6",
+      "title": "Design of Guards to Not Facilitate Climbing",
+      "subsection": "9.8.8 Guards",
+      "requirements": [
+        {
+          "id": "9.8.8.6-1",
+          "element": "guard_anti_climbing",
+          "requirement_type": "dimensional",
+          "description": "Anti-climbing zone on guards protecting level >4.2m",
+          "zone_bottom": 140,
+          "zone_top": 900,
+          "unit": "mm",
+          "condition": "level more than 4.2 m above adjacent level",
+          "exact_quote": "guards required by Article 9.8.8.1. that protect a level located more than 4.2 m above the adjacent level shall be designed so that no member, attachment or opening located between 140 mm and 900 mm above the level protected by the guard facilitates climbing",
+          "applies_to": ["high_guards"],
+          "exceptions": ["industrial occupancies"],
+          "source_sentence": "9.8.8.6.(1)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.9.1",
+      "title": "Loads on Stairs and Ramps",
+      "subsection": "9.8.9 Construction",
+      "requirements": [
+        {
+          "id": "9.8.9.1-1a",
+          "element": "stair_load",
+          "requirement_type": "performance",
+          "description": "Specified load for stairs serving single dwelling",
+          "min_value": 1.9,
+          "unit": "kPa",
+          "exact_quote": "1.9 kPa for stairs and ramps serving not more than one dwelling unit or a house with a secondary suite including their common spaces",
+          "applies_to": ["single_dwelling_stairs"],
+          "source_sentence": "9.8.9.1.(1)(a)"
+        },
+        {
+          "id": "9.8.9.1-1b",
+          "element": "stair_load",
+          "requirement_type": "performance",
+          "description": "Specified load for other stairs",
+          "min_value": 4.8,
+          "unit": "kPa",
+          "exact_quote": "4.8 kPa for other stairs and ramps",
+          "applies_to": ["other_stairs"],
+          "source_sentence": "9.8.9.1.(1)(b)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.9.4",
+      "title": "Wooden Stair Stringers",
+      "subsection": "9.8.9 Construction",
+      "requirements": [
+        {
+          "id": "9.8.9.4-1a",
+          "element": "stringer_effective_depth",
+          "requirement_type": "dimensional",
+          "description": "Minimum effective depth of stringers",
+          "min_value": 90,
+          "unit": "mm",
+          "measurement": "perpendicular to bottom at point of minimum cross-section",
+          "exact_quote": "have a minimum effective depth of 90 mm, measured perpendicularly to the bottom of the stringer at the point of minimum cross-section",
+          "applies_to": ["wooden_stringers"],
+          "source_sentence": "9.8.9.4.(1)(a)"
+        },
+        {
+          "id": "9.8.9.4-1a-overall",
+          "element": "stringer_overall_depth",
+          "requirement_type": "dimensional",
+          "description": "Minimum overall depth of stringers",
+          "min_value": 235,
+          "unit": "mm",
+          "exact_quote": "an overall depth of not less than 235 mm",
+          "applies_to": ["wooden_stringers"],
+          "source_sentence": "9.8.9.4.(1)(a)"
+        },
+        {
+          "id": "9.8.9.4-1c-supported",
+          "element": "stringer_thickness",
+          "requirement_type": "dimensional",
+          "description": "Minimum thickness if supported along length",
+          "min_value": 25,
+          "unit": "mm",
+          "condition": "supported along length",
+          "exact_quote": "be not less than 25 mm actual thickness if supported along their length",
+          "applies_to": ["supported_stringers"],
+          "source_sentence": "9.8.9.4.(1)(c)"
+        },
+        {
+          "id": "9.8.9.4-1c-unsupported",
+          "element": "stringer_thickness",
+          "requirement_type": "dimensional",
+          "description": "Minimum thickness if unsupported along length",
+          "min_value": 38,
+          "unit": "mm",
+          "condition": "unsupported along length",
+          "exact_quote": "38 mm actual thickness if unsupported along their length",
+          "applies_to": ["unsupported_stringers"],
+          "source_sentence": "9.8.9.4.(1)(c)"
+        },
+        {
+          "id": "9.8.9.4-1d-dwelling",
+          "element": "stringer_spacing",
+          "requirement_type": "dimensional",
+          "description": "Maximum stringer spacing for single dwelling",
+          "max_value": 900,
+          "unit": "mm",
+          "exact_quote": "be spaced not more than 900 mm o.c. in stairs serving not more than one dwelling unit or a house with a secondary suite",
+          "applies_to": ["single_dwelling_stairs"],
+          "source_sentence": "9.8.9.4.(1)(d)"
+        },
+        {
+          "id": "9.8.9.4-1d-other",
+          "element": "stringer_spacing",
+          "requirement_type": "dimensional",
+          "description": "Maximum stringer spacing for other stairs",
+          "max_value": 600,
+          "unit": "mm",
+          "exact_quote": "600 mm o.c. in other stairs",
+          "applies_to": ["other_stairs"],
+          "source_sentence": "9.8.9.4.(1)(d)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.8.9.5",
+      "title": "Treads",
+      "subsection": "9.8.9 Construction",
+      "requirements": [
+        {
+          "id": "9.8.9.5-1",
+          "element": "tread_thickness",
+          "requirement_type": "dimensional",
+          "description": "Minimum tread thickness in dwelling units",
+          "min_value": 25,
+          "unit": "mm",
+          "exact_quote": "Stair treads of lumber, plywood or OSB within dwelling units shall be not less than 25 mm actual thickness",
+          "applies_to": ["dwelling_unit_treads"],
+          "source_sentence": "9.8.9.5.(1)"
+        },
+        {
+          "id": "9.8.9.5-1-open",
+          "element": "tread_thickness",
+          "requirement_type": "dimensional",
+          "description": "Minimum tread thickness with open risers when span > 750mm",
+          "min_value": 38,
+          "unit": "mm",
+          "condition": "open risers permitted and distance between stringers exceeds 750 mm",
+          "exact_quote": "where open risers are permitted and the distance between stringers exceeds 750 mm, the treads shall be not less than 38 mm actual thickness",
+          "applies_to": ["open_riser_wide_span"],
+          "source_sentence": "9.8.9.5.(1)"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_articles_extracted": 26,
+    "total_requirements": 76,
+    "key_dimensions": {
+      "stair_width_residential_exit": "900 mm min",
+      "stair_width_dwelling_unit": "860 mm min",
+      "headroom_general": "2050 mm min",
+      "headroom_dwelling": "1950 mm min",
+      "riser_private": "125-200 mm",
+      "riser_public": "125-180 mm",
+      "run_private": "255-355 mm",
+      "run_public": "280 mm min (no max)",
+      "handrail_height": "865-1070 mm",
+      "guard_height_general": "1070 mm min",
+      "guard_height_dwelling": "900 mm min",
+      "guard_opening": "100 mm max sphere"
+    }
+  }
+}

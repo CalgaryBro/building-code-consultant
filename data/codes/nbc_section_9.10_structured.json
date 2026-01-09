@@ -1,0 +1,363 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.10",
+    "section_title": "Fire Protection",
+    "pages": "867-903",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 132,
+    "subsections": [
+      "9.10.1 - Definitions and Application",
+      "9.10.2 - Occupancy Classification",
+      "9.10.3 - Fire-Resistance Ratings",
+      "9.10.4 - Building Size Determination",
+      "9.10.5 - Permitted Openings",
+      "9.10.6 - Construction Types",
+      "9.10.7 - Steel Members",
+      "9.10.8 - Fire Resistance of Floor Assemblies",
+      "9.10.9 - Fire Separations",
+      "9.10.10 - Service Rooms",
+      "9.10.11 - Firewalls",
+      "9.10.12 - Prevention of Fire Spread",
+      "9.10.13 - Doors and Closures",
+      "9.10.14 - Spatial Separation Between Buildings",
+      "9.10.15 - Spatial Separation Between Houses",
+      "9.10.16 - Fire Blocks",
+      "9.10.17 - Flame-Spread Limits",
+      "9.10.18 - Alarm and Detection Systems",
+      "9.10.19 - Smoke Alarms",
+      "9.10.20 - Firefighting",
+      "9.10.21 - Reserved",
+      "9.10.22 - Cooktop Fire Protection"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.10.1.1",
+      "title": "Sloped Roofs",
+      "requirements": [
+        {
+          "id": "9.10.1.1-1",
+          "element": "sloped_roof_classification",
+          "requirement_type": "definitional",
+          "min_value": 60,
+          "unit": "degrees",
+          "description": "Roofs with slopes of 60 degrees or more to horizontal that are adjacent to an occupied room shall be considered as a wall",
+          "exact_quote": "roofs with slopes of 60\u00b0 or more to the horizontal that are adjacent to a room or space intended for occupancy shall be considered as a wall"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.1.4",
+      "title": "Cross-References to Part 3",
+      "requirements": [
+        {
+          "id": "9.10.1.4-8",
+          "element": "sprinkler_system",
+          "requirement_type": "reference",
+          "description": "Sprinkler systems shall be designed, constructed and installed in conformance with Articles 3.2.5.12 to 3.2.5.15 and 3.2.5.17",
+          "exact_quote": "Sprinkler systems shall be designed, constructed and installed in conformance with Articles 3.2.5.12 to 3.2.5.15 and 3.2.5.17"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.2.2",
+      "title": "Home-Type Care Occupancies",
+      "requirements": [
+        {
+          "id": "9.10.2.2-1",
+          "element": "home_care_sprinkler",
+          "requirement_type": "prescriptive",
+          "max_value": 10,
+          "unit": "persons",
+          "description": "Home-type care occupancies with sleeping for not more than 10 persons shall be sprinklered per NFPA 13D",
+          "exact_quote": "Home-type care occupancies with sleeping accommodation for not more than 10 persons shall...be sprinklered in conformance with NFPA 13D"
+        },
+        {
+          "id": "9.10.2.2-2",
+          "element": "water_supply_duration",
+          "requirement_type": "dimensional",
+          "min_value": 30,
+          "unit": "min",
+          "description": "Minimum 30-minute water supply for sprinkler system in home-type care occupancies",
+          "exact_quote": "provided with a minimum 30-minute water supply for the sprinkler system"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.3.1",
+      "title": "Fire-Resistance Ratings",
+      "requirements": [
+        {
+          "id": "9.10.3.1-1",
+          "element": "fire_resistance_rating",
+          "requirement_type": "reference",
+          "description": "Fire-resistance ratings shall conform to the requirements in Part 3 and Appendix D",
+          "exact_quote": "Fire-resistance ratings shall conform to the requirements in Part 3 and Appendix D"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.8.1",
+      "title": "Floor Assemblies to Have Fire-Resistance Rating",
+      "requirements": [
+        {
+          "id": "9.10.8.1-1",
+          "element": "floor_fire_resistance_rating",
+          "requirement_type": "dimensional",
+          "min_value": 45,
+          "unit": "min",
+          "description": "Floor assemblies required to have a fire-resistance rating shall have a rating of not less than 45 min",
+          "exact_quote": "Floor assemblies required to have a fire-resistance rating shall have a rating of not less than 45 min"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.9.1",
+      "title": "Fire Separation Required",
+      "requirements": [
+        {
+          "id": "9.10.9.1-1",
+          "element": "suite_separation",
+          "requirement_type": "prescriptive",
+          "description": "Suites of residential occupancy shall be separated from adjoining suites and public corridors by a fire separation",
+          "exact_quote": "Suites of residential occupancy shall be separated from adjoining suites and from public corridors by a fire separation"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.9.3",
+      "title": "Doors in Fire Separations",
+      "requirements": [
+        {
+          "id": "9.10.9.3-1",
+          "element": "fire_separation_door_rating",
+          "requirement_type": "dimensional",
+          "min_value": 20,
+          "unit": "min",
+          "description": "Doors in fire separations between suites and corridors shall have a fire-protection rating of not less than 20 min",
+          "exact_quote": "Doors in fire separations...shall have a fire-protection rating of not less than 20 min"
+        },
+        {
+          "id": "9.10.9.3-2",
+          "element": "door_closer",
+          "requirement_type": "prescriptive",
+          "description": "Doors in fire separations shall be equipped with self-closing devices",
+          "exact_quote": "be equipped with self-closing devices"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.11.1",
+      "title": "Firewall Required",
+      "requirements": [
+        {
+          "id": "9.10.11.1-1",
+          "element": "firewall_fire_resistance",
+          "requirement_type": "dimensional",
+          "min_value": 2,
+          "unit": "h",
+          "description": "Firewalls shall have a fire-resistance rating of not less than 2 h",
+          "exact_quote": "Firewalls shall have a fire-resistance rating of not less than 2 h"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.14.1",
+      "title": "Limiting Distance Determination",
+      "requirements": [
+        {
+          "id": "9.10.14.1-1",
+          "element": "limiting_distance",
+          "requirement_type": "reference",
+          "description": "Limiting distance shall be determined from exposing building face to property line or imaginary line between buildings",
+          "exact_quote": "Limiting distance shall be determined from the exposing building face to the lot line, centreline of a street, lane or public thoroughfare"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.14.4",
+      "title": "Unprotected Openings",
+      "requirements": [
+        {
+          "id": "9.10.14.4-1",
+          "element": "unprotected_openings",
+          "requirement_type": "reference",
+          "description": "Maximum aggregate area of unprotected openings permitted in an exposing building face based on limiting distance per Table 9.10.14.4",
+          "exact_quote": "Maximum aggregate area of unprotected openings...shall conform to Table 9.10.14.4"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.15.3",
+      "title": "Spatial Separation for Detached Houses",
+      "requirements": [
+        {
+          "id": "9.10.15.3-1",
+          "element": "detached_house_separation",
+          "requirement_type": "dimensional",
+          "min_value": 1.2,
+          "unit": "m",
+          "description": "Detached houses and accessory buildings shall be not less than 1.2 m from the lot line",
+          "exact_quote": "not less than 1.2 m from the lot line"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.16.1",
+      "title": "Fire Blocks for Concealed Spaces",
+      "requirements": [
+        {
+          "id": "9.10.16.1-1",
+          "element": "fire_block_location",
+          "requirement_type": "prescriptive",
+          "description": "Fire blocks shall be installed to cut off concealed draft openings at required locations",
+          "exact_quote": "Fire blocks shall be installed to cut off concealed draft openings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.16.4",
+      "title": "Fire Blocks for Horizontal Concealed Spaces",
+      "requirements": [
+        {
+          "id": "9.10.16.4-1",
+          "element": "horizontal_fire_block_spacing",
+          "requirement_type": "dimensional",
+          "max_value": 20,
+          "unit": "m",
+          "description": "Horizontal concealed spaces in floor, ceiling or roof assemblies shall be divided into areas of not more than 20 m linear distance",
+          "exact_quote": "horizontal concealed spaces...shall be divided into areas of not more than 20 m linear distance"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.17.1",
+      "title": "Interior Finish Flame-Spread Rating",
+      "requirements": [
+        {
+          "id": "9.10.17.1-1",
+          "element": "interior_finish_flame_spread",
+          "requirement_type": "dimensional",
+          "max_value": 150,
+          "unit": "FSR",
+          "description": "Interior finish of wall and ceiling surfaces shall have a flame-spread rating not more than 150",
+          "exact_quote": "Interior finish of wall and ceiling surfaces...shall have a flame-spread rating not more than 150"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.17.4",
+      "title": "Flame-Spread Rating for Exits",
+      "requirements": [
+        {
+          "id": "9.10.17.4-1",
+          "element": "exit_flame_spread",
+          "requirement_type": "dimensional",
+          "max_value": 25,
+          "unit": "FSR",
+          "description": "Interior finish in exits shall have a flame-spread rating not more than 25",
+          "exact_quote": "Interior finish in exits...shall have a flame-spread rating not more than 25"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.18.1",
+      "title": "Fire Alarm Systems",
+      "requirements": [
+        {
+          "id": "9.10.18.1-1",
+          "element": "fire_alarm_required",
+          "requirement_type": "prescriptive",
+          "description": "Fire alarm systems required by Part 3 shall be installed",
+          "exact_quote": "Fire alarm systems required by Part 3 shall be installed"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.19.1",
+      "title": "Smoke Alarms Required",
+      "requirements": [
+        {
+          "id": "9.10.19.1-1",
+          "element": "smoke_alarm_dwelling",
+          "requirement_type": "prescriptive",
+          "description": "Smoke alarms shall be installed in dwelling units on each storey containing sleeping rooms and on storeys adjacent to sleeping rooms",
+          "exact_quote": "Smoke alarms shall be installed in each dwelling unit"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.19.3",
+      "title": "Location of Smoke Alarms",
+      "requirements": [
+        {
+          "id": "9.10.19.3-1",
+          "element": "smoke_alarm_location",
+          "requirement_type": "prescriptive",
+          "description": "Smoke alarms shall be located on or near the ceiling in a location that will provide warning to sleeping persons",
+          "exact_quote": "Smoke alarms shall be located on or near the ceiling in a location that will provide warning to sleeping persons"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.19.5",
+      "title": "Smoke Alarm Standards",
+      "requirements": [
+        {
+          "id": "9.10.19.5-1",
+          "element": "smoke_alarm_standard",
+          "requirement_type": "reference",
+          "description": "Smoke alarms shall conform to CAN/ULC-S531 or ULC-S531 (photoelectric type recommended)",
+          "exact_quote": "Smoke alarms shall conform to CAN/ULC-S531 or ULC-S531"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.20.1",
+      "title": "Access for Fire Department",
+      "requirements": [
+        {
+          "id": "9.10.20.1-1",
+          "element": "fire_department_access",
+          "requirement_type": "prescriptive",
+          "description": "Buildings shall be designed and constructed to provide access for fire department vehicles",
+          "exact_quote": "Buildings shall be designed and constructed to provide access for fire department vehicles"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.22.1",
+      "title": "Application of Cooktop Fire Protection",
+      "requirements": [
+        {
+          "id": "9.10.22.1-1",
+          "element": "cooktop_fire_protection",
+          "requirement_type": "prescriptive",
+          "applies_to": [
+            "dwelling_units"
+          ],
+          "description": "Fire protection requirements apply to cooking equipment in dwelling units",
+          "exact_quote": "This Subsection applies to cooking equipment in dwelling units"
+        }
+      ]
+    },
+    {
+      "article_number": "9.10.22.2",
+      "title": "Cooktop Fire Suppression",
+      "requirements": [
+        {
+          "id": "9.10.22.2-1",
+          "element": "cooktop_fire_suppression",
+          "requirement_type": "prescriptive",
+          "description": "Cooktops and ranges shall be provided with automatic fire suppression or automatic shut-off devices",
+          "exact_quote": "Cooktops and ranges shall be provided with...automatic fire suppression...or automatic shut-off devices"
+        }
+      ]
+    }
+  ]
+}

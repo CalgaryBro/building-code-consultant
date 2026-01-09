@@ -1,0 +1,52 @@
+# Calgary Building Code Expert System - Backend Dependencies
+
+# Web Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+asyncpg==0.29.0
+geoalchemy2==0.14.3
+pgvector==0.2.4
+
+# Data Processing
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+
+# PDF Processing
+pypdf==3.17.4
+pdfplumber==0.10.3
+PyMuPDF>=1.23.0
+
+# Geometry Analysis
+shapely>=2.0.0
+networkx>=3.0
+
+# OCR Processing
+easyocr>=1.7.0
+opencv-python>=4.8.0
+
+# HTTP Client
+httpx>=0.25.2,<0.26.0
+aiohttp==3.9.1
+
+# Utilities
+python-dateutil==2.8.2
+orjson==3.9.10
+
+# Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+
+# VLM Integration (Ollama)
+ollama==0.1.6
+
+# Embeddings for semantic search
+sentence-transformers==2.2.2
+
+# Image processing for PDF extraction
+Pillow==10.2.0

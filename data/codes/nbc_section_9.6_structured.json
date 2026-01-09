@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.6",
+    "section_title": "Glass",
+    "pages": "834-838",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 4,
+    "subsections": [
+      "9.6.1 - General"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.6.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.6.1.1-1",
+          "element": "glass_application_scope",
+          "requirement_type": "definitional",
+          "description": "Section 9.6 applies to glass in interior doors and windows, clothes closets, site-built exterior windows/doors/skylights, shower/bathtub enclosures, glazed panels and partitions, and the protection of glass",
+          "exact_quote": "This Section applies to glass in interior doors and interior windows and their sidelights, clothes closets, site-built exterior windows, doors and skylights, shower or bathtub enclosures, glazed panels and partitions, and the protection of glass",
+          "applies_to": ["glass", "glazing", "windows", "doors", "skylights"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.6.1.2",
+      "title": "Material Standards for Glass",
+      "requirements": [
+        {
+          "id": "9.6.1.2-1",
+          "element": "glass_material_standards",
+          "requirement_type": "reference",
+          "description": "Glass shall conform to CAN/CGSB-12.1 (Safety Glazing), CAN/CGSB-12.2-M (Sheet Glass), CAN/CGSB-12.3-M (Float Glass), CAN/CGSB-12.4-M (Heat Absorbing), CAN/CGSB-12.8 (Insulating units), CAN/CGSB-12.9 (Spandrel), CAN/CGSB-12.10-M (Reflective), CAN/CGSB-12.11-M (Wired Safety Glass), or ASTM E2190 (Insulating Glass Units)",
+          "exact_quote": "Glass shall conform to CAN/CGSB-12.1, Safety Glazing, CAN/CGSB-12.2-M, Flat, Clear Sheet Glass, CAN/CGSB-12.3-M, Flat, Clear Float Glass...",
+          "referenced_standards": [
+            "CAN/CGSB-12.1",
+            "CAN/CGSB-12.2-M",
+            "CAN/CGSB-12.3-M",
+            "CAN/CGSB-12.4-M",
+            "CAN/CGSB-12.8",
+            "CAN/CGSB-12.9",
+            "CAN/CGSB-12.10-M",
+            "CAN/CGSB-12.11-M",
+            "ASTM E2190"
+          ]
+        },
+        {
+          "id": "9.6.1.2-2",
+          "element": "mirrored_glass_doors",
+          "requirement_type": "conditional",
+          "description": "Mirrored glass doors are only permitted at entrance to clothes closets and shall conform to CAN/CGSB-82.6-M",
+          "exact_quote": "Mirrored glass doors are only permitted to be used at the entrance to clothes closets and shall conform to CAN/CGSB-82.6-M, Doors, Mirrored Glass, Sliding or Folding, Wardrobe",
+          "referenced_standards": ["CAN/CGSB-82.6-M"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.6.1.3",
+      "title": "Structural Sufficiency of Glass",
+      "requirements": [
+        {
+          "id": "9.6.1.3-1",
+          "element": "glass_structural_design",
+          "requirement_type": "reference",
+          "description": "Glass shall be designed in conformance with CAN/CGSB-12.20-M (Structural Design of Glass for Buildings) or ASTM E1300 (Load Resistance of Glass)",
+          "exact_quote": "glass shall be designed in conformance with CAN/CGSB-12.20-M, Structural Design of Glass for Buildings, or ASTM E1300, Standard Practice for Determining Load Resistance of Glass in Buildings",
+          "referenced_standards": ["CAN/CGSB-12.20-M", "ASTM E1300"]
+        },
+        {
+          "id": "9.6.1.3-2",
+          "element": "glass_area_annealed_3mm_hwp_055",
+          "requirement_type": "dimensional",
+          "max_value": 0.96,
+          "unit": "m2",
+          "description": "Maximum glass area for 3mm annealed glass windows in built-up areas with HWP less than 0.55 kPa",
+          "exact_quote": "Table 9.6.1.3.-A: Annealed 3mm: 0.96 m²",
+          "conditions": ["built-up area", "HWP < 0.55 kPa"],
+          "applies_to": ["windows"]
+        },
+        {
+          "id": "9.6.1.3-3",
+          "element": "glass_area_tempered_6mm_hwp_055",
+          "requirement_type": "dimensional",
+          "max_value": 4.98,
+          "unit": "m2",
+          "description": "Maximum glass area for 6mm tempered glass windows in built-up areas with HWP less than 0.55 kPa",
+          "exact_quote": "Table 9.6.1.3.-A: Tempered 6mm: 4.98 m²",
+          "conditions": ["built-up area", "HWP < 0.55 kPa"],
+          "applies_to": ["windows"]
+        },
+        {
+          "id": "9.6.1.3-4",
+          "element": "glass_area_ig_units_6mm_hwp_055",
+          "requirement_type": "dimensional",
+          "max_value": 5.24,
+          "unit": "m2",
+          "description": "Maximum glass area for 6mm factory-sealed insulated glass units in built-up areas with HWP less than 0.55 kPa",
+          "exact_quote": "Table 9.6.1.3.-A: Factory-sealed IG units 6mm: 5.24 m²",
+          "conditions": ["built-up area", "HWP < 0.55 kPa"],
+          "applies_to": ["windows"]
+        },
+        {
+          "id": "9.6.1.3-5",
+          "element": "glass_area_annealed_3mm_hwp_075",
+          "requirement_type": "dimensional",
+          "max_value": 0.68,
+          "unit": "m2",
+          "description": "Maximum glass area for 3mm annealed glass windows in built-up areas with HWP less than 0.75 kPa",
+          "exact_quote": "Table 9.6.1.3.-B: Annealed 3mm: 0.68 m²",
+          "conditions": ["built-up area", "HWP < 0.75 kPa"],
+          "applies_to": ["windows"]
+        },
+        {
+          "id": "9.6.1.3-6",
+          "element": "glass_area_annealed_3mm_hwp_100",
+          "requirement_type": "dimensional",
+          "max_value": 0.50,
+          "unit": "m2",
+          "description": "Maximum glass area for 3mm annealed glass windows in built-up areas with HWP less than 1.00 kPa",
+          "exact_quote": "Table 9.6.1.3.-C: Annealed 3mm: 0.50 m²",
+          "conditions": ["built-up area", "HWP < 1.00 kPa"],
+          "applies_to": ["windows"]
+        },
+        {
+          "id": "9.6.1.3-7",
+          "element": "glass_area_door_annealed_3mm",
+          "requirement_type": "dimensional",
+          "max_value": 0.50,
+          "unit": "m2",
+          "description": "Maximum glass area for 3mm annealed glass in doors",
+          "exact_quote": "Table 9.6.1.3.-G: Annealed 3mm: 0.50 m²",
+          "applies_to": ["doors"]
+        },
+        {
+          "id": "9.6.1.3-8",
+          "element": "glass_area_door_tempered_4mm",
+          "requirement_type": "dimensional",
+          "max_value": 4.00,
+          "unit": "m2",
+          "description": "Maximum glass area for 4mm fully tempered glass in doors",
+          "exact_quote": "Table 9.6.1.3.-G: Fully Tempered 4mm: 4.00 m²",
+          "applies_to": ["doors"]
+        }
+      ]
+    },
+    {
+      "article_number": "9.6.1.4",
+      "title": "Types of Glazing and Protection of Glazing",
+      "requirements": [
+        {
+          "id": "9.6.1.4-1",
+          "element": "safety_glazing_sidelights",
+          "requirement_type": "dimensional",
+          "min_value": 500,
+          "unit": "mm",
+          "description": "Glass sidelights greater than 500mm wide that could be mistaken for doors shall be safety glazing (tempered or laminated) or wired glass",
+          "exact_quote": "Glass sidelights greater than 500mm wide that could be mistaken for doors, glass in storm doors and glass in sliding doors within or at every entrance to a dwelling unit and in public areas shall be safety glazing of the tempered or laminated type conforming to CAN/CGSB-12.1",
+          "referenced_standards": ["CAN/CGSB-12.1", "CAN/CGSB-12.11-M"]
+        },
+        {
+          "id": "9.6.1.4-2",
+          "element": "entrance_door_glass_height",
+          "requirement_type": "dimensional",
+          "max_value": 0.5,
+          "unit": "m2",
+          "min_height_from_bottom": 900,
+          "height_unit": "mm",
+          "description": "Glass in entrance doors shall be safety glazing or wired glass where glass area exceeds 0.5 m² and extends to less than 900mm from door bottom",
+          "exact_quote": "glass in entrance doors to dwelling units and in public areas shall be safety glazing or wired glass where the glass area exceeds 0.5 m² and extends to less than 900mm from the bottom of the door"
+        },
+        {
+          "id": "9.6.1.4-3",
+          "element": "transparent_panel_barriers",
+          "requirement_type": "prescriptive",
+          "description": "Transparent panels that could be mistaken as a means of egress shall be protected by barriers or railings",
+          "exact_quote": "transparent panels that could be mistaken as a means of egress shall be protected by barriers or railings"
+        },
+        {
+          "id": "9.6.1.4-4",
+          "element": "glass_door_marking",
+          "requirement_type": "prescriptive",
+          "description": "Every glass or transparent door accessible to the public shall be equipped with hardware, bars or other permanent fixtures designed so that the existence and position of such doors is readily apparent",
+          "exact_quote": "every glass or transparent door accessible to the public shall be equipped with hardware, bars or other permanent fixtures designed so that the existence and position of such doors is readily apparent"
+        },
+        {
+          "id": "9.6.1.4-5",
+          "element": "shower_bathtub_glazing",
+          "requirement_type": "reference",
+          "description": "Glazing used for shower or bathtub enclosure shall conform to Class A of CAN/CGSB-12.1 (Safety Glazing)",
+          "exact_quote": "Glazing used for a shower or bathtub enclosure shall conform to Class A of CAN/CGSB-12.1, Safety Glazing",
+          "referenced_standards": ["CAN/CGSB-12.1"]
+        }
+      ]
+    }
+  ]
+}
