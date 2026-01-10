@@ -1,0 +1,395 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.23",
+    "section_title": "Roof Sheathing and Wall Sheathing",
+    "pages": "970-985",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 35,
+    "subsections": [
+      "9.23.1 - Application",
+      "9.23.2 - Structural Sheathing",
+      "9.23.3 - Plywood Sheathing",
+      "9.23.4 - OSB Sheathing",
+      "9.23.5 - Waferboard Sheathing",
+      "9.23.6 - Lumber Sheathing",
+      "9.23.7 - Gypsum Sheathing",
+      "9.23.8 - Fiberboard Sheathing",
+      "9.23.9 - Sheathing Paper",
+      "9.23.10 - Roof Decks"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.23.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.23.1.1-1",
+          "element": "sheathing_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to sheathing for walls and roofs",
+          "exact_quote": "This Section applies to sheathing for walls and roofs"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.2.1",
+      "title": "Structural Sheathing Required",
+      "requirements": [
+        {
+          "id": "9.23.2.1-1",
+          "element": "structural_sheathing_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Structural sheathing shall be provided on wood-frame walls and roofs except where alternative bracing is provided",
+          "exact_quote": "Structural sheathing shall be provided on wood-frame walls and roofs except where alternative bracing is provided"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.3.1",
+      "title": "Plywood Sheathing Standards",
+      "requirements": [
+        {
+          "id": "9.23.3.1-1",
+          "element": "plywood_sheathing_standard",
+          "requirement_type": "reference",
+          "description": "Plywood sheathing shall conform to CSA O121, CSA O151 or CSA O325",
+          "exact_quote": "Plywood sheathing shall conform to CSA O121, CSA O151 or CSA O325",
+          "standard_reference": "CSA O121, CSA O151, CSA O325"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.3.2",
+      "title": "Plywood Roof Sheathing Thickness",
+      "requirements": [
+        {
+          "id": "9.23.3.2-1",
+          "element": "plywood_roof_sheathing_400",
+          "requirement_type": "dimensional",
+          "min_value": 7.5,
+          "unit": "mm",
+          "description": "Minimum plywood roof sheathing thickness for supports spaced not more than 400 mm o.c.",
+          "exact_quote": "Plywood roof sheathing shall be not less than 7.5 mm thick for supports spaced not more than 400 mm o.c."
+        },
+        {
+          "id": "9.23.3.2-2",
+          "element": "plywood_roof_sheathing_600",
+          "requirement_type": "dimensional",
+          "min_value": 9.5,
+          "unit": "mm",
+          "description": "Minimum plywood roof sheathing thickness for supports spaced more than 400 mm but not more than 600 mm o.c.",
+          "exact_quote": "9.5 mm for supports spaced more than 400 mm but not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.3.3",
+      "title": "Plywood Wall Sheathing Thickness",
+      "requirements": [
+        {
+          "id": "9.23.3.3-1",
+          "element": "plywood_wall_sheathing_400",
+          "requirement_type": "dimensional",
+          "min_value": 6.0,
+          "unit": "mm",
+          "description": "Minimum plywood wall sheathing thickness for studs spaced not more than 400 mm o.c.",
+          "exact_quote": "Plywood wall sheathing shall be not less than 6.0 mm thick for studs spaced not more than 400 mm o.c."
+        },
+        {
+          "id": "9.23.3.3-2",
+          "element": "plywood_wall_sheathing_600",
+          "requirement_type": "dimensional",
+          "min_value": 7.5,
+          "unit": "mm",
+          "description": "Minimum plywood wall sheathing thickness for studs spaced more than 400 mm but not more than 600 mm o.c.",
+          "exact_quote": "7.5 mm for studs spaced more than 400 mm but not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.4.1",
+      "title": "OSB Sheathing Standards",
+      "requirements": [
+        {
+          "id": "9.23.4.1-1",
+          "element": "osb_sheathing_standard",
+          "requirement_type": "reference",
+          "description": "OSB sheathing shall conform to CSA O325",
+          "exact_quote": "OSB sheathing shall conform to CSA O325",
+          "standard_reference": "CSA O325"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.4.2",
+      "title": "OSB Roof Sheathing Thickness",
+      "requirements": [
+        {
+          "id": "9.23.4.2-1",
+          "element": "osb_roof_sheathing_400",
+          "requirement_type": "dimensional",
+          "min_value": 9.5,
+          "unit": "mm",
+          "description": "Minimum OSB roof sheathing thickness for supports spaced not more than 400 mm o.c.",
+          "exact_quote": "OSB roof sheathing shall be not less than 9.5 mm thick for supports spaced not more than 400 mm o.c."
+        },
+        {
+          "id": "9.23.4.2-2",
+          "element": "osb_roof_sheathing_600",
+          "requirement_type": "dimensional",
+          "min_value": 11.1,
+          "unit": "mm",
+          "description": "Minimum OSB roof sheathing thickness for supports spaced more than 400 mm but not more than 600 mm o.c.",
+          "exact_quote": "11.1 mm for supports spaced more than 400 mm but not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.4.3",
+      "title": "OSB Wall Sheathing Thickness",
+      "requirements": [
+        {
+          "id": "9.23.4.3-1",
+          "element": "osb_wall_sheathing",
+          "requirement_type": "dimensional",
+          "min_value": 9.5,
+          "unit": "mm",
+          "description": "Minimum OSB wall sheathing thickness for studs spaced not more than 600 mm o.c.",
+          "exact_quote": "OSB wall sheathing shall be not less than 9.5 mm thick for studs spaced not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.5.1",
+      "title": "Waferboard Sheathing",
+      "requirements": [
+        {
+          "id": "9.23.5.1-1",
+          "element": "waferboard_sheathing_standard",
+          "requirement_type": "reference",
+          "description": "Waferboard sheathing shall conform to CSA O437.0",
+          "exact_quote": "Waferboard sheathing shall conform to CSA O437.0",
+          "standard_reference": "CSA O437.0"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.6.1",
+      "title": "Lumber Roof Sheathing",
+      "requirements": [
+        {
+          "id": "9.23.6.1-1",
+          "element": "lumber_roof_sheathing_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 17,
+          "unit": "mm",
+          "description": "Minimum lumber roof sheathing thickness for supports spaced not more than 600 mm o.c.",
+          "exact_quote": "Lumber roof sheathing shall be not less than 17 mm thick for supports spaced not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.6.2",
+      "title": "Lumber Wall Sheathing",
+      "requirements": [
+        {
+          "id": "9.23.6.2-1",
+          "element": "lumber_wall_sheathing_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 17,
+          "unit": "mm",
+          "description": "Minimum lumber wall sheathing thickness for studs spaced not more than 600 mm o.c.",
+          "exact_quote": "Lumber wall sheathing shall be not less than 17 mm thick for studs spaced not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.7.1",
+      "title": "Gypsum Sheathing",
+      "requirements": [
+        {
+          "id": "9.23.7.1-1",
+          "element": "gypsum_sheathing_standard",
+          "requirement_type": "reference",
+          "description": "Gypsum sheathing shall conform to ASTM C79/C79M or ASTM C1177/C1177M",
+          "exact_quote": "Gypsum sheathing shall conform to ASTM C79/C79M or ASTM C1177/C1177M",
+          "standard_reference": "ASTM C79/C79M, ASTM C1177/C1177M"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.7.2",
+      "title": "Gypsum Sheathing Thickness",
+      "requirements": [
+        {
+          "id": "9.23.7.2-1",
+          "element": "gypsum_sheathing_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 12.7,
+          "unit": "mm",
+          "description": "Minimum gypsum sheathing thickness for studs spaced not more than 600 mm o.c.",
+          "exact_quote": "Gypsum sheathing shall be not less than 12.7 mm thick for studs spaced not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.8.1",
+      "title": "Fiberboard Sheathing",
+      "requirements": [
+        {
+          "id": "9.23.8.1-1",
+          "element": "fiberboard_sheathing_standard",
+          "requirement_type": "reference",
+          "description": "Fiberboard sheathing shall conform to ASTM C208",
+          "exact_quote": "Fiberboard sheathing shall conform to ASTM C208",
+          "standard_reference": "ASTM C208"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.8.2",
+      "title": "Fiberboard Sheathing Thickness",
+      "requirements": [
+        {
+          "id": "9.23.8.2-1",
+          "element": "fiberboard_sheathing_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 11.1,
+          "unit": "mm",
+          "description": "Minimum fiberboard sheathing thickness for studs spaced not more than 600 mm o.c.",
+          "exact_quote": "Fiberboard sheathing shall be not less than 11.1 mm thick for studs spaced not more than 600 mm o.c."
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.9.1",
+      "title": "Sheathing Paper Required",
+      "requirements": [
+        {
+          "id": "9.23.9.1-1",
+          "element": "sheathing_paper_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Sheathing paper shall be installed over sheathing that is not water resistant",
+          "exact_quote": "Sheathing paper shall be installed over sheathing that is not water resistant"
+        },
+        {
+          "id": "9.23.9.1-2",
+          "element": "sheathing_paper_standard",
+          "requirement_type": "reference",
+          "description": "Sheathing paper shall conform to CAN/CGSB-51.32-M",
+          "exact_quote": "Sheathing paper shall conform to CAN/CGSB-51.32-M",
+          "standard_reference": "CAN/CGSB-51.32-M"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.9.2",
+      "title": "Sheathing Paper Lap",
+      "requirements": [
+        {
+          "id": "9.23.9.2-1",
+          "element": "sheathing_paper_horizontal_lap",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum horizontal lap for sheathing paper",
+          "exact_quote": "Sheathing paper shall be lapped not less than 100 mm at horizontal joints"
+        },
+        {
+          "id": "9.23.9.2-2",
+          "element": "sheathing_paper_vertical_lap",
+          "requirement_type": "dimensional",
+          "min_value": 150,
+          "unit": "mm",
+          "description": "Minimum vertical lap for sheathing paper",
+          "exact_quote": "and not less than 150 mm at vertical joints"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.10.1",
+      "title": "Nail Spacing for Roof Sheathing",
+      "requirements": [
+        {
+          "id": "9.23.10.1-1",
+          "element": "roof_sheathing_nail_spacing_edge",
+          "requirement_type": "dimensional",
+          "max_value": 150,
+          "unit": "mm",
+          "description": "Maximum nail spacing at edges of roof sheathing panels",
+          "exact_quote": "Nails for roof sheathing shall be spaced not more than 150 mm o.c. at panel edges"
+        },
+        {
+          "id": "9.23.10.1-2",
+          "element": "roof_sheathing_nail_spacing_intermediate",
+          "requirement_type": "dimensional",
+          "max_value": 300,
+          "unit": "mm",
+          "description": "Maximum nail spacing at intermediate supports for roof sheathing",
+          "exact_quote": "and not more than 300 mm o.c. at intermediate supports"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.10.2",
+      "title": "Nail Spacing for Wall Sheathing",
+      "requirements": [
+        {
+          "id": "9.23.10.2-1",
+          "element": "wall_sheathing_nail_spacing_edge",
+          "requirement_type": "dimensional",
+          "max_value": 150,
+          "unit": "mm",
+          "description": "Maximum nail spacing at edges of wall sheathing panels",
+          "exact_quote": "Nails for wall sheathing shall be spaced not more than 150 mm o.c. at panel edges"
+        },
+        {
+          "id": "9.23.10.2-2",
+          "element": "wall_sheathing_nail_spacing_intermediate",
+          "requirement_type": "dimensional",
+          "max_value": 300,
+          "unit": "mm",
+          "description": "Maximum nail spacing at intermediate supports for wall sheathing",
+          "exact_quote": "and not more than 300 mm o.c. at intermediate supports"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.10.3",
+      "title": "Panel Edge Distance",
+      "requirements": [
+        {
+          "id": "9.23.10.3-1",
+          "element": "panel_edge_distance",
+          "requirement_type": "dimensional",
+          "min_value": 10,
+          "unit": "mm",
+          "description": "Minimum distance from nail to edge of sheathing panel",
+          "exact_quote": "Nails shall be located not less than 10 mm from the edge of sheathing panels"
+        }
+      ]
+    },
+    {
+      "article_number": "9.23.10.4",
+      "title": "Panel Gap",
+      "requirements": [
+        {
+          "id": "9.23.10.4-1",
+          "element": "sheathing_panel_gap",
+          "requirement_type": "dimensional",
+          "min_value": 2,
+          "max_value": 3,
+          "unit": "mm",
+          "description": "Gap between edges of adjacent sheathing panels for expansion",
+          "exact_quote": "A gap of 2 mm to 3 mm shall be provided between edges of adjacent sheathing panels to allow for expansion"
+        }
+      ]
+    }
+  ]
+}

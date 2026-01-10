@@ -1,0 +1,291 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.32",
+    "section_title": "Ventilation",
+    "pages": "1055-1075",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 35,
+    "subsections": [
+      "9.32.1 - General",
+      "9.32.2 - Required Ventilation",
+      "9.32.3 - Ventilation Systems",
+      "9.32.4 - Kitchen and Bathroom Exhaust",
+      "9.32.5 - Make-Up Air"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.32.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.32.1.1-1",
+          "element": "ventilation_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to the ventilation of buildings and dwelling units",
+          "exact_quote": "This Section applies to the ventilation of buildings and dwelling units"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.1.2",
+      "title": "Ventilation Required",
+      "requirements": [
+        {
+          "id": "9.32.1.2-1",
+          "element": "ventilation_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Every dwelling unit shall be provided with ventilation conforming to this Section or CSA F326",
+          "exact_quote": "Every dwelling unit shall be provided with ventilation conforming to this Section or CSA F326",
+          "standard_reference": "CSA F326"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.2.1",
+      "title": "Principal Ventilation System",
+      "requirements": [
+        {
+          "id": "9.32.2.1-1",
+          "element": "principal_ventilation_capacity",
+          "requirement_type": "dimensional",
+          "min_value": 0.3,
+          "unit": "L/s per m2",
+          "description": "Minimum ventilation capacity for principal ventilation system based on floor area",
+          "exact_quote": "The principal ventilation system shall have a capacity of not less than 0.3 L/s per m2 of floor area served"
+        },
+        {
+          "id": "9.32.2.1-2",
+          "element": "principal_ventilation_min",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "L/s",
+          "description": "Minimum total capacity for principal ventilation system",
+          "exact_quote": "The principal ventilation system shall have a total capacity of not less than 50 L/s"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.2.2",
+      "title": "Bedroom Ventilation",
+      "requirements": [
+        {
+          "id": "9.32.2.2-1",
+          "element": "bedroom_ventilation_rate",
+          "requirement_type": "dimensional",
+          "min_value": 5,
+          "unit": "L/s",
+          "description": "Minimum ventilation rate per bedroom",
+          "exact_quote": "Each bedroom shall have a ventilation rate of not less than 5 L/s"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.2.3",
+      "title": "Living Area Ventilation",
+      "requirements": [
+        {
+          "id": "9.32.2.3-1",
+          "element": "living_area_ventilation",
+          "requirement_type": "dimensional",
+          "min_value": 10,
+          "unit": "L/s",
+          "description": "Minimum ventilation rate for living area",
+          "exact_quote": "The combined living area shall have a ventilation rate of not less than 10 L/s"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.3.1",
+      "title": "Mechanical Ventilation Systems",
+      "requirements": [
+        {
+          "id": "9.32.3.1-1",
+          "element": "mechanical_ventilation_required",
+          "requirement_type": "prescriptive",
+          "description": "Dwelling units shall be provided with a mechanical ventilation system",
+          "exact_quote": "Dwelling units shall be provided with a mechanical ventilation system"
+        },
+        {
+          "id": "9.32.3.1-2",
+          "element": "hrv_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Heat recovery ventilators (HRVs) or energy recovery ventilators (ERVs) shall be installed where required by the applicable energy code",
+          "exact_quote": "Heat recovery ventilators (HRVs) or energy recovery ventilators (ERVs) shall be installed where required by the applicable energy code"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.3.2",
+      "title": "Ventilation Ductwork",
+      "requirements": [
+        {
+          "id": "9.32.3.2-1",
+          "element": "vent_duct_material",
+          "requirement_type": "prescriptive",
+          "description": "Ventilation ductwork shall be constructed of galvanized steel, aluminum, or other approved materials",
+          "exact_quote": "Ventilation ductwork shall be constructed of galvanized steel, aluminum, or other approved materials"
+        },
+        {
+          "id": "9.32.3.2-2",
+          "element": "vent_duct_insulation",
+          "requirement_type": "prescriptive",
+          "description": "Ventilation ductwork in unconditioned spaces shall be insulated to prevent condensation",
+          "exact_quote": "Ventilation ductwork in unconditioned spaces shall be insulated to prevent condensation"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.3.3",
+      "title": "Air Intakes",
+      "requirements": [
+        {
+          "id": "9.32.3.3-1",
+          "element": "air_intake_height",
+          "requirement_type": "dimensional",
+          "min_value": 450,
+          "unit": "mm",
+          "description": "Minimum height of outdoor air intake above grade or roof surface",
+          "exact_quote": "Outdoor air intakes shall be located not less than 450 mm above grade or roof surface"
+        },
+        {
+          "id": "9.32.3.3-2",
+          "element": "air_intake_separation_exhaust",
+          "requirement_type": "dimensional",
+          "min_value": 1800,
+          "unit": "mm",
+          "description": "Minimum separation between outdoor air intake and exhaust outlet",
+          "exact_quote": "Outdoor air intakes shall be located not less than 1800 mm from exhaust outlets"
+        },
+        {
+          "id": "9.32.3.3-3",
+          "element": "air_intake_separation_gas_vent",
+          "requirement_type": "dimensional",
+          "min_value": 900,
+          "unit": "mm",
+          "description": "Minimum separation between outdoor air intake and gas vent",
+          "exact_quote": "Outdoor air intakes shall be located not less than 900 mm from gas appliance vents"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.4.1",
+      "title": "Kitchen Exhaust Required",
+      "requirements": [
+        {
+          "id": "9.32.4.1-1",
+          "element": "kitchen_exhaust_capacity",
+          "requirement_type": "dimensional",
+          "min_value": 50,
+          "unit": "L/s",
+          "description": "Minimum exhaust capacity for kitchen exhaust fan",
+          "exact_quote": "Kitchen exhaust fans shall have a capacity of not less than 50 L/s"
+        },
+        {
+          "id": "9.32.4.1-2",
+          "element": "range_hood_requirement",
+          "requirement_type": "prescriptive",
+          "description": "A range hood or equivalent exhaust device shall be provided over cooking appliances",
+          "exact_quote": "A range hood or equivalent exhaust device shall be provided over cooking appliances"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.4.2",
+      "title": "Bathroom Exhaust Required",
+      "requirements": [
+        {
+          "id": "9.32.4.2-1",
+          "element": "bathroom_exhaust_capacity",
+          "requirement_type": "dimensional",
+          "min_value": 25,
+          "unit": "L/s",
+          "description": "Minimum exhaust capacity for bathroom exhaust fan",
+          "exact_quote": "Bathroom exhaust fans shall have a capacity of not less than 25 L/s"
+        },
+        {
+          "id": "9.32.4.2-2",
+          "element": "bathroom_exhaust_required",
+          "requirement_type": "prescriptive",
+          "description": "Every bathroom without an operable window shall be provided with mechanical exhaust ventilation",
+          "exact_quote": "Every bathroom without an operable window shall be provided with mechanical exhaust ventilation"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.4.3",
+      "title": "Exhaust Duct Termination",
+      "requirements": [
+        {
+          "id": "9.32.4.3-1",
+          "element": "exhaust_termination_outdoor",
+          "requirement_type": "prescriptive",
+          "description": "Exhaust ducts from kitchens and bathrooms shall terminate outdoors",
+          "exact_quote": "Exhaust ducts from kitchens and bathrooms shall terminate outdoors"
+        },
+        {
+          "id": "9.32.4.3-2",
+          "element": "exhaust_attic_prohibition",
+          "requirement_type": "prohibition",
+          "description": "Exhaust ducts shall not terminate in attics, crawl spaces, or other interior spaces",
+          "exact_quote": "Exhaust ducts shall not terminate in attics, crawl spaces, or other interior spaces"
+        },
+        {
+          "id": "9.32.4.3-3",
+          "element": "exhaust_termination_cap",
+          "requirement_type": "prescriptive",
+          "description": "Exhaust duct terminations shall be fitted with a cap or louver to prevent entry of rain, snow and vermin",
+          "exact_quote": "Exhaust duct terminations shall be fitted with a cap or louver to prevent entry of rain, snow and vermin"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.5.1",
+      "title": "Make-Up Air",
+      "requirements": [
+        {
+          "id": "9.32.5.1-1",
+          "element": "makeup_air_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Make-up air shall be provided to replace air exhausted from a dwelling unit",
+          "exact_quote": "Make-up air shall be provided to replace air exhausted from a dwelling unit"
+        },
+        {
+          "id": "9.32.5.1-2",
+          "element": "makeup_air_large_exhaust",
+          "requirement_type": "dimensional",
+          "min_value": 75,
+          "unit": "L/s",
+          "description": "Exhaust capacity threshold above which dedicated make-up air is required",
+          "exact_quote": "Where exhaust capacity exceeds 75 L/s, a dedicated make-up air system shall be provided"
+        }
+      ]
+    },
+    {
+      "article_number": "9.32.5.2",
+      "title": "Combustion Air",
+      "requirements": [
+        {
+          "id": "9.32.5.2-1",
+          "element": "combustion_air_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Adequate combustion air shall be provided to fuel-burning appliances",
+          "exact_quote": "Adequate combustion air shall be provided to fuel-burning appliances"
+        },
+        {
+          "id": "9.32.5.2-2",
+          "element": "combustion_air_duct_size",
+          "requirement_type": "reference",
+          "description": "Combustion air ducts shall be sized in accordance with the appliance installation requirements",
+          "exact_quote": "Combustion air ducts shall be sized in accordance with the appliance installation requirements",
+          "cross_reference": "Section 9.33"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.34",
+    "section_title": "Elevating Devices",
+    "pages": "1110-1115",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 10,
+    "subsections": [
+      "9.34.1 - General",
+      "9.34.2 - Platform Lifts",
+      "9.34.3 - Stairway Chairlifts",
+      "9.34.4 - Dumbwaiters"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.34.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.34.1.1-1",
+          "element": "elevating_device_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to elevating devices in buildings within the scope of Part 9",
+          "exact_quote": "This Section applies to elevating devices in buildings within the scope of Part 9"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.1.2",
+      "title": "Standards for Elevating Devices",
+      "requirements": [
+        {
+          "id": "9.34.1.2-1",
+          "element": "elevating_device_standard",
+          "requirement_type": "reference",
+          "description": "Elevating devices shall conform to CSA B44, Safety Code for Elevators and Escalators",
+          "exact_quote": "Elevating devices shall conform to CSA B44, Safety Code for Elevators and Escalators",
+          "standard_reference": "CSA B44"
+        },
+        {
+          "id": "9.34.1.2-2",
+          "element": "platform_lift_standard",
+          "requirement_type": "reference",
+          "description": "Platform lifts shall conform to CSA B355, Lifts for Persons with Physical Disabilities",
+          "exact_quote": "Platform lifts shall conform to CSA B355, Lifts for Persons with Physical Disabilities",
+          "standard_reference": "CSA B355"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.1.3",
+      "title": "Elevating Device Not Required",
+      "requirements": [
+        {
+          "id": "9.34.1.3-1",
+          "element": "elevator_not_required",
+          "requirement_type": "prescriptive",
+          "description": "Elevators are not required in buildings within the scope of Part 9",
+          "exact_quote": "Elevators are not required in buildings within the scope of Part 9"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.2.1",
+      "title": "Platform Lift Installation",
+      "requirements": [
+        {
+          "id": "9.34.2.1-1",
+          "element": "platform_lift_location",
+          "requirement_type": "prescriptive",
+          "description": "Platform lifts shall be installed in accordance with CSA B355",
+          "exact_quote": "Platform lifts shall be installed in accordance with CSA B355",
+          "standard_reference": "CSA B355"
+        },
+        {
+          "id": "9.34.2.1-2",
+          "element": "platform_lift_height",
+          "requirement_type": "dimensional",
+          "max_value": 3000,
+          "unit": "mm",
+          "description": "Maximum vertical travel for platform lifts in Part 9 buildings",
+          "exact_quote": "Platform lifts in Part 9 buildings shall have a maximum vertical travel of 3000 mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.2.2",
+      "title": "Platform Lift Enclosure",
+      "requirements": [
+        {
+          "id": "9.34.2.2-1",
+          "element": "platform_lift_enclosure",
+          "requirement_type": "prescriptive",
+          "description": "Platform lifts travelling more than 2500 mm shall be enclosed with fire-rated construction",
+          "exact_quote": "Platform lifts travelling more than 2500 mm shall be enclosed with fire-rated construction"
+        },
+        {
+          "id": "9.34.2.2-2",
+          "element": "platform_lift_enclosure_rating",
+          "requirement_type": "dimensional",
+          "min_value": 45,
+          "unit": "minutes",
+          "description": "Minimum fire-resistance rating for platform lift enclosures",
+          "exact_quote": "Platform lift enclosures shall have a fire-resistance rating of not less than 45 minutes"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.3.1",
+      "title": "Stairway Chairlift Installation",
+      "requirements": [
+        {
+          "id": "9.34.3.1-1",
+          "element": "chairlift_standard",
+          "requirement_type": "reference",
+          "description": "Stairway chairlifts shall conform to CSA B355",
+          "exact_quote": "Stairway chairlifts shall conform to CSA B355",
+          "standard_reference": "CSA B355"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.3.2",
+      "title": "Stairway Clearance",
+      "requirements": [
+        {
+          "id": "9.34.3.2-1",
+          "element": "chairlift_stair_width_reduction",
+          "requirement_type": "dimensional",
+          "min_value": 860,
+          "unit": "mm",
+          "description": "Minimum clear stair width when chairlift is parked",
+          "exact_quote": "When a stairway chairlift is parked, the clear stair width shall be not less than 860 mm"
+        },
+        {
+          "id": "9.34.3.2-2",
+          "element": "chairlift_stair_clearance_operating",
+          "requirement_type": "dimensional",
+          "min_value": 610,
+          "unit": "mm",
+          "description": "Minimum clear passage width when chairlift is in operation",
+          "exact_quote": "When a stairway chairlift is in operation, the clear passage width shall be not less than 610 mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.4.1",
+      "title": "Dumbwaiter Installation",
+      "requirements": [
+        {
+          "id": "9.34.4.1-1",
+          "element": "dumbwaiter_standard",
+          "requirement_type": "reference",
+          "description": "Dumbwaiters shall conform to CSA B44",
+          "exact_quote": "Dumbwaiters shall conform to CSA B44",
+          "standard_reference": "CSA B44"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.4.2",
+      "title": "Dumbwaiter Dimensions",
+      "requirements": [
+        {
+          "id": "9.34.4.2-1",
+          "element": "dumbwaiter_max_floor_area",
+          "requirement_type": "dimensional",
+          "max_value": 0.836,
+          "unit": "m2",
+          "description": "Maximum floor area for dumbwaiter car",
+          "exact_quote": "The floor area of a dumbwaiter car shall not exceed 0.836 m2"
+        },
+        {
+          "id": "9.34.4.2-2",
+          "element": "dumbwaiter_max_height",
+          "requirement_type": "dimensional",
+          "max_value": 1200,
+          "unit": "mm",
+          "description": "Maximum height of dumbwaiter car interior",
+          "exact_quote": "The height of a dumbwaiter car interior shall not exceed 1200 mm"
+        }
+      ]
+    },
+    {
+      "article_number": "9.34.4.3",
+      "title": "Dumbwaiter Hoistway",
+      "requirements": [
+        {
+          "id": "9.34.4.3-1",
+          "element": "dumbwaiter_hoistway_enclosure",
+          "requirement_type": "prescriptive",
+          "description": "Dumbwaiter hoistways shall be enclosed with fire-rated construction where serving more than 2 storeys",
+          "exact_quote": "Dumbwaiter hoistways shall be enclosed with fire-rated construction where serving more than 2 storeys"
+        }
+      ]
+    }
+  ]
+}

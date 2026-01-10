@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 
 from .config import get_settings
 from .database import init_db
-from .api import explore, guide, review, zones, checklists, permits
+from .api import explore, guide, review, zones, checklists, permits, auth, documents, fees, addresses, public, standata
 
 settings = get_settings()
 
@@ -48,12 +48,18 @@ app.add_middleware(
 )
 
 # Include routers
+app.include_router(auth.router, prefix=f"{settings.api_prefix}/auth", tags=["Authentication"])
 app.include_router(explore.router, prefix=f"{settings.api_prefix}/explore", tags=["EXPLORE Mode"])
 app.include_router(guide.router, prefix=f"{settings.api_prefix}/guide", tags=["GUIDE Mode"])
 app.include_router(review.router, prefix=f"{settings.api_prefix}/review", tags=["REVIEW Mode"])
 app.include_router(zones.router, prefix=f"{settings.api_prefix}/zones", tags=["Zones & Parcels"])
 app.include_router(checklists.router, prefix=f"{settings.api_prefix}/checklists", tags=["Checklists"])
 app.include_router(permits.router, prefix=f"{settings.api_prefix}/permits", tags=["Permit Workflow"])
+app.include_router(documents.router, prefix=f"{settings.api_prefix}/documents", tags=["Documents & Checklists"])
+app.include_router(fees.router, prefix=f"{settings.api_prefix}/fees", tags=["Fee Calculator"])
+app.include_router(addresses.router, prefix=f"{settings.api_prefix}/addresses", tags=["Address Autocomplete"])
+app.include_router(public.router, prefix=f"{settings.api_prefix}/public", tags=["Public API (Rate Limited)"])
+app.include_router(standata.router, prefix=f"{settings.api_prefix}/standata", tags=["STANDATA Bulletins"])
 
 
 @app.get("/")

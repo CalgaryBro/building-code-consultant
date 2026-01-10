@@ -1,0 +1,294 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.35",
+    "section_title": "Garages and Carports",
+    "pages": "1115-1125",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 22,
+    "subsections": [
+      "9.35.1 - General",
+      "9.35.2 - Construction",
+      "9.35.3 - Separations",
+      "9.35.4 - Carbon Monoxide Alarms",
+      "9.35.5 - Carports"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.35.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.35.1.1-1",
+          "element": "garage_carport_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to garages and carports serving dwelling units",
+          "exact_quote": "This Section applies to garages and carports serving dwelling units"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.1.2",
+      "title": "Definitions",
+      "requirements": [
+        {
+          "id": "9.35.1.2-1",
+          "element": "attached_garage_definition",
+          "requirement_type": "prescriptive",
+          "description": "An attached garage is a garage that shares a common wall or ceiling with a dwelling unit",
+          "exact_quote": "An attached garage is a garage that shares a common wall or ceiling with a dwelling unit"
+        },
+        {
+          "id": "9.35.1.2-2",
+          "element": "detached_garage_definition",
+          "requirement_type": "prescriptive",
+          "description": "A detached garage is a garage that is structurally separate from a dwelling unit",
+          "exact_quote": "A detached garage is a garage that is structurally separate from a dwelling unit"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.2.1",
+      "title": "Garage Floor",
+      "requirements": [
+        {
+          "id": "9.35.2.1-1",
+          "element": "garage_floor_material",
+          "requirement_type": "material",
+          "description": "Garage floors shall be constructed of concrete or other noncombustible material",
+          "exact_quote": "Garage floors shall be constructed of concrete or other noncombustible material"
+        },
+        {
+          "id": "9.35.2.1-2",
+          "element": "garage_floor_slope",
+          "requirement_type": "prescriptive",
+          "description": "Garage floors shall be sloped to drain towards the garage door or a floor drain",
+          "exact_quote": "Garage floors shall be sloped to drain towards the garage door or a floor drain"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.2.2",
+      "title": "Garage Floor Elevation",
+      "requirements": [
+        {
+          "id": "9.35.2.2-1",
+          "element": "garage_floor_below_dwelling",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Garage floor shall be not less than 100 mm below adjacent dwelling unit floor level",
+          "exact_quote": "The floor of an attached garage shall be not less than 100 mm below the floor level of any adjacent dwelling unit"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.3.1",
+      "title": "Separation from Dwelling Unit",
+      "requirements": [
+        {
+          "id": "9.35.3.1-1",
+          "element": "garage_dwelling_separation",
+          "requirement_type": "prescriptive",
+          "description": "Attached garages shall be separated from dwelling units by a gas-tight construction",
+          "exact_quote": "Attached garages shall be separated from dwelling units by a gas-tight construction"
+        },
+        {
+          "id": "9.35.3.1-2",
+          "element": "garage_fire_separation",
+          "requirement_type": "dimensional",
+          "min_value": 45,
+          "unit": "minutes",
+          "description": "Minimum fire-resistance rating for separation between garage and dwelling unit",
+          "exact_quote": "The separation between an attached garage and a dwelling unit shall have a fire-resistance rating of not less than 45 minutes"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.3.2",
+      "title": "Wall Separations",
+      "requirements": [
+        {
+          "id": "9.35.3.2-1",
+          "element": "garage_wall_gypsum",
+          "requirement_type": "dimensional",
+          "min_value": 12.7,
+          "unit": "mm",
+          "description": "Minimum thickness of Type X gypsum board on garage side of separation wall",
+          "exact_quote": "Walls separating an attached garage from a dwelling unit shall be finished on the garage side with not less than 12.7 mm Type X gypsum board"
+        },
+        {
+          "id": "9.35.3.2-2",
+          "element": "garage_wall_extend_to_sheathing",
+          "requirement_type": "prescriptive",
+          "description": "The gypsum board shall extend from the floor to the underside of the roof sheathing or ceiling assembly",
+          "exact_quote": "The gypsum board shall extend from the floor to the underside of the roof sheathing or ceiling assembly"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.3.3",
+      "title": "Ceiling Separation",
+      "requirements": [
+        {
+          "id": "9.35.3.3-1",
+          "element": "garage_ceiling_gypsum",
+          "requirement_type": "dimensional",
+          "min_value": 12.7,
+          "unit": "mm",
+          "description": "Minimum thickness of Type X gypsum board on ceiling below dwelling unit",
+          "exact_quote": "Where a dwelling unit is located above a garage, the ceiling of the garage shall be finished with not less than 12.7 mm Type X gypsum board"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.3.4",
+      "title": "Door Separation",
+      "requirements": [
+        {
+          "id": "9.35.3.4-1",
+          "element": "garage_dwelling_door",
+          "requirement_type": "dimensional",
+          "min_value": 20,
+          "unit": "minutes",
+          "description": "Minimum fire protection rating for door between garage and dwelling unit",
+          "exact_quote": "Doors between an attached garage and a dwelling unit shall have a fire protection rating of not less than 20 minutes"
+        },
+        {
+          "id": "9.35.3.4-2",
+          "element": "garage_door_self_closing",
+          "requirement_type": "prescriptive",
+          "description": "Doors between garage and dwelling unit shall be self-closing",
+          "exact_quote": "Doors between an attached garage and a dwelling unit shall be self-closing"
+        },
+        {
+          "id": "9.35.3.4-3",
+          "element": "garage_door_tight_fitting",
+          "requirement_type": "prescriptive",
+          "description": "Doors between garage and dwelling unit shall be tight-fitting to prevent gas migration",
+          "exact_quote": "Doors between an attached garage and a dwelling unit shall be tight-fitting to prevent gas migration"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.3.5",
+      "title": "Bedroom Door Prohibition",
+      "requirements": [
+        {
+          "id": "9.35.3.5-1",
+          "element": "no_direct_bedroom_access",
+          "requirement_type": "prohibition",
+          "description": "There shall be no door opening directly between an attached garage and a bedroom",
+          "exact_quote": "There shall be no door opening directly between an attached garage and a bedroom"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.3.6",
+      "title": "Penetrations",
+      "requirements": [
+        {
+          "id": "9.35.3.6-1",
+          "element": "garage_penetration_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Penetrations through the separation between garage and dwelling unit shall be sealed to prevent gas migration",
+          "exact_quote": "Penetrations through the separation between an attached garage and a dwelling unit shall be sealed to prevent gas migration"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.3.7",
+      "title": "Ductwork Separation",
+      "requirements": [
+        {
+          "id": "9.35.3.7-1",
+          "element": "garage_ductwork_prohibition",
+          "requirement_type": "prohibition",
+          "description": "Heating and ventilation ductwork shall not connect a garage with a dwelling unit",
+          "exact_quote": "Heating and ventilation ductwork shall not connect a garage with a dwelling unit unless the garage has mechanical exhaust ventilation"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.4.1",
+      "title": "Carbon Monoxide Alarms Required",
+      "requirements": [
+        {
+          "id": "9.35.4.1-1",
+          "element": "co_alarm_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Carbon monoxide alarms shall be installed in dwelling units with attached garages",
+          "exact_quote": "Carbon monoxide alarms shall be installed in dwelling units with attached garages"
+        },
+        {
+          "id": "9.35.4.1-2",
+          "element": "co_alarm_location",
+          "requirement_type": "prescriptive",
+          "description": "Carbon monoxide alarms shall be installed adjacent to each sleeping area in a dwelling unit with an attached garage",
+          "exact_quote": "Carbon monoxide alarms shall be installed adjacent to each sleeping area in a dwelling unit with an attached garage"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.4.2",
+      "title": "Carbon Monoxide Alarm Standards",
+      "requirements": [
+        {
+          "id": "9.35.4.2-1",
+          "element": "co_alarm_standard",
+          "requirement_type": "reference",
+          "description": "Carbon monoxide alarms shall conform to CAN/CSA 6.19",
+          "exact_quote": "Carbon monoxide alarms shall conform to CAN/CSA 6.19",
+          "standard_reference": "CAN/CSA 6.19"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.5.1",
+      "title": "Carport Construction",
+      "requirements": [
+        {
+          "id": "9.35.5.1-1",
+          "element": "carport_open_sides",
+          "requirement_type": "dimensional",
+          "min_value": 40,
+          "unit": "%",
+          "description": "Minimum percentage of carport perimeter that shall be open",
+          "exact_quote": "Carports shall have at least 40% of the perimeter open"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.5.2",
+      "title": "Carport Separation",
+      "requirements": [
+        {
+          "id": "9.35.5.2-1",
+          "element": "carport_dwelling_separation",
+          "requirement_type": "prescriptive",
+          "description": "Carports shall be separated from dwelling units by construction conforming to the requirements for attached garages unless at least 2 sides are completely open",
+          "exact_quote": "Carports shall be separated from dwelling units by construction conforming to the requirements for attached garages unless at least 2 sides are completely open"
+        }
+      ]
+    },
+    {
+      "article_number": "9.35.5.3",
+      "title": "Carport Roof Columns",
+      "requirements": [
+        {
+          "id": "9.35.5.3-1",
+          "element": "carport_column_reference",
+          "requirement_type": "reference",
+          "description": "Columns supporting carport roofs shall conform to Section 9.17",
+          "exact_quote": "Columns supporting carport roofs shall conform to Section 9.17",
+          "cross_reference": "Section 9.17"
+        }
+      ]
+    }
+  ]
+}

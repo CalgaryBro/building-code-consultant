@@ -1,5 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   Upload,
   FileText,
@@ -21,7 +22,8 @@ import {
   Sparkles,
   ClipboardCheck,
 } from 'lucide-react';
-import type { Document, ExtractedData, ComplianceCheck } from '../types';
+import type { ExtractedData, ComplianceCheck, ReviewSummary } from '../types';
+import { reviewApi, ApiError } from '../api/client';
 
 // Blueprint background component
 function BlueprintBackground() {
@@ -120,130 +122,6 @@ function StatusSeal({ status, size = 'md' }: { status: 'pass' | 'fail' | 'warnin
   );
 }
 
-// Mock data
-const mockDocuments: Document[] = [
-  {
-    id: '1',
-    project_id: 'p1',
-    filename: 'floor-plan-ground.pdf',
-    file_path: '/uploads/floor-plan-ground.pdf',
-    file_type: 'pdf',
-    file_size_bytes: 2450000,
-    document_type: 'floor_plan',
-    extraction_status: 'complete',
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    project_id: 'p1',
-    filename: 'site-plan.pdf',
-    file_path: '/uploads/site-plan.pdf',
-    file_type: 'pdf',
-    file_size_bytes: 1820000,
-    document_type: 'site_plan',
-    extraction_status: 'complete',
-    created_at: new Date().toISOString(),
-  },
-];
-
-const mockExtractedData: ExtractedData[] = [
-  {
-    id: 'e1',
-    document_id: '1',
-    field_name: 'stair_width',
-    field_category: 'dimension',
-    value_raw: '900mm',
-    value_numeric: 900,
-    unit: 'mm',
-    confidence: 'HIGH',
-    is_verified: true,
-    verified_value: '900',
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 'e2',
-    document_id: '1',
-    field_name: 'corridor_width',
-    field_category: 'dimension',
-    value_raw: '1100mm',
-    value_numeric: 1100,
-    unit: 'mm',
-    confidence: 'MEDIUM',
-    is_verified: false,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 'e3',
-    document_id: '2',
-    field_name: 'front_setback',
-    field_category: 'dimension',
-    value_raw: '6.0m',
-    value_numeric: 6.0,
-    unit: 'm',
-    confidence: 'HIGH',
-    is_verified: true,
-    verified_value: '6.0',
-    created_at: new Date().toISOString(),
-  },
-];
-
-const mockChecks: ComplianceCheck[] = [
-  {
-    id: 'c1',
-    project_id: 'p1',
-    check_category: 'egress',
-    check_name: 'Stair Width',
-    element: 'stair_width',
-    required_value: '≥ 860 mm',
-    actual_value: '900 mm',
-    status: 'pass',
-    message: 'Stair width meets minimum requirement',
-    code_reference: 'NBC 9.8.4.1',
-    is_verified: true,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 'c2',
-    project_id: 'p1',
-    check_category: 'egress',
-    check_name: 'Corridor Width',
-    element: 'corridor_width',
-    required_value: '≥ 1100 mm',
-    actual_value: '1100 mm',
-    status: 'pass',
-    message: 'Corridor width meets requirement (minimum for egress)',
-    code_reference: 'NBC 9.9.3.1',
-    is_verified: false,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 'c3',
-    project_id: 'p1',
-    check_category: 'zoning',
-    check_name: 'Front Setback',
-    element: 'front_setback',
-    required_value: '≥ 6.0 m',
-    actual_value: '6.0 m',
-    status: 'pass',
-    code_reference: 'LUB 1P2007 R-C1',
-    is_verified: true,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 'c4',
-    project_id: 'p1',
-    check_category: 'fire',
-    check_name: 'Smoke Alarms',
-    element: 'smoke_alarms',
-    required_value: 'Each floor + bedrooms',
-    actual_value: undefined,
-    status: 'needs_review',
-    message: 'Could not determine smoke alarm locations from drawings',
-    code_reference: 'NBC 9.10.19.1',
-    is_verified: false,
-    created_at: new Date().toISOString(),
-  },
-];
 
 const statusConfig = {
   pass: { icon: CheckCircle2, color: 'text-teal-600', bg: 'bg-teal-50', border: 'border-teal-200', gradient: 'from-teal-500 to-teal-600' },
@@ -262,14 +140,116 @@ const categoryIcons = {
 };
 
 export function ReviewPage() {
-  const [documents] = useState<Document[]>(mockDocuments);
-  const [extractedData, setExtractedData] = useState<ExtractedData[]>(mockExtractedData);
-  const [checks] = useState<ComplianceCheck[]>(mockChecks);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // For demo purposes, we use a hardcoded project ID
+  // In a real app, this would come from route params or be created first
+  const [projectId] = useState<string>('demo-project');
   const [isDragging, setIsDragging] = useState(false);
-  const [isRunningChecks, setIsRunningChecks] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState<string[]>(['egress', 'zoning', 'fire']);
   const [editingValue, setEditingValue] = useState<string | null>(null);
   const [editValue, setEditValue] = useState('');
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [reviewSummary, setReviewSummary] = useState<ReviewSummary | null>(null);
+
+  // Query for documents
+  const {
+    data: documents = [],
+    isLoading: isLoadingDocuments,
+    refetch: refetchDocuments,
+  } = useQuery({
+    queryKey: ['documents', projectId],
+    queryFn: () => reviewApi.listDocuments(projectId),
+    enabled: !!projectId,
+  });
+
+  // Query for extracted data from all documents
+  const {
+    data: extractedData = [],
+    refetch: refetchExtracted,
+  } = useQuery({
+    queryKey: ['extractedData', projectId, documents.map(d => d.id)],
+    queryFn: async () => {
+      if (documents.length === 0) return [];
+      const allData: ExtractedData[] = [];
+      for (const doc of documents) {
+        if (doc.extraction_status === 'complete') {
+          try {
+            const data = await reviewApi.getExtractedData(doc.id);
+            allData.push(...data);
+          } catch {
+            // Document may not have extracted data yet
+          }
+        }
+      }
+      return allData;
+    },
+    enabled: documents.length > 0,
+  });
+
+  // Query for compliance checks
+  const {
+    data: checks = [],
+    isLoading: isLoadingChecks,
+    refetch: refetchChecks,
+  } = useQuery({
+    queryKey: ['checks', projectId],
+    queryFn: () => reviewApi.getProjectChecks(projectId),
+    enabled: !!projectId,
+  });
+
+  // Upload document mutation
+  const uploadMutation = useMutation({
+    mutationFn: async ({ file, documentType }: { file: File; documentType?: string }) => {
+      return reviewApi.uploadDocument(projectId, file, documentType);
+    },
+    onSuccess: () => {
+      setUploadError(null);
+      refetchDocuments();
+    },
+    onError: (error: Error) => {
+      if (error instanceof ApiError) {
+        setUploadError(`Upload failed: ${error.message}`);
+      } else {
+        setUploadError(error.message || 'Upload failed');
+      }
+    },
+  });
+
+  // Start extraction mutation
+  const extractionMutation = useMutation({
+    mutationFn: (documentId: string) => reviewApi.startExtraction(documentId),
+    onSuccess: () => {
+      // Poll for extraction status or refetch documents after a delay
+      setTimeout(() => {
+        refetchDocuments();
+        refetchExtracted();
+      }, 2000);
+    },
+  });
+
+  // Verify extracted data mutation
+  const verifyMutation = useMutation({
+    mutationFn: async ({ extractedId, value }: { extractedId: string; value: string }) => {
+      return reviewApi.verifyExtractedData(extractedId, {
+        verified_value: value,
+        verified_by: 'user', // In a real app, this would be the current user
+      });
+    },
+    onSuccess: () => {
+      refetchExtracted();
+      setEditingValue(null);
+    },
+  });
+
+  // Run compliance checks mutation
+  const runChecksMutation = useMutation({
+    mutationFn: () => reviewApi.runChecks(projectId, undefined, true),
+    onSuccess: (data) => {
+      setReviewSummary(data);
+      refetchChecks();
+    },
+  });
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -285,13 +265,28 @@ export function ReviewPage() {
     e.preventDefault();
     setIsDragging(false);
     const files = Array.from(e.dataTransfer.files);
-    console.log('Dropped files:', files);
-  }, []);
+    files.forEach(file => {
+      uploadMutation.mutate({ file });
+    });
+  }, [uploadMutation]);
 
-  const runComplianceChecks = async () => {
-    setIsRunningChecks(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsRunningChecks(false);
+  const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    files.forEach(file => {
+      uploadMutation.mutate({ file });
+    });
+    // Reset input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  }, [uploadMutation]);
+
+  const handleSelectFilesClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const runComplianceChecks = () => {
+    runChecksMutation.mutate();
   };
 
   const toggleCategory = (category: string) => {
@@ -306,19 +301,16 @@ export function ReviewPage() {
   };
 
   const saveEdit = (id: string) => {
-    setExtractedData((prev) =>
-      prev.map((d) =>
-        d.id === id
-          ? { ...d, is_verified: true, verified_value: editValue }
-          : d
-      )
-    );
-    setEditingValue(null);
+    verifyMutation.mutate({ extractedId: id, value: editValue });
   };
 
   const cancelEdit = () => {
     setEditingValue(null);
     setEditValue('');
+  };
+
+  const triggerExtraction = (documentId: string) => {
+    extractionMutation.mutate(documentId);
   };
 
   // Group checks by category
@@ -328,8 +320,14 @@ export function ReviewPage() {
     return acc;
   }, {} as Record<string, ComplianceCheck[]>);
 
-  // Calculate summary
-  const summary = {
+  // Calculate summary from reviewSummary if available, otherwise from checks
+  const summary = reviewSummary ? {
+    total: reviewSummary.total_checks,
+    pass: reviewSummary.passed,
+    fail: reviewSummary.failed,
+    warning: reviewSummary.warnings,
+    needsReview: reviewSummary.needs_review,
+  } : {
     total: checks.length,
     pass: checks.filter((c) => c.status === 'pass').length,
     fail: checks.filter((c) => c.status === 'fail').length,
@@ -406,14 +404,36 @@ export function ReviewPage() {
                   and check code compliance automatically.
                 </p>
 
+                {/* Hidden file input */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept=".pdf,.png,.jpg,.jpeg"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
+
                 <div className="flex items-center justify-center gap-4">
                   <motion.button
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-200"
-                    whileHover={{ scale: 1.02, boxShadow: '0 20px 40px -12px rgba(251, 191, 36, 0.4)' }}
-                    whileTap={{ scale: 0.98 }}
+                    type="button"
+                    onClick={handleSelectFilesClick}
+                    disabled={uploadMutation.isPending}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-200 disabled:opacity-70"
+                    whileHover={!uploadMutation.isPending ? { scale: 1.02, boxShadow: '0 20px 40px -12px rgba(251, 191, 36, 0.4)' } : {}}
+                    whileTap={!uploadMutation.isPending ? { scale: 0.98 } : {}}
                   >
-                    <Upload className="w-4 h-4" />
-                    Select Files
+                    {uploadMutation.isPending ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Uploading...
+                      </>
+                    ) : (
+                      <>
+                        <Upload className="w-4 h-4" />
+                        Select Files
+                      </>
+                    )}
                   </motion.button>
                   <span className="text-sm text-slate-400">or drag and drop</span>
                 </div>
@@ -421,6 +441,17 @@ export function ReviewPage() {
                 <p className="mt-4 text-xs text-slate-400">
                   PDF, PNG, JPG up to 50MB each
                 </p>
+
+                {/* Upload error */}
+                {uploadError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-3 rounded-lg bg-rose-50 border border-rose-200 text-sm text-rose-700"
+                  >
+                    {uploadError}
+                  </motion.div>
+                )}
               </div>
             </motion.div>
 
@@ -443,53 +474,91 @@ export function ReviewPage() {
                     <span className="text-sm text-slate-500">({documents.length})</span>
                   </div>
                 </div>
-                <div className="divide-y divide-slate-100">
-                  {documents.map((doc, index) => (
-                    <motion.div
-                      key={doc.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + index * 0.1 }}
-                      className="p-4 flex items-center gap-4 hover:bg-slate-50 transition-colors group"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-sm">
-                        <FileText className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-medium text-slate-900 truncate">{doc.filename}</p>
-                        <p className="text-sm text-slate-500">
-                          {doc.document_type?.replace('_', ' ')} • {(doc.file_size_bytes! / 1024 / 1024).toFixed(1)}MB
-                        </p>
-                      </div>
-                      <span className={`
-                        inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold
-                        ${doc.extraction_status === 'complete'
-                          ? 'bg-teal-100 text-teal-700'
-                          : 'bg-amber-100 text-amber-700'
-                        }
-                      `}>
-                        {doc.extraction_status === 'complete' ? (
-                          <>
-                            <CheckCircle2 className="w-3 h-3" />
-                            Extracted
-                          </>
-                        ) : (
-                          <>
-                            <Loader2 className="w-3 h-3 animate-spin" />
-                            Processing
-                          </>
-                        )}
-                      </span>
-                      <motion.button
-                        className="p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors opacity-0 group-hover:opacity-100"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                {isLoadingDocuments ? (
+                  <div className="p-8 text-center">
+                    <Loader2 className="w-8 h-8 animate-spin text-slate-400 mx-auto" />
+                    <p className="text-sm text-slate-500 mt-2">Loading documents...</p>
+                  </div>
+                ) : (
+                  <div className="divide-y divide-slate-100">
+                    {documents.map((doc, index) => (
+                      <motion.div
+                        key={doc.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
+                        className="p-4 flex items-center gap-4 hover:bg-slate-50 transition-colors group"
                       >
-                        <Eye className="w-4 h-4" />
-                      </motion.button>
-                    </motion.div>
-                  ))}
-                </div>
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-sm">
+                          <FileText className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-slate-900 truncate">{doc.filename}</p>
+                          <p className="text-sm text-slate-500">
+                            {doc.document_type?.replace('_', ' ') || 'Unknown'} • {doc.file_size_bytes ? (doc.file_size_bytes / 1024 / 1024).toFixed(1) : '?'}MB
+                          </p>
+                        </div>
+                        <span className={`
+                          inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold
+                          ${doc.extraction_status === 'complete'
+                            ? 'bg-teal-100 text-teal-700'
+                            : doc.extraction_status === 'processing'
+                              ? 'bg-amber-100 text-amber-700'
+                              : doc.extraction_status === 'failed'
+                                ? 'bg-rose-100 text-rose-700'
+                                : 'bg-slate-100 text-slate-700'
+                          }
+                        `}>
+                          {doc.extraction_status === 'complete' ? (
+                            <>
+                              <CheckCircle2 className="w-3 h-3" />
+                              Extracted
+                            </>
+                          ) : doc.extraction_status === 'processing' ? (
+                            <>
+                              <Loader2 className="w-3 h-3 animate-spin" />
+                              Processing
+                            </>
+                          ) : doc.extraction_status === 'failed' ? (
+                            <>
+                              <XCircle className="w-3 h-3" />
+                              Failed
+                            </>
+                          ) : (
+                            <>
+                              <HelpCircle className="w-3 h-3" />
+                              Pending
+                            </>
+                          )}
+                        </span>
+                        {/* Extract button for pending documents */}
+                        {(doc.extraction_status === 'pending' || doc.extraction_status === 'failed') && (
+                          <motion.button
+                            onClick={() => triggerExtraction(doc.id)}
+                            disabled={extractionMutation.isPending}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors disabled:opacity-50"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            {extractionMutation.isPending ? (
+                              <Loader2 className="w-3 h-3 animate-spin" />
+                            ) : (
+                              <Sparkles className="w-3 h-3" />
+                            )}
+                            Extract
+                          </motion.button>
+                        )}
+                        <motion.button
+                          className="p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors opacity-0 group-hover:opacity-100"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Eye className="w-4 h-4" />
+                        </motion.button>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             )}
 
@@ -657,12 +726,12 @@ export function ReviewPage() {
                 </div>
                 <motion.button
                   onClick={runComplianceChecks}
-                  disabled={isRunningChecks}
+                  disabled={runChecksMutation.isPending}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-200 disabled:opacity-70"
-                  whileHover={!isRunningChecks ? { scale: 1.02 } : {}}
-                  whileTap={!isRunningChecks ? { scale: 0.98 } : {}}
+                  whileHover={!runChecksMutation.isPending ? { scale: 1.02 } : {}}
+                  whileTap={!runChecksMutation.isPending ? { scale: 0.98 } : {}}
                 >
-                  {isRunningChecks ? (
+                  {runChecksMutation.isPending ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
                       Running...
@@ -677,6 +746,20 @@ export function ReviewPage() {
               </div>
 
               <div className="divide-y divide-slate-100">
+                {isLoadingChecks ? (
+                  <div className="p-8 text-center">
+                    <Loader2 className="w-8 h-8 animate-spin text-slate-400 mx-auto" />
+                    <p className="text-sm text-slate-500 mt-2">Loading checks...</p>
+                  </div>
+                ) : checks.length === 0 ? (
+                  <div className="p-8 text-center">
+                    <Shield className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                    <p className="font-medium text-slate-600">No compliance checks yet</p>
+                    <p className="text-sm text-slate-500 mt-1">
+                      Upload documents and run compliance checks to see results
+                    </p>
+                  </div>
+                ) : null}
                 {Object.entries(checksByCategory).map(([category, categoryChecks]) => (
                   <div key={category}>
                     <button

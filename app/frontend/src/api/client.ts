@@ -23,6 +23,7 @@ async function request<T>(
 
   const config: RequestInit = {
     ...options,
+    credentials: 'include', // Include cookies for session management
     headers: {
       'Content-Type': 'application/json',
       ...options.headers,
@@ -271,6 +272,248 @@ export const reviewApi = {
     if (category) searchParams.set('category', category);
     if (status) searchParams.set('status', status);
     return request<import('../types').ComplianceCheck[]>(`/review/projects/${projectId}/checks?${searchParams}`);
+  },
+};
+
+// --- PERMITS API ---
+export const permitsApi = {
+  // Create new permit application
+  createApplication: (data: import('../types').CreatePermitApplicationInput) => {
+    return request<import('../types').PermitApplication>('/permits/applications', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+
+  // List applications with filtering/pagination
+  listApplications: (params?: import('../types').PermitApplicationsListParams) => {
+    const searchParams = new URLSearchParams();
+    if (params?.status) searchParams.set('status', params.status);
+    if (params?.permit_type) searchParams.set('permit_type', params.permit_type);
+    if (params?.search) searchParams.set('search', params.search);
+    if (params?.page) searchParams.set('page', String(params.page));
+    if (params?.limit) searchParams.set('limit', String(params.limit));
+    return request<import('../types').PaginatedResponse<import('../types').PermitApplication>>(
+      `/permits/applications?${searchParams}`
+    );
+  },
+
+  // Get application details
+  getApplication: (id: string) => {
+    return request<import('../types').PermitApplication>(`/permits/applications/${id}`);
+  },
+
+  // Update application
+  updateApplication: (id: string, data: import('../types').UpdatePermitApplicationInput) => {
+    return request<import('../types').PermitApplication>(`/permits/applications/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    });
+  },
+
+  // Submit for review
+  submitApplication: (id: string) => {
+    return request<import('../types').PermitApplication>(`/permits/applications/${id}/submit`, {
+      method: 'POST',
+    });
+  },
+
+  // Update status
+  updateStatus: (id: string, status: import('../types').PermitStatus, notes?: string) => {
+    return request<import('../types').PermitApplication>(`/permits/applications/${id}/status`, {
+      method: 'POST',
+      body: JSON.stringify({ status, notes }),
+    });
+  },
+
+  // Get timeline
+  getTimeline: (id: string) => {
+    return request<import('../types').PermitTimelineEvent[]>(`/permits/applications/${id}/timeline`);
+  },
+
+  // Upload document
+  uploadDocument: async (id: string, file: File, documentType: string) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('document_type', documentType);
+
+    const url = `${API_BASE_URL}/permits/applications/${id}/documents`;
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ detail: 'Upload failed' }));
+      throw new ApiError(response.status, error.detail);
+    }
+
+    return response.json() as Promise<import('../types').PermitDocument>;
+  },
+
+  // List documents
+  listDocuments: (id: string) => {
+    return request<import('../types').PermitDocument[]>(`/permits/applications/${id}/documents`);
+  },
+
+  // Remove document
+  removeDocument: (applicationId: string, documentId: string) => {
+    return request<{ message: string }>(`/permits/applications/${applicationId}/documents/${documentId}`, {
+      method: 'DELETE',
+    });
+  },
+
+  // Record deficiency
+  recordDeficiency: (id: string, data: {
+    deficiency_type: string;
+    description: string;
+    code_reference?: string;
+    severity: 'critical' | 'major' | 'minor';
+  }) => {
+    return request<import('../types').PermitDeficiency>(`/permits/applications/${id}/deficiencies`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+
+  // List deficiencies
+  listDeficiencies: (id: string) => {
+    return request<import('../types').PermitDeficiency[]>(`/permits/applications/${id}/deficiencies`);
+  },
+
+  // List comments
+  listComments: (id: string) => {
+    return request<import('../types').PermitComment[]>(`/permits/applications/${id}/comments`);
+  },
+
+  // Get statistics
+  getStatistics: () => {
+    return request<import('../types').PermitStatistics>('/permits/statistics');
+  },
+
+  // Get valid document types
+  getDocumentTypes: () => {
+    return request<string[]>('/permits/document-types');
+  },
+
+  // Get upload constraints
+  getUploadConstraints: () => {
+    return request<{
+      max_file_size_mb: number;
+      allowed_extensions: string[];
+      max_files_per_application: number;
+    }>('/permits/upload-constraints');
+  },
+};
+
+// --- Public API (Rate Limited) ---
+export const publicApi = {
+  // Get rate limit status
+  getRateLimitStatus: async () => {
+    const response = await fetch(`${API_BASE_URL}/public/rate-limit-status`, {
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+      throw new ApiError(response.status, error.detail);
+    }
+
+    return response.json() as Promise<{
+      ip_address: string;
+      queries_used: number;
+      queries_remaining: number;
+      daily_limit: number;
+      resets_at: string;
+    }>;
+  },
+
+  // Public explore search (rate limited)
+  search: async (query: import('../types').CodeSearchQuery) => {
+    const response = await fetch(`${API_BASE_URL}/public/explore`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(query),
+    });
+
+    // Get rate limit info from headers
+    const queriesRemaining = response.headers.get('X-Queries-Remaining');
+    const dailyLimit = response.headers.get('X-Daily-Limit');
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+
+      // Handle rate limit exceeded
+      if (response.status === 429) {
+        return {
+          error: true,
+          rateLimitExceeded: true,
+          message: error.detail?.message || 'Daily query limit exceeded',
+          queriesRemaining: 0,
+          upgradeUrl: error.detail?.upgrade_url || '/signup',
+        };
+      }
+
+      throw new ApiError(response.status, error.detail);
+    }
+
+    const data = await response.json();
+
+    return {
+      ...data,
+      queriesRemaining: queriesRemaining ? parseInt(queriesRemaining, 10) : null,
+      dailyLimit: dailyLimit ? parseInt(dailyLimit, 10) : null,
+      error: false,
+      rateLimitExceeded: false,
+    };
+  },
+
+  // Get sample questions
+  getSampleQuestions: () => {
+    return request<{
+      questions: {
+        question: string;
+        category: string;
+        code_type: string;
+      }[];
+      cta: {
+        message: string;
+        url: string;
+        benefits: string[];
+      };
+    }>('/public/sample-questions');
+  },
+};
+
+// --- ADDRESSES API ---
+export interface AddressAutocompleteResult {
+  address: string;
+  community: string | null;
+  zone_code: string | null;
+  parcel_id: string | null;
+  latitude: number | null;
+  longitude: number | null;
+}
+
+export const addressesApi = {
+  // Address autocomplete
+  autocomplete: (query: string, limit?: number) => {
+    const searchParams = new URLSearchParams({ q: query });
+    if (limit) searchParams.set('limit', String(limit));
+    return request<AddressAutocompleteResult[]>(`/addresses/autocomplete?${searchParams}`);
+  },
+
+  // Advanced address search
+  search: (query: string, params?: { community?: string; zone?: string; limit?: number }) => {
+    const searchParams = new URLSearchParams({ query });
+    if (params?.community) searchParams.set('community', params.community);
+    if (params?.zone) searchParams.set('zone', params.zone);
+    if (params?.limit) searchParams.set('limit', String(params.limit));
+    return request<AddressAutocompleteResult[]>(`/addresses/search?${searchParams}`);
   },
 };
 

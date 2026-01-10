@@ -1,0 +1,285 @@
+{
+  "version": "R2026-02",
+  "effective_date": "2026-01-01",
+  "source": "City of Calgary Building & Trade Permit Fee Schedule 2026",
+  "safety_codes_council_fee": {
+    "rate": 0.04,
+    "minimum": 4.50,
+    "maximum": 560.00,
+    "description": "4% of permit fee, min $4.50, max $560"
+  },
+  "building_permits": {
+    "commercial": {
+      "new_building": {
+        "description": "New buildings other than hotel, warehouse, care facility or multi-family residential",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      },
+      "new_hotel": {
+        "description": "New hotel",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      },
+      "new_warehouse": {
+        "description": "New warehouse",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      },
+      "new_care_facility": {
+        "description": "New care facility",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      },
+      "multi_family_high_rise": {
+        "description": "Multi-family - high rise non-combustible construction",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      },
+      "multi_family_low_rise": {
+        "description": "Multi-family - low rise wood-frame construction",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      },
+      "alterations": {
+        "description": "Alterations to commercial and multi-family",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      }
+    },
+    "demolition": {
+      "standard": {
+        "description": "Demolition or relocation of building",
+        "processing_fee": 112.00,
+        "base_fee_rate": 1.44,
+        "base_fee_unit": "per_square_metre",
+        "minimum_total": 116.50
+      }
+    },
+    "residential": {
+      "new_dwelling": {
+        "description": "New Single, Semi-detached or Duplex Dwelling",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50,
+        "note": "Trade permits (electrical, gas, mechanical, plumbing) included in Building Permit fee"
+      }
+    },
+    "residential_alterations": {
+      "basement_garage_addition_small": {
+        "description": "Basement, garage, addition under 400 square feet",
+        "processing_fee": 112.00,
+        "base_fee": 209.00,
+        "scc_fee": 12.84,
+        "total_fee": 333.84
+      },
+      "new_secondary_suite": {
+        "description": "New secondary suite",
+        "processing_fee": 112.00,
+        "base_fee": 276.00,
+        "scc_fee": 15.52,
+        "total_fee": 403.52
+      },
+      "existing_secondary_suite": {
+        "description": "Existing secondary suite",
+        "processing_fee": 112.00,
+        "base_fee": 86.00,
+        "scc_fee": 7.92,
+        "total_fee": 205.92
+      },
+      "new_backyard_suite": {
+        "description": "New backyard suite",
+        "processing_fee": 112.00,
+        "base_fee": 1140.00,
+        "scc_fee": 50.08,
+        "total_fee": 1302.08
+      },
+      "minor_alterations": {
+        "description": "Carport, hot tub, swimming pool, interior renovation, fireplace, retaining wall, deck, porch, garage renovations and garage additions",
+        "processing_fee": 112.00,
+        "base_fee": 86.00,
+        "scc_fee": 7.92,
+        "total_fee": 205.92
+      },
+      "addition_large": {
+        "description": "Addition over 400 square feet",
+        "processing_fee": 112.00,
+        "base_fee": 1140.00,
+        "scc_fee": 50.08,
+        "total_fee": 1302.08
+      }
+    }
+  },
+  "trade_permits": {
+    "standard": {
+      "description": "Electrical / Gas / Mechanical and Plumbing Trade Permit",
+      "processing_fee": 112.00,
+      "base_fee_rate": 9.79,
+      "base_fee_unit": "per_1000_construction_value",
+      "minimum_total": 116.50
+    },
+    "homeowner": {
+      "description": "Homeowner Permit",
+      "processing_fee": 0.00,
+      "base_fee": 112.00,
+      "scc_fee": 4.50,
+      "total_fee": 116.50
+    },
+    "annual_electrical": {
+      "description": "Annual Electrical Permit",
+      "processing_fee": 0.00,
+      "base_fee": 156.00,
+      "scc_fee": 6.24,
+      "total_fee": 162.24
+    }
+  },
+  "additional_fees": {
+    "extensions": {
+      "description": "For all building and trade permits",
+      "processing_fee": 112.00,
+      "base_fee_rate": 0.10,
+      "base_fee_unit": "percent_of_permit_fee",
+      "base_fee_minimum": 112.00,
+      "base_fee_maximum": 8852.00,
+      "minimum_total": 116.50
+    },
+    "reinstatement": {
+      "description": "Permit Re-instatement (all applications)",
+      "processing_fee": 0.00,
+      "base_fee_rate": 0.50,
+      "base_fee_unit": "percent_of_original_permit_fee",
+      "note": "Within 30 days of expiry, no changes to documents"
+    },
+    "inspections": {
+      "safety_inspection": {
+        "description": "Safety inspection",
+        "processing_fee": 0.00,
+        "base_fee": 5620.00,
+        "scc_fee": 224.80,
+        "gst": 281.00,
+        "total_fee": 6125.80
+      },
+      "weekend_holiday": {
+        "description": "Weekend / Statutory holiday inspection",
+        "processing_fee": 0.00,
+        "hourly_rate": 180.00,
+        "minimum_hours": 4,
+        "scc_fee_hourly": 9.00,
+        "total_hourly": 189.00,
+        "minimum_total": 756.00
+      },
+      "re_inspection": {
+        "description": "Re-inspection Fee",
+        "processing_fee": 0.00,
+        "base_fee": 300.00,
+        "scc_fee": 12.00,
+        "gst": 15.00,
+        "total_fee": 327.00
+      }
+    },
+    "lot_grading": {
+      "small_residential": {
+        "description": "Single, semi-detached, duplex dwellings and multi-family developments less than 10 units",
+        "rate": 20.00,
+        "unit": "per_ground_floor_unit"
+      },
+      "multi_family_small": {
+        "description": "Multi-family developments of 10 or more units, up to and including 3 storeys",
+        "base_fee": 100.00,
+        "rate": 10.00,
+        "unit": "per_ground_floor_unit"
+      },
+      "large_commercial_industrial": {
+        "description": "Multi-family developments with more than 3 storeys, commercial developments, and industrial developments",
+        "rate": 80.00,
+        "unit": "per_hectare",
+        "minimum": 80.00
+      }
+    },
+    "partial_permit": {
+      "non_residential": {
+        "description": "Buildings other than Single, Semi-detached, or Duplex",
+        "processing_fee": 0.00,
+        "base_fee_rate": 1.44,
+        "base_fee_unit": "per_square_metre",
+        "minimum_total": 116.50
+      },
+      "residential": {
+        "description": "Single, Semi-detached or Duplex Dwelling",
+        "processing_fee": 0.00,
+        "base_fee": 94.00,
+        "unit": "per_unit"
+      },
+      "interior_demolition": {
+        "description": "Interior Demolition",
+        "processing_fee": 112.00,
+        "base_fee_rate": 10.14,
+        "base_fee_unit": "per_1000_construction_value",
+        "minimum_total": 116.50
+      }
+    },
+    "other": {
+      "occupancy_permit": {
+        "description": "Occupancy Permit",
+        "total_fee": 230.00
+      },
+      "additional_plans_review": {
+        "description": "Additional Plans Review (non-residential)",
+        "hourly_rate": 119.00,
+        "scc_fee_minimum": 4.50
+      },
+      "business_licence_inspection": {
+        "description": "Building safety inspection for business licence approval",
+        "total_fee": 75.00
+      },
+      "water_fee": {
+        "description": "Water fee",
+        "rate": 26.13,
+        "unit": "per_residential_dwelling_unit"
+      }
+    }
+  },
+  "policies": {
+    "refunds": {
+      "building_permits": {
+        "retained_percentage": 0.25,
+        "minimum_retained": 112.00,
+        "description": "25% of original fees withheld, minimum $112"
+      },
+      "trade_permits": {
+        "retained_percentage": 0.10,
+        "minimum_retained": 56.00,
+        "description": "10% of original fees withheld, minimum $56"
+      }
+    },
+    "double_fee": {
+      "description": "If work begins prior to receiving a permit, applicant will be charged double the permit fee"
+    },
+    "construction_value": {
+      "description": "When applicant provides labour and material, fee is based on total value. When only labour provided, fee includes charge for all work plus customer-supplied materials. If only materials provided, fee must include reasonable labour cost."
+    }
+  },
+  "building_types": {
+    "commercial": ["office", "retail", "restaurant", "industrial", "assembly"],
+    "hotel": ["hotel", "motel", "lodge"],
+    "warehouse": ["warehouse", "storage", "distribution"],
+    "care_facility": ["hospital", "nursing_home", "care_facility", "assisted_living"],
+    "multi_family_high_rise": ["apartment_high_rise", "condo_high_rise"],
+    "multi_family_low_rise": ["apartment_low_rise", "townhouse", "rowhouse"],
+    "residential": ["single_family", "semi_detached", "duplex"]
+  }
+}

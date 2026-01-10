@@ -43,3 +43,30 @@ from .permits import (
     # Statistics
     PermitStatistics,
 )
+from .fees import (
+    # Enums
+    BuildingType, ResidentialAlterationType, TradePermitType,
+    ProjectType, ZoneCategory,
+    # Fee Breakdown
+    FeeLineItem, FeeBreakdown,
+    # Building Permit
+    BuildingPermitFeeRequest, BuildingPermitFeeResponse,
+    # Trade Permits
+    TradePermitRequest, TradePermitFeeRequest, TradePermitFeeResponse, TradePermitFeeItem,
+    # Development Permit
+    DevelopmentPermitFeeRequest, DevelopmentPermitFeeResponse,
+    # Project Estimate
+    ProjectFeeEstimateRequest, ProjectFeeEstimateResponse, FeeCategorySummary,
+    # Additional Fees
+    LotGradingFeeRequest, LotGradingFeeResponse,
+    InspectionFeeRequest, InspectionFeeResponse,
+    ExtensionFeeRequest, ExtensionFeeResponse,
+    # Fee Schedule
+    FeeScheduleResponse, FeeScheduleCategory,
+)
+from .standata import (
+    StandataCategory,
+    StandataBase, StandataCreate, StandataResponse, StandataSummary,
+    StandataSearchResult, StandataSearchQuery, StandataSearchResponse,
+    StandataByCodeResponse, StandataStats,
+)

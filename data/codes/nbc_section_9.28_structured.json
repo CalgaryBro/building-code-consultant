@@ -1,0 +1,211 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.28",
+    "section_title": "Vapour Barriers",
+    "pages": "1035-1040",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 12,
+    "subsections": [
+      "9.28.1 - General",
+      "9.28.2 - Materials",
+      "9.28.3 - Installation"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.28.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.28.1.1-1",
+          "element": "vapour_barrier_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to vapour barriers for buildings",
+          "exact_quote": "This Section applies to vapour barriers for buildings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.1.2",
+      "title": "Vapour Barrier Required",
+      "requirements": [
+        {
+          "id": "9.28.1.2-1",
+          "element": "vapour_barrier_requirement",
+          "requirement_type": "prescriptive",
+          "description": "A vapour barrier shall be installed on the warm side of thermal insulation in assemblies separating conditioned from unconditioned spaces",
+          "exact_quote": "A vapour barrier shall be installed on the warm side of thermal insulation in assemblies separating conditioned from unconditioned spaces"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.2.1",
+      "title": "Vapour Barrier Permeance",
+      "requirements": [
+        {
+          "id": "9.28.2.1-1",
+          "element": "vapour_barrier_max_permeance",
+          "requirement_type": "dimensional",
+          "max_value": 60,
+          "unit": "ng/(Pa*s*m2)",
+          "description": "Maximum water vapour permeance for vapour barrier materials (Type 1)",
+          "exact_quote": "Vapour barrier materials shall have a water vapour permeance of not more than 60 ng/(Pa*s*m2)"
+        },
+        {
+          "id": "9.28.2.1-2",
+          "element": "vapour_retarder_permeance",
+          "requirement_type": "dimensional",
+          "max_value": 170,
+          "unit": "ng/(Pa*s*m2)",
+          "description": "Maximum water vapour permeance for vapour retarder materials (Type 2)",
+          "exact_quote": "Type 2 vapour retarders shall have a permeance of not more than 170 ng/(Pa*s*m2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.2.2",
+      "title": "Polyethylene Vapour Barrier",
+      "requirements": [
+        {
+          "id": "9.28.2.2-1",
+          "element": "polyethylene_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 0.15,
+          "unit": "mm",
+          "description": "Minimum thickness for polyethylene vapour barriers",
+          "exact_quote": "Polyethylene vapour barriers shall be not less than 0.15 mm thick"
+        },
+        {
+          "id": "9.28.2.2-2",
+          "element": "polyethylene_standard",
+          "requirement_type": "reference",
+          "description": "Polyethylene vapour barriers shall conform to CAN/CGSB-51.34-M",
+          "exact_quote": "Polyethylene vapour barriers shall conform to CAN/CGSB-51.34-M",
+          "standard_reference": "CAN/CGSB-51.34-M"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.2.3",
+      "title": "Alternative Vapour Barrier Materials",
+      "requirements": [
+        {
+          "id": "9.28.2.3-1",
+          "element": "aluminum_foil_vapour_barrier",
+          "requirement_type": "prescriptive",
+          "description": "Aluminum foil not less than 0.025 mm thick may be used as a vapour barrier",
+          "exact_quote": "Aluminum foil not less than 0.025 mm thick may be used as a vapour barrier"
+        },
+        {
+          "id": "9.28.2.3-2",
+          "element": "aluminum_foil_thickness",
+          "requirement_type": "dimensional",
+          "min_value": 0.025,
+          "unit": "mm",
+          "description": "Minimum thickness for aluminum foil vapour barrier",
+          "exact_quote": "Aluminum foil not less than 0.025 mm thick"
+        },
+        {
+          "id": "9.28.2.3-3",
+          "element": "paint_vapour_barrier",
+          "requirement_type": "prescriptive",
+          "description": "Vapour barrier paint may be used where it provides equivalent vapour resistance",
+          "exact_quote": "Vapour barrier paint may be used where it provides equivalent vapour resistance"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.3.1",
+      "title": "Location of Vapour Barrier",
+      "requirements": [
+        {
+          "id": "9.28.3.1-1",
+          "element": "vapour_barrier_location",
+          "requirement_type": "prescriptive",
+          "description": "Vapour barriers shall be located on the warm side of insulation where the ratio of thermal resistance between the vapour barrier and the exterior is appropriate",
+          "exact_quote": "Vapour barriers shall be located on the warm side of insulation"
+        },
+        {
+          "id": "9.28.3.1-2",
+          "element": "vapour_barrier_ratio",
+          "requirement_type": "prescriptive",
+          "description": "Not more than one-third of the total thermal resistance of the assembly shall be on the warm side of the vapour barrier",
+          "exact_quote": "Not more than one-third of the total thermal resistance of the assembly shall be on the warm side of the vapour barrier"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.3.2",
+      "title": "Joints in Vapour Barriers",
+      "requirements": [
+        {
+          "id": "9.28.3.2-1",
+          "element": "vapour_barrier_lap",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum lap for vapour barrier joints",
+          "exact_quote": "Joints in vapour barriers shall be lapped not less than 100 mm"
+        },
+        {
+          "id": "9.28.3.2-2",
+          "element": "vapour_barrier_joint_support",
+          "requirement_type": "prescriptive",
+          "description": "Joints in vapour barriers shall occur over framing members or be sealed",
+          "exact_quote": "Joints in vapour barriers shall occur over framing members or be sealed with tape or acoustical sealant"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.3.3",
+      "title": "Penetrations in Vapour Barriers",
+      "requirements": [
+        {
+          "id": "9.28.3.3-1",
+          "element": "vapour_barrier_penetration_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Penetrations through vapour barriers shall be sealed to maintain vapour barrier continuity",
+          "exact_quote": "Penetrations through vapour barriers shall be sealed to maintain vapour barrier continuity"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.3.4",
+      "title": "Continuity at Floor Assemblies",
+      "requirements": [
+        {
+          "id": "9.28.3.4-1",
+          "element": "vapour_barrier_floor_continuity",
+          "requirement_type": "prescriptive",
+          "description": "Vapour barriers shall be continuous across floor assemblies that interrupt wall assemblies",
+          "exact_quote": "Vapour barriers shall be continuous across floor assemblies that interrupt wall assemblies"
+        }
+      ]
+    },
+    {
+      "article_number": "9.28.3.5",
+      "title": "Basement Vapour Barriers",
+      "requirements": [
+        {
+          "id": "9.28.3.5-1",
+          "element": "basement_vapour_barrier",
+          "requirement_type": "prescriptive",
+          "description": "Where basement walls are insulated on the interior, a vapour barrier shall be installed on the warm side of the insulation",
+          "exact_quote": "Where basement walls are insulated on the interior, a vapour barrier shall be installed on the warm side of the insulation"
+        },
+        {
+          "id": "9.28.3.5-2",
+          "element": "basement_floor_vapour_barrier",
+          "requirement_type": "prescriptive",
+          "description": "A vapour barrier shall be installed under concrete floor slabs in basements",
+          "exact_quote": "A vapour barrier shall be installed under concrete floor slabs in basements"
+        }
+      ]
+    }
+  ]
+}

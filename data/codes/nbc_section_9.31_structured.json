@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.31",
+    "section_title": "Service Facilities",
+    "pages": "1041-1055",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 25,
+    "subsections": [
+      "9.31.1 - General",
+      "9.31.2 - Water Supply",
+      "9.31.3 - Water Heating",
+      "9.31.4 - Sewage Disposal",
+      "9.31.5 - Floor Drains",
+      "9.31.6 - Electrical Services"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.31.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.31.1.1-1",
+          "element": "service_facilities_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to the installation of service facilities in buildings",
+          "exact_quote": "This Section applies to the installation of service facilities in buildings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.2.1",
+      "title": "Water Supply Required",
+      "requirements": [
+        {
+          "id": "9.31.2.1-1",
+          "element": "water_supply_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Every dwelling unit shall be provided with a supply of potable water",
+          "exact_quote": "Every dwelling unit shall be provided with a supply of potable water"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.2.2",
+      "title": "Water Piping",
+      "requirements": [
+        {
+          "id": "9.31.2.2-1",
+          "element": "water_piping_standards",
+          "requirement_type": "reference",
+          "description": "Water piping shall conform to the requirements of the National Plumbing Code",
+          "exact_quote": "Water piping shall conform to the requirements of the National Plumbing Code",
+          "cross_reference": "National Plumbing Code"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.3.1",
+      "title": "Water Heaters",
+      "requirements": [
+        {
+          "id": "9.31.3.1-1",
+          "element": "water_heater_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Every dwelling unit shall be equipped with a water heater capable of providing hot water to fixtures requiring hot water",
+          "exact_quote": "Every dwelling unit shall be equipped with a water heater capable of providing hot water to fixtures requiring hot water"
+        },
+        {
+          "id": "9.31.3.1-2",
+          "element": "water_heater_temperature",
+          "requirement_type": "dimensional",
+          "max_value": 49,
+          "unit": "degrees C",
+          "description": "Maximum hot water temperature at fixtures in dwelling units",
+          "exact_quote": "Hot water temperature at fixtures shall not exceed 49 degrees C in dwelling units"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.3.2",
+      "title": "Water Heater Installation",
+      "requirements": [
+        {
+          "id": "9.31.3.2-1",
+          "element": "water_heater_clearance",
+          "requirement_type": "prescriptive",
+          "description": "Water heaters shall be installed with clearances as specified by the manufacturer",
+          "exact_quote": "Water heaters shall be installed with clearances as specified by the manufacturer"
+        },
+        {
+          "id": "9.31.3.2-2",
+          "element": "water_heater_relief_valve",
+          "requirement_type": "prescriptive",
+          "description": "Water heaters shall be equipped with temperature and pressure relief valves",
+          "exact_quote": "Water heaters shall be equipped with temperature and pressure relief valves"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.4.1",
+      "title": "Sewage Disposal Required",
+      "requirements": [
+        {
+          "id": "9.31.4.1-1",
+          "element": "sewage_disposal_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Every building with plumbing fixtures shall be connected to a sanitary sewage system",
+          "exact_quote": "Every building with plumbing fixtures shall be connected to a sanitary sewage system"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.4.2",
+      "title": "Private Sewage Disposal",
+      "requirements": [
+        {
+          "id": "9.31.4.2-1",
+          "element": "private_sewage_standards",
+          "requirement_type": "reference",
+          "description": "Where public sanitary sewer is not available, private sewage disposal systems shall conform to applicable provincial or municipal regulations",
+          "exact_quote": "Where public sanitary sewer is not available, private sewage disposal systems shall conform to applicable provincial or municipal regulations"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.5.1",
+      "title": "Floor Drains Required",
+      "requirements": [
+        {
+          "id": "9.31.5.1-1",
+          "element": "floor_drain_laundry",
+          "requirement_type": "prescriptive",
+          "description": "A floor drain shall be provided in rooms containing a clothes washing machine",
+          "exact_quote": "A floor drain shall be provided in rooms containing a clothes washing machine"
+        },
+        {
+          "id": "9.31.5.1-2",
+          "element": "floor_drain_mechanical",
+          "requirement_type": "prescriptive",
+          "description": "A floor drain shall be provided in mechanical rooms containing water heating or water treatment equipment",
+          "exact_quote": "A floor drain shall be provided in mechanical rooms containing water heating or water treatment equipment"
+        },
+        {
+          "id": "9.31.5.1-3",
+          "element": "floor_drain_garage",
+          "requirement_type": "prescriptive",
+          "description": "Floor drains in attached garages shall be connected to an oil interceptor",
+          "exact_quote": "Floor drains in attached garages shall be connected to an oil interceptor"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.5.2",
+      "title": "Floor Drain Location",
+      "requirements": [
+        {
+          "id": "9.31.5.2-1",
+          "element": "floor_drain_slope",
+          "requirement_type": "prescriptive",
+          "description": "Floor surfaces shall be sloped to direct water to floor drains",
+          "exact_quote": "Floor surfaces shall be sloped to direct water to floor drains"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.6.1",
+      "title": "Electrical Service Required",
+      "requirements": [
+        {
+          "id": "9.31.6.1-1",
+          "element": "electrical_service_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Every dwelling unit shall be provided with electrical service conforming to the Canadian Electrical Code",
+          "exact_quote": "Every dwelling unit shall be provided with electrical service conforming to the Canadian Electrical Code",
+          "cross_reference": "Canadian Electrical Code"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.6.2",
+      "title": "Electrical Outlets",
+      "requirements": [
+        {
+          "id": "9.31.6.2-1",
+          "element": "outlet_spacing_living",
+          "requirement_type": "dimensional",
+          "max_value": 3.6,
+          "unit": "m",
+          "description": "Maximum spacing between receptacle outlets along walls in habitable rooms",
+          "exact_quote": "Receptacle outlets in habitable rooms shall be spaced so that no point along the floor line is more than 1.8 m from an outlet"
+        },
+        {
+          "id": "9.31.6.2-2",
+          "element": "kitchen_counter_outlets",
+          "requirement_type": "prescriptive",
+          "description": "Kitchen counter space shall have receptacle outlets installed per Canadian Electrical Code requirements",
+          "exact_quote": "Kitchen counter space shall have receptacle outlets installed per Canadian Electrical Code requirements"
+        }
+      ]
+    },
+    {
+      "article_number": "9.31.6.3",
+      "title": "Lighting",
+      "requirements": [
+        {
+          "id": "9.31.6.3-1",
+          "element": "lighting_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Permanent lighting fixtures or switched receptacles shall be provided in every habitable room",
+          "exact_quote": "Permanent lighting fixtures or switched receptacles shall be provided in every habitable room"
+        },
+        {
+          "id": "9.31.6.3-2",
+          "element": "stairway_lighting",
+          "requirement_type": "prescriptive",
+          "description": "Stairways shall be illuminated with three-way switches at top and bottom of stairs",
+          "exact_quote": "Stairways shall be illuminated with three-way switches at top and bottom of stairs"
+        }
+      ]
+    }
+  ]
+}

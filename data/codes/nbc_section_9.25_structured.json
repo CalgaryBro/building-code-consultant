@@ -1,0 +1,295 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.25",
+    "section_title": "Heat Transfer, Air Leakage and Condensation Control",
+    "pages": "1000-1015",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 25,
+    "subsections": [
+      "9.25.1 - General",
+      "9.25.2 - Thermal Insulation",
+      "9.25.3 - Air Barrier Systems",
+      "9.25.4 - Vapour Barriers",
+      "9.25.5 - Condensation Protection"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.25.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.25.1.1-1",
+          "element": "heat_transfer_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to the control of heat transfer, air leakage and condensation in buildings",
+          "exact_quote": "This Section applies to the control of heat transfer, air leakage and condensation in buildings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.1.2",
+      "title": "Continuity of Insulation",
+      "requirements": [
+        {
+          "id": "9.25.1.2-1",
+          "element": "insulation_continuity",
+          "requirement_type": "prescriptive",
+          "description": "Insulation shall be installed to maintain continuity over the entire building envelope",
+          "exact_quote": "Insulation shall be installed to maintain continuity over the entire building envelope without substantial gaps"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.2.1",
+      "title": "Minimum Insulation",
+      "requirements": [
+        {
+          "id": "9.25.2.1-1",
+          "element": "wall_insulation_effective_r",
+          "requirement_type": "reference",
+          "description": "Minimum effective thermal resistance of walls shall conform to Table 9.25.2.1 based on heating degree days",
+          "exact_quote": "Minimum effective thermal resistance of walls shall conform to Table 9.25.2.1",
+          "cross_reference": "Table 9.25.2.1"
+        },
+        {
+          "id": "9.25.2.1-2",
+          "element": "ceiling_insulation_effective_r",
+          "requirement_type": "reference",
+          "description": "Minimum effective thermal resistance of ceilings shall conform to Table 9.25.2.1 based on heating degree days",
+          "exact_quote": "Minimum effective thermal resistance of ceilings shall conform to Table 9.25.2.1",
+          "cross_reference": "Table 9.25.2.1"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.2.2",
+      "title": "Calgary Zone Requirements",
+      "requirements": [
+        {
+          "id": "9.25.2.2-1",
+          "element": "calgary_wall_r_value",
+          "requirement_type": "dimensional",
+          "min_value": 3.85,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for above-grade walls in Calgary (Zone 7A - 5000+ HDD)",
+          "exact_quote": "For Climate Zone 7A, above-grade walls shall have effective thermal resistance of not less than RSI 3.85"
+        },
+        {
+          "id": "9.25.2.2-2",
+          "element": "calgary_ceiling_r_value",
+          "requirement_type": "dimensional",
+          "min_value": 8.81,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for ceilings below attics in Calgary (Zone 7A)",
+          "exact_quote": "For Climate Zone 7A, ceilings below attics shall have effective thermal resistance of not less than RSI 8.81"
+        },
+        {
+          "id": "9.25.2.2-3",
+          "element": "calgary_basement_wall_r_value",
+          "requirement_type": "dimensional",
+          "min_value": 2.98,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for basement walls in Calgary (Zone 7A)",
+          "exact_quote": "For Climate Zone 7A, basement walls shall have effective thermal resistance of not less than RSI 2.98"
+        },
+        {
+          "id": "9.25.2.2-4",
+          "element": "calgary_slab_perimeter_r_value",
+          "requirement_type": "dimensional",
+          "min_value": 2.84,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for slab-on-grade perimeter in Calgary (Zone 7A)",
+          "exact_quote": "For Climate Zone 7A, slab-on-grade perimeter shall have effective thermal resistance of not less than RSI 2.84"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.2.3",
+      "title": "Insulation Installation",
+      "requirements": [
+        {
+          "id": "9.25.2.3-1",
+          "element": "insulation_installation_method",
+          "requirement_type": "prescriptive",
+          "description": "Insulation shall be installed tightly against adjacent assemblies and shall fill cavities completely",
+          "exact_quote": "Insulation shall be installed tightly against adjacent assemblies and shall fill cavities completely without compression or gaps"
+        },
+        {
+          "id": "9.25.2.3-2",
+          "element": "insulation_support",
+          "requirement_type": "prescriptive",
+          "description": "Insulation shall be supported to prevent settling and displacement",
+          "exact_quote": "Insulation shall be supported to prevent settling and displacement"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.3.1",
+      "title": "Air Barrier System Required",
+      "requirements": [
+        {
+          "id": "9.25.3.1-1",
+          "element": "air_barrier_system",
+          "requirement_type": "prescriptive",
+          "description": "An air barrier system shall be installed to provide a continuous barrier to air leakage throughout the building envelope",
+          "exact_quote": "An air barrier system shall be installed to provide a continuous barrier to air leakage throughout the building envelope"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.3.2",
+      "title": "Air Barrier Continuity",
+      "requirements": [
+        {
+          "id": "9.25.3.2-1",
+          "element": "air_barrier_continuity",
+          "requirement_type": "prescriptive",
+          "description": "Air barrier system materials shall be joined together with lapped, caulked or taped joints to form a continuous membrane",
+          "exact_quote": "Air barrier system materials shall be joined together with lapped, caulked or taped joints to form a continuous membrane"
+        },
+        {
+          "id": "9.25.3.2-2",
+          "element": "air_barrier_penetrations",
+          "requirement_type": "prescriptive",
+          "description": "Penetrations through the air barrier shall be sealed to maintain continuity",
+          "exact_quote": "Penetrations through the air barrier shall be sealed to maintain continuity"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.3.3",
+      "title": "Air Barrier Material Requirements",
+      "requirements": [
+        {
+          "id": "9.25.3.3-1",
+          "element": "air_barrier_permeance",
+          "requirement_type": "dimensional",
+          "max_value": 0.02,
+          "unit": "L/(s*m2) at 75 Pa",
+          "description": "Maximum air leakage rate for air barrier materials",
+          "exact_quote": "Air barrier materials shall have an air leakage rate of not more than 0.02 L/(s*m2) at 75 Pa"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.4.1",
+      "title": "Vapour Barrier Required",
+      "requirements": [
+        {
+          "id": "9.25.4.1-1",
+          "element": "vapour_barrier_requirement",
+          "requirement_type": "prescriptive",
+          "description": "A vapour barrier shall be installed on the warm side of insulation in walls, ceilings and floors separating heated from unheated spaces",
+          "exact_quote": "A vapour barrier shall be installed on the warm side of insulation in walls, ceilings and floors separating heated from unheated spaces"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.4.2",
+      "title": "Vapour Barrier Permeance",
+      "requirements": [
+        {
+          "id": "9.25.4.2-1",
+          "element": "vapour_barrier_max_permeance",
+          "requirement_type": "dimensional",
+          "max_value": 60,
+          "unit": "ng/(Pa*s*m2)",
+          "description": "Maximum water vapour permeance for vapour barrier materials",
+          "exact_quote": "Vapour barrier materials shall have a water vapour permeance of not more than 60 ng/(Pa*s*m2)"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.4.3",
+      "title": "Vapour Barrier Materials",
+      "requirements": [
+        {
+          "id": "9.25.4.3-1",
+          "element": "polyethylene_vapour_barrier",
+          "requirement_type": "dimensional",
+          "min_value": 0.15,
+          "unit": "mm",
+          "description": "Minimum thickness for polyethylene vapour barrier",
+          "exact_quote": "Polyethylene vapour barriers shall be not less than 0.15 mm thick"
+        },
+        {
+          "id": "9.25.4.3-2",
+          "element": "vapour_barrier_standard",
+          "requirement_type": "reference",
+          "description": "Polyethylene vapour barriers shall conform to CAN/CGSB-51.34-M",
+          "exact_quote": "Polyethylene vapour barriers shall conform to CAN/CGSB-51.34-M",
+          "standard_reference": "CAN/CGSB-51.34-M"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.4.4",
+      "title": "Vapour Barrier Joints",
+      "requirements": [
+        {
+          "id": "9.25.4.4-1",
+          "element": "vapour_barrier_lap",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum lap for vapour barrier joints",
+          "exact_quote": "Joints in vapour barriers shall be lapped not less than 100 mm"
+        },
+        {
+          "id": "9.25.4.4-2",
+          "element": "vapour_barrier_joint_support",
+          "requirement_type": "prescriptive",
+          "description": "Joints in vapour barriers shall occur over framing members or be sealed with tape or sealant",
+          "exact_quote": "Joints in vapour barriers shall occur over framing members or be sealed with tape or sealant"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.5.1",
+      "title": "Protection of Insulation",
+      "requirements": [
+        {
+          "id": "9.25.5.1-1",
+          "element": "insulation_protection_moisture",
+          "requirement_type": "prescriptive",
+          "description": "Insulation shall be protected from moisture damage during construction and in service",
+          "exact_quote": "Insulation shall be protected from moisture damage during construction and in service"
+        }
+      ]
+    },
+    {
+      "article_number": "9.25.5.2",
+      "title": "Condensation Protection",
+      "requirements": [
+        {
+          "id": "9.25.5.2-1",
+          "element": "condensation_prevention",
+          "requirement_type": "prescriptive",
+          "description": "Building assemblies shall be designed and constructed to minimize the potential for condensation",
+          "exact_quote": "Building assemblies shall be designed and constructed to minimize the potential for condensation"
+        },
+        {
+          "id": "9.25.5.2-2",
+          "element": "dew_point_consideration",
+          "requirement_type": "prescriptive",
+          "description": "Where insulation is placed on the cold side of a vapour barrier, the ratio of thermal resistance shall ensure the temperature at the vapour barrier remains above the dew point",
+          "exact_quote": "Where insulation is placed on the cold side of a vapour barrier, the ratio of thermal resistance shall ensure the temperature at the vapour barrier remains above the dew point under design conditions"
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "9.25.2.1",
+      "title": "Minimum Effective Thermal Resistance of Building Components",
+      "description": "Provides minimum RSI values for walls, ceilings, floors, and foundations based on heating degree days",
+      "notes": "Calgary is in Climate Zone 7A with approximately 5000 HDD"
+    }
+  ]
+}

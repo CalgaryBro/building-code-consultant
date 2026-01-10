@@ -1,0 +1,4 @@
+# This directory stores uploaded permit documents
+# Subdirectories:
+# - permits/{application_id}/ - permit application documents
+# - temp/ - temporary files during processing

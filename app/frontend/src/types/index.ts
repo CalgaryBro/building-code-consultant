@@ -315,4 +315,185 @@ export interface ReviewSummary {
 }
 
 // --- App Mode ---
-export type AppMode = 'explore' | 'guide' | 'review';
+export type AppMode = 'explore' | 'guide' | 'review' | 'permits';
+
+// --- Permit Application Types ---
+export type PermitStatus =
+  | 'draft'
+  | 'submitted'
+  | 'under_review'
+  | 'deficiency_issued'
+  | 'approved'
+  | 'rejected'
+  | 'expired'
+  | 'cancelled';
+
+export interface PermitApplication {
+  id: string;
+  application_number?: string;
+  applicant_name: string;
+  applicant_email: string;
+  applicant_phone?: string;
+  company_name?: string;
+  project_address: string;
+  project_description?: string;
+  permit_type: string;
+  work_type: string;
+  estimated_value?: number;
+  building_area_sqm?: number;
+  storeys?: number;
+  occupancy_type?: string;
+  construction_type?: string;
+  status: PermitStatus;
+  submitted_at?: string;
+  reviewed_at?: string;
+  approved_at?: string;
+  expires_at?: string;
+  reviewer_notes?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PermitDocument {
+  id: string;
+  application_id: string;
+  document_type: string;
+  filename: string;
+  file_path: string;
+  file_size_bytes: number;
+  mime_type: string;
+  uploaded_at: string;
+  verified: boolean;
+  verified_by?: string;
+  verified_at?: string;
+  notes?: string;
+}
+
+export interface PermitTimelineEvent {
+  id: string;
+  application_id: string;
+  event_type: string;
+  title: string;
+  description?: string;
+  created_by?: string;
+  created_at: string;
+  metadata?: Record<string, unknown>;
+}
+
+export interface PermitDeficiency {
+  id: string;
+  application_id: string;
+  deficiency_type: string;
+  description: string;
+  code_reference?: string;
+  severity: 'critical' | 'major' | 'minor';
+  status: 'open' | 'resolved' | 'waived';
+  created_by?: string;
+  created_at: string;
+  resolved_at?: string;
+  resolution_notes?: string;
+}
+
+export interface PermitComment {
+  id: string;
+  application_id: string;
+  author_name: string;
+  author_role?: string;
+  content: string;
+  is_internal: boolean;
+  created_at: string;
+}
+
+export interface PermitStatistics {
+  total_applications: number;
+  by_status: Record<PermitStatus, number>;
+  by_type: Record<string, number>;
+  average_review_days: number;
+  this_month: number;
+  pending_review: number;
+}
+
+export interface CreatePermitApplicationInput {
+  applicant_name: string;
+  applicant_email: string;
+  applicant_phone?: string;
+  company_name?: string;
+  project_address: string;
+  project_description?: string;
+  permit_type: string;
+  work_type: string;
+  estimated_value?: number;
+  building_area_sqm?: number;
+  storeys?: number;
+  occupancy_type?: string;
+  construction_type?: string;
+}
+
+export interface UpdatePermitApplicationInput {
+  applicant_name?: string;
+  applicant_email?: string;
+  applicant_phone?: string;
+  company_name?: string;
+  project_address?: string;
+  project_description?: string;
+  permit_type?: string;
+  work_type?: string;
+  estimated_value?: number;
+  building_area_sqm?: number;
+  storeys?: number;
+  occupancy_type?: string;
+  construction_type?: string;
+}
+
+export interface PermitApplicationsListParams {
+  status?: PermitStatus;
+  permit_type?: string;
+  search?: string;
+  page?: number;
+  limit?: number;
+}
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+  pages: number;
+}
+
+// --- Public API Types (Rate Limited) ---
+export interface RateLimitStatus {
+  ip_address: string;
+  queries_used: number;
+  queries_remaining: number;
+  daily_limit: number;
+  resets_at: string;
+}
+
+export interface PublicSearchResponse extends CodeSearchResponse {
+  is_limited: boolean;
+  results_shown: number;
+  total_available: number;
+  upgrade_message?: string;
+  queriesRemaining: number | null;
+  dailyLimit: number | null;
+  error: boolean;
+  rateLimitExceeded: boolean;
+  message?: string;
+  upgradeUrl?: string;
+}
+
+export interface SampleQuestion {
+  question: string;
+  category: string;
+  code_type: string;
+}
+
+export interface SampleQuestionsResponse {
+  questions: SampleQuestion[];
+  cta: {
+    message: string;
+    url: string;
+    benefits: string[];
+  };
+}

@@ -21,6 +21,7 @@ import {
   MapPin,
   Phone,
 } from 'lucide-react';
+import { ExploreWidget } from '../components/landing/ExploreWidget';
 
 // Animated counter component
 function AnimatedCounter({ end, duration = 2, suffix = '' }: { end: number; duration?: number; suffix?: string }) {
@@ -200,7 +201,6 @@ function Navigation() {
 function HeroSection() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-slate-50 to-white">
@@ -217,157 +217,100 @@ function HeroSection() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 py-20">
-        <motion.div style={{ opacity }} className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-full text-amber-700 text-sm font-medium mb-8"
-          >
-            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-            <span>Trusted by 500+ Calgary builders</span>
-          </motion.div>
-
-          {/* Main headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] tracking-tight mb-6"
-          >
-            Get Your Calgary Permit{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">
-                Approved
-              </span>
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                <path d="M2 8 Q 100 2, 198 8" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
-              </svg>
-            </span>{' '}
-            First Time
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed"
-          >
-            AI-powered compliance checking against NBC(AE) 2023, Calgary Land Use Bylaw,
-            and <span className="font-medium text-slate-700">1,433+ SDAB decisions</span>.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              to="/signup"
-              className="group flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-semibold rounded-xl shadow-2xl shadow-slate-900/20 hover:shadow-slate-900/30 hover:-translate-y-1 transition-all"
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left column - Text content */}
+          <div className="text-center lg:text-left">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-full text-amber-700 text-sm font-medium mb-8"
             >
-              Start Your Free Trial
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/explore"
-              className="group flex items-center gap-2 px-8 py-4 bg-white text-slate-700 font-semibold rounded-xl border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all"
+              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+              <span>Trusted by 500+ Calgary builders</span>
+            </motion.div>
+
+            {/* Main headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.1] tracking-tight mb-6"
             >
-              <Search className="w-5 h-5" />
-              Explore the Code
-            </Link>
-          </motion.div>
+              Get Your Calgary Permit{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">
+                  Approved
+                </span>
+                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                  <path d="M2 8 Q 100 2, 198 8" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </span>{' '}
+              First Time
+            </motion.h1>
 
-          {/* Trust indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-slate-400 text-sm"
-          >
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-teal-500" />
-              <span>SOC 2 Compliant</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-amber-500" />
-              <span>Real-time Updates</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-amber-500" />
-              <span>Instant Analysis</span>
-            </div>
-          </motion.div>
-        </motion.div>
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+            >
+              AI-powered compliance checking against NBC(AE) 2023, Calgary Land Use Bylaw,
+              and <span className="font-medium text-slate-700">1,433+ SDAB decisions</span>.
+            </motion.p>
 
-        {/* Hero visual - Blueprint card preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-20 relative"
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 pointer-events-none" />
-          <div className="relative mx-auto max-w-5xl rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/10 overflow-hidden bg-white">
-            {/* Mock browser chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-slate-100 border-b border-slate-200">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-rose-400" />
-                <div className="w-3 h-3 rounded-full bg-amber-400" />
-                <div className="w-3 h-3 rounded-full bg-teal-400" />
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10"
+            >
+              <Link
+                to="/signup"
+                className="group flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-semibold rounded-xl shadow-2xl shadow-slate-900/20 hover:shadow-slate-900/30 hover:-translate-y-1 transition-all"
+              >
+                Start Your Free Trial
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/explore"
+                className="group flex items-center gap-2 px-8 py-4 bg-white text-slate-700 font-semibold rounded-xl border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all"
+              >
+                <Search className="w-5 h-5" />
+                Full Explore
+              </Link>
+            </motion.div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-slate-400 text-sm"
+            >
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-teal-500" />
+                <span>SOC 2 Compliant</span>
               </div>
-              <div className="flex-1 mx-4">
-                <div className="w-full max-w-md mx-auto h-7 bg-white rounded-md border border-slate-200 flex items-center px-3 text-xs text-slate-400">
-                  codecheck.calgary.ai/review
-                </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-amber-500" />
+                <span>Real-time Updates</span>
               </div>
-            </div>
-            {/* Mock app content */}
-            <div className="p-8 bg-gradient-to-br from-slate-50 to-white">
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="col-span-2 space-y-4">
-                  <div className="h-8 w-48 bg-slate-200 rounded-lg animate-pulse" />
-                  <div className="h-4 w-full bg-slate-100 rounded" />
-                  <div className="h-4 w-3/4 bg-slate-100 rounded" />
-                  <div className="mt-6 grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl bg-teal-50 border border-teal-200">
-                      <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle2 className="w-5 h-5 text-teal-600" />
-                        <span className="font-medium text-teal-800">Compliant</span>
-                      </div>
-                      <div className="text-sm text-teal-600">NBC(AE) 9.9.4.2</div>
-                    </div>
-                    <div className="p-4 rounded-xl bg-amber-50 border border-amber-200">
-                      <div className="flex items-center gap-2 mb-2">
-                        <FileCheck className="w-5 h-5 text-amber-600" />
-                        <span className="font-medium text-amber-800">Needs Review</span>
-                      </div>
-                      <div className="text-sm text-amber-600">Setback verification</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-slate-900 text-white">
-                    <div className="text-xs text-slate-400 mb-1">Compliance Score</div>
-                    <div className="text-3xl font-bold text-amber-400">94%</div>
-                  </div>
-                  <div className="p-4 rounded-xl bg-white border border-slate-200">
-                    <div className="text-xs text-slate-500 mb-2">Issues Found</div>
-                    <div className="space-y-2">
-                      <div className="h-2 w-full bg-teal-400 rounded" />
-                      <div className="h-2 w-3/4 bg-amber-400 rounded" />
-                      <div className="h-2 w-1/2 bg-rose-400 rounded" />
-                    </div>
-                  </div>
-                </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-amber-500" />
+                <span>Instant Analysis</span>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Right column - Interactive Explore Widget */}
+          <div className="lg:pl-8">
+            <ExploreWidget className="max-w-lg mx-auto lg:mx-0" />
+          </div>
+        </div>
       </div>
     </section>
   );

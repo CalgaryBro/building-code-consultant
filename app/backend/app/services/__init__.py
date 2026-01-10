@@ -10,3 +10,9 @@ from .drawing_extraction import (
     GeometryAnalyzer,
     DrawingOCR,
 )
+
+# Document upload service for permits
+from .document_service import DocumentService, document_service
+
+# Fee calculator service
+from .fee_calculator import FeeCalculatorService, fee_calculator

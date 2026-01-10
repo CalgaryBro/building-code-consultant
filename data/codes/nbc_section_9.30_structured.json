@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.30",
+    "section_title": "Reserved",
+    "pages": "1040",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 0,
+    "subsections": [],
+    "notes": "Section 9.30 is reserved in the NBC 2023. Ventilation requirements are covered in Section 9.32."
+  },
+  "articles": []
+}

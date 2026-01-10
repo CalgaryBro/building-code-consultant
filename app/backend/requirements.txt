@@ -50,3 +50,11 @@ sentence-transformers==2.2.2
 
 # Image processing for PDF extraction
 Pillow==10.2.0
+
+# PDF Generation
+reportlab>=4.0.0
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[argon2]==1.7.4
+argon2-cffi==23.1.0

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useMutation } from '@tanstack/react-query';
 import {
   MapPin,
   Building,
@@ -22,8 +23,11 @@ import {
   AlertTriangle,
   ChevronRight,
   Sparkles,
+  XCircle,
 } from 'lucide-react';
 import type { GuideProjectInput, GuideResponse } from '../types';
+import { guideApi, ApiError, type AddressAutocompleteResult } from '../api/client';
+import { AddressAutocomplete } from '../components/AddressAutocomplete';
 
 // Blueprint background component
 function BlueprintBackground() {
@@ -168,74 +172,6 @@ const occupancyTypes = [
   { id: 'mixed', label: 'Mixed Use', icon: Layers, description: 'Residential + commercial' },
 ];
 
-// Mock response for demonstration
-const mockGuideResponse: GuideResponse = {
-  project: {
-    id: '1',
-    project_name: 'Project at 123 Example St NW',
-    address: '123 Example St NW',
-    classification: 'PART_9',
-    occupancy_group: 'C',
-    building_height_storeys: 2,
-    building_area_sqm: 250,
-    project_type: 'new_construction',
-    development_permit_required: true,
-    building_permit_required: true,
-    estimated_permit_fee: 5500,
-    status: 'draft',
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  classification: 'PART_9',
-  classification_reason: 'Building qualifies for Part 9: ≤3 storeys, ≤600 m² footprint, residential occupancy',
-  zoning_status: 'compliant',
-  permits_required: [
-    {
-      permit_type: 'development_permit',
-      required: true,
-      description: 'Development Permit from City of Calgary Planning',
-      estimated_fee: 2500,
-      typical_timeline_days: 60,
-      documents_required: ['Site plan', 'Building elevations', 'Floor plans', 'Landscaping plan'],
-      notes: undefined,
-    },
-    {
-      permit_type: 'building_permit',
-      required: true,
-      description: 'Building Permit from City of Calgary Building Safety',
-      estimated_fee: 3000,
-      typical_timeline_days: 30,
-      documents_required: ['Architectural drawings', 'Structural drawings', 'HVAC design', 'Energy compliance'],
-      notes: 'Part 9 building - design by qualified person acceptable',
-    },
-    {
-      permit_type: 'electrical_permit',
-      required: true,
-      description: 'Electrical Permit',
-      estimated_fee: 200,
-      typical_timeline_days: 5,
-      documents_required: ['Electrical drawings', 'Load calculations'],
-      notes: undefined,
-    },
-  ],
-  key_requirements: [
-    'NBC(AE) 2023 Part 9 applies - residential and small buildings',
-    'Maximum 3 storeys, 600 m² footprint',
-    'Minimum ceiling height: 2.3 m (habitable rooms)',
-    'Stairs: minimum 860 mm wide, maximum 200 mm rise, minimum 255 mm run',
-    'Egress windows required in bedrooms',
-    'Zone R-C1: Max height 10 m, 2 storeys',
-  ],
-  next_steps: [
-    'Confirm address and verify current zoning designation',
-    'Prepare preliminary site plan showing setbacks and building footprint',
-    'Prepare Part 9 compliant drawings',
-    'Submit Development Permit application',
-    'Wait for DP approval before submitting Building Permit',
-    'Submit Building Permit with complete drawing package',
-  ],
-  warnings: [],
-};
 
 // Selection card component
 function SelectionCard({
@@ -385,8 +321,8 @@ function ResultCard({
 
 export function GuidePage() {
   const [step, setStep] = useState(1);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<GuideResponse | null>(null);
+  const [apiError, setApiError] = useState<string | null>(null);
   const [formData, setFormData] = useState<GuideProjectInput>({
     address: '',
     project_type: '',
@@ -398,16 +334,27 @@ export function GuidePage() {
     description: '',
   });
 
+  // React Query mutation for analyzing the project
+  const analyzeMutation = useMutation({
+    mutationFn: (data: GuideProjectInput) => guideApi.analyze(data),
+    onSuccess: (data) => {
+      setResult(data);
+      setApiError(null);
+      setStep(4);
+    },
+    onError: (error: Error) => {
+      if (error instanceof ApiError) {
+        setApiError(`Error ${error.status}: ${error.message}`);
+      } else {
+        setApiError(error.message || 'An unexpected error occurred');
+      }
+    },
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsAnalyzing(true);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    setResult(mockGuideResponse);
-    setIsAnalyzing(false);
-    setStep(4);
+    setApiError(null);
+    analyzeMutation.mutate(formData);
   };
 
   const canProceed = (currentStep: number): boolean => {
@@ -499,12 +446,14 @@ export function GuidePage() {
                   </div>
                 </div>
 
-                <FormInput
+                <AddressAutocomplete
                   label="Calgary Address"
-                  icon={MapPin}
                   placeholder="Enter street address, e.g., 123 Main St NW"
                   value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  onChange={(value) => setFormData({ ...formData, address: value })}
+                  onSelect={(result: AddressAutocompleteResult) => {
+                    setFormData({ ...formData, address: result.address });
+                  }}
                   hint="We'll automatically verify zoning designation and lot details"
                 />
 
@@ -708,6 +657,21 @@ export function GuidePage() {
                   />
                 </div>
 
+                {/* Error display */}
+                {apiError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-6 p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3"
+                  >
+                    <XCircle className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-rose-900">Analysis Failed</p>
+                      <p className="text-sm text-rose-700 mt-1">{apiError}</p>
+                    </div>
+                  </motion.div>
+                )}
+
                 <div className="mt-8 flex justify-between">
                   <motion.button
                     type="button"
@@ -720,12 +684,12 @@ export function GuidePage() {
                   </motion.button>
                   <motion.button
                     type="submit"
-                    disabled={isAnalyzing}
+                    disabled={analyzeMutation.isPending}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-200 hover:shadow-xl hover:shadow-amber-200 transition-all duration-200 disabled:opacity-70"
-                    whileHover={!isAnalyzing ? { scale: 1.02 } : {}}
-                    whileTap={!isAnalyzing ? { scale: 0.98 } : {}}
+                    whileHover={!analyzeMutation.isPending ? { scale: 1.02 } : {}}
+                    whileTap={!analyzeMutation.isPending ? { scale: 0.98 } : {}}
                   >
-                    {isAnalyzing ? (
+                    {analyzeMutation.isPending ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
                         Analyzing Project...

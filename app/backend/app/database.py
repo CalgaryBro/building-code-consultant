@@ -50,6 +50,7 @@ def init_db():
             try:
                 conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
                 conn.execute(text("CREATE EXTENSION IF NOT EXISTS postgis"))
+                conn.execute(text("CREATE EXTENSION IF NOT EXISTS pg_trgm"))
                 conn.commit()
             except Exception as e:
                 print(f"Warning: Could not create extensions: {e}")

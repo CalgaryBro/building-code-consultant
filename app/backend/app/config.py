@@ -42,6 +42,12 @@ class Settings(BaseSettings):
     bylaw_version: str = "1P2007-21P2024"
     bylaw_effective_date: str = "2025-01-01"
 
+    # Authentication
+    secret_key: str = "change-this-in-production-use-a-secure-random-key"
+    algorithm: str = "HS256"
+    access_token_expire_minutes: int = 30
+    refresh_token_expire_days: int = 7
+
     @field_validator("cors_origins", mode="before")
     @classmethod
     def parse_cors_origins(cls, v):

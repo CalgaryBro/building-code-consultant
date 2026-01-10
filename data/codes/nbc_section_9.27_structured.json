@@ -1,0 +1,255 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.27",
+    "section_title": "Air Barrier Systems",
+    "pages": "1025-1035",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 18,
+    "subsections": [
+      "9.27.1 - Scope",
+      "9.27.2 - Materials",
+      "9.27.3 - Installation",
+      "9.27.4 - Second Plane of Protection"
+    ]
+  },
+  "articles": [
+    {
+      "article_number": "9.27.1.1",
+      "title": "Application",
+      "requirements": [
+        {
+          "id": "9.27.1.1-1",
+          "element": "air_barrier_application",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to air barrier systems for buildings",
+          "exact_quote": "This Section applies to air barrier systems for buildings"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.2.1",
+      "title": "Air Barrier Material Types",
+      "requirements": [
+        {
+          "id": "9.27.2.1-1",
+          "element": "air_barrier_materials_allowed",
+          "requirement_type": "material",
+          "description": "Air barrier materials may include polyethylene, housewrap, building paper, rigid insulation, spray foam, drywall, or other approved materials",
+          "exact_quote": "Air barrier materials may include polyethylene, housewrap, building paper, rigid insulation, spray foam, drywall, or other approved materials"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.2.2",
+      "title": "Air Barrier Material Requirements",
+      "requirements": [
+        {
+          "id": "9.27.2.2-1",
+          "element": "air_barrier_air_permeance",
+          "requirement_type": "dimensional",
+          "max_value": 0.02,
+          "unit": "L/(s*m2) at 75 Pa",
+          "description": "Maximum air permeance for air barrier materials",
+          "exact_quote": "Air barrier materials shall have an air permeance of not more than 0.02 L/(s*m2) at 75 Pa when tested in accordance with ASTM E2178"
+        },
+        {
+          "id": "9.27.2.2-2",
+          "element": "air_barrier_testing_standard",
+          "requirement_type": "reference",
+          "description": "Air barrier materials shall be tested in accordance with ASTM E2178",
+          "exact_quote": "when tested in accordance with ASTM E2178",
+          "standard_reference": "ASTM E2178"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.2.3",
+      "title": "Housewrap Standards",
+      "requirements": [
+        {
+          "id": "9.27.2.3-1",
+          "element": "housewrap_standard",
+          "requirement_type": "reference",
+          "description": "Housewrap used as air barrier material shall conform to CAN/CGSB-51.32-M",
+          "exact_quote": "Housewrap used as air barrier material shall conform to CAN/CGSB-51.32-M or shall have equivalent air resistance properties",
+          "standard_reference": "CAN/CGSB-51.32-M"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.3.1",
+      "title": "Continuity of Air Barrier System",
+      "requirements": [
+        {
+          "id": "9.27.3.1-1",
+          "element": "air_barrier_continuity_requirement",
+          "requirement_type": "prescriptive",
+          "description": "The air barrier system shall be continuous over the entire building envelope",
+          "exact_quote": "The air barrier system shall be continuous over the entire building envelope including walls, ceilings, floors, windows, and doors"
+        },
+        {
+          "id": "9.27.3.1-2",
+          "element": "air_barrier_at_floor_assemblies",
+          "requirement_type": "prescriptive",
+          "description": "Where floor assemblies interrupt wall assemblies, the air barrier shall be continuous across the floor assembly",
+          "exact_quote": "Where floor assemblies interrupt wall assemblies, the air barrier shall be continuous across the floor assembly"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.3.2",
+      "title": "Joints and Seams",
+      "requirements": [
+        {
+          "id": "9.27.3.2-1",
+          "element": "air_barrier_lap_polyethylene",
+          "requirement_type": "dimensional",
+          "min_value": 100,
+          "unit": "mm",
+          "description": "Minimum lap for polyethylene air barrier joints",
+          "exact_quote": "Joints in polyethylene air barriers shall be lapped not less than 100 mm"
+        },
+        {
+          "id": "9.27.3.2-2",
+          "element": "air_barrier_lap_housewrap",
+          "requirement_type": "dimensional",
+          "min_value": 75,
+          "unit": "mm",
+          "description": "Minimum lap for housewrap horizontal joints",
+          "exact_quote": "Horizontal joints in housewrap shall be lapped not less than 75 mm"
+        },
+        {
+          "id": "9.27.3.2-3",
+          "element": "air_barrier_lap_housewrap_vertical",
+          "requirement_type": "dimensional",
+          "min_value": 150,
+          "unit": "mm",
+          "description": "Minimum lap for housewrap vertical joints",
+          "exact_quote": "Vertical joints in housewrap shall be lapped not less than 150 mm"
+        },
+        {
+          "id": "9.27.3.2-4",
+          "element": "air_barrier_joint_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Joints in air barrier materials shall be sealed with tape, caulking, or other approved sealants",
+          "exact_quote": "Joints in air barrier materials shall be sealed with tape, caulking, or other approved sealants"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.3.3",
+      "title": "Penetrations",
+      "requirements": [
+        {
+          "id": "9.27.3.3-1",
+          "element": "air_barrier_penetration_sealing",
+          "requirement_type": "prescriptive",
+          "description": "All penetrations through the air barrier shall be sealed with caulking, gaskets, or other appropriate materials",
+          "exact_quote": "All penetrations through the air barrier shall be sealed with caulking, gaskets, or other appropriate materials"
+        },
+        {
+          "id": "9.27.3.3-2",
+          "element": "electrical_box_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Electrical boxes in the air barrier shall be sealed with gaskets or sealed to the air barrier material",
+          "exact_quote": "Electrical boxes in the air barrier shall be sealed with gaskets or sealed to the air barrier material"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.3.4",
+      "title": "Windows and Doors",
+      "requirements": [
+        {
+          "id": "9.27.3.4-1",
+          "element": "window_door_air_sealing",
+          "requirement_type": "prescriptive",
+          "description": "Window and door frames shall be sealed to the air barrier system",
+          "exact_quote": "Window and door frames shall be sealed to the air barrier system to maintain continuity"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.3.5",
+      "title": "Support of Air Barrier",
+      "requirements": [
+        {
+          "id": "9.27.3.5-1",
+          "element": "air_barrier_support",
+          "requirement_type": "prescriptive",
+          "description": "Air barrier materials shall be supported to resist air pressure differentials without damage or displacement",
+          "exact_quote": "Air barrier materials shall be supported to resist air pressure differentials without damage or displacement"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.4.1",
+      "title": "Second Plane of Protection Required",
+      "requirements": [
+        {
+          "id": "9.27.4.1-1",
+          "element": "second_plane_required",
+          "requirement_type": "prescriptive",
+          "description": "A second plane of protection shall be provided behind cladding in locations where the Moisture Index is greater than 1.0",
+          "exact_quote": "A second plane of protection shall be provided behind cladding in locations where the Moisture Index is greater than 1.0"
+        },
+        {
+          "id": "9.27.4.1-2",
+          "element": "moisture_index_threshold",
+          "requirement_type": "dimensional",
+          "min_value": 1.0,
+          "unit": "index",
+          "description": "Moisture Index threshold above which second plane of protection is required",
+          "exact_quote": "where the Moisture Index is greater than 1.0"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.4.2",
+      "title": "Second Plane Materials",
+      "requirements": [
+        {
+          "id": "9.27.4.2-1",
+          "element": "second_plane_materials",
+          "requirement_type": "material",
+          "description": "The second plane of protection shall consist of sheathing membrane, building paper, or equivalent water-resistant material",
+          "exact_quote": "The second plane of protection shall consist of sheathing membrane, building paper, or equivalent water-resistant material"
+        },
+        {
+          "id": "9.27.4.2-2",
+          "element": "second_plane_drainage",
+          "requirement_type": "prescriptive",
+          "description": "The second plane of protection shall be detailed to drain water that penetrates the cladding to the exterior",
+          "exact_quote": "The second plane of protection shall be detailed to drain water that penetrates the cladding to the exterior"
+        }
+      ]
+    },
+    {
+      "article_number": "9.27.4.3",
+      "title": "Rainscreen",
+      "requirements": [
+        {
+          "id": "9.27.4.3-1",
+          "element": "rainscreen_drainage_space",
+          "requirement_type": "dimensional",
+          "min_value": 10,
+          "unit": "mm",
+          "description": "Minimum drainage space behind cladding for rainscreen walls",
+          "exact_quote": "Rainscreen walls shall have a minimum drainage space of 10 mm behind the cladding"
+        },
+        {
+          "id": "9.27.4.3-2",
+          "element": "rainscreen_venting",
+          "requirement_type": "prescriptive",
+          "description": "The drainage space shall be vented at the top and bottom of the wall to promote drying",
+          "exact_quote": "The drainage space shall be vented at the top and bottom of the wall to promote drying"
+        }
+      ]
+    }
+  ]
+}

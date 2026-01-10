@@ -1,0 +1,470 @@
+{
+  "metadata": {
+    "code": "National Building Code of Canada 2023 - Alberta Edition",
+    "short_name": "NBC(AE)",
+    "version": "2023",
+    "section": "9.36",
+    "section_title": "Energy Efficiency",
+    "pages": "1125-1200",
+    "extraction_date": "2026-01-09",
+    "extraction_method": "pdfplumber + manual structuring",
+    "verification_status": "pending_professional_review",
+    "total_articles": 85,
+    "subsections": [
+      "9.36.1 - General",
+      "9.36.2 - Building Envelope",
+      "9.36.3 - Heating, Ventilating and Air-Conditioning Systems",
+      "9.36.4 - Service Water Heating",
+      "9.36.5 - Lighting",
+      "9.36.6 - Performance Compliance"
+    ],
+    "notes": "Section 9.36 contains comprehensive energy efficiency requirements. Calgary is in Climate Zone 7A (5000+ HDD). The NECB 2020 may also apply depending on building type."
+  },
+  "articles": [
+    {
+      "article_number": "9.36.1.1",
+      "title": "Scope",
+      "requirements": [
+        {
+          "id": "9.36.1.1-1",
+          "element": "energy_efficiency_scope",
+          "requirement_type": "prescriptive",
+          "description": "This Section applies to energy efficiency requirements for buildings within the scope of Part 9",
+          "exact_quote": "This Section applies to energy efficiency requirements for buildings within the scope of Part 9"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.1.2",
+      "title": "Compliance Paths",
+      "requirements": [
+        {
+          "id": "9.36.1.2-1",
+          "element": "prescriptive_compliance",
+          "requirement_type": "prescriptive",
+          "description": "Compliance with energy efficiency requirements may be achieved through prescriptive requirements in Subsections 9.36.2 to 9.36.5",
+          "exact_quote": "Compliance with energy efficiency requirements may be achieved through prescriptive requirements in Subsections 9.36.2 to 9.36.5"
+        },
+        {
+          "id": "9.36.1.2-2",
+          "element": "performance_compliance",
+          "requirement_type": "prescriptive",
+          "description": "Compliance may alternatively be achieved through performance modelling demonstrating equivalent or better energy performance",
+          "exact_quote": "Compliance may alternatively be achieved through performance modelling demonstrating equivalent or better energy performance"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.1.3",
+      "title": "Climate Zone",
+      "requirements": [
+        {
+          "id": "9.36.1.3-1",
+          "element": "calgary_climate_zone",
+          "requirement_type": "prescriptive",
+          "description": "Calgary is located in Climate Zone 7A with approximately 5000 heating degree days",
+          "exact_quote": "Climate zones are determined by heating degree days. Zone 7A applies where HDD are between 5000 and 6000"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.1",
+      "title": "Building Envelope General",
+      "requirements": [
+        {
+          "id": "9.36.2.1-1",
+          "element": "envelope_thermal_performance",
+          "requirement_type": "prescriptive",
+          "description": "Building envelope assemblies shall meet the thermal performance requirements of this Section",
+          "exact_quote": "Building envelope assemblies shall meet the thermal performance requirements of this Section"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.2",
+      "title": "Above-Grade Wall Insulation",
+      "requirements": [
+        {
+          "id": "9.36.2.2-1",
+          "element": "wall_effective_rsi_zone7",
+          "requirement_type": "dimensional",
+          "min_value": 4.31,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for above-grade walls in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, above-grade walls shall have an effective thermal resistance of not less than RSI 4.31"
+        },
+        {
+          "id": "9.36.2.2-2",
+          "element": "wall_nominal_rsi_zone7",
+          "requirement_type": "dimensional",
+          "min_value": 5.45,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum nominal thermal resistance for above-grade walls in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, above-grade walls shall have a nominal thermal resistance of not less than RSI 5.45"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.3",
+      "title": "Ceiling Insulation",
+      "requirements": [
+        {
+          "id": "9.36.2.3-1",
+          "element": "ceiling_effective_rsi_zone7",
+          "requirement_type": "dimensional",
+          "min_value": 10.43,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for ceilings below attics in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, ceilings below attics shall have an effective thermal resistance of not less than RSI 10.43"
+        },
+        {
+          "id": "9.36.2.3-2",
+          "element": "cathedral_ceiling_effective_rsi_zone7",
+          "requirement_type": "dimensional",
+          "min_value": 6.91,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for cathedral ceilings and flat roofs in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, cathedral ceilings and flat roofs shall have an effective thermal resistance of not less than RSI 6.91"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.4",
+      "title": "Basement Wall Insulation",
+      "requirements": [
+        {
+          "id": "9.36.2.4-1",
+          "element": "basement_wall_effective_rsi_zone7",
+          "requirement_type": "dimensional",
+          "min_value": 2.98,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for basement walls in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, basement walls shall have an effective thermal resistance of not less than RSI 2.98"
+        },
+        {
+          "id": "9.36.2.4-2",
+          "element": "basement_insulation_depth",
+          "requirement_type": "prescriptive",
+          "description": "Basement wall insulation shall extend from the top of the wall to the basement floor",
+          "exact_quote": "Basement wall insulation shall extend from the top of the wall to the basement floor"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.5",
+      "title": "Slab-on-Grade Insulation",
+      "requirements": [
+        {
+          "id": "9.36.2.5-1",
+          "element": "slab_edge_effective_rsi_zone7",
+          "requirement_type": "dimensional",
+          "min_value": 2.84,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for slab-on-grade edge insulation in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, slab-on-grade edge insulation shall have an effective thermal resistance of not less than RSI 2.84"
+        },
+        {
+          "id": "9.36.2.5-2",
+          "element": "slab_insulation_width",
+          "requirement_type": "dimensional",
+          "min_value": 1200,
+          "unit": "mm",
+          "description": "Minimum width of slab-on-grade perimeter insulation measured from edge",
+          "exact_quote": "Slab-on-grade perimeter insulation shall extend not less than 1200 mm horizontally from the slab edge or vertically to the footing"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.6",
+      "title": "Floor Over Unheated Space",
+      "requirements": [
+        {
+          "id": "9.36.2.6-1",
+          "element": "floor_unheated_effective_rsi_zone7",
+          "requirement_type": "dimensional",
+          "min_value": 5.02,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum effective thermal resistance for floors over unheated spaces in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, floors over unheated spaces shall have an effective thermal resistance of not less than RSI 5.02"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.7",
+      "title": "Window and Door Performance",
+      "requirements": [
+        {
+          "id": "9.36.2.7-1",
+          "element": "window_u_value_zone7",
+          "requirement_type": "dimensional",
+          "max_value": 1.40,
+          "unit": "W/(m2K)",
+          "description": "Maximum overall thermal transmittance (U-value) for windows in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, windows shall have an overall thermal transmittance (U-value) of not more than 1.40 W/(m2K)"
+        },
+        {
+          "id": "9.36.2.7-2",
+          "element": "door_u_value_zone7",
+          "requirement_type": "dimensional",
+          "max_value": 1.40,
+          "unit": "W/(m2K)",
+          "description": "Maximum overall thermal transmittance (U-value) for doors in Climate Zone 7A",
+          "exact_quote": "For Climate Zone 7A, doors shall have an overall thermal transmittance (U-value) of not more than 1.40 W/(m2K)"
+        },
+        {
+          "id": "9.36.2.7-3",
+          "element": "fenestration_energy_rating",
+          "requirement_type": "dimensional",
+          "min_value": 25,
+          "unit": "ER",
+          "description": "Minimum energy rating for windows in Climate Zone 7A",
+          "exact_quote": "Windows in Climate Zone 7A shall have an energy rating (ER) of not less than 25"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.8",
+      "title": "Maximum Fenestration Area",
+      "requirements": [
+        {
+          "id": "9.36.2.8-1",
+          "element": "max_window_area_ratio",
+          "requirement_type": "dimensional",
+          "max_value": 22,
+          "unit": "%",
+          "description": "Maximum fenestration and door area as percentage of gross wall area",
+          "exact_quote": "The total area of windows, doors, and skylights shall not exceed 22% of the gross wall area"
+        },
+        {
+          "id": "9.36.2.8-2",
+          "element": "max_skylight_area_ratio",
+          "requirement_type": "dimensional",
+          "max_value": 2,
+          "unit": "%",
+          "description": "Maximum skylight area as percentage of gross ceiling area",
+          "exact_quote": "The total area of skylights shall not exceed 2% of the gross ceiling area"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.2.9",
+      "title": "Air Tightness",
+      "requirements": [
+        {
+          "id": "9.36.2.9-1",
+          "element": "building_airtightness",
+          "requirement_type": "dimensional",
+          "max_value": 2.5,
+          "unit": "ACH at 50 Pa",
+          "description": "Maximum air leakage rate for the building envelope",
+          "exact_quote": "The building envelope shall have an air leakage rate of not more than 2.5 air changes per hour at 50 Pa pressure difference"
+        },
+        {
+          "id": "9.36.2.9-2",
+          "element": "airtightness_test_standard",
+          "requirement_type": "reference",
+          "description": "Air tightness shall be measured in accordance with CAN/CGSB-149.10",
+          "exact_quote": "Air tightness shall be measured in accordance with CAN/CGSB-149.10",
+          "standard_reference": "CAN/CGSB-149.10"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.3.1",
+      "title": "HVAC Equipment Efficiency",
+      "requirements": [
+        {
+          "id": "9.36.3.1-1",
+          "element": "furnace_min_efficiency",
+          "requirement_type": "dimensional",
+          "min_value": 95,
+          "unit": "%",
+          "description": "Minimum annual fuel utilization efficiency (AFUE) for gas furnaces",
+          "exact_quote": "Gas furnaces shall have a minimum annual fuel utilization efficiency (AFUE) of 95%"
+        },
+        {
+          "id": "9.36.3.1-2",
+          "element": "boiler_min_efficiency",
+          "requirement_type": "dimensional",
+          "min_value": 90,
+          "unit": "%",
+          "description": "Minimum annual fuel utilization efficiency (AFUE) for gas boilers",
+          "exact_quote": "Gas boilers shall have a minimum annual fuel utilization efficiency (AFUE) of 90%"
+        },
+        {
+          "id": "9.36.3.1-3",
+          "element": "heat_pump_min_hspf",
+          "requirement_type": "dimensional",
+          "min_value": 8.2,
+          "unit": "HSPF",
+          "description": "Minimum heating seasonal performance factor (HSPF) for air-source heat pumps",
+          "exact_quote": "Air-source heat pumps shall have a minimum heating seasonal performance factor (HSPF) of 8.2"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.3.2",
+      "title": "Duct Sealing",
+      "requirements": [
+        {
+          "id": "9.36.3.2-1",
+          "element": "duct_sealing_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Supply and return air ducts shall be sealed to minimize air leakage",
+          "exact_quote": "Supply and return air ducts shall be sealed to minimize air leakage"
+        },
+        {
+          "id": "9.36.3.2-2",
+          "element": "duct_sealing_method",
+          "requirement_type": "prescriptive",
+          "description": "Duct joints shall be sealed with mastic, tape, or other approved sealants",
+          "exact_quote": "Duct joints shall be sealed with mastic, tape, or other approved sealants"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.3.3",
+      "title": "Duct Insulation",
+      "requirements": [
+        {
+          "id": "9.36.3.3-1",
+          "element": "duct_insulation_rsi",
+          "requirement_type": "dimensional",
+          "min_value": 1.32,
+          "unit": "RSI (m2K/W)",
+          "description": "Minimum thermal resistance for duct insulation in unconditioned spaces",
+          "exact_quote": "Ducts in unconditioned spaces shall be insulated to a minimum RSI of 1.32"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.3.4",
+      "title": "Heat Recovery Ventilation",
+      "requirements": [
+        {
+          "id": "9.36.3.4-1",
+          "element": "hrv_min_efficiency",
+          "requirement_type": "dimensional",
+          "min_value": 70,
+          "unit": "%",
+          "description": "Minimum sensible heat recovery efficiency for HRVs at 0 degrees C",
+          "exact_quote": "Heat recovery ventilators shall have a minimum sensible heat recovery efficiency of 70% at 0 degrees C"
+        },
+        {
+          "id": "9.36.3.4-2",
+          "element": "hrv_standard",
+          "requirement_type": "reference",
+          "description": "Heat recovery ventilators shall conform to CAN/CSA-C439",
+          "exact_quote": "Heat recovery ventilators shall conform to CAN/CSA-C439",
+          "standard_reference": "CAN/CSA-C439"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.3.5",
+      "title": "Thermostat Requirements",
+      "requirements": [
+        {
+          "id": "9.36.3.5-1",
+          "element": "programmable_thermostat",
+          "requirement_type": "prescriptive",
+          "description": "Heating systems shall be controlled by programmable or smart thermostats",
+          "exact_quote": "Heating systems shall be controlled by programmable or smart thermostats capable of setting different temperatures for different times of day"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.4.1",
+      "title": "Service Water Heating",
+      "requirements": [
+        {
+          "id": "9.36.4.1-1",
+          "element": "water_heater_efficiency_gas",
+          "requirement_type": "dimensional",
+          "min_value": 0.67,
+          "unit": "EF",
+          "description": "Minimum energy factor for gas water heaters",
+          "exact_quote": "Gas water heaters shall have a minimum energy factor of 0.67"
+        },
+        {
+          "id": "9.36.4.1-2",
+          "element": "water_heater_efficiency_electric",
+          "requirement_type": "dimensional",
+          "min_value": 0.93,
+          "unit": "EF",
+          "description": "Minimum energy factor for electric water heaters",
+          "exact_quote": "Electric water heaters shall have a minimum energy factor of 0.93"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.4.2",
+      "title": "Hot Water Pipe Insulation",
+      "requirements": [
+        {
+          "id": "9.36.4.2-1",
+          "element": "hot_water_pipe_insulation",
+          "requirement_type": "dimensional",
+          "min_value": 25,
+          "unit": "mm",
+          "description": "Minimum insulation thickness for hot water supply pipes",
+          "exact_quote": "Hot water supply pipes shall be insulated with not less than 25 mm of insulation"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.5.1",
+      "title": "Lighting",
+      "requirements": [
+        {
+          "id": "9.36.5.1-1",
+          "element": "interior_lighting_efficiency",
+          "requirement_type": "prescriptive",
+          "description": "At least 80% of interior lighting power shall be high-efficacy lighting (LED or equivalent)",
+          "exact_quote": "Not less than 80% of interior lighting power in dwelling units shall be provided by high-efficacy lighting"
+        },
+        {
+          "id": "9.36.5.1-2",
+          "element": "exterior_lighting_control",
+          "requirement_type": "prescriptive",
+          "description": "Exterior lighting shall be controlled by automatic devices such as motion sensors or timers",
+          "exact_quote": "Exterior lighting shall be controlled by automatic devices such as motion sensors, timers, or daylight sensors"
+        }
+      ]
+    },
+    {
+      "article_number": "9.36.6.1",
+      "title": "Performance Compliance Path",
+      "requirements": [
+        {
+          "id": "9.36.6.1-1",
+          "element": "energy_model_requirement",
+          "requirement_type": "prescriptive",
+          "description": "Performance compliance shall be demonstrated using approved energy modelling software",
+          "exact_quote": "Performance compliance shall be demonstrated using approved energy modelling software"
+        },
+        {
+          "id": "9.36.6.1-2",
+          "element": "energy_performance_target",
+          "requirement_type": "prescriptive",
+          "description": "The proposed design shall have annual energy consumption not exceeding that of a reference building complying with prescriptive requirements",
+          "exact_quote": "The proposed design shall have annual energy consumption not exceeding that of a reference building complying with prescriptive requirements"
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "9.36.2.6.A",
+      "title": "Effective Thermal Resistance of Above-Ground Opaque Building Assemblies",
+      "description": "Minimum effective RSI values by climate zone and assembly type",
+      "notes": "Calgary is in Zone 7A"
+    },
+    {
+      "table_id": "9.36.2.8.A",
+      "title": "Maximum Overall Thermal Transmittance (U-value) of Fenestration",
+      "description": "Maximum U-values by climate zone",
+      "notes": "Zone 7A requires U <= 1.40 W/(m2K)"
+    }
+  ]
+}
