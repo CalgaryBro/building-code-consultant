@@ -19,6 +19,9 @@ from app.main import app
 from app.models.codes import Code, Article, Requirement, RequirementCondition
 from app.models.zones import Zone, ZoneRule, Parcel
 from app.models.projects import Project, ComplianceCheck, Document, ExtractedData
+from app.models.auth import User  # Import User model for auth tests
+from app.models.permits import PermitApplication  # Import PermitApplication for permit tests
+from app.models.standata import Standata  # Import Standata for standata tests
 
 
 # Create test database
@@ -268,3 +271,30 @@ def sample_compliance_check(db_session, sample_project, sample_requirement, samp
     db_session.commit()
     db_session.refresh(check)
     return check
+
+
+@pytest.fixture
+def sample_permit_application(db_session, sample_parcel):
+    """Create a sample permit application for testing."""
+    permit_app = PermitApplication(
+        id=uuid4(),
+        application_number="DP2024-00123",
+        permit_type="development",
+        status="draft",
+        project_name="Test Development Project",
+        address="456 Test Avenue SW",
+        parcel_id=sample_parcel.id,
+        project_type="new_construction",
+        classification="PART_9",
+        occupancy_group="C",
+        building_area_sqm=300.0,
+        building_height_storeys=2,
+        proposed_use="Single family dwelling",
+        relaxations_requested=["setback_front", "height"],
+        applicant_name="Test Applicant",
+        applicant_email="test@example.com",
+    )
+    db_session.add(permit_app)
+    db_session.commit()
+    db_session.refresh(permit_app)
+    return permit_app
