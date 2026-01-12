@@ -4,10 +4,13 @@
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
 
+export type UserRole = 'user' | 'reviewer' | 'admin';
+
 export interface User {
   id: string;
   email: string;
   full_name: string;
+  role: UserRole;
   is_verified: boolean;
   created_at: string;
 }

@@ -9,9 +9,10 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:8001',
+        target: 'http://localhost:8002',
         changeOrigin: true,
         secure: false,
+        timeout: 120000, // 2 minute timeout for LLM requests
       },
     },
   },

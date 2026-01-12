@@ -13,6 +13,13 @@ import {
   Settings,
   Mail,
   ClipboardList,
+  Shield,
+  Users,
+  LayoutDashboard,
+  Lock,
+  ListChecks,
+  Calculator,
+  Ruler,
 } from 'lucide-react';
 import type { AppMode } from '../types';
 import { useAuth } from '../contexts/AuthContext';
@@ -48,9 +55,24 @@ const modes: { id: AppMode; label: string; description: string; icon: typeof Sea
   },
 ];
 
+// Role badge component
+function RoleBadge({ role }: { role: string }) {
+  const config = {
+    admin: { bg: 'bg-rose-500/20', text: 'text-rose-400', label: 'Admin' },
+    reviewer: { bg: 'bg-teal-500/20', text: 'text-teal-400', label: 'Reviewer' },
+    user: { bg: 'bg-slate-500/20', text: 'text-slate-400', label: 'Free' },
+  }[role] || { bg: 'bg-slate-500/20', text: 'text-slate-400', label: 'User' };
+
+  return (
+    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${config.bg} ${config.text}`}>
+      {config.label}
+    </span>
+  );
+}
+
 // User dropdown component
 function UserDropdown() {
-  const { user, logout, isLoading } = useAuth();
+  const { user, logout, isLoading, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -103,7 +125,10 @@ function UserDropdown() {
 
         {/* User info */}
         <div className="flex-1 text-left min-w-0">
-          <div className="text-sm font-medium text-white truncate">{user.full_name}</div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-white truncate">{user.full_name}</span>
+            <RoleBadge role={user.role} />
+          </div>
           <div className="text-xs text-slate-400 truncate">{user.email}</div>
         </div>
 
@@ -137,7 +162,7 @@ function UserDropdown() {
               <button
                 onClick={() => {
                   setIsOpen(false);
-                  // Navigate to settings if you have one
+                  navigate('/settings');
                 }}
                 className="flex items-center gap-3 w-full px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/50 hover:text-white transition-colors"
               >
@@ -165,8 +190,11 @@ function UserDropdown() {
 
 export function Layout({ children }: LayoutProps) {
   const location = useLocation();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isAdmin, isReviewer } = useAuth();
   const currentMode = location.pathname.split('/')[1] || 'explore';
+
+  // Define which modes require authentication
+  const protectedModes = ['review', 'permits'];
 
   return (
     <div className="min-h-screen flex">
@@ -186,13 +214,15 @@ export function Layout({ children }: LayoutProps) {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
           <p className="text-xs font-medium text-slate-500 uppercase tracking-wider px-4 mb-3">
             Operating Mode
           </p>
           {modes.map((mode, index) => {
             const Icon = mode.icon;
             const isActive = currentMode === mode.id;
+            const requiresAuth = protectedModes.includes(mode.id);
+            const isLocked = requiresAuth && !isAuthenticated;
 
             return (
               <motion.div
@@ -202,10 +232,15 @@ export function Layout({ children }: LayoutProps) {
                 transition={{ delay: index * 0.1 }}
               >
                 <NavLink
-                  to={`/${mode.id}`}
-                  className={isActive ? 'mode-indicator-active' : 'mode-indicator-inactive'}
+                  to={isLocked ? '/login' : `/${mode.id}`}
+                  className={`${isActive ? 'mode-indicator-active' : 'mode-indicator-inactive'} ${isLocked ? 'opacity-60' : ''}`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <div className="relative">
+                    <Icon className="w-5 h-5" />
+                    {isLocked && (
+                      <Lock className="w-3 h-3 absolute -top-1 -right-1 text-slate-400" />
+                    )}
+                  </div>
                   <div>
                     <div className="font-medium text-sm">{mode.label}</div>
                     <div className="text-xs opacity-60">{mode.description}</div>
@@ -214,6 +249,106 @@ export function Layout({ children }: LayoutProps) {
               </motion.div>
             );
           })}
+
+          {/* Reviewer Section - Only for reviewers and admins */}
+          {isReviewer && (
+            <>
+              <p className="text-xs font-medium text-slate-500 uppercase tracking-wider px-4 mb-3 mt-6">
+                Review Queue
+              </p>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+              >
+                <NavLink
+                  to="/review-queue"
+                  className={currentMode === 'review-queue' ? 'mode-indicator-active' : 'mode-indicator-inactive'}
+                >
+                  <ListChecks className="w-5 h-5" />
+                  <div>
+                    <div className="font-medium text-sm">Pending Reviews</div>
+                    <div className="text-xs opacity-60">Applications to review</div>
+                  </div>
+                </NavLink>
+              </motion.div>
+            </>
+          )}
+
+          {/* Admin Section - Only for admins */}
+          {isAdmin && (
+            <>
+              <p className="text-xs font-medium text-slate-500 uppercase tracking-wider px-4 mb-3 mt-6">
+                Admin
+              </p>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+              >
+                <NavLink
+                  to="/admin"
+                  className={currentMode === 'admin' ? 'mode-indicator-active' : 'mode-indicator-inactive'}
+                >
+                  <LayoutDashboard className="w-5 h-5" />
+                  <div>
+                    <div className="font-medium text-sm">Dashboard</div>
+                    <div className="text-xs opacity-60">System overview</div>
+                  </div>
+                </NavLink>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                <NavLink
+                  to="/admin/users"
+                  className={location.pathname === '/admin/users' ? 'mode-indicator-active' : 'mode-indicator-inactive'}
+                >
+                  <Users className="w-5 h-5" />
+                  <div>
+                    <div className="font-medium text-sm">Users</div>
+                    <div className="text-xs opacity-60">Manage accounts</div>
+                  </div>
+                </NavLink>
+              </motion.div>
+            </>
+          )}
+
+          {/* Tools Section - Available to all users */}
+          <p className="text-xs font-medium text-slate-500 uppercase tracking-wider px-4 mb-3 mt-6">
+            Tools
+          </p>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <NavLink
+              to="/dssp"
+              className={currentMode === 'dssp' ? 'mode-indicator-active' : 'mode-indicator-inactive'}
+            >
+              <Calculator className="w-5 h-5" />
+              <div>
+                <div className="font-medium text-sm">DSSP Calculator</div>
+                <div className="text-xs opacity-60">Stormwater & servicing</div>
+              </div>
+            </NavLink>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            <NavLink
+              to="/quantity-survey"
+              className={currentMode === 'quantity-survey' ? 'mode-indicator-active' : 'mode-indicator-inactive'}
+            >
+              <Ruler className="w-5 h-5" />
+              <div>
+                <div className="font-medium text-sm">Quantity Survey</div>
+                <div className="text-xs opacity-60">Material estimates</div>
+              </div>
+            </NavLink>
+          </motion.div>
         </nav>
 
         {/* Code versions */}

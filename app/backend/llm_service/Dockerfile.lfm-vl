@@ -1,0 +1,29 @@
+# Dockerfile for LFM2.5-VL-1.6B Vision-Language Model
+# Uses llama.cpp server for OpenAI-compatible API
+
+FROM ghcr.io/ggerganov/llama.cpp:server
+
+# Install Python for download script
+RUN apt-get update && apt-get install -y python3 python3-pip curl && \
+    pip3 install huggingface_hub && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create model directory
+WORKDIR /models
+
+# Download both model files (Q8_0 for quality)
+RUN python3 -c "\
+from huggingface_hub import hf_hub_download; \
+hf_hub_download('LiquidAI/LFM2.5-VL-1.6B-GGUF', 'LFM2.5-VL-1.6B-Q8_0.gguf', local_dir='/models'); \
+hf_hub_download('LiquidAI/LFM2.5-VL-1.6B-GGUF', 'mmproj-LFM2.5-VL-1.6b-Q8_0.gguf', local_dir='/models')"
+
+EXPOSE 8082
+
+# Run llama-server with vision support
+CMD ["llama-server", \
+     "-m", "/models/LFM2.5-VL-1.6B-Q8_0.gguf", \
+     "--mmproj", "/models/mmproj-LFM2.5-VL-1.6b-Q8_0.gguf", \
+     "-c", "4096", \
+     "--host", "0.0.0.0", \
+     "--port", "8082", \
+     "-t", "4"]

@@ -18,11 +18,14 @@
 7. [Rule Engine Design](#rule-engine-design)
 8. [User Journeys](#user-journeys)
 9. [Technology Stack](#technology-stack)
-10. [Development Phases](#development-phases)
-11. [Critical First Steps](#critical-first-steps)
-12. [AI Limitations & Safety Guardrails](#ai-limitations--safety-guardrails)
-13. [Building Classification Clarification](#building-classification-clarification)
-14. [Data Maintenance & Update Monitoring](#data-maintenance--update-monitoring)
+10. [DSSP Module: Development Site Servicing Plan Designer](#dssp-module-development-site-servicing-plan-designer)
+11. [Quantity Survey Module: Construction Cost Estimation](#quantity-survey-module-construction-cost-estimation)
+12. [Future Modules: Complete Permit Workflow Automation](#future-modules-complete-permit-workflow-automation)
+13. [Development Phases](#development-phases)
+14. [Critical First Steps](#critical-first-steps)
+15. [AI Limitations & Safety Guardrails](#ai-limitations--safety-guardrails)
+16. [Building Classification Clarification](#building-classification-clarification)
+17. [Data Maintenance & Update Monitoring](#data-maintenance--update-monitoring)
 
 ---
 
@@ -2755,6 +2758,2265 @@ def assess_extraction(field_name: str, extracted: dict) -> ExtractionResult:
 
 ---
 
+## DSSP Module: Development Site Servicing Plan Designer
+
+### Overview
+
+The DSSP (Development Site Servicing Plan) Module is a comprehensive engineering design tool that automates the calculation, design, and documentation of site servicing requirements for development projects in Calgary, Alberta. This module integrates with the Guide and Review modes to provide complete site servicing design capabilities.
+
+**Purpose**: Enable users to design compliant Development Site Servicing Plans by:
+1. Automating stormwater, sanitary, and water service calculations
+2. Generating required DSSP drawings and documentation
+3. Ensuring compliance with City of Calgary standards
+4. Producing submission-ready packages
+
+### Applicable Standards and Codes
+
+#### Primary Calgary Standards
+| Standard | Version | Purpose |
+|----------|---------|---------|
+| **DSSP Design Guidelines** | 2018 | Submission requirements, drafting standards |
+| **Stormwater Management & Design Manual** | 2011 | Stormwater calculations, retention sizing |
+| **Standard Specifications for Sewer Construction** | 2025 | Sanitary sewer design, pipe specs |
+| **Standard Specifications for Waterworks Construction** | 2025 | Water service design, pipe specs |
+| **Subdivision Servicing Guidelines** | 2020 | Infrastructure requirements |
+| **Land Use Bylaw 1P2007** | Current | Zoning, lot coverage, grading |
+
+#### Alberta Provincial Standards
+| Standard | Version | Purpose |
+|----------|---------|---------|
+| **Alberta Stormwater Management Guidelines** | 1999/2013 | Provincial drainage requirements |
+| **Standards for Municipal Waterworks, Wastewater** | 2013 | Part 4: Wastewater systems |
+| **Alberta Private Sewage Systems Standard of Practice** | 2021 | Rural/private systems |
+
+#### Reference Standards
+| Standard | Purpose |
+|----------|---------|
+| **AWWA C-Series** | Pipe and fitting standards |
+| **CSA B64** | Backflow prevention |
+| **ASTM Standards** | Material specifications |
+
+### Module Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          DSSP MODULE                                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐           │
+│  │  INPUT MODULE   │   │ CALCULATION     │   │  OUTPUT MODULE  │           │
+│  │                 │──▶│    ENGINE       │──▶│                 │           │
+│  │ • Site data     │   │                 │   │ • DSSP Drawings │           │
+│  │ • Zoning        │   │ • Stormwater    │   │ • Calculations  │           │
+│  │ • Survey        │   │ • Sanitary      │   │ • Reports       │           │
+│  │ • Soil data     │   │ • Water         │   │ • Checklists    │           │
+│  └─────────────────┘   │ • Grading       │   └─────────────────┘           │
+│                        └─────────────────┘                                  │
+│                               │                                             │
+│                               ▼                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    STANDARDS DATABASE                                │   │
+│  ├─────────────────────────────────────────────────────────────────────┤   │
+│  │  Calgary IDF Curves │ Pipe Sizing Tables │ Material Specs │ Fees    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Input Requirements
+
+#### 1. Site Information (Required)
+| Input | Description | Source | Units |
+|-------|-------------|--------|-------|
+| `site_address` | Civic address | User input | string |
+| `legal_description` | Plan, Block, Lot | User input | string |
+| `site_area` | Total lot area | Survey/input | m² |
+| `lot_width` | Lot frontage | Survey | m |
+| `lot_depth` | Lot depth | Survey | m |
+| `zoning_district` | Land use designation | Auto from address | string |
+| `development_type` | Residential/Commercial/Mixed | User input | enum |
+
+#### 2. Proposed Development (Required)
+| Input | Description | Units |
+|-------|-------------|-------|
+| `building_footprint` | Ground floor area | m² |
+| `total_floor_area` | All floors combined | m² |
+| `building_height` | Height above grade | m |
+| `num_storeys` | Number of floors | integer |
+| `num_dwelling_units` | For residential | integer |
+| `num_occupants` | Design population | integer |
+| `parking_stalls` | Number of stalls | integer |
+| `landscaped_area` | Soft landscape | m² |
+| `impervious_area` | Hard surfaces | m² |
+
+#### 3. Existing Infrastructure (Required)
+| Input | Description | Source |
+|-------|-------------|--------|
+| `storm_sewer_location` | Connection point | City records |
+| `storm_sewer_size` | Existing pipe diameter | mm |
+| `storm_sewer_invert` | Invert elevation | m |
+| `sanitary_sewer_location` | Connection point | City records |
+| `sanitary_sewer_size` | Existing pipe diameter | mm |
+| `sanitary_sewer_invert` | Invert elevation | m |
+| `water_main_location` | Connection point | City records |
+| `water_main_size` | Existing pipe diameter | mm |
+| `water_pressure` | Available pressure | kPa |
+
+#### 4. Site Conditions (Required)
+| Input | Description | Units |
+|-------|-------------|-------|
+| `existing_grade_high` | Highest point | m (geodetic) |
+| `existing_grade_low` | Lowest point | m (geodetic) |
+| `soil_type` | Predominant soil | enum |
+| `groundwater_level` | Depth to water table | m below grade |
+| `percolation_rate` | Soil permeability | mm/hr |
+| `geotechnical_report` | Report reference | boolean |
+
+#### 5. Stormwater Options (User Selection)
+| Input | Description | Options |
+|-------|-------------|---------|
+| `sw_strategy` | Management approach | conventional / LID / hybrid |
+| `outlet_type` | Discharge method | storm_sewer / overland / infiltration |
+| `storage_type` | Detention type | surface / underground / green_roof |
+| `quality_device` | Water quality BMP | oil_grit / bioswale / none |
+
+---
+
+### Calculation Engine
+
+#### A. Stormwater Calculations
+
+##### A.1 Rational Method (Sites ≤ 5 ha)
+```
+Q = C × i × A / 360
+
+Where:
+  Q = Peak runoff (m³/s)
+  C = Runoff coefficient (dimensionless)
+  i = Rainfall intensity (mm/hr)
+  A = Drainage area (ha)
+```
+
+**Calgary Runoff Coefficients (C)**
+| Surface Type | C Value |
+|--------------|---------|
+| Roofs | 0.90 |
+| Asphalt/Concrete | 0.85 |
+| Gravel surfaces | 0.50 |
+| Lawns (flat, <2%) | 0.17 |
+| Lawns (sloped, 2-7%) | 0.22 |
+| Landscaped areas | 0.20 |
+| Natural areas | 0.15 |
+
+**Composite Runoff Coefficient**
+```
+C_composite = Σ(C_i × A_i) / A_total
+```
+
+##### A.2 Calgary IDF Curves (Intensity-Duration-Frequency)
+Based on Calgary International Airport rainfall data:
+
+```
+For Calgary (Climate Zone 7A):
+
+i = a / (t + b)^c
+
+Where for return periods:
+  2-year:  a = 820,  b = 7.0,  c = 0.81
+  5-year:  a = 1040, b = 7.2,  c = 0.82
+  10-year: a = 1180, b = 7.3,  c = 0.82
+  25-year: a = 1380, b = 7.5,  c = 0.83
+  100-year: a = 1680, b = 7.8, c = 0.84
+
+  t = time of concentration (minutes)
+  i = intensity (mm/hr)
+```
+
+##### A.3 Time of Concentration
+```
+Tc = Ti + Tt
+
+Where:
+  Ti = Inlet time (minimum 10 minutes for urban Calgary)
+  Tt = Travel time in pipe/channel
+
+Tt = L / (60 × V)
+  L = flow length (m)
+  V = velocity (m/s)
+```
+
+##### A.4 Retention/Detention Pond Sizing
+
+**Volume for Water Quality (Calgary Requirement)**
+```
+V_quality = 25 mm × A_total × C_composite / 1000
+
+Where:
+  V_quality = Permanent pool volume (m³)
+  A_total = Total drainage area (m²)
+  C_composite = Overall runoff coefficient
+```
+
+**Volume for Flood Control**
+```
+V_flood = (Q_in - Q_out) × Δt × 60
+
+Where:
+  V_flood = Storage volume required (m³)
+  Q_in = Inflow rate (m³/s)
+  Q_out = Allowable release rate (m³/s)
+  Δt = Storm duration (minutes)
+```
+
+**Pre-Development Release Rate (Calgary)**
+```
+Q_release = 1.5 L/s/ha (typical greenfield)
+         = 2.0 L/s/ha (urban infill)
+```
+
+##### A.5 Inlet Control Device (ICD) Sizing
+```
+Q = C_d × A × √(2 × g × h)
+
+Where:
+  Q = Flow through orifice (m³/s)
+  C_d = Discharge coefficient (0.61 for sharp-edged)
+  A = Orifice area (m²)
+  g = 9.81 m/s²
+  h = Head above centerline (m)
+```
+
+##### A.6 Storm Pipe Sizing (Manning's Equation)
+```
+Q = (1/n) × A × R^(2/3) × S^(1/2)
+
+Where:
+  Q = Flow capacity (m³/s)
+  n = Manning's roughness (0.013 for PVC/HDPE)
+  A = Cross-sectional area (m²)
+  R = Hydraulic radius = A/P (m)
+  P = Wetted perimeter (m)
+  S = Slope (m/m)
+
+Minimum pipe sizes:
+  Private: 150 mm
+  Public: 300 mm
+Minimum velocity: 0.6 m/s (self-cleaning)
+Maximum velocity: 4.5 m/s
+```
+
+---
+
+#### B. Sanitary Sewer Calculations
+
+##### B.1 Population and Flow Estimation
+
+**Population Density by Zoning (Calgary)**
+| Zone | Density (persons/unit) | Units/ha |
+|------|----------------------|----------|
+| R-C1 | 2.8 | 12-18 |
+| R-C2 | 2.8 | 25-35 |
+| M-CG | 2.5 | 40-80 |
+| M-H1 | 2.2 | 100-200 |
+| Commercial | - | By fixture count |
+
+**Unit Flows**
+```
+Residential: 350 L/person/day (average)
+Commercial: 30 L/m² GFA/day
+Industrial: Project-specific
+```
+
+##### B.2 Design Flow Calculations
+
+**Average Daily Flow (ADF)**
+```
+ADF = P × q_avg / 86,400
+
+Where:
+  ADF = Average daily flow (L/s)
+  P = Population (persons)
+  q_avg = Per capita flow (L/person/day)
+```
+
+**Peak Dry Weather Flow (PDWF)**
+```
+PDWF = ADF × PF
+
+Peaking Factor (Harmon Formula):
+  PF = 1 + 14 / (4 + √P)
+
+Where:
+  P = Population in thousands
+  PF typically ranges 2.5 to 4.0
+```
+
+**Peak Wet Weather Flow (PWWF)**
+```
+PWWF = PDWF + I/I
+
+Infiltration/Inflow (new development):
+  I/I = 0.15 L/s/ha (Calgary standard)
+
+For areas pre-1990:
+  I/I = 0.3 to 0.5 L/s/ha (includes foundation drains)
+```
+
+##### B.3 Sanitary Pipe Sizing (Manning's Equation)
+```
+Same formula as storm, with:
+  n = 0.013 (all pipe types)
+
+Design Criteria:
+  Minimum size: 200 mm
+  Maximum depth for d/D: 0.80 (80% full)
+  Minimum velocity: 0.6 m/s
+  Maximum velocity: 3.0 m/s
+  Minimum cover: 2.5 m (or insulated)
+  Maximum service depth: 6.0 m
+```
+
+##### B.4 Manhole Spacing
+| Pipe Diameter | Maximum Spacing |
+|---------------|-----------------|
+| 200-375 mm | 120 m |
+| 450-900 mm | 150 m |
+| > 900 mm | 180 m |
+
+---
+
+#### C. Water Service Calculations
+
+##### C.1 Domestic Demand
+```
+Residential:
+  Peak hour = 1.5 L/s per dwelling unit
+  Daily = 350 L/person/day
+
+Commercial:
+  By fixture unit count (CSA B64)
+```
+
+##### C.2 Fire Flow Requirements (Calgary Fire Dept)
+| Building Type | Minimum Fire Flow | Duration |
+|---------------|------------------|----------|
+| Single family residential | 60 L/s | 1 hour |
+| Multi-family (≤6 units) | 90 L/s | 1 hour |
+| Multi-family (>6 units) | 120 L/s | 2 hours |
+| Commercial (sprinklered) | 150 L/s | 2 hours |
+| Commercial (unsprinklered) | 200 L/s | 2 hours |
+
+##### C.3 Service Line Sizing
+| Dwelling Units | Minimum Service Size |
+|----------------|---------------------|
+| 1 | 19 mm (3/4") |
+| 2-4 | 25 mm (1") |
+| 5-10 | 38 mm (1.5") |
+| >10 | Engineering required |
+
+##### C.4 Pressure Requirements
+```
+Minimum static: 275 kPa (40 psi)
+Minimum residual: 140 kPa (20 psi) at peak flow
+Maximum static: 550 kPa (80 psi)
+```
+
+---
+
+#### D. Grading Calculations
+
+##### D.1 Minimum Grades
+| Surface | Minimum Slope |
+|---------|---------------|
+| Pavement (to drain) | 1.0% |
+| Landscaped areas | 2.0% |
+| Swales | 1.0% |
+| Away from buildings | 2% for 1.5m, then 1% |
+
+##### D.2 Lot Drainage
+```
+Split Drainage:
+  40-60% front : 60-40% rear (preferred)
+
+Trap Low:
+  Maximum depth: 0.3 m
+  Minimum area: 25 m²
+  Inlet capacity per IDF curves
+```
+
+##### D.3 Building Grades
+```
+Foundation drain elevation > property line drainage swale
+Garage floor ≥ 150 mm above property line
+Main floor ≥ 450 mm above property line (Calgary)
+```
+
+---
+
+### Output Deliverables
+
+#### Required DSSP Drawing Package
+
+##### Sheet 1: Site Servicing Plan (1:200 or 1:500)
+**Contents:**
+- Property boundaries with dimensions
+- Building footprint with setbacks
+- All underground utilities:
+  - Storm sewer (green)
+  - Sanitary sewer (brown/orange)
+  - Water service (blue)
+  - Gas (yellow) - noted only
+  - Power/telecom - noted only
+- Pipe sizes, materials, slopes
+- Manholes, cleanouts, valves
+- Connection points to City mains
+- Easements and right-of-ways
+- North arrow, scale, legend
+
+##### Sheet 2: Grading Plan (1:200 or 1:500)
+**Contents:**
+- Existing contours (dashed)
+- Proposed contours (solid)
+- Spot elevations at key points:
+  - Building corners
+  - Property corners
+  - Grade breaks
+  - Drainage structures
+- Drainage arrows
+- Retaining walls (if any)
+- Trap low locations
+- Overland flow routes
+- Cross-sections references
+
+##### Sheet 3: Stormwater Management Plan (1:200 or 1:500)
+**Contents:**
+- Catchment areas delineated
+- Area and C-value for each catchment
+- Storage facilities (ponds, tanks)
+- Outlet structures
+- Water quality devices
+- Overland escape routes
+- Emergency overflow paths
+- Stormwater calculations summary table
+
+##### Sheet 4: Details (NTS)
+**Contents:**
+- Typical trench details
+- Manhole details
+- Service connection details
+- ICD detail (if applicable)
+- Oil-grit separator detail (if applicable)
+- Backwater valve detail
+- Standard City details referenced
+
+##### Sheet 5: Architectural Floor Plan (From Architect)
+**Contents:**
+- Water meter room location
+- Fire department connection
+- Fire suppression layout (if sprinklered)
+- Backflow preventer location
+
+##### Circulation Block (Required on Sheet 1)
+```
+┌──────────────────────────────────────────────────────┐
+│ DRAWING CIRCULATION                                  │
+├──────────────────────────────────────────────────────┤
+│ REV │ DESCRIPTION  │ FOR DP │ FOR APPROVAL │ ARCHIVE│
+├─────┼──────────────┼────────┼──────────────┼────────┤
+│  0  │ Initial      │   □    │      □       │   □    │
+│  1  │              │   □    │      □       │   □    │
+│  2  │              │   □    │      □       │   □    │
+└──────────────────────────────────────────────────────┘
+```
+
+#### Supporting Documents
+
+##### Stormwater Management Report (Required for certain sites)
+**Trigger Conditions:**
+- No storm sewer connection available
+- Zero discharge sites
+- Sites with retention ponds
+- Flagged by Water Resources
+
+**Contents:**
+1. Site description and location
+2. Pre-development conditions
+3. Post-development conditions
+4. Hydrology calculations
+5. Hydraulic modeling results
+6. Storage sizing calculations
+7. Water quality measures
+8. Maintenance plan
+
+##### Sanitary Servicing Study (For larger developments)
+**Trigger Conditions:**
+- Developments > 100 units
+- Capacity concerns identified
+- New trunk sewer connections
+
+**Contents:**
+1. Population projections
+2. Flow calculations
+3. Downstream capacity analysis
+4. Phasing plan
+
+##### Calculation Package
+**Contents:**
+- Storm catchment areas and C-values
+- IDF curve calculations
+- Retention volume calculations
+- ICD/outlet sizing
+- Pipe sizing worksheets
+- Sanitary flow calculations
+- Water demand calculations
+
+---
+
+### DSSP Module Database Tables
+
+```sql
+-- DSSP Project Table
+CREATE TABLE dssp_projects (
+    id UUID PRIMARY KEY,
+    permit_application_id UUID REFERENCES permit_applications(id),
+    project_name VARCHAR(255) NOT NULL,
+    site_address VARCHAR(255) NOT NULL,
+    legal_description VARCHAR(100),
+    site_area_m2 DECIMAL(10,2),
+    zoning_district VARCHAR(20),
+    status VARCHAR(50) DEFAULT 'draft',
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Site Inputs Table
+CREATE TABLE dssp_site_inputs (
+    id UUID PRIMARY KEY,
+    dssp_project_id UUID REFERENCES dssp_projects(id),
+    lot_width_m DECIMAL(8,2),
+    lot_depth_m DECIMAL(8,2),
+    impervious_area_m2 DECIMAL(10,2),
+    pervious_area_m2 DECIMAL(10,2),
+    building_footprint_m2 DECIMAL(10,2),
+    num_dwelling_units INTEGER,
+    design_population INTEGER,
+    existing_grade_high_m DECIMAL(8,3),
+    existing_grade_low_m DECIMAL(8,3),
+    soil_type VARCHAR(50),
+    groundwater_depth_m DECIMAL(6,2),
+    storm_sewer_size_mm INTEGER,
+    storm_sewer_invert_m DECIMAL(8,3),
+    sanitary_sewer_size_mm INTEGER,
+    sanitary_sewer_invert_m DECIMAL(8,3),
+    water_main_size_mm INTEGER,
+    water_pressure_kpa DECIMAL(6,1),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Stormwater Calculations Table
+CREATE TABLE dssp_stormwater_calcs (
+    id UUID PRIMARY KEY,
+    dssp_project_id UUID REFERENCES dssp_projects(id),
+    catchment_id VARCHAR(10),
+    catchment_area_m2 DECIMAL(10,2),
+    runoff_coefficient DECIMAL(4,3),
+    time_concentration_min DECIMAL(6,2),
+    intensity_2yr_mm_hr DECIMAL(6,2),
+    intensity_5yr_mm_hr DECIMAL(6,2),
+    intensity_100yr_mm_hr DECIMAL(6,2),
+    peak_flow_2yr_m3s DECIMAL(8,4),
+    peak_flow_100yr_m3s DECIMAL(8,4),
+    retention_volume_m3 DECIMAL(8,2),
+    release_rate_ls DECIMAL(8,3),
+    outlet_type VARCHAR(50),
+    icd_diameter_mm INTEGER,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Sanitary Calculations Table
+CREATE TABLE dssp_sanitary_calcs (
+    id UUID PRIMARY KEY,
+    dssp_project_id UUID REFERENCES dssp_projects(id),
+    population INTEGER,
+    avg_daily_flow_ls DECIMAL(8,4),
+    peaking_factor DECIMAL(4,2),
+    peak_dry_weather_flow_ls DECIMAL(8,4),
+    infiltration_ls DECIMAL(8,4),
+    peak_wet_weather_flow_ls DECIMAL(8,4),
+    pipe_size_mm INTEGER,
+    pipe_slope_pct DECIMAL(6,4),
+    velocity_ms DECIMAL(6,3),
+    depth_ratio DECIMAL(4,3),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Water Calculations Table
+CREATE TABLE dssp_water_calcs (
+    id UUID PRIMARY KEY,
+    dssp_project_id UUID REFERENCES dssp_projects(id),
+    domestic_demand_ls DECIMAL(8,4),
+    fire_flow_ls DECIMAL(8,2),
+    total_demand_ls DECIMAL(8,4),
+    service_size_mm INTEGER,
+    meter_size_mm INTEGER,
+    backflow_required BOOLEAN,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- DSSP Drawings Table
+CREATE TABLE dssp_drawings (
+    id UUID PRIMARY KEY,
+    dssp_project_id UUID REFERENCES dssp_projects(id),
+    sheet_number INTEGER,
+    sheet_type VARCHAR(50),  -- 'site_servicing', 'grading', 'stormwater', 'details', 'floor_plan'
+    drawing_file_path VARCHAR(500),
+    drawing_format VARCHAR(20),  -- 'pdf', 'dwg', 'dxf'
+    revision INTEGER DEFAULT 0,
+    status VARCHAR(50),  -- 'draft', 'for_dp', 'for_approval', 'approved'
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- IDF Curves Table (Calgary)
+CREATE TABLE idf_curves (
+    id UUID PRIMARY KEY,
+    location VARCHAR(100) DEFAULT 'Calgary',
+    return_period_years INTEGER,
+    duration_minutes INTEGER,
+    intensity_mm_hr DECIMAL(8,2),
+    source VARCHAR(255),
+    effective_date DATE
+);
+```
+
+---
+
+### DSSP Module API Endpoints
+
+```
+POST   /api/v1/dssp/projects                    Create new DSSP project
+GET    /api/v1/dssp/projects/{id}               Get project details
+PUT    /api/v1/dssp/projects/{id}               Update project
+
+POST   /api/v1/dssp/{id}/site-inputs            Save site inputs
+GET    /api/v1/dssp/{id}/site-inputs            Get site inputs
+
+POST   /api/v1/dssp/{id}/calculate/stormwater   Run stormwater calculations
+POST   /api/v1/dssp/{id}/calculate/sanitary     Run sanitary calculations
+POST   /api/v1/dssp/{id}/calculate/water        Run water service calculations
+POST   /api/v1/dssp/{id}/calculate/all          Run all calculations
+
+GET    /api/v1/dssp/{id}/results                Get all calculation results
+GET    /api/v1/dssp/{id}/results/stormwater     Get stormwater results
+GET    /api/v1/dssp/{id}/results/sanitary       Get sanitary results
+
+POST   /api/v1/dssp/{id}/generate/drawings      Generate DSSP drawings
+GET    /api/v1/dssp/{id}/drawings               List drawings
+GET    /api/v1/dssp/{id}/drawings/{sheet}       Download specific drawing
+
+POST   /api/v1/dssp/{id}/generate/report        Generate calculation report
+GET    /api/v1/dssp/{id}/report                 Download report
+
+POST   /api/v1/dssp/{id}/submit                 Submit for review
+GET    /api/v1/dssp/{id}/checklist              Get submission checklist
+
+GET    /api/v1/dssp/idf-curves                  Get Calgary IDF data
+GET    /api/v1/dssp/pipe-tables                 Get pipe sizing tables
+GET    /api/v1/dssp/runoff-coefficients         Get C-value tables
+```
+
+---
+
+### DSSP Module UI Components
+
+#### 1. Project Setup Wizard
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  DSSP DESIGNER - Step 1 of 5: Site Information                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Site Address: [123 Example Street NW                              ] [🔍]   │
+│                                                                              │
+│  Legal Description: Plan [1234567] Block [12] Lot [34]                      │
+│                                                                              │
+│  Site Area:        [1,250    ] m²     (auto-calculated from parcel data)   │
+│  Lot Width:        [12.5     ] m                                            │
+│  Lot Depth:        [100      ] m                                            │
+│                                                                              │
+│  Zoning District:  [R-C2    ▼]  (auto-detected: Residential - Contextual)  │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                        SITE LOCATION MAP                               │ │
+│  │                     [Interactive Map View]                             │ │
+│  │                                                                        │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│                                              [Back]  [Save & Continue →]    │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 2. Calculation Dashboard
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  DSSP DESIGNER - Calculation Results                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌─────────────────────┐  ┌─────────────────────┐  ┌─────────────────────┐  │
+│  │  STORMWATER         │  │  SANITARY           │  │  WATER SERVICE      │  │
+│  │  ✓ Calculated       │  │  ✓ Calculated       │  │  ✓ Calculated       │  │
+│  ├─────────────────────┤  ├─────────────────────┤  ├─────────────────────┤  │
+│  │ Total Area: 1,250m² │  │ Population: 8       │  │ Demand: 1.2 L/s     │  │
+│  │ Composite C: 0.65   │  │ PDWF: 0.45 L/s      │  │ Fire Flow: 60 L/s   │  │
+│  │ Q100: 0.082 m³/s    │  │ PWWF: 0.63 L/s      │  │ Service: 25mm       │  │
+│  │ Storage: 31.3 m³    │  │ Pipe: 200mm         │  │ Meter: 19mm         │  │
+│  │ Release: 1.88 L/s   │  │ Slope: 0.50%        │  │                     │  │
+│  │ ICD: 75mm orifice   │  │ Velocity: 0.72 m/s  │  │ Backflow: Required  │  │
+│  └─────────────────────┘  └─────────────────────┘  └─────────────────────┘  │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │  CATCHMENT DIAGRAM                                                      ││
+│  │  [Visual representation of drainage areas with flow arrows]             ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                              │
+│  [Recalculate]  [View Details]  [Export Calculations]  [Generate Drawings]  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 3. Drawing Generator
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  DSSP DESIGNER - Drawing Generation                                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Select Drawings to Generate:                                               │
+│                                                                              │
+│  ☑ Sheet 1: Site Servicing Plan (1:200)                      [Preview]     │
+│  ☑ Sheet 2: Grading Plan (1:200)                             [Preview]     │
+│  ☑ Sheet 3: Stormwater Management Plan (1:200)               [Preview]     │
+│  ☑ Sheet 4: Details                                          [Preview]     │
+│  ☐ Sheet 5: Floor Plan (upload from architect)               [Upload]      │
+│                                                                              │
+│  Drawing Options:                                                           │
+│  Paper Size: [600mm × 900mm ▼]    Scale: [1:200 ▼]                         │
+│  Format: ○ PDF  ○ DWG  ○ Both                                              │
+│                                                                              │
+│  Title Block Information:                                                   │
+│  Project Name: [Smith Residence                                    ]        │
+│  Engineer: [ABC Engineering Ltd.                                   ]        │
+│  Date: [2026-01-10]                                                         │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │  DRAWING PREVIEW                                                        ││
+│  │  [Sheet 1: Site Servicing Plan]                                        ││
+│  │                                                                         ││
+│  │  ┌─────────┐                                                            ││
+│  │  │ BLDG    │──── STORM ────▶ TO MH                                     ││
+│  │  │         │──── SANITARY ─▶ TO MH                                     ││
+│  │  │         │──── WATER ────▶ FROM MAIN                                 ││
+│  │  └─────────┘                                                            ││
+│  │                                                                         ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                              │
+│                               [Generate All Drawings]  [Download Package]   │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Implementation Phases for DSSP Module
+
+#### Phase D1: Core Calculations (4 weeks)
+- [ ] Implement stormwater calculation engine
+- [ ] Implement sanitary calculation engine
+- [ ] Implement water service calculation engine
+- [ ] Load Calgary IDF curves into database
+- [ ] Create calculation API endpoints
+- [ ] Unit tests for all formulas
+
+#### Phase D2: Input Interface (3 weeks)
+- [ ] Build project setup wizard
+- [ ] Integrate with address/parcel lookup
+- [ ] Connect to existing infrastructure data
+- [ ] Save/load project functionality
+- [ ] Input validation rules
+
+#### Phase D3: Drawing Generation (5 weeks)
+- [ ] Design CAD template system
+- [ ] Implement site servicing plan generator
+- [ ] Implement grading plan generator
+- [ ] Implement stormwater plan generator
+- [ ] Implement detail sheet generator
+- [ ] PDF and DWG export
+
+#### Phase D4: Reports & Submission (2 weeks)
+- [ ] Calculation report generator
+- [ ] Stormwater management report template
+- [ ] DSSP checklist integration
+- [ ] Submission package bundler
+- [ ] Fee calculation integration
+
+---
+
+### References
+
+#### City of Calgary
+- [DSSP Design Guidelines (2018)](https://www.calgary.ca/content/dam/www/pda/pd/documents/urban-development/publications/dssp-design-guidelines.pdf)
+- [Stormwater Management & Design Manual (2011)](https://www.calgary.ca/content/dam/www/pda/pd/documents/urban-development/bulletins/2011-stormwater-management-and-design.pdf)
+- [Water Development Resources](https://www.calgary.ca/development/home-building/water-development-process.html)
+- [Water Guidelines & Specifications](https://www.calgary.ca/development/home-building/water-development-specifications.html)
+
+#### Alberta Provincial
+- [Stormwater Management Guidelines (1999)](https://open.alberta.ca/publications/0773251499)
+- [Standards for Municipal Wastewater Systems (2013)](https://open.alberta.ca/dataset/f57fec02-7de8-4985-b948-dcf5e2664aee)
+
+---
+
+## Quantity Survey Module: Construction Cost Estimation
+
+### Overview
+
+The Quantity Survey (QS) module provides construction cost estimation capabilities for Calgary projects. This module directly integrates with the permit fee calculator since Calgary permit fees are based on **construction value** ($10.14 per $1,000 for building permits, $9.79 per $1,000 for trade permits).
+
+### Purpose & Integration
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    QUANTITY SURVEY MODULE                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│   ┌──────────────┐    ┌──────────────┐    ┌───────────────────┐        │
+│   │   Project    │───▶│   Quantity   │───▶│  Construction     │        │
+│   │   Details    │    │   Take-off   │    │  Cost Estimate    │        │
+│   └──────────────┘    └──────────────┘    └─────────┬─────────┘        │
+│                                                      │                   │
+│                                                      ▼                   │
+│   ┌──────────────────────────────────────────────────────────┐         │
+│   │                    OUTPUT PRODUCTS                        │         │
+│   ├──────────────┬──────────────┬────────────┬───────────────┤         │
+│   │ Construction │ Permit Fee   │ Bill of    │ Cost          │         │
+│   │ Value        │ Calculation  │ Quantities │ Breakdown     │         │
+│   └──────────────┴──────────────┴────────────┴───────────────┘         │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Calgary Construction Cost Data (2025-2026)
+
+#### Residential Construction Costs ($/sq.ft)
+
+| Category | Standard | Mid-Range | Premium | Luxury |
+|----------|----------|-----------|---------|--------|
+| Single Family | $200-250 | $250-300 | $300-400 | $400-600+ |
+| Townhouse | $180-220 | $220-280 | $280-350 | $350-500 |
+| Multi-Family Low Rise | $200-240 | $240-300 | $300-380 | $380-500 |
+| Multi-Family High Rise | $250-300 | $300-380 | $380-480 | $480-700+ |
+| Secondary Suite | $150-200 | $200-250 | $250-350 | - |
+| Backyard Suite (ADU) | $250-300 | $300-400 | $400-500 | - |
+
+#### Commercial Construction Costs ($/sq.ft)
+
+| Category | Budget | Standard | Premium |
+|----------|--------|----------|---------|
+| Office - Core & Shell | $180-220 | $220-285 | $285-430 |
+| Office - Fit-out | $80-120 | $120-150 | $150-250 |
+| Retail - Strip Mall | $140-170 | $170-205 | $205-280 |
+| Retail - Shopping Centre | $240-280 | $280-325 | $325-450 |
+| Hotel - 3 Star | $235-250 | $250-265 | $265-320 |
+| Hotel - 5 Star | $310-400 | $400-485 | $485-700 |
+| Restaurant | $200-280 | $280-350 | $350-500 |
+
+#### Industrial Construction Costs ($/sq.ft)
+
+| Category | Light | Standard | Heavy |
+|----------|-------|----------|-------|
+| Warehouse | $90-130 | $110-170 | $140-220 |
+| Manufacturing | $120-180 | $150-220 | $200-350 |
+| Cold Storage | $180-250 | $220-300 | $280-400 |
+
+#### Institutional Construction Costs ($/sq.ft)
+
+| Category | Budget | Standard | Premium |
+|----------|--------|----------|---------|
+| Elementary School | $260-300 | $300-360 | $360-450 |
+| High School | $280-340 | $340-400 | $400-500 |
+| University/College | $345-420 | $420-525 | $525-700 |
+| General Hospital | $700-800 | $800-950 | $950-1200+ |
+| Medical Office | $280-350 | $350-420 | $420-550 |
+| Community Centre | $250-320 | $320-400 | $400-500 |
+
+### Input Requirements
+
+#### 1. Project Information
+- Project name and address
+- Building type (residential, commercial, industrial, institutional)
+- Building use classification
+- New construction vs renovation
+
+#### 2. Building Dimensions
+- Gross floor area (sq.ft or m²)
+- Number of storeys
+- Building footprint
+- Basement area (if applicable)
+- Garage/parking area
+
+#### 3. Construction Quality Level
+- **Budget**: Basic materials, standard fixtures, minimal finishes
+- **Standard**: Good quality materials, mid-range fixtures
+- **Mid-Range**: Above-average materials, upgraded finishes
+- **Premium**: High-quality materials, premium fixtures
+- **Luxury**: Top-tier materials, custom finishes, high-end systems
+
+#### 4. System Specifications
+- Foundation type (slab, crawl space, full basement)
+- Structural system (wood frame, steel, concrete)
+- Exterior cladding (vinyl, stucco, brick, stone)
+- Roofing type (asphalt, metal, flat membrane)
+- Window quality level
+- HVAC system type
+- Electrical service size
+- Plumbing fixture count
+
+#### 5. Site Conditions
+- Site access (easy, moderate, difficult)
+- Soil conditions (if known)
+- Demolition requirements
+- Site grading requirements
+
+### Calculation Methodology
+
+#### Method 1: Square Foot Method (Quick Estimate - Class D)
+
+```python
+# Basic Square Foot Calculation
+base_cost_psf = get_base_cost(building_type, quality_level)
+location_factor = get_calgary_location_factor()  # ~1.0 for Calgary
+complexity_factor = get_complexity_factor(num_storeys, shape)
+condition_factor = get_site_condition_factor(access, soil)
+
+estimated_cost = (
+    gross_area *
+    base_cost_psf *
+    location_factor *
+    complexity_factor *
+    condition_factor
+)
+
+# Add soft costs (10-15%)
+soft_costs = estimated_cost * 0.12  # Design, permits, contingency
+total_project_cost = estimated_cost + soft_costs
+```
+
+#### Method 2: Assembly Cost Method (Detailed Estimate - Class C)
+
+```python
+# Assembly-Based Calculation
+assemblies = {
+    "foundation": foundation_cost_per_sf * footprint_area,
+    "superstructure": structure_cost_per_sf * gross_area,
+    "exterior_enclosure": envelope_cost_per_sf * envelope_area,
+    "roofing": roof_cost_per_sf * roof_area,
+    "interior_construction": interior_cost_per_sf * gross_area,
+    "mechanical": mechanical_cost_per_sf * gross_area,
+    "electrical": electrical_cost_per_sf * gross_area,
+    "site_work": site_cost_per_sf * site_area,
+}
+
+subtotal = sum(assemblies.values())
+
+# Markups
+general_conditions = subtotal * 0.08  # 8%
+overhead_profit = (subtotal + general_conditions) * 0.10  # 10%
+contingency = (subtotal + general_conditions + overhead_profit) * 0.05  # 5%
+
+total_construction_cost = subtotal + general_conditions + overhead_profit + contingency
+```
+
+#### Method 3: Unit Cost Method (Detailed BOQ - Class B)
+
+This method requires detailed quantity take-offs for each CSI division.
+
+### CSI MasterFormat Divisions
+
+The module organizes costs by CSI MasterFormat divisions:
+
+| Division | Description | Typical % of Total |
+|----------|-------------|-------------------|
+| 01 | General Requirements | 6-8% |
+| 02 | Existing Conditions | 1-3% |
+| 03 | Concrete | 8-15% |
+| 04 | Masonry | 3-8% |
+| 05 | Metals | 5-12% |
+| 06 | Wood, Plastics, Composites | 8-15% |
+| 07 | Thermal & Moisture Protection | 5-10% |
+| 08 | Openings | 5-10% |
+| 09 | Finishes | 10-18% |
+| 10 | Specialties | 1-3% |
+| 11 | Equipment | 0-5% |
+| 12 | Furnishings | 0-3% |
+| 21 | Fire Suppression | 1-3% |
+| 22 | Plumbing | 5-10% |
+| 23 | HVAC | 8-15% |
+| 26 | Electrical | 8-15% |
+| 31 | Earthwork | 2-5% |
+| 32 | Exterior Improvements | 2-5% |
+| 33 | Utilities | 2-5% |
+
+### Output Deliverables
+
+#### 1. Construction Cost Estimate Report
+- Executive summary
+- Methodology description
+- Detailed cost breakdown by division
+- Assumptions and exclusions
+- Confidence level (Class A-E)
+
+#### 2. Permit Fee Calculation
+```
+Building Permit Fee:
+- Processing Fee: $112
+- Base Fee: $10.14 × (Construction Value ÷ $1,000)
+- Safety Codes Council Fee: 4% of Base Fee
+
+Trade Permits (if separate):
+- Processing Fee: $112
+- Base Fee: $9.79 × (Construction Value ÷ $1,000)
+- Safety Codes Council Fee: 4% of Base Fee
+```
+
+#### 3. Bill of Quantities (BOQ)
+- Itemized list of materials and labor
+- Quantities for each work item
+- Unit prices and extended costs
+- Suitable for tendering
+
+#### 4. Cost Breakdown Visualization
+- Pie chart by division
+- Bar chart comparing to benchmarks
+- Cost per square foot analysis
+
+### Required Drawings for Quantity Survey
+
+For accurate quantity take-offs, the following drawings are typically required:
+
+#### Architectural Drawings
+- Site plan with building footprint
+- Floor plans (all levels)
+- Building sections
+- Exterior elevations
+- Roof plan
+- Door and window schedules
+- Finish schedules
+
+#### Structural Drawings
+- Foundation plan
+- Framing plans (floor, roof)
+- Structural details
+- Steel/concrete schedules
+
+#### Mechanical Drawings
+- HVAC plans and details
+- Plumbing riser diagrams
+- Equipment schedules
+
+#### Electrical Drawings
+- Power plans
+- Lighting plans
+- Panel schedules
+- Electrical specifications
+
+### Database Schema
+
+```sql
+-- Project cost estimation table
+CREATE TABLE qs_projects (
+    id UUID PRIMARY KEY,
+    project_name VARCHAR(255) NOT NULL,
+    address VARCHAR(500),
+    building_type VARCHAR(50) NOT NULL,
+    quality_level VARCHAR(20) NOT NULL,
+    gross_area_sf NUMERIC(12,2) NOT NULL,
+    num_storeys INTEGER,
+    basement_area_sf NUMERIC(12,2),
+    estimation_class CHAR(1) DEFAULT 'D',  -- A, B, C, D, E
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Cost estimates by division
+CREATE TABLE qs_division_costs (
+    id UUID PRIMARY KEY,
+    project_id UUID REFERENCES qs_projects(id),
+    division_code VARCHAR(10) NOT NULL,
+    division_name VARCHAR(255) NOT NULL,
+    estimated_cost NUMERIC(14,2) NOT NULL,
+    unit_cost_psf NUMERIC(10,2),
+    notes TEXT
+);
+
+-- Line item details for BOQ
+CREATE TABLE qs_line_items (
+    id UUID PRIMARY KEY,
+    project_id UUID REFERENCES qs_projects(id),
+    division_code VARCHAR(10),
+    item_code VARCHAR(50),
+    description TEXT NOT NULL,
+    quantity NUMERIC(14,4),
+    unit VARCHAR(20),
+    unit_cost NUMERIC(12,4),
+    extended_cost NUMERIC(14,2),
+    source VARCHAR(100)  -- RSMeans, local quote, etc.
+);
+
+-- Cost database (reference costs)
+CREATE TABLE qs_cost_data (
+    id UUID PRIMARY KEY,
+    item_code VARCHAR(50) UNIQUE NOT NULL,
+    description TEXT NOT NULL,
+    category VARCHAR(100),
+    unit VARCHAR(20),
+    material_cost NUMERIC(12,4),
+    labor_cost NUMERIC(12,4),
+    equipment_cost NUMERIC(12,4),
+    total_unit_cost NUMERIC(12,4),
+    location VARCHAR(50) DEFAULT 'Calgary',
+    effective_date DATE,
+    source VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Assembly costs (for assembly method)
+CREATE TABLE qs_assemblies (
+    id UUID PRIMARY KEY,
+    assembly_code VARCHAR(50) UNIQUE NOT NULL,
+    assembly_name VARCHAR(255) NOT NULL,
+    building_type VARCHAR(50),
+    quality_level VARCHAR(20),
+    unit VARCHAR(20),  -- SF, LF, EA, etc.
+    cost_per_unit NUMERIC(12,4) NOT NULL,
+    includes_labor BOOLEAN DEFAULT TRUE,
+    includes_material BOOLEAN DEFAULT TRUE,
+    effective_date DATE,
+    source VARCHAR(100)
+);
+
+-- Historical cost indices
+CREATE TABLE qs_cost_indices (
+    id UUID PRIMARY KEY,
+    period DATE NOT NULL,
+    location VARCHAR(50) DEFAULT 'Calgary',
+    index_value NUMERIC(8,2) NOT NULL,
+    base_year INTEGER DEFAULT 2020,
+    source VARCHAR(100)
+);
+```
+
+### API Endpoints
+
+```
+# Quick Estimate
+POST /api/v1/qs/quick-estimate
+  Input: building_type, gross_area, quality_level, num_storeys
+  Output: estimated_cost, cost_per_sf, permit_fees
+
+# Detailed Estimate
+POST /api/v1/qs/detailed-estimate
+  Input: project details, system specifications
+  Output: division breakdown, total cost, BOQ
+
+# Get Cost Data
+GET /api/v1/qs/cost-data?category=&building_type=
+GET /api/v1/qs/assemblies?building_type=&quality=
+
+# Generate Reports
+POST /api/v1/qs/projects/{id}/report
+  Output: PDF cost estimate report
+
+# Permit Fee Calculator Integration
+POST /api/v1/qs/permit-fee-calculation
+  Input: construction_value
+  Output: permit_fees breakdown
+```
+
+### UI Components
+
+#### Quick Estimate Form
+- Building type selector
+- Quality level slider
+- Area input
+- Instant cost estimate display
+- Permit fee preview
+
+#### Detailed Estimate Wizard
+- Step 1: Project information
+- Step 2: Building dimensions
+- Step 3: System specifications
+- Step 4: Review and adjust
+- Step 5: Generate reports
+
+#### Cost Breakdown Dashboard
+- Division-by-division cost display
+- Interactive pie chart
+- Comparison to benchmarks
+- Export options (PDF, Excel)
+
+### Data Sources
+
+#### Primary Sources
+- [RSMeans Data](https://www.rsmeans.com) - Industry standard cost database
+- [Altus Group Canadian Cost Guide](https://www.altusgroup.com/featured-insights/canadian-cost-guide/) - Annual Canadian construction costs
+- City of Calgary fee schedules
+- Local contractor pricing
+
+#### Updates Required
+- Quarterly cost index updates
+- Annual base cost review
+- Material price volatility adjustments
+
+### Reference Links
+
+#### Industry Standards
+- [CIQS - Canadian Institute of Quantity Surveyors](https://ciqs.org)
+- [RICS - Royal Institution of Chartered Surveyors](https://www.rics.org)
+
+#### Calgary Resources
+- [Calgary Building Permit Fee Calculator](https://www.calgary.ca/development/permits/fee-calculators.html)
+- [Calgary Construction Association](https://cgyca.com)
+
+#### Cost Data
+- [RSMeans Online](https://www.rsmeansonline.com)
+- [Statistics Canada Building Construction Price Index](https://www150.statcan.gc.ca/n1/daily-quotidien/250204/dq250204b-eng.htm)
+
+---
+
+## Future Modules: Complete Permit Workflow Automation
+
+This section outlines all planned modules organized by their position in the Calgary permit workflow. Each module represents an opportunity to automate calculations, generate documentation, or provide compliance analysis.
+
+### Complete Permit Workflow Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                     CALGARY PERMIT WORKFLOW AUTOMATION ROADMAP                       │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  ┌────────────────────┐   ┌────────────────────┐   ┌────────────────────┐           │
+│  │  PRE-APPLICATION   │   │  DEVELOPMENT       │   │  BUILDING          │           │
+│  │  STAGE             │──▶│  PERMIT (DP)       │──▶│  PERMIT (BP)       │           │
+│  ├────────────────────┤   ├────────────────────┤   ├────────────────────┤           │
+│  │ • Site Feasibility │   │ • Zoning Analysis  │   │ • Quantity Survey  │           │
+│  │ • Zoning Check     │   │ • DSSP Calculator  │   │ • Fire Safety Calc │           │
+│  │ • Setback Calc     │   │ • Parking Calc     │   │ • NECB Energy Calc │           │
+│  │ • FAR Calculator   │   │ • Landscaping Calc │   │ • Accessibility    │           │
+│  │ • Lot Coverage     │   │ • Shadow Analysis  │   │ • Plumbing Fixtures│           │
+│  │                    │   │ • Traffic Impact   │   │ • HVAC Load Calc   │           │
+│  └────────────────────┘   └────────────────────┘   │ • Drawing Review AI│           │
+│                                                     └────────────────────┘           │
+│                                                              │                       │
+│                                                              ▼                       │
+│                            ┌────────────────────┐   ┌────────────────────┐           │
+│                            │  INSPECTION &      │   │  OCCUPANCY         │           │
+│                            │  CONSTRUCTION      │◀──│  CERTIFICATE       │           │
+│                            ├────────────────────┤   ├────────────────────┤           │
+│                            │ • Inspection Sched │   │ • Final Compliance │           │
+│                            │ • Deficiency Track │   │ • As-Built Verify  │           │
+│                            │ • Progress Reports │   │ • Occupancy Check  │           │
+│                            └────────────────────┘   └────────────────────┘           │
+│                                                                                      │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Module Status Legend
+
+| Status | Meaning |
+|--------|---------|
+| ✅ COMPLETE | Module implemented and functional |
+| 🔄 IN PROGRESS | Currently being developed |
+| 📋 PLANNED | Documented and ready for development |
+| 💡 PROPOSED | Concept stage, needs detailed planning |
+
+---
+
+### STAGE 1: Pre-Application Modules
+
+These modules help users assess feasibility BEFORE formal application.
+
+#### 1.1 Zoning Analysis Calculator ✅ PARTIAL
+
+**Purpose**: Automated zoning compliance check for any Calgary address
+
+**Current Status**: Basic zone lookup implemented
+
+**Full Scope**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    ZONING ANALYSIS CALCULATOR                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  INPUT:                          OUTPUT:                             │
+│  ├── Address or Legal            ├── Zone District                   │
+│  ├── Proposed Building Type      ├── Permitted Uses List             │
+│  ├── Proposed Floor Area         ├── Height Limit                    │
+│  ├── Proposed Height             ├── FAR Calculation                 │
+│  └── Proposed Units              ├── Setback Requirements            │
+│                                   ├── Parking Requirements            │
+│                                   ├── Landscaping %                   │
+│                                   ├── Density Limits                  │
+│                                   └── Relaxation Options              │
+│                                                                      │
+│  CALCULATIONS:                                                        │
+│  • FAR = Gross Floor Area ÷ Lot Area                                 │
+│  • Lot Coverage = Building Footprint ÷ Lot Area × 100               │
+│  • Setbacks: Front, Rear, Side (each side), Corner                   │
+│  • Parking: Residential (1-2/unit), Commercial (by GFA)             │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Database Requirements**:
+- Zone rules table with all 68 Calgary zones
+- Setback rules by zone and lot type
+- Parking requirements by use type
+- FAR and height limits
+
+**API Endpoints**:
+```
+POST /api/v1/zoning/analyze
+GET  /api/v1/zoning/zones/{zone_code}/rules
+GET  /api/v1/zoning/address/{address}/compliance
+POST /api/v1/zoning/setback-calculator
+POST /api/v1/zoning/far-calculator
+POST /api/v1/zoning/parking-calculator
+```
+
+**UI Components**:
+- Address lookup with map integration
+- Zoning rule display panel
+- Compliance checklist with pass/fail indicators
+- 3D setback visualization (future)
+
+---
+
+#### 1.2 Setback Calculator 📋 PLANNED
+
+**Purpose**: Calculate required building setbacks for any lot configuration
+
+**Calculations**:
+| Setback Type | Calculation Method |
+|--------------|-------------------|
+| Front | Zone minimum + street type adjustment |
+| Rear | Zone minimum - lot depth adjustment |
+| Side (interior) | Zone minimum, often 1.2m for residential |
+| Side (flanking) | Zone minimum for corner lots, often 3.0m |
+| Building separation | Based on fire rating requirements |
+
+**Special Cases**:
+- Corner lots (two front setbacks)
+- Through lots (two rear setbacks)
+- Irregular lots (angular measurement)
+- Easement adjustments
+
+**Output**:
+- Building envelope diagram (SVG)
+- Maximum building footprint
+- Buildable area calculation
+
+---
+
+#### 1.3 FAR & Lot Coverage Calculator 📋 PLANNED
+
+**Purpose**: Calculate Floor Area Ratio and lot coverage limits
+
+**Formulas**:
+```
+FAR = Total Gross Floor Area ÷ Lot Area
+    where GFA includes:
+    - All above-grade floor area
+    - Covered parking (50% in some zones)
+    - Excludes: basements, mechanical rooms, balconies
+
+Lot Coverage = Building Footprint ÷ Lot Area × 100%
+    where Footprint includes:
+    - Main building outline
+    - Attached garage
+    - Covered patios (depends on zone)
+    - Excludes: uncovered decks, eaves
+```
+
+**Zone-Specific Rules**:
+| Zone Category | Max FAR | Max Coverage |
+|---------------|---------|--------------|
+| R-C1 (Residential) | 0.45-0.65 | 45% |
+| R-C2 (Duplex) | 0.50-0.75 | 45% |
+| M-C1 (Multi-Res Low) | 2.0 | 60% |
+| M-C2 (Multi-Res Med) | 4.0 | 70% |
+| C-COR1 (Commercial) | 5.0 | 100% |
+
+---
+
+### STAGE 2: Development Permit (DP) Modules
+
+These modules support DP application preparation.
+
+#### 2.1 DSSP Calculator ✅ COMPLETE
+
+**Status**: Fully implemented
+
+**Location**: `/dssp` route, `/api/v1/dssp/*` endpoints
+
+**Features**:
+- Stormwater calculations (Rational Method, Manning's)
+- Sanitary sewer sizing (Harmon peaking factor)
+- Water service sizing (Hazen-Williams)
+- Calgary IDF curves integrated
+- Drawing generator (SVG)
+
+---
+
+#### 2.2 Parking Requirement Calculator 📋 PLANNED
+
+**Purpose**: Calculate parking stalls required by land use
+
+**Calculation Rules** (Bylaw 1P2007):
+
+| Use Type | Parking Requirement |
+|----------|-------------------|
+| Single Detached | 1 stall minimum |
+| Duplex/Semi | 1 stall per unit |
+| Townhouse | 1.5 stalls per unit |
+| Multi-Res (studio/1BR) | 1 stall per unit |
+| Multi-Res (2BR+) | 1.25-1.5 stalls per unit |
+| Office | 2.5 stalls per 100m² |
+| Retail | 4.0 stalls per 100m² |
+| Restaurant | 8.0 stalls per 100m² |
+| Industrial | 1.0 stall per 100m² |
+
+**Additional Calculations**:
+- Accessible parking (1 per 25 regular stalls, min 1)
+- Bicycle parking (varies by use)
+- Loading spaces (by GFA for commercial)
+- Visitor parking (10-15% of resident parking)
+
+**Output**:
+- Total stalls required
+- Stall dimension requirements (2.5m × 5.5m min)
+- Aisle width requirements (6.0m for 90° parking)
+- Accessible stall requirements
+- Parking layout diagram (optional)
+
+---
+
+#### 2.3 Landscaping Requirement Calculator 📋 PLANNED
+
+**Purpose**: Calculate required landscaping area and features
+
+**Requirements by Zone**:
+| Zone Type | Min Landscaping | Front Yard | Rear Yard |
+|-----------|----------------|------------|-----------|
+| Residential | 30-40% | Required | Varies |
+| Commercial | 15-25% | Required | Buffer |
+| Industrial | 10-15% | Required | Buffer |
+
+**Features Required**:
+- Tree planting (1 per 7.5m of frontage)
+- Deciduous vs conifer mix
+- Permeable surface calculation
+- Storm water detention integration
+
+**Output**:
+- Required landscaping area (m²)
+- Tree count required
+- Plant schedule template
+- Landscaping plan diagram (SVG)
+
+---
+
+#### 2.4 Shadow Analysis Tool 💡 PROPOSED
+
+**Purpose**: Generate shadow studies for buildings >10m height
+
+**Requirements**:
+- Calgary requires shadow studies for tall buildings
+- Analysis at March 21 and September 21 (equinoxes)
+- Hours: 10:00, 12:00, 14:00, 16:00
+
+**Technical Approach**:
+- 3D building model from footprint + height
+- Sun position calculation (Calgary: 51.0°N)
+- Shadow projection algorithm
+- Impact on adjacent properties
+
+**Output**:
+- Shadow diagrams at required times
+- Impact assessment on neighbors
+- Compliance statement
+
+---
+
+### STAGE 3: Building Permit (BP) Modules
+
+These modules support BP application preparation.
+
+#### 3.1 Quantity Survey Calculator ✅ COMPLETE
+
+**Status**: Fully implemented
+
+**Location**: `/quantity-survey` route, `/api/v1/quantity-survey/*` endpoints
+
+**Features**:
+- Parametric cost estimation (Class D)
+- Bill of Quantities generation
+- CSI division breakdown
+- Calgary permit fee calculation
+- Construction cost database (2024-2026)
+
+---
+
+#### 3.2 Fire Safety Calculator 📋 PLANNED (HIGH PRIORITY)
+
+**Purpose**: Calculate fire safety requirements per NBC Part 9 (Div B, Section 9.9-9.10)
+
+**Calculations**:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    FIRE SAFETY CALCULATOR                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  1. OCCUPANT LOAD CALCULATION (NBC Table 3.1.17.1)                  │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  Occupant Load = Floor Area ÷ Area per Person                       │
+│                                                                      │
+│  ┌────────────────────────────────┬─────────────────────────────┐   │
+│  │ Use Type                       │ m² per Person               │   │
+│  ├────────────────────────────────┼─────────────────────────────┤   │
+│  │ Assembly (standing)            │ 0.4                         │   │
+│  │ Assembly (seated, fixed)       │ 0.75                        │   │
+│  │ Assembly (seated, loose)       │ 0.95                        │   │
+│  │ Mercantile (street floor)      │ 2.8                         │   │
+│  │ Mercantile (other floors)      │ 5.6                         │   │
+│  │ Office                         │ 9.3                         │   │
+│  │ Industrial                     │ 4.6                         │   │
+│  │ Residential (sleeping)         │ 4.6                         │   │
+│  │ Residential (non-sleeping)     │ 9.3                         │   │
+│  └────────────────────────────────┴─────────────────────────────┘   │
+│                                                                      │
+│  2. EXIT WIDTH CALCULATION (NBC 3.4.3.2)                            │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  Exit Width = Occupant Load × mm per Person                         │
+│                                                                      │
+│  • No sprinklers: 6.1 mm/person (stairs), 8.0 mm/person (level)    │
+│  • With sprinklers: 5.1 mm/person (stairs), 6.4 mm/person (level)  │
+│  • Minimum exit width: 760mm (Part 9), 1100mm (Part 3)             │
+│                                                                      │
+│  3. NUMBER OF EXITS (NBC 9.9.2)                                     │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  • Floor area ≤ 200m² + max 60 occupants: 1 exit permitted         │
+│  • Floor area > 200m² or > 60 occupants: 2 exits required          │
+│  • > 300 occupants: 3 exits required                                │
+│  • > 600 occupants: 4 exits required                                │
+│                                                                      │
+│  4. TRAVEL DISTANCE (NBC 9.9.6)                                     │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  Maximum Travel Distance to Exit:                                    │
+│  • No sprinklers: 25m (dead-end), 40m (through)                     │
+│  • With sprinklers: 32m (dead-end), 55m (through)                   │
+│                                                                      │
+│  5. FIRE SEPARATION REQUIREMENTS (NBC 9.10)                         │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  ┌────────────────────────────────┬─────────────────────────────┐   │
+│  │ Separation Location            │ Fire Rating Required        │   │
+│  ├────────────────────────────────┼─────────────────────────────┤   │
+│  │ Suite-to-suite (multi-unit)    │ 1 hour                      │   │
+│  │ Suite-to-corridor              │ 45 min                      │   │
+│  │ Suite-to-storage               │ 45 min                      │   │
+│  │ Suite-to-garage (attached)     │ 45 min                      │   │
+│  │ Floor assembly (multi-storey)  │ 45 min - 1 hour            │   │
+│  │ Exit stair enclosure           │ 45 min                      │   │
+│  │ Service room                   │ 1 hour                      │   │
+│  └────────────────────────────────┴─────────────────────────────┘   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Output**:
+- Occupant load calculation table
+- Required exit widths
+- Number of exits required
+- Travel distance analysis
+- Fire separation requirements
+- Egress diagram (SVG)
+
+**API Endpoints**:
+```
+POST /api/v1/fire-safety/occupant-load
+POST /api/v1/fire-safety/exit-requirements
+POST /api/v1/fire-safety/travel-distance
+POST /api/v1/fire-safety/fire-separations
+POST /api/v1/fire-safety/full-analysis
+```
+
+---
+
+#### 3.3 NECB Energy Compliance Calculator 📋 PLANNED (HIGH PRIORITY)
+
+**Purpose**: Verify compliance with National Energy Code for Buildings
+
+**Compliance Paths**:
+1. **Prescriptive Path** - Meet all prescriptive requirements
+2. **Trade-off Path** - Trade between envelope components
+3. **Performance Path** - Energy modeling (requires software)
+
+**Prescriptive Requirements** (Climate Zone 7A - Calgary):
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│              NECB 2020 PRESCRIPTIVE REQUIREMENTS                     │
+│                    Climate Zone 7A (Calgary)                         │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  BUILDING ENVELOPE                                                   │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  ┌────────────────────────────┬──────────────────┬───────────────┐  │
+│  │ Component                  │ Max U-value      │ Min R-value   │  │
+│  │                            │ (W/m²·K)         │ (RSI)         │  │
+│  ├────────────────────────────┼──────────────────┼───────────────┤  │
+│  │ Roof/Ceiling               │ 0.121            │ 8.27 (R-47)   │  │
+│  │ Above-Grade Wall           │ 0.210            │ 4.76 (R-27)   │  │
+│  │ Below-Grade Wall           │ 0.284            │ 3.52 (R-20)   │  │
+│  │ Floor over unheated space  │ 0.183            │ 5.46 (R-31)   │  │
+│  │ Slab-on-Grade Edge         │ 1.020            │ 0.98 (R-5.6)  │  │
+│  └────────────────────────────┴──────────────────┴───────────────┘  │
+│                                                                      │
+│  WINDOWS & DOORS                                                     │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  • Maximum FDWR: 40% (Fenestration + Door to Wall Ratio)            │
+│  • Window U-value: max 1.60 W/m²·K                                  │
+│  • Door U-value: max 2.80 W/m²·K (opaque), 1.60 (glazed)           │
+│  • SHGC: varies by orientation and projection factor                │
+│                                                                      │
+│  AIR BARRIER                                                         │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  • Required on all buildings                                         │
+│  • Continuous across all joints                                      │
+│  • Max air leakage: 0.05 L/s/m² at 75 Pa (components)              │
+│  • Whole building: 0.25 L/s/m² at 5 Pa (Part 9)                    │
+│                                                                      │
+│  HVAC SYSTEMS                                                        │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  • Heating: min AFUE 95% (furnace), COP 3.3 (heat pump)            │
+│  • Cooling: min SEER 15 (split), EER 12 (package)                  │
+│  • Ventilation: HRV/ERV with min 70% heat recovery                 │
+│  • Duct insulation: R-6 in unconditioned space                      │
+│                                                                      │
+│  LIGHTING                                                            │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                      │
+│  • Interior LPD (W/m²): Office 8.5, Retail 12.0, Warehouse 5.0     │
+│  • Daylight controls required in perimeter zones                    │
+│  • Occupancy sensors in select spaces                               │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Calculations**:
+- Overall envelope U-value
+- FDWR calculation
+- Trade-off compliance check
+- Energy cost estimate
+
+**Output**:
+- Compliance checklist
+- Component specifications required
+- Trade-off analysis (if applicable)
+- Energy compliance report (PDF)
+
+---
+
+#### 3.4 Accessibility Compliance Checker 📋 PLANNED
+
+**Purpose**: Verify barrier-free design requirements (NBC 3.8, AODA/ADA concepts)
+
+**Key Requirements**:
+
+| Feature | Requirement |
+|---------|-------------|
+| Accessible Route | 920mm min clear width |
+| Door Width | 810mm min clear opening |
+| Ramp Slope | Max 1:12 (8.3%) |
+| Landing Size | 1500mm × 1500mm min |
+| Grab Bars | 750-900mm height |
+| Accessible WC | 1500mm × 1500mm turning |
+| Counter Height | 865mm max (accessible) |
+| Signage | Tactile, Braille, visual contrast |
+
+**Spaces Requiring Accessibility**:
+- Building entrance (at least 1)
+- Washrooms (at least 1 per floor)
+- Corridors and doors on accessible route
+- Elevators (if >1 storey and public)
+- Parking (% of stalls)
+
+**Output**:
+- Accessibility compliance checklist
+- Accessible route diagram
+- Required features list
+- Non-compliance flagging
+
+---
+
+#### 3.5 Plumbing Fixture Calculator 📋 PLANNED
+
+**Purpose**: Calculate required plumbing fixtures per NPC 2020 and NBC
+
+**Fixture Requirements** (per occupant load):
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│               PLUMBING FIXTURE REQUIREMENTS                          │
+│                    NPC 2020 / NBC Referenced                         │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ASSEMBLY OCCUPANCIES (A-2)                                          │
+│  ─────────────────────────────────────────────────────────────────  │
+│  │ Fixture       │ Male           │ Female         │               │
+│  ├───────────────┼────────────────┼────────────────┤               │
+│  │ WC            │ 1:75           │ 1:40           │               │
+│  │ Urinals       │ 1:50           │ -              │               │
+│  │ Lavatories    │ 1:100          │ 1:100          │               │
+│                                                                      │
+│  MERCANTILE (E)                                                      │
+│  ─────────────────────────────────────────────────────────────────  │
+│  │ WC            │ 1:500          │ 1:375          │               │
+│  │ Urinals       │ 1:750          │ -              │               │
+│  │ Lavatories    │ 1:750          │ 1:750          │               │
+│                                                                      │
+│  OFFICE (D)                                                          │
+│  ─────────────────────────────────────────────────────────────────  │
+│  │ WC            │ 1:25           │ 1:15           │               │
+│  │ Urinals       │ 1:50           │ -              │               │
+│  │ Lavatories    │ 1:40           │ 1:40           │               │
+│                                                                      │
+│  RESIDENTIAL                                                         │
+│  ─────────────────────────────────────────────────────────────────  │
+│  • Dwelling unit: 1 WC, 1 lavatory, 1 tub/shower, 1 kitchen sink   │
+│  • Additional WC recommended for 3+ bedroom                         │
+│                                                                      │
+│  DRINKING FOUNTAINS                                                  │
+│  ─────────────────────────────────────────────────────────────────  │
+│  • 1 per floor (generally)                                          │
+│  • Accessible fountain required (hi-lo or dual)                     │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Output**:
+- Fixture count by type
+- Male/female distribution
+- Accessible fixture requirements
+- Fixture schedule for drawings
+
+---
+
+#### 3.6 HVAC Load Calculator 📋 PLANNED
+
+**Purpose**: Calculate heating and cooling loads for Calgary climate
+
+**Calculations**:
+
+```
+HEATING LOAD (Calgary Design Conditions)
+──────────────────────────────────────────
+Outdoor Design Temp: -31°C (January 2.5%)
+Indoor Design Temp: 21°C
+Delta T: 52°C
+
+Heat Loss = (U-value × Area × ΔT) + Infiltration + Ventilation
+
+COOLING LOAD (Calgary Design Conditions)
+──────────────────────────────────────────
+Outdoor Design Temp: 29°C (July 2.5%)
+Outdoor Design WB: 15°C
+Indoor Design Temp: 24°C
+
+Cooling Load = Envelope + Solar + Internal + Ventilation + Infiltration
+```
+
+**Output**:
+- Heating load (BTU/hr or kW)
+- Cooling load (tons or kW)
+- Equipment sizing recommendations
+- Ventilation requirements (ASHRAE 62.1)
+
+---
+
+#### 3.7 AI Drawing Review Module 💡 PROPOSED (HIGH VALUE)
+
+**Purpose**: Analyze uploaded drawings for code compliance issues
+
+**Approach**: Rather than generating drawings, use AI to REVIEW drawings
+
+**Capabilities**:
+1. **Dimension Extraction** - Read dimensions from floor plans
+2. **Element Detection** - Identify doors, windows, stairs, exits
+3. **Code Compliance Check** - Compare to requirements
+4. **Issue Flagging** - Highlight non-compliance areas
+
+**Technical Implementation**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    AI DRAWING REVIEW PIPELINE                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  UPLOAD              PROCESS              ANALYZE           REPORT  │
+│  ──────             ───────              ───────           ──────  │
+│                                                                      │
+│  ┌─────┐         ┌─────────────┐      ┌──────────┐     ┌────────┐  │
+│  │ PDF │────────▶│ PDF to Image│─────▶│  VLM AI  │────▶│Compliance│ │
+│  │ DWG │         │ (per page)  │      │ Analysis │     │ Report  │  │
+│  │ DXF │         └─────────────┘      └──────────┘     └────────┘  │
+│  └─────┘                │                   │               │       │
+│                         │                   │               │       │
+│                         ▼                   ▼               ▼       │
+│              ┌───────────────────────────────────────────────────┐  │
+│              │ CHECKS PERFORMED:                                  │  │
+│              │ • Stair dimensions (width, rise, run)             │  │
+│              │ • Door dimensions and swings                       │  │
+│              │ • Window sizes (egress requirements)               │  │
+│              │ • Exit locations and travel distances             │  │
+│              │ • Corridor widths                                  │  │
+│              │ • Room labels and areas                           │  │
+│              │ • Fire separation indications                     │  │
+│              └───────────────────────────────────────────────────┘  │
+│                                                                      │
+│  OUTPUT:                                                             │
+│  • Annotated drawings with issue markers                            │
+│  • Compliance checklist with pass/fail                              │
+│  • Required corrections list                                         │
+│  • Code references for each issue                                   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Human Verification Required**:
+- All AI-extracted values need human confirmation
+- Life-safety dimensions require explicit verification checkbox
+- Disclaimer: AI assistance only, not approval
+
+---
+
+### STAGE 4: Construction & Inspection Modules
+
+#### 4.1 Inspection Scheduler 💡 PROPOSED
+
+**Purpose**: Track and schedule required inspections
+
+**Inspection Stages**:
+1. Footing/Foundation (before pour)
+2. Plumbing rough-in
+3. Electrical rough-in
+4. HVAC rough-in
+5. Framing
+6. Insulation/Vapor barrier
+7. Drywall (fire-rated assemblies)
+8. Final inspection
+
+**Features**:
+- Calendar integration
+- City inspector booking
+- Checklist for each stage
+- Photo documentation upload
+- Deficiency tracking
+
+---
+
+#### 4.2 Deficiency Tracker 💡 PROPOSED
+
+**Purpose**: Track and resolve inspection deficiencies
+
+**Features**:
+- Deficiency logging with photos
+- Priority classification
+- Correction tracking
+- Re-inspection scheduling
+- Resolution documentation
+
+---
+
+### Module Development Priority Matrix
+
+| Module | Business Value | Technical Complexity | Dependencies | Priority |
+|--------|---------------|---------------------|--------------|----------|
+| Fire Safety Calculator | High | Medium | NBC data | P1 |
+| NECB Energy Calculator | High | High | NECB data | P1 |
+| Zoning Analysis (full) | High | Medium | Zone data | P1 |
+| Parking Calculator | Medium | Low | Zone data | P2 |
+| Accessibility Checker | Medium | Medium | NBC data | P2 |
+| Plumbing Fixtures | Medium | Low | NPC data | P2 |
+| HVAC Load Calculator | Medium | Medium | Climate data | P2 |
+| AI Drawing Review | Very High | Very High | VLM, training | P3 |
+| Shadow Analysis | Low | High | 3D engine | P3 |
+| Landscaping Calculator | Low | Low | Zone data | P3 |
+| Inspection Scheduler | Medium | Medium | None | P4 |
+| Deficiency Tracker | Medium | Low | None | P4 |
+
+### Suggested Implementation Roadmap
+
+```
+PHASE 1: Q1 2026
+├── Fire Safety Calculator (complete)
+├── NECB Energy Calculator (prescriptive)
+└── Zoning Analysis (full implementation)
+
+PHASE 2: Q2 2026
+├── Parking Calculator
+├── Accessibility Checker
+├── Plumbing Fixture Calculator
+└── HVAC Load Calculator (basic)
+
+PHASE 3: Q3 2026
+├── AI Drawing Review (pilot)
+├── Landscaping Calculator
+└── Shadow Analysis (basic)
+
+PHASE 4: Q4 2026
+├── AI Drawing Review (full)
+├── Inspection Scheduler
+└── Deficiency Tracker
+```
+
+---
+
+### Required Standards, Codes, and Documents by Module
+
+This section details all codes, standards, and reference documents required for each future module.
+
+#### Zoning Analysis & Setback Calculator
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| Land Use Bylaw 1P2007 | Current (consolidated) | calgary.ca | Zone definitions, setbacks, FAR, height |
+| Calgary zoning districts map | Current | data.calgary.ca | Zone boundaries shapefile |
+| Permitted Use Tables | Per bylaw | calgary.ca | Use-by-zone matrix |
+| Development Permit Guidelines | Current | calgary.ca | Interpretation guidance |
+| Calgary Street Type Classification | Current | calgary.ca | Setback adjustments |
+
+**Key Bylaw Sections**:
+- Part 4: General Rules (setbacks, height measurement)
+- Part 5: Parking and Loading
+- Part 6: Landscaping
+- Part 7-11: Zone-specific rules
+
+---
+
+#### Parking Requirement Calculator
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| Land Use Bylaw 1P2007 Part 5 | Current | calgary.ca | Parking requirements by use |
+| Parking Stall Standards (Schedule 1) | Current | calgary.ca | Stall dimensions |
+| Accessible Parking Guidelines | Current | calgary.ca | Accessible stall requirements |
+| Bicycle Parking Bylaw 6M2021 | 2021 | calgary.ca | Bike parking requirements |
+| Calgary Transit TOD Guidelines | Current | calgary.ca | Parking reductions near transit |
+
+**Calculation Tables Required**:
+- Table 5.2.1.1: Minimum motor vehicle parking stalls
+- Table 5.2.1.2: Parking for specific uses
+- Table 5.3.1.1: Bicycle parking requirements
+- Schedule 1: Parking stall dimensions
+
+---
+
+#### Fire Safety Calculator
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| NBC(AE) 2023 Division B | 2023 | NRC/Alberta | Fire safety requirements |
+| NBC Part 3.1 | General | NRC | Occupancy classification |
+| NBC Part 3.2 | Building fire safety | NRC | Fire separations |
+| NBC Part 3.3 | Safety within floor areas | NRC | Travel distance, exits |
+| NBC Part 3.4 | Exits | NRC | Exit requirements |
+| NBC Part 9.9 | Means of egress (Part 9) | NRC | Residential exits |
+| NBC Part 9.10 | Fire protection (Part 9) | NRC | Residential fire safety |
+| CAN/ULC-S101 | Standard for fire tests | ULC | Fire rating tests |
+| STANDATA 99-BC-001 | Exit requirements | Alberta | Alberta interpretations |
+
+**Key Tables Required**:
+- Table 3.1.17.1: Occupant load (m² per person)
+- Table 3.2.2.24-83: Fire separation ratings
+- Table 3.4.3.2.A/B: Exit width per person
+- Table 9.9.1.1: Number of exits (Part 9)
+- Table 9.10.3.1-A: Fire separation requirements
+
+**Formulas**:
+```
+Occupant Load = Floor Area (m²) ÷ Area per Person (from Table 3.1.17.1)
+Exit Width = Occupant Load × mm per Person (from Table 3.4.3.2)
+Number of Exits = Based on occupant load and floor area thresholds
+Travel Distance = Measured along path of travel (max per 3.4.2.4)
+```
+
+---
+
+#### NECB Energy Compliance Calculator
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| NECB 2020 | 2020 | NRC | Energy code requirements |
+| NBC(AE) 2023 Section 9.36 | 2023 | NRC | Part 9 energy efficiency |
+| ASHRAE 90.1-2019 | 2019 | ASHRAE | Referenced standard |
+| ASHRAE Fundamentals | 2021 | ASHRAE | Climate data, calculations |
+| CSA F280 | Current | CSA | Heating/cooling loads |
+| NRCan Climate Data | Current | NRCan | Heating/cooling degree days |
+
+**Key Tables Required**:
+- Table 3.1.1.6-A: Climate zone definitions
+- Table 3.2.1.1: Prescriptive R-values/U-values by zone
+- Table 3.2.2.2: Fenestration requirements
+- Table 3.2.2.3: Air barrier requirements
+- Table 4.3.1.2: Equipment efficiency
+
+**Calgary Climate Data** (Zone 7A):
+```
+Heating Degree Days (18°C base): 4,940
+Cooling Degree Days (10°C base): 164
+January Design Temp (2.5%): -31°C
+July Design Temp (2.5%): 29°C
+```
+
+**Formulas**:
+```
+FDWR = (Fenestration Area + Door Area) ÷ Gross Wall Area × 100
+Overall Wall U-value = Σ(U × A) ÷ Σ(A)
+Trade-off Compliance = Proposed ≤ Reference (NECB 3.3)
+```
+
+---
+
+#### Accessibility Compliance Checker
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| NBC(AE) 2023 Section 3.8 | 2023 | NRC | Barrier-free requirements |
+| NBC Part 9.5.2 | 2023 | NRC | Residential accessibility |
+| CSA B651 | Current | CSA | Accessible design standard |
+| Alberta Building Code amendments | Current | Alberta | Provincial variations |
+| STANDATA 07-BCV-010 | Current | Alberta | Accessibility interpretations |
+| City of Calgary Access Design Standards | Current | calgary.ca | Local requirements |
+
+**Key Requirements**:
+- Accessible route: 920mm min clear width
+- Door opening: 810mm min clear
+- Ramp slope: 1:12 max (8.33%)
+- Landings: 1500mm × 1500mm min
+- Grab bars: 750-900mm height
+- Accessible washroom: 1700mm × 1700mm (NBC) or 1500mm × 1500mm turning
+
+**Spaces Requiring Barrier-Free Access**:
+- At least 1 entrance per building
+- At least 1 accessible route per floor
+- At least 1 accessible washroom per floor (public buildings)
+- Elevators if more than 1 storey (with exceptions)
+
+---
+
+#### Plumbing Fixture Calculator
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| NPC 2020 (National Plumbing Code) | 2020 | NRC | Plumbing requirements |
+| NBC(AE) 2023 Table 3.7.2.2.A | 2023 | NRC | Fixture requirements |
+| NBC(AE) 2023 Table 3.7.2.2.B | 2023 | NRC | Water closets for assembly |
+| CSA B64.10 | Current | CSA | Backflow prevention |
+| STANDATA 01-BCV-018 | Current | Alberta | Fixture interpretations |
+
+**Key Tables Required**:
+- NPC Table 2.4.10.3: Fixture unit values
+- NBC Table 3.7.2.2.A: Required plumbing fixtures
+- NBC Table 3.7.2.2.B: Additional WCs for assembly
+
+**Formulas**:
+```
+Number of Fixtures = Occupant Load ÷ Persons per Fixture (from table)
+Male/Female Split = 50/50 unless specific use data available
+Accessible Fixtures = At least 1 per required set
+```
+
+---
+
+#### HVAC Load Calculator
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| ASHRAE Fundamentals | 2021 | ASHRAE | Load calculation methods |
+| CSA F280-12 | 2012 | CSA | Residential load calculation |
+| HRAI Residential Load Calculation | Current | HRAI | Canadian methodology |
+| Environment Canada Climate Data | Current | ECCC | Design temperatures |
+| NECB 2020 Part 5 | 2020 | NRC | Equipment efficiency |
+| NBC 9.33 | 2023 | NRC | Residential HVAC requirements |
+
+**Calgary Design Conditions**:
+```
+Heating:
+- Outdoor Design Temp: -31°C (January 2.5%)
+- Indoor Design Temp: 21°C
+- Delta T: 52°C
+
+Cooling:
+- Outdoor Design Temp: 29°C (July 2.5%)
+- Outdoor Design WB: 15°C
+- Indoor Design Temp: 24°C
+- Indoor RH: 50%
+
+Climate Data:
+- HDD (18°C): 4,940
+- CDD (18°C): 164
+- Latitude: 51.0°N
+```
+
+**Formulas**:
+```
+Heating Load (BTU/hr):
+Q_total = Q_envelope + Q_infiltration + Q_ventilation
+Q_envelope = Σ(U × A × ΔT)
+Q_infiltration = 0.018 × ACH × Volume × ΔT
+
+Cooling Load (BTU/hr):
+Q_total = Q_envelope + Q_solar + Q_internal + Q_ventilation + Q_infiltration
+Q_solar = A_glass × SHGC × Solar Intensity × CLF
+Q_internal = Q_people + Q_lights + Q_equipment
+```
+
+---
+
+#### Landscaping Calculator
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| Land Use Bylaw 1P2007 Part 6 | Current | calgary.ca | Landscaping requirements |
+| Calgary Parks Standards | Current | calgary.ca | Tree species, planting |
+| Low Impact Development Guidelines | Current | calgary.ca | Stormwater integration |
+| Calgary Complete Streets Policy | Current | calgary.ca | Boulevard requirements |
+
+**Requirements by Zone**:
+| Zone Type | Min Landscaping | Trees per Frontage |
+|-----------|----------------|-------------------|
+| Residential | 30-40% of lot | 1 per 7.5m |
+| Commercial | 15-25% of lot | 1 per 7.5m |
+| Industrial | 10-15% of lot | 1 per 10m |
+| Multi-Res | 20-30% of lot | 1 per 6m |
+
+---
+
+#### Shadow Analysis Tool
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| Land Use Bylaw 1P2007 | Current | calgary.ca | When shadow study required |
+| Calgary Urban Design Guidelines | Current | calgary.ca | Shadow analysis methodology |
+| Sun position algorithm (NOAA) | Current | NOAA | Solar angle calculations |
+
+**Requirements**:
+- Required for buildings >10m in residential areas
+- Analysis dates: March 21, September 21 (equinoxes)
+- Analysis times: 10:00, 12:00, 14:00, 16:00
+
+**Calgary Solar Data**:
+```
+Latitude: 51.0447°N
+Longitude: 114.0719°W
+
+March 21 (Spring Equinox):
+- Solar noon altitude: ~39°
+- Sunrise: 07:26, Sunset: 19:36
+
+June 21 (Summer Solstice):
+- Solar noon altitude: ~62°
+- Sunrise: 05:18, Sunset: 21:49
+
+September 21 (Fall Equinox):
+- Solar noon altitude: ~39°
+- Sunrise: 07:17, Sunset: 19:27
+
+December 21 (Winter Solstice):
+- Solar noon altitude: ~15°
+- Sunrise: 08:30, Sunset: 16:33
+```
+
+---
+
+#### AI Drawing Review Module
+
+| Document | Version | Source | Purpose |
+|----------|---------|--------|---------|
+| All NBC sections | 2023 | NRC | Compliance checking |
+| Calgary permit checklists | Current | calgary.ca | Required items |
+| Drawing standards (CSA A23.1) | Current | CSA | Drawing conventions |
+| CAD/PDF specifications | Various | Industry | File format handling |
+
+**Checks to Perform**:
+
+| Check Category | Specific Checks | Code Reference |
+|----------------|-----------------|----------------|
+| Stairs | Width, rise, run, headroom | NBC 9.8 |
+| Doors | Width, swing, clearances | NBC 9.5, 3.8 |
+| Windows | Egress dimensions, safety glazing | NBC 9.7, 9.6 |
+| Exits | Number, width, travel distance | NBC 9.9, 3.4 |
+| Corridors | Width, dead-ends | NBC 9.9, 3.3 |
+| Rooms | Ceiling height, area | NBC 9.5 |
+| Fire | Separation ratings, fire-stops | NBC 9.10, 3.2 |
+
+---
+
+### Data Acquisition Priority
+
+| Priority | Module | Documents Needed | Estimated Effort |
+|----------|--------|------------------|-----------------|
+| P1 | Fire Safety | NBC 3.1-3.4, 9.9-9.10, Tables | 2 weeks |
+| P1 | NECB Energy | NECB 2020, NBC 9.36, Climate data | 3 weeks |
+| P1 | Zoning (full) | Bylaw 1P2007 complete digitization | 2 weeks |
+| P2 | Parking | Bylaw Part 5, Tables | 1 week |
+| P2 | Accessibility | NBC 3.8, 9.5.2, CSA B651 | 2 weeks |
+| P2 | Plumbing | NPC 2020, NBC Tables | 1 week |
+| P2 | HVAC | ASHRAE, CSA F280, Climate | 2 weeks |
+| P3 | Landscaping | Bylaw Part 6, Parks standards | 1 week |
+| P3 | Shadow | Solar algorithms, guidelines | 1 week |
+| P3 | AI Review | All codes (already digitized) | N/A |
+
+---
+
+### Document Download/Purchase Requirements
+
+#### Free/Public Documents
+- NBC(AE) 2023: Available from NRC (pdf download)
+- NECB 2020: Available from NRC (pdf download)
+- NPC 2020: Available from NRC (pdf download)
+- Land Use Bylaw 1P2007: calgary.ca (pdf)
+- STANDATA bulletins: alberta.ca (pdf)
+- Climate data: Environment Canada, NRCan
+
+#### Paid Documents (May Require Purchase)
+| Document | Approximate Cost | Source |
+|----------|-----------------|--------|
+| CSA B651 (Accessibility) | ~$200 | CSA Group |
+| CSA F280 (HVAC Loads) | ~$150 | CSA Group |
+| ASHRAE Fundamentals | ~$300 | ASHRAE |
+| ASHRAE 90.1 | ~$150 | ASHRAE |
+
+#### Alternative: Standards Referenced in Codes
+Many CSA standards are referenced in NBC and can be accessed through code-referenced versions (often included in NBC commentary or available through provincial adoptions).
+
+---
+
 ## Development Phases
 
 ### Phase 1: Foundation (MVP)
@@ -3954,13 +6216,164 @@ docs/:
 - Key relaxation success rates: Setback (92%), Height (85%), Coverage (84%)
 - Most affected zones: R-1, DC, R-2, R-C1, R-C2
 
+---
+
+### Session: January 9, 2026 (Evening - Late)
+
+**Status: Phase 2 - Full Stack Application Complete**
+
+#### Major Accomplishments
+
+| Component | Status | Description |
+|-----------|--------|-------------|
+| **Authentication System** | ✅ Complete | Full user auth with login, register, password reset, email verification |
+| **Role-Based Access Control** | ✅ Complete | USER, REVIEWER, ADMIN roles with hierarchical permissions |
+| **Admin Dashboard** | ✅ Complete | Stats, user management, role changes, activate/deactivate |
+| **Permit Application Tracker** | ✅ Complete | Full CRUD, document uploads, status workflow |
+| **Guide Mode** | ✅ Complete | Project analysis, Part 9/3 classification, fee estimation |
+| **Review Mode** | ✅ Complete | Drawing upload, AI analysis, compliance checking |
+| **Explore Mode** | ✅ Complete | Code search, browse by category, natural language queries |
+| **NBC Part 9 Extraction** | ✅ Complete | Sections 9.5-9.36 extracted to structured JSON (~500 articles) |
+
+#### New Features Implemented
+
+**1. Authentication & User Management**
+- `/api/v1/auth/*` - Login, register, logout, refresh, password reset, email verification
+- `/api/v1/admin/*` - User stats, list users, CRUD operations, role management
+- JWT-based authentication with HTTP-only cookies
+- Password hashing with bcrypt
+- Session management with refresh tokens
+
+**2. Admin Dashboard (`/admin`)**
+- Total users, active users, verified users, new signups
+- Users by role breakdown (Free Users, Reviewers, Admins)
+- Quick actions: Manage Users, View Permits
+
+**3. User Management (`/admin/users`)**
+- Searchable/filterable user list
+- Role change (User → Reviewer → Admin)
+- Activate/Deactivate accounts
+- Verify unverified users
+- Delete users
+
+**4. Role-Based Navigation**
+- Sidebar shows different sections based on user role
+- Admin section: Dashboard, User Management
+- Reviewer section: Review Queue, All Permits
+- Public/User sections: Explore, Guide, Review, My Permits
+
+**5. Permit Application System**
+- 6 permit types: BP, DP, TP_ELECTRICAL, TP_PLUMBING, TP_GAS, TP_HVAC
+- Multi-step application form with document uploads
+- Status workflow: draft → submitted → under_review → approved/rejected/corrections_required
+- Reviewer notes and status history
+
+#### Bug Fixes
+
+| Bug | Fix | File |
+|-----|-----|------|
+| Guide "Continue to Review" button not working | Added onClick handler with navigate() | GuidePage.tsx |
+| Permit form validation errors | Updated field names to match backend schema | PermitApplicationPage.tsx, types/index.ts |
+| Browse by Code "query too short" error | Changed min_length to 1, added browse mode | codes.py, explore.py |
+
+#### NBC Part 9 Extraction Status
+
+**Sections Extracted (to JSON):**
+
+| Section Range | Topic | Articles | Status |
+|--------------|-------|----------|--------|
+| 9.5 | Accessibility | 8 | ✅ Structured JSON |
+| 9.6 | Glass | 4 | ✅ Structured JSON |
+| 9.7 | Windows, Doors, Skylights | 10 | ✅ Structured JSON |
+| 9.8 | Stairs, Ramps, Handrails, Guards | 30 | ✅ Structured JSON |
+| 9.9 | Means of Egress | 22 | ✅ Structured JSON |
+| 9.10 | Fire Protection | 22 | ✅ Structured JSON |
+| 9.11 | Sound Transmission | 4 | ✅ Structured JSON |
+| 9.12 | Excavation | 9 | ✅ Structured JSON |
+| 9.13 | Dampproofing & Waterproofing | 15 | ✅ Structured JSON |
+| 9.14 | Drainage | 19 | ✅ Structured JSON |
+| 9.15 | Footings and Foundations | 20 | ✅ Structured JSON |
+| 9.16 | Floors on Ground | 14 | ✅ Structured JSON |
+| 9.17 | Columns | 14 | ✅ Structured JSON |
+| 9.18 | Crawl Spaces | 11 | ✅ Structured JSON |
+| 9.19 | Supports for Braced Wall Panels | 5 | ✅ Structured JSON |
+| 9.20 | Wall Framing | 70 | ✅ Structured JSON |
+| 9.21 | Floor Framing | 31 | ✅ Structured JSON |
+| 9.22 | Ceiling & Roof Framing (Wood) | 21 | ✅ Structured JSON |
+| 9.23 | Roof Trusses | 21 | ✅ Structured JSON |
+| 9.24 | Sheathing | 15 | ✅ Structured JSON |
+| 9.25 | Interior Wall & Ceiling Finishes | 14 | ✅ Structured JSON |
+| 9.26 | Cladding | 12 | ✅ Structured JSON |
+| 9.27 | Roofing | 12 | ✅ Structured JSON |
+| 9.28 | Masonry Chimneys & Fireplaces | 10 | ✅ Structured JSON |
+| 9.29 | Reserved | 0 | N/A |
+| 9.30 | Reserved | 0 | N/A |
+| 9.31 | Plumbing | 12 | ✅ Structured JSON |
+| 9.32 | Heating/HVAC | 13 | ✅ Structured JSON |
+| 9.33 | Ventilation | 20 | ✅ Structured JSON |
+| 9.34 | Electrical | 10 | ✅ Structured JSON |
+| 9.35 | Garages & Carports | 16 | ✅ Structured JSON |
+| 9.36 | Energy Efficiency | 21 | ✅ Structured JSON |
+| **TOTAL** | | **~500** | **32 sections** |
+
+#### PDF Extraction Status
+
+| Document | Size | Extraction Status | Notes |
+|----------|------|-------------------|-------|
+| **NBC-AE-2023.pdf** | 23.8 MB | ⚠️ Part 9 only | ~500 articles to JSON, 100 in DB |
+| **NECB-2020.pdf** | 4.4 MB | ❌ Not extracted | Energy code |
+| **NFC-AE-2023.pdf** | 6.3 MB | ❌ Not extracted | Fire code |
+| **NPC-2020.pdf** | 5.0 MB | ❌ Not extracted | Plumbing code |
+| **Land Use Bylaw** | 12 MB | ❌ Not extracted | Calgary zoning |
+| **Standata (30 PDFs)** | ~7 MB | ❌ Not extracted | Interpretation bulletins |
+| **Permit guides** | ~40 MB | ❌ Not extracted | Fee schedules, design guides |
+
+**Key Gap:** ~500 NBC articles extracted to JSON but only 100 loaded into database. Need to run import script to load all structured JSON files.
+
+#### Test Credentials
+
+Created test accounts for development (see `TEST_CREDENTIALS.md`):
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@codecheck.calgary | Admin123! |
+| Reviewer | reviewer@codecheck.calgary | Reviewer123! |
+| Free User | user@codecheck.calgary | User123! |
+
+Seed script: `python -m scripts.seed_users`
+
+#### Current Database State
+
+```
+SQLite (building_codes.db):
+├── codes: 1 record (NBC(AE) 2023)
+├── articles: 100 records (Section 9.10 Fire Protection only)
+├── zones: 0 records (need import)
+├── parcels: 0 records (need import)
+├── users: [via auth system]
+└── permit_applications: [via permit system]
+
+PostgreSQL (calgary_codes_db - port 5432):
+├── users table with role column
+├── sessions for auth
+└── permit_applications with documents
+
+Structured JSON (data/codes/):
+├── 32 sections extracted (9.5-9.36)
+├── ~500 articles total
+└── Ready for database import
+```
+
 #### Next Steps (Priority Order)
 
-1. **Extract NBC Section 9.5 (Accessibility)** - Barrier-free requirements
-2. **Extract remaining Part 9 sections** - Heating, Ventilation, etc.
-3. **Frontend development** - Implement Explore mode UI
-4. **Add relaxation/variance detection** - Flag when proposed buildings need relaxations
-5. **Integrate issue checklists into Guide mode** - Pre-warn users of common pitfalls
+1. **Load all NBC JSON to database** - Import ~500 articles from structured JSON files
+2. **Extract remaining codes** - NECB 2020, NFC 2023, NPC 2020, Land Use Bylaw
+3. **Extract Standata bulletins** - 30 interpretation documents
+4. **Integrate zone/parcel data** - Load Calgary zoning data into PostgreSQL
+5. **Add relaxation/variance detection** - Flag when proposed buildings need relaxations
+6. **Integrate issue checklists into Guide mode** - Pre-warn users of common pitfalls
+7. **Email notifications** - Password reset, email verification delivery
+8. **Payment/subscription integration** - Stripe for premium tiers
 
 #### Technical Notes
 
@@ -4006,6 +6419,461 @@ npm run dev
 python import_nbc_codes.py --section X.X --verify  # Verify first
 python import_nbc_codes.py --section X.X           # Then import
 ```
+
+---
+
+### Session: January 10, 2026
+
+**Status: Phase 3 - Full Code Extraction & Database Loading Complete + DSSP Module Design**
+
+#### Major Accomplishments
+
+| Task | Status | Details |
+|------|--------|---------|
+| **NECB-2020 Extraction** | ✅ Complete | 353 articles (Energy Code) |
+| **NFC-AE-2023 Extraction** | ✅ Complete | 1,878 articles (Fire Code) |
+| **NPC-2020 Extraction** | ✅ Complete | 340 articles (Plumbing Code) |
+| **Land Use Bylaw Extraction** | ✅ Complete | 37 districts, 1,053 pages |
+| **STANDATA Extraction** | ✅ Complete | 41 bulletins (20 BCI, 7 BCB, 4 FCB, 10 PCB) |
+| **Permit Guides Extraction** | ✅ Complete | 6 guides + 4 standards (10 docs) |
+| **Database Loading** | ✅ Complete | All data loaded to PostgreSQL |
+| **DSSP Module Design** | ✅ Complete | Comprehensive module added to plan |
+
+#### Extraction Scripts Created
+
+| Script | Location | Purpose |
+|--------|----------|---------|
+| `extract_all_codes.py` | `/app/scripts/` | Extract NECB, NFC, NPC, Land Use Bylaw |
+| `extract_standata_json.py` | `/app/scripts/` | Extract 41 STANDATA bulletins to JSON |
+| `extract_permits_standards.py` | `/app/scripts/` | Extract permit guides and standards |
+| `load_all_to_database.py` | `/app/scripts/` | Load all JSON to PostgreSQL database |
+
+#### Final Database State
+
+```
+PostgreSQL (calgary_codes_db - port 5432):
+
+CODES (6 total):
+├── NBC(AE) 2023      → 505 articles
+├── NECB 2020         → 353 articles
+├── NFC(AE) 2023      → 1,878 articles
+├── NPC 2020          → 340 articles
+├── LUB 1P2007        → 0 articles (zones loaded separately)
+└── GUIDES 2024       → 10 articles (reference docs)
+
+TOTAL: 3,086 articles loaded
+
+REQUIREMENTS: 896 checkable requirements (from NBC Part 9)
+
+STANDATA BULLETINS (41 total):
+├── BCI: 20 bulletins (Building Code Interpretations)
+├── BCB: 7 bulletins (Building Code Bulletins)
+├── FCB: 4 bulletins (Fire Code Bulletins)
+└── PCB: 10 bulletins (Plumbing Code Bulletins)
+
+ZONES (27 total):
+├── Residential: 5 zones
+├── Multi-Residential: 4 zones
+├── Commercial: 7 zones
+├── Industrial: 2 zones
+└── Special Purpose: 9 zones
+```
+
+#### JSON Files Created
+
+```
+data/codes/
+├── necb_2020_structured.json          (570 KB - Energy Code)
+├── nfc_ae_2023_structured.json        (1.1 MB - Fire Code)
+├── npc_2020_structured.json           (470 KB - Plumbing Code)
+├── land_use_bylaw_structured.json     (1.3 MB - Zoning)
+├── standata_bulletins.json            (465 KB - 41 bulletins)
+├── permits_standards_extracted.json   (398 KB - Guides)
+└── fee_schedule_extracted.json        (11 KB - Permit fees)
+```
+
+#### DSSP Module Added to Plan
+
+Comprehensive Development Site Servicing Plan module designed with:
+
+**Inputs Defined:**
+- Site information (address, area, zoning)
+- Proposed development (footprint, units, occupants)
+- Existing infrastructure (storm/sanitary/water connections)
+- Site conditions (grades, soil, groundwater)
+- Stormwater options (strategy, outlet, storage, quality)
+
+**Calculation Engine:**
+- Stormwater: Rational Method, Calgary IDF curves, retention sizing, ICD sizing
+- Sanitary: Population flows, Harmon peaking factor, pipe sizing
+- Water: Domestic demand, fire flow, service sizing
+- Grading: Minimum slopes, lot drainage, building grades
+
+**Output Deliverables:**
+- Sheet 1: Site Servicing Plan
+- Sheet 2: Grading Plan
+- Sheet 3: Stormwater Management Plan
+- Sheet 4: Details
+- Sheet 5: Floor Plan (architect upload)
+- Supporting reports and calculations
+
+**Database Schema:** 6 new tables for DSSP data
+**API Endpoints:** 23 endpoints for DSSP operations
+**Implementation Phases:** D1-D4 (14 weeks total)
+
+#### PDF Extraction Status (Updated)
+
+| Document | Size | Extraction Status | Output |
+|----------|------|-------------------|--------|
+| **NBC-AE-2023.pdf** | 23.8 MB | ✅ Part 9 Complete | 505 articles in DB |
+| **NECB-2020.pdf** | 4.4 MB | ✅ Complete | 353 articles in DB |
+| **NFC-AE-2023.pdf** | 6.3 MB | ✅ Complete | 1,878 articles in DB |
+| **NPC-2020.pdf** | 5.0 MB | ✅ Complete | 340 articles in DB |
+| **Land Use Bylaw** | 12 MB | ✅ Complete | 37 districts, 27 zones in DB |
+| **STANDATA (41 PDFs)** | ~4 MB | ✅ Complete | 41 bulletins in DB |
+| **Permit Guides (6 PDFs)** | ~40 MB | ✅ Complete | JSON + fee schedule |
+| **Standards (4 PDFs)** | ~4 MB | ✅ Complete | JSON extracted |
+
+#### Commands Used
+
+```bash
+# Extract all codes
+cd /Users/mohmmadhanafy/Building-code-consultant/app/backend
+source .venv/bin/activate
+python ../scripts/extract_all_codes.py --all
+
+# Extract STANDATA bulletins
+python ../scripts/extract_standata_json.py
+
+# Extract permit guides and standards
+python ../scripts/extract_permits_standards.py
+
+# Load everything to database
+python ../scripts/load_all_to_database.py --force
+```
+
+#### Next Steps
+
+1. **Implement DSSP calculation engine** - ✅ Complete (see below)
+2. **Add embeddings for semantic search** - Generate vectors for all articles
+3. **Integrate DSSP with Guide mode** - Link servicing design to permit workflow
+4. **Build drawing generation system** - ✅ Complete (SVG generator)
+5. **Add real-time compliance checking** - Validate inputs against code requirements
+
+---
+
+### Session: January 10, 2026 (Continued - Late)
+
+**Status: Phase 3 - DSSP & Quantity Survey Modules Complete with Full Test Coverage**
+
+#### Major Accomplishments
+
+| Task | Status | Details |
+|------|--------|---------|
+| **DSSP Calculation Engine** | ✅ Complete | Stormwater, Sanitary, Water Service calculations |
+| **Calgary IDF Curves** | ✅ Complete | 2, 5, 10, 25, 50, 100-year return periods |
+| **Rational Method** | ✅ Complete | Q = C × i × A with Calgary coefficients |
+| **Manning's Equation** | ✅ Complete | Pipe sizing for storm/sanitary |
+| **Harmon Peaking Factor** | ✅ Complete | PF = 1 + 14/(4 + √P) |
+| **Hazen-Williams** | ✅ Complete | Water service head loss calculations |
+| **DSSP API Endpoints** | ✅ Complete | 7 endpoints for all calculations |
+| **DSSP Frontend UI** | ✅ Complete | Professional engineering dashboard |
+| **DSSP Drawing Generator** | ✅ Complete | SVG output for 5 DSSP sheets |
+| **Quantity Survey Module** | ✅ Complete | Cost estimation & BOQ generation |
+| **Calgary Cost Data** | ✅ Complete | 2024-2026 construction costs |
+| **Parametric Estimator** | ✅ Complete | Class D estimates with CSI breakdown |
+| **BOQ Generator** | ✅ Complete | Detailed line items by CSI division |
+| **Permit Fee Calculator** | ✅ Complete | $10.14/$1,000 Calgary rate |
+| **QS API Endpoints** | ✅ Complete | 9 endpoints for estimates and BOQ |
+| **QS Frontend UI** | ✅ Complete | Industrial blueprint aesthetic |
+| **Unit Tests - DSSP** | ✅ Complete | 59 tests (IDF, Storm, Sanitary, Water) |
+| **Unit Tests - QS** | ✅ Complete | 53 tests (Cost, Estimator, BOQ) |
+
+#### Files Created
+
+**DSSP Module:**
+```
+app/backend/app/services/dssp/
+├── __init__.py          - Module exports
+├── idf_curves.py        - Calgary IDF curve service (286 lines)
+├── stormwater.py        - Rational Method & Manning's (536 lines)
+├── sanitary.py          - Harmon peaking & sanitary design (578 lines)
+├── water.py             - Hazen-Williams & water sizing (652 lines)
+└── drawing_generator.py - SVG generator for 5 sheets (800+ lines)
+
+app/backend/app/api/dssp.py - API endpoints (340 lines)
+app/frontend/src/pages/DSSPCalculatorPage.tsx - React UI (1,200+ lines)
+data/codes/calgary_idf_curves.json - IDF coefficients & runoff C values
+```
+
+**Quantity Survey Module:**
+```
+app/backend/app/services/quantity_survey/
+├── __init__.py          - Module exports
+├── cost_data.py         - Calgary cost data service (191 lines)
+├── estimator.py         - Parametric estimator (369 lines)
+└── boq_generator.py     - BOQ generator (765 lines)
+
+app/backend/app/api/quantity_survey.py - API endpoints (280 lines)
+app/frontend/src/pages/QuantitySurveyPage.tsx - React UI (950+ lines)
+data/codes/calgary_construction_costs.json - Construction costs by type/quality
+```
+
+**Unit Tests:**
+```
+app/backend/tests/
+├── test_dssp_calculations.py   - 59 tests (900+ lines)
+└── test_quantity_survey.py     - 53 tests (680+ lines)
+```
+
+#### DSSP Calculation Formulas Implemented
+
+| Calculation | Formula | Calgary Values |
+|-------------|---------|----------------|
+| **IDF Intensity** | i = a / (t + b)^c | a=820-1680, b=7.0-7.8, c=0.81-0.84 |
+| **Rational Method** | Q = C × i × A / 360 | C per land use, i from IDF, A in hectares |
+| **Time of Concentration** | Tc = 3.26 × (1.1-C) × L^0.5 / S^(1/3) | Airport method (Calgary standard) |
+| **Manning's Equation** | Q = (1/n) × A × R^(2/3) × S^(1/2) | n=0.011-0.024 by material |
+| **Harmon Peaking** | PF = 1 + 14 / (4 + √P) | P in thousands, limits 1.5-4.0 |
+| **Hazen-Williams** | h = 10.67 × Q^1.852 / (C^1.852 × D^4.87) × L | C=120-150 by material |
+
+#### Calgary Design Standards Implemented
+
+**Stormwater:**
+- Minimum storm main: 300mm
+- Maximum velocity: 4.5 m/s
+- Minimum velocity: 0.6 m/s
+- Design flow ratio: 80% full
+- Minimum cover: 2.0m (frost)
+
+**Sanitary:**
+- Minimum sanitary main: 200mm
+- Maximum velocity: 3.0 m/s
+- Self-cleansing velocity: 0.75 m/s
+- Design flow ratio: 75% full
+- Infiltration: 0.28 L/s/ha
+
+**Water:**
+- Minimum residential main: 150mm
+- Minimum commercial main: 200mm
+- Minimum pressure: 275 kPa (40 psi)
+- Fire flow pressure: 140 kPa (20 psi)
+- Hydrant spacing: 150m residential, 100m commercial
+
+#### Quantity Survey Features
+
+**Parametric Estimation:**
+- 8 project types (residential, commercial, industrial, institutional)
+- 5 quality levels (economy to luxury)
+- Height factor for multi-storey (1.0 to 1.35+)
+- Location factor (Calgary = 1.0)
+- Inflation adjustment (2024-2026)
+- CSI division breakdown (14 divisions)
+- Soft costs (contingency, design, permits, other)
+
+**Bill of Quantities:**
+- 9 CSI divisions generated
+- Quality multiplier (0.8 to 2.0)
+- Basement/garage add-ons
+- Line items with quantities, units, rates
+- Section totals and grand total
+- 10% default contingency
+
+**Permit Fee Calculator:**
+- Building permit: $10.14/$1,000
+- Electrical permit: $6.05/$1,000
+- Plumbing permit: $6.05/$1,000
+- Gas permit: $5.03/$1,000
+- Minimum fees applied
+
+#### Test Results
+
+```
+======================= 112 passed, 31 warnings in 0.13s =======================
+
+DSSP Tests (59):
+├── TestIDFCurveService: 12 tests
+├── TestStormwaterCalculator: 13 tests
+├── TestSanitaryCalculator: 14 tests
+├── TestWaterCalculator: 17 tests
+└── TestIntegration: 3 tests
+
+Quantity Survey Tests (53):
+├── TestCostDataService: 18 tests
+├── TestEstimatorService: 14 tests
+├── TestBOQGeneratorService: 14 tests
+├── TestCSIDivisions: 3 tests
+└── TestIntegration: 5 tests
+```
+
+#### API Endpoints Added
+
+**DSSP (`/api/v1/dssp/`):**
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/idf/intensity` | POST | Calculate rainfall intensity |
+| `/idf/table` | GET | Get IDF table |
+| `/stormwater/rational-method` | POST | Calculate peak flow |
+| `/stormwater/design-pipe` | POST | Size storm pipe |
+| `/sanitary/design-flow` | POST | Calculate sanitary flow |
+| `/sanitary/design-pipe` | POST | Size sanitary pipe |
+| `/water/design-flow` | POST | Calculate water demand |
+| `/water/design-service` | POST | Size water service |
+
+**Quantity Survey (`/api/v1/quantity-survey/`):**
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/project-types` | GET | List available project types |
+| `/quality-levels` | GET | List quality levels |
+| `/csi-breakdown/{type}` | GET | Get CSI division breakdown |
+| `/cost-per-sf` | POST | Get cost per SF |
+| `/parametric-estimate` | POST | Full parametric estimate |
+| `/permit-fee` | POST | Calculate single permit fee |
+| `/all-permit-fees` | POST | Calculate all permit fees |
+| `/residential-boq` | POST | Generate residential BOQ |
+| `/quick-estimate` | POST | Quick cost range estimate |
+
+#### Frontend Routes Added
+
+| Route | Component | Purpose |
+|-------|-----------|---------|
+| `/dssp` | DSSPCalculatorPage | DSSP calculation dashboard |
+| `/quantity-survey` | QuantitySurveyPage | Cost estimation & BOQ |
+
+#### DSSP Drawing Generator Output
+
+The drawing generator creates SVG drawings for:
+1. **Sheet 1: Drainage Area Plan** - Catchment boundaries, flow directions, areas
+2. **Sheet 2: Storm Sewer Design** - Pipe profiles, manholes, grades
+3. **Sheet 3: Sanitary Sewer Design** - Pipe profiles, connections
+4. **Sheet 4: Water Service Design** - Service connections, hydrants
+5. **Sheet 5: Summary Sheet** - Calculation summary, standards compliance
+
+#### Next Steps
+
+1. ✅ ~~Implement DSSP calculation engine~~ - Complete
+2. ✅ ~~Build drawing generation system~~ - Complete (SVG)
+3. ✅ ~~Add unit tests~~ - Complete (112 tests)
+4. **Add embeddings for semantic search** - Generate vectors for all articles
+5. **Integrate DSSP with permit workflow** - Link to Guide/Review modes
+6. **Implement Fire Safety Calculator** - Priority P1 future module
+7. **Implement NECB Energy Calculator** - Priority P1 future module
+8. **Add PDF export for drawings** - react-pdf or similar
+9. **Add DXF export option** - CAD compatibility
+
+#### Commands to Run Tests
+
+```bash
+cd /Users/mohmmadhanafy/Building-code-consultant/app/backend
+source venv/bin/activate
+
+# Run all DSSP and QS tests
+python -m pytest tests/test_dssp_calculations.py tests/test_quantity_survey.py -v
+
+# Run with coverage
+python -m pytest tests/test_dssp_calculations.py tests/test_quantity_survey.py --cov=app/services
+
+# Run specific test class
+python -m pytest tests/test_dssp_calculations.py::TestStormwaterCalculator -v
+```
+
+---
+
+### Session: January 10, 2026 (Continued - Afternoon)
+
+**Status: Phase 3 - DSSP Calculator UX Fix Complete**
+
+#### Issue Fixed
+
+**Problem:** DSSP Calculator preset scenarios and form values were not persisting when switching between the Stormwater, Sanitary, and Water Service tabs. Each tab had independent local state that was lost on tab switch.
+
+**Root Cause:** Each tab component (StormwaterTab, SanitaryTab, WaterTab) was using its own `useState` hooks for form values and calculation results. When users switched tabs, the components unmounted and remounted with fresh state.
+
+#### Solution Implemented
+
+| Task | Status | Details |
+|------|--------|---------|
+| **State Architecture Refactor** | ✅ Complete | Lifted shared state to parent DSSPCalculatorPage |
+| **Unified Preset Handler** | ✅ Complete | Single handler loads all three tab presets |
+| **Props-Based State Management** | ✅ Complete | Tabs receive state and handlers via props |
+| **TypeScript Compilation** | ✅ Verified | No errors |
+
+#### Code Changes
+
+**File Modified:** `app/frontend/src/pages/DSSPCalculatorPage.tsx`
+
+**1. Added State Interfaces:**
+```typescript
+interface StormwaterState {
+  pipeId: string;
+  catchments: CatchmentInput[];
+  slopePct: string;
+  returnPeriod: number;
+  material: string;
+  minDiameter: number;
+  result: PipeDesignResult | null;
+}
+
+interface SanitaryState {
+  pipeId: string;
+  loads: SanitaryLoadInput[];
+  slopePct: string;
+  material: string;
+  minDiameter: number;
+  result: SanitaryPipeResult | null;
+}
+
+interface WaterState {
+  serviceId: string;
+  loads: WaterLoadInput[];
+  lengthM: number;
+  availablePressure: number;
+  elevationChange: number;
+  material: string;
+  result: WaterServiceResult | null;
+}
+```
+
+**2. Moved State to Parent:**
+- `projectName` - Shared across all tabs
+- `selectedPreset` - Unified preset selection
+- `stormwaterState`, `sanitaryState`, `waterState` - Tab-specific data
+
+**3. Created Unified Preset Handler:**
+```typescript
+const handlePresetSelect = useCallback(async (key: string) => {
+  setSelectedPreset(key);
+  // Load stormwater preset
+  const stormScenario = await presetsApi.getStormwaterScenario(key);
+  // Load sanitary preset
+  const sanScenario = await presetsApi.getSanitaryScenario(key);
+  // Load water preset
+  const waterScenario = await presetsApi.getWaterScenario(key);
+  // Update all three states
+}, []);
+```
+
+**4. Refactored Tab Components:**
+- Each tab now receives props instead of managing own state
+- State updates flow through parent component
+- Calculation results persist across tab switches
+
+#### Verification
+
+| Test | Result |
+|------|--------|
+| Select preset on Stormwater tab | ✅ Values populated |
+| Switch to Sanitary tab | ✅ Preset selection persisted, project name intact |
+| Switch to Water Service tab | ✅ Project name persisted |
+| Switch back to Stormwater | ✅ All values and results intact |
+| TypeScript compilation | ✅ No errors |
+
+#### Technical Notes
+
+- State persistence is handled entirely in React (no localStorage/sessionStorage)
+- Preset loading is async and fetches all three scenarios in parallel
+- Tab components are now "controlled components" receiving state via props
+- No database changes required - frontend-only fix
 
 ---
 
@@ -4794,6 +7662,486 @@ POST   /api/blog/newsletter         # Newsletter signup
 
 ---
 
-*Document Version: 2.0*
-*Last Updated: January 9, 2026*
-*Added: Landing Page, Authentication, Pricing, Blog System, Standards Documentation*
+### Session: January 11, 2026
+
+**Status: Phase 3 - AI Q&A System with Hybrid Search Complete**
+
+#### Major Accomplishments
+
+| Component | Status | Description |
+|-----------|--------|-------------|
+| **LLM Docker Container** | ✅ Complete | Separate container for LiquidAI LFM2.5-1.2B model |
+| **llama.cpp Integration** | ✅ Complete | Switched from transformers to llama.cpp for efficient CPU inference |
+| **Hybrid Search (pgvector)** | ✅ Complete | Vector + keyword search with RRF fusion |
+| **Embedding Generation** | ✅ Complete | 3128 articles + 41 STANDATA bulletins embedded |
+| **Academic Citation System** | ✅ Complete | [1], [2] style citations with References section |
+| **Chat Widget Enhancement** | ✅ Complete | Blinking loader, academic-style references display |
+| **Frontend Type Updates** | ✅ Complete | Reference interface, ChatResponse with citations |
+
+#### AI Q&A Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    AI Q&A CHAT SYSTEM                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   User Question                                                 │
+│        │                                                        │
+│        ▼                                                        │
+│   ┌─────────────────────────────────────────┐                  │
+│   │         HYBRID SEARCH                    │                  │
+│   │                                          │                  │
+│   │   1. Extract query embedding             │                  │
+│   │   2. Vector search (pgvector cosine)     │                  │
+│   │   3. Keyword search (PostgreSQL FTS)     │                  │
+│   │   4. RRF Fusion (k=60)                   │                  │
+│   │   5. Deduplicate & rank                  │                  │
+│   └─────────────────────────────────────────┘                  │
+│        │                                                        │
+│        ▼                                                        │
+│   ┌─────────────────────────────────────────┐                  │
+│   │         CONTEXT BUILDER                  │                  │
+│   │                                          │                  │
+│   │   • Number sources [1], [2], [3]...      │                  │
+│   │   • Build context from articles/standata │                  │
+│   │   • Format references                    │                  │
+│   └─────────────────────────────────────────┘                  │
+│        │                                                        │
+│        ▼                                                        │
+│   ┌─────────────────────────────────────────┐                  │
+│   │    LLM SERVICE (Docker Container)        │                  │
+│   │                                          │                  │
+│   │    Model: LiquidAI LFM2.5-1.2B-Instruct │                  │
+│   │    Format: GGUF Q4_K_M quantization      │                  │
+│   │    Engine: llama.cpp (CPU optimized)     │                  │
+│   │    Memory: ~2GB for inference            │                  │
+│   └─────────────────────────────────────────┘                  │
+│        │                                                        │
+│        ▼                                                        │
+│   ┌─────────────────────────────────────────┐                  │
+│   │         RESPONSE FORMATTER               │                  │
+│   │                                          │                  │
+│   │   • answer_with_citations (text + [N])   │                  │
+│   │   • references (numbered list)           │                  │
+│   │   • sources (detailed context items)     │                  │
+│   └─────────────────────────────────────────┘                  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+#### Files Created/Modified
+
+**New Files:**
+| File | Purpose |
+|------|---------|
+| `llm_service/Dockerfile` | Docker container for LLM service |
+| `llm_service/main.py` | FastAPI LLM service with llama.cpp |
+| `llm_service/requirements.txt` | LLM service dependencies |
+| `app/services/embedding_service.py` | Sentence-transformers embedding service |
+| `scripts/generate_embeddings.py` | Batch embedding generation script |
+
+**Modified Files:**
+| File | Changes |
+|------|---------|
+| `docker-compose.yml` | Added llm-service container with resource limits |
+| `app/api/chat.py` | Hybrid search, citations, references |
+| `app/models/standata.py` | Added embedding column (vector 384) |
+| `app/services/llm_service.py` | HTTP client for containerized LLM |
+| `frontend/src/api/client.ts` | Reference type, updated ChatResponse |
+| `frontend/src/components/ChatWidget.tsx` | Academic citations, blinking loader |
+
+#### Database Changes
+
+```sql
+-- Added embedding columns for vector search
+ALTER TABLE articles ADD COLUMN embedding vector(384);
+ALTER TABLE standata ADD COLUMN embedding vector(384);
+
+-- Vector indexes for similarity search
+CREATE INDEX idx_articles_embedding ON articles USING ivfflat (embedding vector_cosine_ops);
+CREATE INDEX idx_standata_embedding ON standata USING ivfflat (embedding vector_cosine_ops);
+```
+
+#### Embedding Statistics
+
+| Table | Records | Status |
+|-------|---------|--------|
+| Articles | 3,128 | ✅ All embedded |
+| STANDATA | 41 | ✅ All embedded |
+| Total | 3,169 | Complete |
+
+#### Technology Stack Updates
+
+| Component | Previous | Current | Benefit |
+|-----------|----------|---------|---------|
+| LLM Runtime | transformers | llama.cpp | 50% less memory, faster CPU |
+| Search | Keyword only | Hybrid (vector + keyword) | Better semantic results |
+| Model Format | PyTorch | GGUF Q4_K_M | 4x smaller, faster load |
+| Citations | Simple sources | Academic [1], [2] style | Professional references |
+
+#### LLM Container Configuration
+
+```yaml
+llm-service:
+  build: ./llm_service
+  ports:
+    - "8081:8081"
+  volumes:
+    - llm_models:/models
+  environment:
+    - MODEL_REPO=LiquidAI/LFM2.5-1.2B-Instruct-GGUF
+    - MODEL_FILE=LFM2.5-1.2B-Instruct-Q4_K_M.gguf
+    - CONTEXT_SIZE=4096
+    - N_THREADS=4
+  deploy:
+    resources:
+      limits:
+        cpus: '4'
+        memory: 4G
+```
+
+#### Session Update: January 11, 2026 (Late Evening)
+
+**Status: LFM2.5 Model Successfully Integrated**
+
+##### Issue Resolved
+- **Problem**: llama-cpp-python 0.2.90 didn't support LFM2 architecture ("unknown model architecture: 'lfm2'")
+- **Solution**: Upgraded to llama-cpp-python 0.3.16 which includes LFM2 support
+- **Reference**: https://docs.liquid.ai/lfm/inference/llama-cpp
+
+##### Configuration Updates
+
+| Setting | Value | Source |
+|---------|-------|--------|
+| llama-cpp-python | 0.3.16 | PyPI latest |
+| temperature | 0.1 | LiquidAI docs |
+| top_k | 50 | LiquidAI docs |
+| top_p | 0.1 | LiquidAI docs |
+| repeat_penalty | 1.05 | LiquidAI docs |
+
+##### Prompt Engineering Improvements
+- Optimized system prompt for LFM2.5's RAG/extraction strengths
+- Added explicit example of good vs bad responses
+- Reduced max_new_tokens to 150 for focused answers
+- Included few-shot example in prompt
+
+##### Verified Working
+```bash
+# Model info
+curl http://localhost:8081/model-info
+# Returns: LiquidAI/LFM2.5-1.2B-Instruct, 697 MB, loaded: true
+
+# Chat test
+curl -X POST http://localhost:8002/api/v1/chat/ask \
+  -d '{"message": "What is the minimum stair width?"}'
+# Returns: "The minimum stair width is 900 mm [2]..."
+```
+
+##### Resource Usage
+- Model file: 697 MB
+- Runtime memory: ~1.5 GB
+- CPU during inference: ~300-400%
+- Latency: ~20-30s per response (CPU inference)
+
+#### Next Steps
+
+1. ~~Complete LLM Container Build~~ ✅ Done
+2. ~~Test End-to-End Q&A~~ ✅ Done
+3. **Integrate Fee Schedule** - Connect real pricing to Quantity Survey module
+
+---
+
+*Document Version: 2.3*
+*Last Updated: January 11, 2026*
+*Added: AI Q&A with hybrid search, LLM Docker container, academic citation system, embedding generation*
+*Updated: Technology stack with llama.cpp, pgvector integration, ChatWidget with references*
+
+---
+
+### Session: January 11, 2026 (Late Night)
+
+**Status: Extraction Method Comparison Complete - Pythonic vs VLM**
+
+#### Objective
+
+Compare extraction quality between:
+1. **Pythonic extraction** (pdfplumber, PyMuPDF)
+2. **VLM extraction** (Qwen3-VL 30B via Ollama)
+
+Target: NBC Part 1 articles that define Part 9 scope (Article 1.3.3.3)
+
+#### Methods Tested
+
+| Method | Library | Description |
+|--------|---------|-------------|
+| pdfplumber | pdfplumber | Standard PDF text extraction |
+| pymupdf | PyMuPDF/fitz | Alternative PDF library, text mode |
+| pymupdf_blocks | PyMuPDF/fitz | Block-level extraction for structure |
+| vlm_qwen3vl_30b | Ollama + Qwen3-VL | Vision-Language Model OCR |
+
+#### Qwen3-VL Configuration (Best Practices)
+
+| Parameter | Value | Source |
+|-----------|-------|--------|
+| Model | qwen3-vl:30b | Ollama registry |
+| DPI | 300 | Optimal for document OCR |
+| Temperature | 0.7 | Qwen3-VL docs (document extraction) |
+| Top_p | 0.8 | Qwen3-VL docs |
+| Top_k | 20 | Default |
+| num_predict | 8192 | Allow full article extraction |
+
+#### Results Summary
+
+| Method | Quality Score | Time | Text Length | Subsections |
+|--------|--------------|------|-------------|-------------|
+| **pdfplumber** | 91.67/100 | 4.69s | 2,062 chars | 3 |
+| pymupdf | 87.50/100 | 0.064s | 2,334 chars | 3 |
+| vlm_qwen3vl_30b | 83.33/100 | 71.4s | 2,377 chars | **6** |
+| pymupdf_blocks | 79.17/100 | 0.06s | 2,359 chars | 3 |
+
+#### Quality Analysis
+
+**PDFPlumber (Highest Score: 91.67)**
+- Extracted all numeric values: 3 storeys, 600m², 1200m², 2400m², 300m²
+- **Issue**: Text has spacing problems ("Part 9of Division Bappliestoall...")
+- Subsection parsing incomplete (only 3 of 6 sentences)
+- Fast enough for production use (4.69s)
+
+**VLM Qwen3-VL (Score: 83.33)**
+- **Clean, readable text** with proper spacing
+- **Correctly parsed all 6 sentences** with structure
+- **Semantic labels** on numeric values (max_storeys, max_building_area_m2)
+- Slower (71s) but best for accuracy-critical applications
+- Better understanding of document structure
+
+#### Key Finding: Quality Score vs Actual Quality
+
+The automated quality score favors pythonic extraction because:
+1. It found more numeric values (as a flat list)
+2. Text length metrics don't penalize spacing issues
+
+**However**, VLM extraction produced:
+- Properly spaced, human-readable text
+- Correct structural parsing (all 6 sentences)
+- Semantically labeled data extraction
+- Better for downstream NLP/RAG applications
+
+#### Recommendation
+
+| Use Case | Recommended Method |
+|----------|-------------------|
+| Bulk extraction (speed priority) | pymupdf (0.06s, 87.5%) |
+| Balance of speed/quality | pdfplumber (4.69s, 91.67%) |
+| Accuracy-critical extraction | VLM qwen3-vl:30b (71s, best structure) |
+| Production Q&A database | Hybrid: pythonic + VLM validation |
+
+#### Hybrid Approach (Recommended)
+
+1. **First pass**: Use pdfplumber for fast bulk extraction
+2. **Validation pass**: Use VLM on critical articles (Part 1 scope, Part 9 key sections)
+3. **Store both**: Keep raw extraction + VLM-enhanced version
+4. **Use VLM for**:
+   - Articles with complex tables
+   - Critical dimensional requirements
+   - Scope-defining articles (like 1.3.3.3)
+
+#### Files Created
+
+```
+app/scripts/compare_extraction_methods.py   # Comparison script
+data/extraction_comparison/
+├── comparison_summary_20260111_014839.json
+├── pdfplumber_extraction_20260111_014839.json
+├── pymupdf_extraction_20260111_014839.json
+├── pymupdf_blocks_extraction_20260111_014839.json
+└── vlm_qwen3vl_30b_extraction_20260111_014839.json
+```
+
+#### VLM Extracted Article 1.3.3.3 (Clean Text)
+
+```
+1.3.3.3. Application of Parts 9, 10 and 11
+
+1) Part 9 of Division B applies to all buildings described in Article 1.1.1.1.
+   of 3 storeys or less in building height, having a building area not exceeding
+   600 m², and used for major occupancies classified as
+   a) Group B, Division 4, home-type care occupancies,
+   b) Group C, residential occupancies,
+   c) Group D, business and personal services occupancies,
+   d) Group E, mercantile occupancies, or
+   e) Group F, Divisions 2 and 3, medium- and low-hazard industrial occupancies.
+
+2) Part 10 of Division B applies to all buildings described in Article 1.1.1.1.
+   conforming to Sentence (3) in which accommodation is provided for an
+   industrial workforce living and working in a temporary location.
+
+[...sentences 3-6 also extracted with proper formatting...]
+```
+
+#### Next Steps
+
+1. ✅ Extraction comparison complete
+2. **Apply hybrid extraction** to remaining critical articles
+3. **Re-extract Part 1 scope articles** using VLM for database
+4. **Add extraction quality flags** to articles table (pythonic_only vs vlm_validated)
+
+---
+
+### Session: January 11, 2026 (Continued - VLM Extraction Pipeline)
+
+**Status: Full VLM Extraction Pipeline Operational**
+
+#### Objective
+
+Implement production VLM extraction using Qwen3-VL 30B via LM Studio to re-extract ALL building codes with clean, properly-spaced text for improved semantic search quality.
+
+#### Major Accomplishments
+
+| Task | Status | Details |
+|------|--------|---------|
+| **VLM Extraction Script** | ✅ Complete | `app/scripts/vlm_extract_all.py` with LM Studio integration |
+| **Database Repopulation Script** | ✅ Complete | `app/scripts/repopulate_db.py` for loading VLM JSON |
+| **Database Model Update** | ✅ Complete | Added extraction tracking columns to `articles` table |
+| **LM Studio Integration** | ✅ Complete | Switched from Ollama to LM Studio (35s vs 130s per page) |
+| **LFM Bug Fix** | ✅ Complete | Fixed KV cache consecutive request bug in LLM service |
+| **VLM Extraction Quality Test** | ✅ Complete | Semantic search correctly retrieves relevant articles |
+| **NBC Part 1 Extraction** | ✅ Complete | Division A articles including 1.3.3.3 (701KB) |
+| **NBC Part 9 General** | ✅ Complete | Sections 9.1-9.4 extracted (316KB) |
+| **NBC Part 9 Full** | 🔄 In Progress | Main Part 9 sections (running overnight) |
+
+#### LM Studio Configuration
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| Server URL | http://10.0.0.133:8080 | OpenAI-compatible API |
+| Model | qwen/qwen3-vl-30b | Vision-Language Model |
+| Temperature | 0.7 | Optimal for document extraction |
+| Top_p | 0.8 | Per Qwen3-VL documentation |
+| Max Tokens | 8192 | Allow full article extraction |
+| Image DPI | 300 | Optimal for OCR |
+
+#### LFM Consecutive Request Bug Fix
+
+**Problem:** LFM LLM failed with "llama_decode returned -1" on second consecutive request.
+
+**Root Cause:** llama.cpp KV cache not being reset between requests.
+
+**Solution Applied to `llm_service/main.py`:**
+```python
+def reset_model():
+    """Reset the model's KV cache to fix consecutive request issues."""
+    global _llm
+    if _llm is not None:
+        try:
+            _llm.reset()  # Clear KV cache
+            logger.debug("Model KV cache reset")
+        except Exception as e:
+            logger.warning(f"Could not reset model: {e}")
+
+@app.post("/generate")
+async def generate_response(request: GenerateRequest):
+    reset_model()  # Reset before each request
+    # ... rest of generation
+```
+
+**Verification:** Tested 3 consecutive requests - all succeeded.
+
+#### Database Schema Updates
+
+Added extraction tracking columns to `app/backend/app/models/codes.py`:
+
+```python
+class Article(Base):
+    # ... existing columns ...
+
+    # Extraction tracking (for VLM re-extraction)
+    extraction_model = Column(String(100), nullable=True)  # e.g., "qwen3-vl:30b", "pdfplumber"
+    extraction_confidence = Column(String(20), nullable=True)  # HIGH, MEDIUM, LOW
+    vlm_extracted = Column(Boolean, default=False)  # True if extracted via VLM
+    extraction_date = Column(DateTime, nullable=True)
+```
+
+#### Files Created/Modified
+
+| File | Action | Purpose |
+|------|--------|---------|
+| `app/scripts/vlm_extract_all.py` | CREATE | Main VLM extraction script |
+| `app/scripts/repopulate_db.py` | CREATE | Database reload with embeddings |
+| `app/backend/app/models/codes.py` | MODIFY | Added extraction tracking columns |
+| `app/backend/llm_service/main.py` | MODIFY | Fixed KV cache reset bug |
+| `CLAUDE.md` | MODIFY | Added VLM pipeline documentation |
+| `data/codes/vlm/` | CREATE | VLM extraction output directory |
+
+#### VLM Extracted Files
+
+| File | Size | Status | Articles |
+|------|------|--------|----------|
+| `nbc_ae_2023_part1_vlm.json` | 701 KB | ✅ Complete | 418 articles |
+| `nbc_ae_2023_part9_general_vlm.json` | 316 KB | ✅ Complete | ~100 articles |
+| `nbc_ae_2023_part9_vlm.json` | - | 🔄 In Progress | ~291 pages |
+| `necb_2020_vlm.json` | - | ⏳ Pending | ~353 articles |
+| `nfc_ae_2023_vlm.json` | - | ⏳ Pending | ~1,878 articles |
+| `npc_2020_vlm.json` | - | ⏳ Pending | ~340 articles |
+
+#### Extraction Performance
+
+| Metric | Value |
+|--------|-------|
+| Average time per page | 35-40 seconds |
+| Rest interval | 1 minute every 20 pages |
+| Progress saving | Every 10 pages |
+| Image format | PNG at 300 DPI |
+| JSON output | Structured with articles array |
+
+#### Quality Test Results
+
+Tested semantic search with VLM-extracted articles:
+
+**Query:** "What buildings does Part 9 apply to?"
+
+**Top Result:** Article 1.3.3 (Application of Parts 9, 10 and 11)
+- Similarity Score: 0.83
+- Correctly identifies building height (3 storeys), area (600m²), and occupancy types
+- Clean, properly-spaced text compared to pythonic extraction
+
+**LFM Response Quality:**
+- Accurate answer citing sources
+- Proper formatting with code section references
+- Fast response after KV cache fix
+
+#### Extraction Pipeline Commands
+
+```bash
+# Start VLM extraction (runs overnight)
+cd /Users/mohmmadhanafy/Building-code-consultant/app/backend
+source .venv/bin/activate
+python ../scripts/vlm_extract_all.py --all --output ../../../data/codes/vlm/
+
+# Check extraction progress
+tail -f data/codes/vlm/extraction_log.txt
+
+# After extraction: Load to database with embeddings
+python ../scripts/repopulate_db.py --source ../../../data/codes/vlm/ --backup
+
+# Test semantic search
+curl -X POST http://localhost:8002/api/v1/chat/ask \
+  -H "Content-Type: application/json" \
+  -d '{"message": "What buildings does Part 9 apply to?"}'
+```
+
+#### Next Steps
+
+1. ✅ ~~Create VLM extraction script~~ - Complete
+2. ✅ ~~Fix LFM consecutive request bug~~ - Complete
+3. ✅ ~~Test extraction quality~~ - Complete
+4. 🔄 Complete full Part 9 extraction (overnight)
+5. ⏳ Extract remaining codes (NECB, NFC, NPC)
+6. ⏳ Run `repopulate_db.py` to load all VLM articles
+7. ⏳ Generate embeddings for all ~3000 articles
+8. ⏳ Verify semantic search quality improvement
+
+---
+
+*Document Version: 2.5*
+*Last Updated: January 11, 2026*
+*Added: VLM extraction pipeline implementation, LM Studio integration, LFM KV cache bug fix, extraction tracking columns*

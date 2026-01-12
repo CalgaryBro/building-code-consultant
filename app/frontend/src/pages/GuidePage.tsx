@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   MapPin,
   Building,
@@ -24,9 +25,12 @@ import {
   ChevronRight,
   Sparkles,
   XCircle,
+  ScrollText,
+  Calendar,
+  ExternalLink,
 } from 'lucide-react';
-import type { GuideProjectInput, GuideResponse } from '../types';
-import { guideApi, ApiError, type AddressAutocompleteResult } from '../api/client';
+import type { GuideProjectInput, GuideResponse, StandataSummary } from '../types';
+import { guideApi, exploreApi, ApiError, type AddressAutocompleteResult } from '../api/client';
 import { AddressAutocomplete } from '../components/AddressAutocomplete';
 
 // Blueprint background component
@@ -320,6 +324,7 @@ function ResultCard({
 }
 
 export function GuidePage() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [result, setResult] = useState<GuideResponse | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
@@ -349,6 +354,23 @@ export function GuidePage() {
         setApiError(error.message || 'An unexpected error occurred');
       }
     },
+  });
+
+  // Fetch related Standata bulletins based on project characteristics
+  const getStandataSearchTerm = () => {
+    const terms: string[] = [];
+    if (formData.occupancy_type === 'residential') terms.push('dwelling', 'suite', 'egress');
+    if (formData.occupancy_type === 'commercial') terms.push('assembly', 'business');
+    if (formData.project_type === 'renovation') terms.push('existing', 'alteration');
+    if (formData.project_type === 'addition') terms.push('addition', 'extension');
+    if (formData.project_type === 'change_of_use') terms.push('change of use', 'occupancy');
+    return terms.length > 0 ? terms[0] : 'building';
+  };
+
+  const { data: relatedStandata, isLoading: loadingStandata } = useQuery({
+    queryKey: ['standataForProject', formData.occupancy_type, formData.project_type],
+    queryFn: () => exploreApi.listStandata({ search: getStandataSearchTerm(), limit: 5 }),
+    enabled: step === 4 && !!result,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -879,6 +901,88 @@ export function GuidePage() {
                   </ol>
                 </ResultCard>
 
+                {/* Related Standata Bulletins */}
+                <ResultCard
+                  title="Related STANDATA Bulletins"
+                  icon={ScrollText}
+                  iconBg="bg-gradient-to-br from-purple-500 to-purple-600"
+                  delay={0.4}
+                >
+                  <p className="text-sm text-slate-600 mb-4">
+                    Official Alberta interpretations and guidance for your project type:
+                  </p>
+
+                  {loadingStandata ? (
+                    <div className="flex items-center justify-center py-8">
+                      <Loader2 className="w-6 h-6 animate-spin text-purple-500" />
+                    </div>
+                  ) : relatedStandata && relatedStandata.length > 0 ? (
+                    <div className="space-y-3">
+                      {relatedStandata.map((bulletin, index) => (
+                        <motion.div
+                          key={bulletin.id}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5 + index * 0.05 }}
+                          className="p-4 bg-gradient-to-br from-purple-50/50 to-white rounded-xl border border-purple-100 hover:border-purple-200 transition-all"
+                        >
+                          <div className="flex items-start justify-between gap-3 mb-2">
+                            <span className={`px-2 py-0.5 text-[10px] font-semibold rounded border ${
+                              bulletin.category === 'BCI' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                              bulletin.category === 'BCB' ? 'bg-teal-50 text-teal-700 border-teal-200' :
+                              bulletin.category === 'FCB' ? 'bg-orange-50 text-orange-700 border-orange-200' :
+                              'bg-purple-50 text-purple-700 border-purple-200'
+                            }`}>
+                              {bulletin.category}
+                            </span>
+                            <span className="font-mono text-xs text-purple-600 bg-purple-100/50 px-2 py-0.5 rounded">
+                              {bulletin.bulletin_number}
+                            </span>
+                          </div>
+
+                          <h4 className="font-semibold text-sm text-slate-900 mb-2">
+                            {bulletin.title}
+                          </h4>
+
+                          {bulletin.summary && (
+                            <p className="text-xs text-slate-600 line-clamp-2 mb-3">
+                              {bulletin.summary}
+                            </p>
+                          )}
+
+                          <div className="flex items-center justify-between">
+                            {bulletin.effective_date && (
+                              <div className="flex items-center gap-1 text-xs text-slate-400">
+                                <Calendar className="w-3 h-3" />
+                                <span>
+                                  {new Date(bulletin.effective_date).toLocaleDateString('en-CA', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                  })}
+                                </span>
+                              </div>
+                            )}
+                            <button
+                              onClick={() => window.open(`/explore?standata=${bulletin.bulletin_number}`, '_blank')}
+                              className="flex items-center gap-1 text-xs text-purple-600 hover:text-purple-700 font-medium"
+                            >
+                              View Details
+                              <ExternalLink className="w-3 h-3" />
+                            </button>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 bg-slate-50 rounded-xl">
+                      <ScrollText className="w-8 h-8 text-slate-300 mx-auto mb-3" />
+                      <p className="text-sm text-slate-500">
+                        No specific bulletins found for this project type
+                      </p>
+                    </div>
+                  )}
+                </ResultCard>
+
                 {/* Actions */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -905,6 +1009,15 @@ export function GuidePage() {
                     Start New Project
                   </motion.button>
                   <motion.button
+                    type="button"
+                    onClick={() => navigate('/review', {
+                      state: {
+                        guideResult: result,
+                        address: formData.address,
+                        projectType: formData.project_type,
+                        occupancyType: formData.occupancy_type,
+                      }
+                    })}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-teal-500 to-teal-600 text-white shadow-lg shadow-teal-200 hover:shadow-xl hover:shadow-teal-200 transition-all duration-200"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

@@ -19,7 +19,7 @@ from sqlalchemy import (
 )
 
 from ..database import Base
-from .codes import UUID, StringArray
+from .codes import UUID, StringArray, Vector
 
 
 class StandataCategory(str):
@@ -80,6 +80,9 @@ class Standata(Base):
 
     pdf_filename = Column(String(255), nullable=False)
     # Original filename
+
+    # Vector embedding for semantic search (384 dimensions for sentence-transformers)
+    embedding = Column(Vector(384), nullable=True)
 
     # Metadata
     extraction_date = Column(DateTime, default=datetime.utcnow)

@@ -20,9 +20,13 @@ import {
   Lightbulb,
   Target,
   ArrowRight,
+  ScrollText,
+  ExternalLink,
+  Calendar,
+  Tag,
 } from 'lucide-react';
 import { exploreApi } from '../api/client';
-import type { ArticleSearchResult, Requirement, Code } from '../types';
+import type { ArticleSearchResult, Requirement, Code, StandataSummary } from '../types';
 
 const codeTypes = [
   { id: 'building', label: 'Building Code', apiValue: 'building', icon: Building2 },
@@ -134,6 +138,13 @@ export function ExplorePage() {
     enabled: !!selectedArticle?.id,
   });
 
+  // Fetch related Standata bulletins for selected article
+  const { data: relatedStandata, isLoading: loadingStandata } = useQuery({
+    queryKey: ['relatedStandata', selectedArticle?.article_number],
+    queryFn: () => selectedArticle ? exploreApi.getRelatedStandata(selectedArticle.article_number) : null,
+    enabled: !!selectedArticle?.article_number && selectedArticle?.code_short_name !== 'STANDATA',
+  });
+
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
@@ -232,7 +243,11 @@ export function ExplorePage() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         type="button"
-                        onClick={() => setSearchQuery('')}
+                        onClick={() => {
+                          setSearchQuery('');
+                          searchMutation.reset();
+                          setSelectedArticle(null);
+                        }}
                         className="p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors"
                       >
                         <X className="w-4 h-4" />
@@ -633,12 +648,54 @@ export function ExplorePage() {
                   })}
                 </div>
 
+                {/* Example Questions */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-8 bg-white rounded-xl border border-slate-200 shadow-md p-6"
+                >
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-amber-500" />
+                    Try These Questions
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {[
+                      { question: 'minimum ceiling height for bedrooms', tag: '9.5 Room Heights' },
+                      { question: 'egress window requirements for basements', tag: '9.9 Egress' },
+                      { question: 'minimum stair width residential', tag: '9.8 Stairs' },
+                      { question: 'fire separation garage dwelling', tag: '9.10 Fire' },
+                      { question: 'insulation requirements Zone 7A', tag: '9.36 Energy' },
+                    ].map((item, index) => (
+                      <motion.button
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.6 + index * 0.05 }}
+                        onClick={() => {
+                          setSearchQuery(item.question);
+                          searchMutation.mutate(item.question);
+                        }}
+                        className="group flex items-center gap-2 px-4 py-2.5 bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 rounded-lg transition-all hover:shadow-md"
+                      >
+                        <span className="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-0.5 rounded">
+                          {item.tag}
+                        </span>
+                        <span className="text-sm text-slate-700 group-hover:text-amber-800 transition-colors">
+                          {item.question}
+                        </span>
+                        <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-0.5 transition-all" />
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+
                 {/* Search tips */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="mt-8 bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-xl border border-amber-200 p-6"
+                  transition={{ delay: 0.7 }}
+                  className="mt-6 bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-xl border border-amber-200 p-6"
                 >
                   <h3 className="font-semibold text-amber-900 mb-4 flex items-center gap-2">
                     <Lightbulb className="w-5 h-5 text-amber-500" />
@@ -715,14 +772,42 @@ export function ExplorePage() {
                         ))}
                       </div>
                     ) : (
-                      <div className="text-center py-12">
-                        <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
-                          <Ruler className="w-8 h-8 text-slate-300" />
+                      <div className="text-center py-8">
+                        <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mx-auto mb-3">
+                          <Ruler className="w-6 h-6 text-slate-300" />
                         </div>
-                        <h4 className="font-medium text-slate-700 mb-1">No dimensional requirements</h4>
-                        <p className="text-sm text-slate-500">
+                        <h4 className="font-medium text-slate-700 mb-1 text-sm">No dimensional requirements</h4>
+                        <p className="text-xs text-slate-500">
                           This article may contain general provisions
                         </p>
+                      </div>
+                    )}
+
+                    {/* Related Standata Section */}
+                    {selectedArticle?.code_short_name !== 'STANDATA' && (
+                      <div className="mt-6 pt-4 border-t border-slate-200">
+                        <h4 className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                          <ScrollText className="w-4 h-4 text-amber-500" />
+                          Related Interpretations
+                        </h4>
+
+                        {loadingStandata ? (
+                          <div className="flex items-center justify-center py-6">
+                            <Loader2 className="w-5 h-5 animate-spin text-amber-500" />
+                          </div>
+                        ) : relatedStandata && relatedStandata.bulletins.length > 0 ? (
+                          <div className="space-y-3">
+                            {relatedStandata.bulletins.map((bulletin) => (
+                              <StandataCard key={bulletin.id} bulletin={bulletin} />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-center py-6 bg-slate-50 rounded-lg">
+                            <p className="text-xs text-slate-500">
+                              No STANDATA bulletins reference this article
+                            </p>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -812,5 +897,133 @@ function RequirementCard({ requirement }: { requirement: Requirement }) {
         )}
       </div>
     </div>
+  );
+}
+
+// Standata Card Component
+function StandataCard({ bulletin }: { bulletin: StandataSummary }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'BCI':
+        return 'bg-blue-50 text-blue-700 border-blue-200';
+      case 'BCB':
+        return 'bg-teal-50 text-teal-700 border-teal-200';
+      case 'FCB':
+        return 'bg-orange-50 text-orange-700 border-orange-200';
+      case 'PCB':
+        return 'bg-purple-50 text-purple-700 border-purple-200';
+      default:
+        return 'bg-slate-50 text-slate-700 border-slate-200';
+    }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case 'BCI':
+        return 'Building Code Interpretation';
+      case 'BCB':
+        return 'Building Code Bulletin';
+      case 'FCB':
+        return 'Fire Code Bulletin';
+      case 'PCB':
+        return 'Plumbing Code Bulletin';
+      default:
+        return category;
+    }
+  };
+
+  return (
+    <motion.div
+      layout
+      className="bg-gradient-to-br from-amber-50/50 to-white rounded-lg border border-amber-200/50 overflow-hidden hover:border-amber-300 transition-all cursor-pointer"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      <div className="p-3">
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <span className={`px-2 py-0.5 text-[10px] font-semibold rounded border ${getCategoryColor(bulletin.category)}`}>
+            {bulletin.category}
+          </span>
+          <span className="font-mono text-xs text-amber-600 bg-amber-100/50 px-1.5 py-0.5 rounded">
+            {bulletin.bulletin_number}
+          </span>
+        </div>
+
+        <h5 className="font-medium text-sm text-slate-900 leading-snug mb-2">
+          {bulletin.title}
+        </h5>
+
+        {bulletin.effective_date && (
+          <div className="flex items-center gap-1 text-xs text-slate-500">
+            <Calendar className="w-3 h-3" />
+            <span>
+              {new Date(bulletin.effective_date).toLocaleDateString('en-CA', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </span>
+          </div>
+        )}
+
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="mt-3 pt-3 border-t border-amber-200/50"
+            >
+              {bulletin.summary && (
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  {bulletin.summary}
+                </p>
+              )}
+
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-slate-400">
+                  {getCategoryLabel(bulletin.category)}
+                </span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Could open a modal or navigate to full bulletin
+                  }}
+                  className="flex items-center gap-1 text-xs text-amber-600 hover:text-amber-700 font-medium"
+                >
+                  View Full Bulletin
+                  <ExternalLink className="w-3 h-3" />
+                </button>
+              </div>
+
+              {bulletin.code_references && bulletin.code_references.length > 0 && (
+                <div className="mt-2 pt-2 border-t border-amber-200/30">
+                  <div className="flex items-center gap-1 mb-1">
+                    <Tag className="w-3 h-3 text-slate-400" />
+                    <span className="text-[10px] text-slate-500">References:</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {bulletin.code_references.slice(0, 5).map((ref, idx) => (
+                      <span
+                        key={idx}
+                        className="px-1.5 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-mono rounded"
+                      >
+                        {ref}
+                      </span>
+                    ))}
+                    {bulletin.code_references.length > 5 && (
+                      <span className="px-1.5 py-0.5 text-slate-500 text-[10px]">
+                        +{bulletin.code_references.length - 5} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
   );
 }

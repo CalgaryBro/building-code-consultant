@@ -15,7 +15,7 @@ from ..config import get_settings
 from ..models.auth import User
 from ..schemas.auth import (
     UserCreate, UserLogin, UserResponse, UserUpdate,
-    TokenResponse, PasswordResetRequest, PasswordReset,
+    TokenResponse, LoginResponse, PasswordResetRequest, PasswordReset,
     PasswordChange, EmailVerificationRequest, MessageResponse
 )
 from ..core.security import (
@@ -57,8 +57,9 @@ def clear_auth_cookies(response: Response) -> None:
     response.delete_cookie(key="refresh_token")
 
 
-@router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+@router.post("/register", response_model=LoginResponse, status_code=status.HTTP_201_CREATED)
 async def register(
+    response: Response,
     user_data: UserCreate,
     db: Session = Depends(get_db)
 ):
@@ -96,25 +97,35 @@ async def register(
     db.commit()
     db.refresh(user)
 
+    # Create tokens for auto-login after registration
+    token_data = {
+        "user_id": str(user.id),
+        "email": user.email
+    }
+    access_token = create_access_token(token_data)
+    refresh_token = create_refresh_token(token_data)
+
+    # Set cookies
+    set_auth_cookies(response, access_token, refresh_token)
+
     # TODO: Send verification email with token
     # In production, integrate with email service (SendGrid, SES, etc.)
     # For now, the token can be verified via the verify-email endpoint
 
-    return user
+    return LoginResponse(user=UserResponse.model_validate(user), message="Registration successful")
 
 
-@router.post("/login", response_model=TokenResponse)
+@router.post("/login", response_model=LoginResponse)
 async def login(
     response: Response,
     credentials: UserLogin,
     db: Session = Depends(get_db)
 ):
     """
-    Authenticate user and return JWT tokens.
+    Authenticate user and return JWT tokens along with user data.
 
     Tokens are set as httpOnly cookies for security.
-    The access token is also returned in the response body
-    for clients that prefer header-based authentication.
+    The user object is returned in the response body for the frontend.
     """
     # Find user by email
     user = db.query(User).filter(User.email == credentials.email).first()
@@ -149,11 +160,12 @@ async def login(
     # Update last login
     user.last_login_at = datetime.utcnow()
     db.commit()
+    db.refresh(user)
 
     # Set cookies
     set_auth_cookies(response, access_token, refresh_token)
 
-    return TokenResponse(access_token=access_token)
+    return LoginResponse(user=UserResponse.model_validate(user))
 
 
 @router.post("/logout", response_model=MessageResponse)

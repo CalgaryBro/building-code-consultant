@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useAuth } from '../contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import {
   Plus,
@@ -15,6 +16,7 @@ import {
   AlertTriangle,
   Building2,
   TrendingUp,
+  ArrowLeft,
 } from 'lucide-react';
 import type { PermitStatus, PermitApplicationsListParams } from '../types';
 import { permitsApi } from '../api/client';
@@ -67,6 +69,8 @@ const permitTypeFilters: { value: string; label: string }[] = [
 ];
 
 export function PermitsPage() {
+  const navigate = useNavigate();
+  const { isAdmin } = useAuth();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [statusFilter, setStatusFilter] = useState<PermitStatus | 'all'>('all');
   const [typeFilter, setTypeFilter] = useState<string>('all');
@@ -113,6 +117,23 @@ export function PermitsPage() {
       <BlueprintBackground />
 
       <div className="p-8 max-w-7xl mx-auto">
+        {/* Back Button - Show for admins */}
+        {isAdmin && (
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="mb-4"
+          >
+            <button
+              onClick={() => navigate('/admin')}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="font-medium">Back to Dashboard</span>
+            </button>
+          </motion.div>
+        )}
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -195,7 +216,7 @@ export function PermitsPage() {
                 <span className="text-sm font-medium text-slate-500">Avg. Days</span>
               </div>
               <p className="font-display text-3xl text-blue-600">
-                {statistics.average_review_days.toFixed(0)}
+                {statistics.average_review_days?.toFixed(0) ?? '—'}
               </p>
               <p className="text-xs text-slate-500 mt-1">Review time</p>
             </div>

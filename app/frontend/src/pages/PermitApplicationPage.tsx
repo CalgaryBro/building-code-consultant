@@ -208,12 +208,12 @@ function SelectionCard({
 }
 
 const permitTypes = [
-  { id: 'building', label: 'Building Permit', icon: Building, description: 'New construction, additions, alterations' },
-  { id: 'development', label: 'Development Permit', icon: Layers, description: 'Land use and zoning approval' },
-  { id: 'demolition', label: 'Demolition Permit', icon: Wrench, description: 'Tear down existing structures' },
-  { id: 'electrical', label: 'Electrical Permit', icon: FileText, description: 'Electrical system work' },
-  { id: 'plumbing', label: 'Plumbing Permit', icon: FileText, description: 'Plumbing system work' },
-  { id: 'mechanical', label: 'Mechanical Permit', icon: FileText, description: 'HVAC and mechanical systems' },
+  { id: 'BP', label: 'Building Permit', icon: Building, description: 'New construction, additions, alterations' },
+  { id: 'DP', label: 'Development Permit', icon: Layers, description: 'Land use and zoning approval' },
+  { id: 'TP_ELECTRICAL', label: 'Electrical Permit', icon: FileText, description: 'Electrical system work' },
+  { id: 'TP_PLUMBING', label: 'Plumbing Permit', icon: FileText, description: 'Plumbing system work' },
+  { id: 'TP_GAS', label: 'Gas Permit', icon: FileText, description: 'Gas system work' },
+  { id: 'TP_HVAC', label: 'HVAC Permit', icon: FileText, description: 'Heating and cooling systems' },
 ];
 
 const workTypes = [
@@ -246,20 +246,20 @@ export function PermitApplicationPage() {
 
   const [step, setStep] = useState(1);
   const [formError, setFormError] = useState<string | null>(null);
+  // Local form state for user-friendly form fields
+  const [applicantName, setApplicantName] = useState('');
+  const [applicantEmail, setApplicantEmail] = useState('');
+  const [applicantPhone, setApplicantPhone] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [formData, setFormData] = useState<CreatePermitApplicationInput>({
-    applicant_name: '',
-    applicant_email: '',
-    applicant_phone: '',
-    company_name: '',
-    project_address: '',
-    project_description: '',
     permit_type: '',
-    work_type: '',
+    address: '',
+    description: '',
+    project_type: '',
     estimated_value: undefined,
     building_area_sqm: undefined,
-    storeys: undefined,
-    occupancy_type: '',
-    construction_type: '',
+    building_height_storeys: undefined,
+    occupancy_group: '',
   });
 
   // Load existing application if editing
@@ -284,20 +284,22 @@ export function PermitApplicationPage() {
 
   useEffect(() => {
     if (existingApplication) {
+      // Load applicant info
+      setApplicantName(existingApplication.applicant?.name || '');
+      setApplicantEmail(existingApplication.applicant?.email || '');
+      setApplicantPhone(existingApplication.applicant?.phone || '');
+      setCompanyName(existingApplication.applicant?.company || '');
+
       setFormData({
-        applicant_name: existingApplication.applicant_name,
-        applicant_email: existingApplication.applicant_email,
-        applicant_phone: existingApplication.applicant_phone || '',
-        company_name: existingApplication.company_name || '',
-        project_address: existingApplication.project_address,
-        project_description: existingApplication.project_description || '',
         permit_type: existingApplication.permit_type,
-        work_type: existingApplication.work_type,
+        address: existingApplication.address,
+        project_name: existingApplication.project_name || '',
+        description: existingApplication.description || '',
+        project_type: existingApplication.project_type || '',
         estimated_value: existingApplication.estimated_value,
         building_area_sqm: existingApplication.building_area_sqm,
-        storeys: existingApplication.storeys,
-        occupancy_type: existingApplication.occupancy_type || '',
-        construction_type: existingApplication.construction_type || '',
+        building_height_storeys: existingApplication.building_height_storeys,
+        occupancy_group: existingApplication.occupancy_group || '',
       });
     }
   }, [existingApplication]);
@@ -361,9 +363,9 @@ export function PermitApplicationPage() {
   const canProceed = (currentStep: number): boolean => {
     switch (currentStep) {
       case 1:
-        return formData.applicant_name.length >= 2 && formData.applicant_email.includes('@');
+        return applicantName.length >= 2 && applicantEmail.includes('@');
       case 2:
-        return !!formData.permit_type && !!formData.work_type && formData.project_address.length >= 5;
+        return !!formData.permit_type && !!formData.project_type && formData.address.length >= 5;
       case 3:
         return true; // Optional fields
       case 4:
@@ -373,19 +375,31 @@ export function PermitApplicationPage() {
     }
   };
 
+  const buildApplicationData = (): CreatePermitApplicationInput => {
+    return {
+      ...formData,
+      applicant: {
+        name: applicantName,
+        email: applicantEmail,
+        phone: applicantPhone || undefined,
+        company: companyName || undefined,
+      },
+    };
+  };
+
   const handleSaveDraft = async () => {
     setFormError(null);
-    await saveMutation.mutateAsync(formData);
+    await saveMutation.mutateAsync(buildApplicationData());
   };
 
   const handleSubmit = async () => {
     if (!isEditing) {
       // First save, then submit
       setFormError(null);
-      await saveMutation.mutateAsync(formData);
+      await saveMutation.mutateAsync(buildApplicationData());
       await submitMutation.mutateAsync();
     } else {
-      await saveMutation.mutateAsync(formData);
+      await saveMutation.mutateAsync(buildApplicationData());
       await submitMutation.mutateAsync();
     }
   };
@@ -469,14 +483,14 @@ export function PermitApplicationPage() {
                     icon={User}
                     required
                     placeholder="John Smith"
-                    value={formData.applicant_name}
-                    onChange={(e) => setFormData({ ...formData, applicant_name: e.target.value })}
+                    value={applicantName}
+                    onChange={(e) => setApplicantName(e.target.value)}
                   />
                   <FormInput
                     label="Company Name"
                     placeholder="Optional"
-                    value={formData.company_name}
-                    onChange={(e) => setFormData({ ...formData, company_name: e.target.value })}
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
@@ -485,15 +499,15 @@ export function PermitApplicationPage() {
                     type="email"
                     required
                     placeholder="john@example.com"
-                    value={formData.applicant_email}
-                    onChange={(e) => setFormData({ ...formData, applicant_email: e.target.value })}
+                    value={applicantEmail}
+                    onChange={(e) => setApplicantEmail(e.target.value)}
                   />
                   <FormInput
                     label="Phone Number"
                     type="tel"
                     placeholder="(403) 555-0123"
-                    value={formData.applicant_phone}
-                    onChange={(e) => setFormData({ ...formData, applicant_phone: e.target.value })}
+                    value={applicantPhone}
+                    onChange={(e) => setApplicantPhone(e.target.value)}
                   />
                 </div>
               </div>
@@ -568,8 +582,8 @@ export function PermitApplicationPage() {
                     {workTypes.map((type) => (
                       <SelectionCard
                         key={type.id}
-                        selected={formData.work_type === type.id}
-                        onClick={() => setFormData({ ...formData, work_type: type.id })}
+                        selected={formData.project_type === type.id}
+                        onClick={() => setFormData({ ...formData, project_type: type.id })}
                         icon={type.icon}
                         label={type.label}
                         description={type.description}
@@ -583,10 +597,10 @@ export function PermitApplicationPage() {
                   label="Project Address"
                   required
                   placeholder="123 Main Street NW, Calgary, AB"
-                  value={formData.project_address}
-                  onChange={(value) => setFormData({ ...formData, project_address: value })}
+                  value={formData.address}
+                  onChange={(value) => setFormData({ ...formData, address: value })}
                   onSelect={(result: AddressAutocompleteResult) => {
-                    setFormData({ ...formData, project_address: result.address });
+                    setFormData({ ...formData, address: result.address });
                   }}
                   hint="Start typing to search Calgary addresses"
                 />
@@ -597,8 +611,8 @@ export function PermitApplicationPage() {
                     Project Description
                   </label>
                   <textarea
-                    value={formData.project_description}
-                    onChange={(e) => setFormData({ ...formData, project_description: e.target.value })}
+                    value={formData.description || ''}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     placeholder="Describe your project briefly..."
                     rows={3}
                     className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-900
@@ -675,8 +689,8 @@ export function PermitApplicationPage() {
                     {occupancyTypes.map((type) => (
                       <SelectionCard
                         key={type.id}
-                        selected={formData.occupancy_type === type.id}
-                        onClick={() => setFormData({ ...formData, occupancy_type: type.id })}
+                        selected={formData.occupancy_group === type.id}
+                        onClick={() => setFormData({ ...formData, occupancy_group: type.id })}
                         icon={type.icon}
                         label={type.label}
                         description={type.description}
@@ -710,8 +724,8 @@ export function PermitApplicationPage() {
                     min={1}
                     max={100}
                     placeholder="2"
-                    value={formData.storeys || ''}
-                    onChange={(e) => setFormData({ ...formData, storeys: parseInt(e.target.value) || undefined })}
+                    value={formData.building_height_storeys || ''}
+                    onChange={(e) => setFormData({ ...formData, building_height_storeys: parseInt(e.target.value) || undefined })}
                   />
                 </div>
 

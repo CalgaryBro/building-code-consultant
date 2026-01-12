@@ -423,10 +423,10 @@ function FeaturesSection() {
 // Statistics Section
 function StatisticsSection() {
   const stats = [
-    { value: 188019, label: 'Permits Analyzed', suffix: '+', icon: FileText },
+    { value: 505, label: 'NBC Articles', suffix: '+', icon: BookOpen },
+    { value: 188019, label: 'Development Permits', suffix: '', icon: FileText },
     { value: 1433, label: 'SDAB Decisions', suffix: '', icon: Scale },
-    { value: 420, label: 'NBC Requirements', suffix: '+', icon: BookOpen },
-    { value: 98, label: 'First-Pass Approval Rate', suffix: '%', icon: CheckCircle2 },
+    { value: 414605, label: 'Calgary Addresses', suffix: '', icon: MapPin },
   ];
 
   return (
@@ -658,39 +658,24 @@ function PricingSection() {
 function StandardsSection() {
   const standards = [
     {
-      category: 'National & Provincial Codes',
+      category: 'Building Codes',
       items: [
-        { name: 'NBC(AE) 2023', desc: 'National Building Code - Alberta Edition', badge: 'Primary' },
-        { name: 'NECB 2020', desc: 'National Energy Code for Buildings', badge: null },
-        { name: 'NPC 2020', desc: 'National Plumbing Code', badge: null },
-        { name: 'CEC 2021', desc: 'Canadian Electrical Code', badge: null },
+        { name: 'NBC(AE) 2023', desc: '505 searchable articles from Parts 3 & 9', badge: 'Primary' },
+        { name: 'STANDATA Bulletins', desc: '41 Alberta interpretations & clarifications', badge: 'Searchable' },
       ],
     },
     {
       category: 'Calgary Regulations',
       items: [
-        { name: 'Land Use Bylaw 1P2007', desc: '68 land use districts', badge: 'Updated' },
-        { name: 'Development Permits', desc: '188,019 historical decisions', badge: null },
-        { name: 'Building Permits', desc: 'Requirements & processes', badge: null },
-        { name: 'Safety Codes', desc: 'Local amendments', badge: null },
+        { name: 'Land Use Bylaw 1P2007', desc: '68 land use districts with setbacks & rules', badge: 'Updated' },
+        { name: 'Development Permits', desc: '188,019 historical decisions searchable', badge: null },
+        { name: 'Address Database', desc: '414,605 Calgary parcels with zoning', badge: null },
       ],
     },
     {
       category: 'Appeal Board Decisions',
       items: [
         { name: 'SDAB Decisions', desc: '1,433 appeal cases analyzed', badge: 'Exclusive' },
-        { name: 'Precedent Database', desc: 'Searchable rulings', badge: null },
-        { name: 'Risk Assessment', desc: 'Appeal likelihood scoring', badge: null },
-        { name: 'Success Patterns', desc: 'Winning argument analysis', badge: null },
-      ],
-    },
-    {
-      category: 'Referenced Standards',
-      items: [
-        { name: 'CSA Standards', desc: '200+ referenced standards', badge: null },
-        { name: 'ULC Standards', desc: 'Fire & safety testing', badge: null },
-        { name: 'ASTM Standards', desc: 'Material specifications', badge: null },
-        { name: 'STANDATA Bulletins', desc: 'Alberta interpretations', badge: null },
       ],
     },
   ];
@@ -707,18 +692,18 @@ function StandardsSection() {
           className="text-center mb-20"
         >
           <span className="inline-block px-4 py-1.5 bg-slate-200 text-slate-700 text-sm font-medium rounded-full mb-4">
-            Comprehensive Coverage
+            Fully Searchable Database
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Standards & Codes We Review
+            Our Data Sources
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Every regulation, bylaw, and standard that affects your Calgary building project —
-            analyzed and cross-referenced for complete compliance.
+            All codes and regulations are extracted to structured format and fully searchable.
+            No more hunting through PDFs.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {standards.map((section, sectionIndex) => (
             <motion.div
               key={section.category}
@@ -767,15 +752,15 @@ function StandardsSection() {
           className="mt-16 text-center"
         >
           <p className="text-slate-600 mb-6">
-            Plus <span className="font-semibold text-slate-900">4,293 refused permits</span> analyzed
-            to help you avoid common mistakes.
+            Over <span className="font-semibold text-slate-900">600,000+ data points</span> structured and searchable
+            to help you get permits approved faster.
           </p>
           <Link
             to="/explore"
             className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors"
           >
             <Search className="w-5 h-5" />
-            Search the Database
+            Try the Search
           </Link>
         </motion.div>
       </div>
@@ -842,19 +827,28 @@ function CTASection() {
 // Footer
 function Footer() {
   const footerLinks = {
-    Product: ['Features', 'Pricing', 'API', 'Integrations', 'Changelog'],
-    Resources: ['Documentation', 'Blog', 'Tutorials', 'Support', 'Status'],
-    Company: ['About', 'Careers', 'Press', 'Contact', 'Partners'],
-    Legal: ['Privacy', 'Terms', 'Security', 'Compliance'],
+    Product: [
+      { label: 'Features', href: '#features' },
+      { label: 'Pricing', href: '#pricing' },
+      { label: 'Standards', href: '#standards' },
+    ],
+    Support: [
+      { label: 'Help Center', href: '/help' },
+      { label: 'Contact', href: '/contact' },
+    ],
+    Legal: [
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+    ],
   };
 
   return (
     <footer className="bg-slate-900 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
+            <Link to="/" className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-amber-400" />
               </div>
@@ -862,8 +856,8 @@ function Footer() {
                 <span className="font-semibold text-white">CodeCheck</span>
                 <span className="block text-[10px] text-amber-500 tracking-widest uppercase">Calgary</span>
               </div>
-            </div>
-            <p className="text-sm text-slate-400 mb-6">
+            </Link>
+            <p className="text-sm text-slate-400 mb-4">
               AI-powered building code compliance for Calgary construction professionals.
             </p>
             <div className="flex items-center gap-2 text-sm text-slate-500">
@@ -878,13 +872,22 @@ function Footer() {
               <h4 className="font-semibold text-white mb-4">{category}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-sm text-slate-400 hover:text-amber-400 transition-colors"
-                    >
-                      {link}
-                    </a>
+                  <li key={link.label}>
+                    {link.href.startsWith('#') ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-slate-400 hover:text-amber-400 transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className="text-sm text-slate-400 hover:text-amber-400 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -893,27 +896,10 @@ function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-slate-800 text-center">
           <p className="text-sm text-slate-500">
-            © 2024 CodeCheck Calgary. All rights reserved.
+            © {new Date().getFullYear()} CodeCheck Calgary. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-              </svg>
-            </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </a>
-          </div>
         </div>
       </div>
     </footer>

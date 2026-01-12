@@ -2,9 +2,19 @@
 Pydantic schemas for authentication.
 """
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from uuid import UUID
+from enum import Enum
 from pydantic import BaseModel, EmailStr, Field
+
+
+# --- User Role Enum ---
+
+class UserRole(str, Enum):
+    """User roles for access control."""
+    USER = "user"
+    REVIEWER = "reviewer"
+    ADMIN = "admin"
 
 
 # --- User Schemas ---
@@ -27,6 +37,7 @@ class UserResponse(BaseModel):
     id: UUID
     email: str
     full_name: Optional[str] = None
+    role: str = "user"
     is_active: bool
     is_verified: bool
     created_at: datetime
@@ -41,12 +52,43 @@ class UserUpdate(BaseModel):
     full_name: Optional[str] = None
 
 
+class AdminUserUpdate(BaseModel):
+    """Schema for admin updating user (including role and status)."""
+    full_name: Optional[str] = None
+    role: Optional[UserRole] = None
+    is_active: Optional[bool] = None
+    is_verified: Optional[bool] = None
+
+
+class AdminUserCreate(BaseModel):
+    """Schema for admin creating a user."""
+    email: EmailStr
+    password: str = Field(..., min_length=8)
+    full_name: Optional[str] = None
+    role: UserRole = UserRole.USER
+    is_verified: bool = True  # Admin-created users are pre-verified
+
+
+class UserListResponse(BaseModel):
+    """Schema for paginated user list."""
+    total: int
+    page: int
+    page_size: int
+    users: List[UserResponse]
+
+
 # --- Token Schemas ---
 
 class TokenResponse(BaseModel):
     """Schema for token response."""
     access_token: str
     token_type: str = "bearer"
+
+
+class LoginResponse(BaseModel):
+    """Schema for login response with user data."""
+    user: UserResponse
+    message: str = "Login successful"
 
 
 class TokenData(BaseModel):

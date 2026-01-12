@@ -15,10 +15,12 @@ from sqlalchemy import text, func
 
 from ..database import get_db
 from ..models.codes import Code, Article, Requirement
+from ..models.standata import Standata
 from ..schemas.codes import (
     CodeResponse, ArticleResponse, ArticleSearchResult,
     RequirementResponse, CodeSearchQuery, CodeSearchResponse
 )
+from ..schemas.standata import StandataSummary, StandataByCodeResponse
 
 router = APIRouter()
 
@@ -124,8 +126,16 @@ async def search_codes(query: CodeSearchQuery, db: Session = Depends(get_db)):
     if query.part_numbers:
         base_query = base_query.filter(Article.part_number.in_(query.part_numbers))
 
+    # Handle browse mode - if query is "*" or "**", just return filtered results
+    is_browse_mode = query.query.strip() in ('*', '**', 'browse', 'all')
+
+    if is_browse_mode:
+        search_type = "browse"
+        # Just use the filters, order by article number
+        base_query = base_query.order_by(Article.article_number)
+
     # Try semantic search first if enabled and embeddings exist
-    if query.use_semantic:
+    elif query.use_semantic:
         # Check if we have embeddings
         has_embeddings = db.query(Article).filter(Article.embedding.isnot(None)).first()
 
@@ -135,29 +145,44 @@ async def search_codes(query: CodeSearchQuery, db: Session = Depends(get_db)):
             search_type = "semantic"
             pass
 
-    # Full-text search using PostgreSQL tsvector
-    if search_type == "fulltext":
-        # Use plainto_tsquery for natural language queries
-        search_query = func.plainto_tsquery('english', query.query)
-
-        # Check if search_vector is populated, otherwise search full_text directly
+    # Full-text search using PostgreSQL tsvector (only if not in browse mode)
+    if search_type == "fulltext" and not is_browse_mode:
+        # Check if search_vector is populated
         has_vectors = db.query(Article).filter(Article.search_vector.isnot(None)).first()
 
         if has_vectors:
-            # Use the pre-computed search vector
-            base_query = base_query.filter(
-                Article.search_vector.op('@@')(search_query)
-            ).order_by(
-                func.ts_rank(Article.search_vector, search_query).desc()
-            )
+            # Build OR-based tsquery for better natural language support
+            # Convert "ceiling height bedrooms" to "ceiling | height | bedrooms"
+            words = query.query.strip().split()
+            # Filter out common stop words and short words
+            stop_words = {'what', 'is', 'the', 'a', 'an', 'are', 'for', 'to', 'of', 'in', 'on', 'at', 'and', 'or', 'between'}
+            search_terms = [w for w in words if len(w) >= 3 and w.lower() not in stop_words]
+
+            if search_terms:
+                # Join with OR operator for more forgiving search
+                or_query = ' | '.join(search_terms)
+                search_query = func.to_tsquery('english', or_query)
+
+                # Use the pre-computed search vector
+                base_query = base_query.filter(
+                    Article.search_vector.op('@@')(search_query)
+                ).order_by(
+                    func.ts_rank(Article.search_vector, search_query).desc()
+                )
         else:
-            # Fall back to ILIKE search
-            search_pattern = f"%{query.query}%"
-            base_query = base_query.filter(
-                Article.full_text.ilike(search_pattern) |
-                Article.title.ilike(search_pattern) |
-                Article.article_number.ilike(search_pattern)
-            )
+            # Fall back to ILIKE search with individual words (OR logic)
+            words = query.query.split()
+            if words:
+                from sqlalchemy import or_
+                conditions = []
+                for word in words:
+                    if len(word) >= 3:  # Skip very short words
+                        pattern = f"%{word}%"
+                        conditions.append(Article.full_text.ilike(pattern))
+                        conditions.append(Article.title.ilike(pattern))
+                        conditions.append(Article.article_number.ilike(pattern))
+                if conditions:
+                    base_query = base_query.filter(or_(*conditions))
 
     # Execute query with limit
     raw_results = base_query.limit(query.limit).all()
@@ -261,3 +286,130 @@ async def browse_code_structure(
     }
 
     return structure
+
+
+@router.get("/articles/{article_number}/related-standata", response_model=StandataByCodeResponse)
+async def get_related_standata(
+    article_number: str,
+    db: Session = Depends(get_db)
+):
+    """
+    Get STANDATA bulletins related to a specific code article.
+
+    This endpoint searches for STANDATA bulletins that reference the given
+    article number in their code_references field. Useful for showing
+    official interpretations when viewing a code article.
+
+    Args:
+        article_number: The article number to search for (e.g., "9.10.9.6", "9.8.4.1")
+
+    Returns:
+        List of STANDATA bulletins that reference this article
+    """
+    # Query standata bulletins where code_references contains the article number
+    # PostgreSQL ARRAY contains operator: @> or ANY()
+    bulletins = db.query(Standata).filter(
+        Standata.code_references.any(article_number)
+    ).order_by(Standata.effective_date.desc()).all()
+
+    # Also check for partial matches (e.g., "9.10" matches "9.10.9.6")
+    if not bulletins:
+        # Try prefix match for broader searches
+        article_prefix = '.'.join(article_number.split('.')[:3])  # e.g., "9.10.9"
+        bulletins = db.query(Standata).filter(
+            func.array_to_string(Standata.code_references, ',').ilike(f"%{article_prefix}%")
+        ).order_by(Standata.effective_date.desc()).limit(10).all()
+
+    return StandataByCodeResponse(
+        code_reference=article_number,
+        total_results=len(bulletins),
+        bulletins=[
+            StandataSummary(
+                id=b.id,
+                bulletin_number=b.bulletin_number,
+                title=b.title,
+                category=b.category,
+                effective_date=b.effective_date,
+                summary=b.summary,
+                code_references=b.code_references
+            )
+            for b in bulletins
+        ]
+    )
+
+
+@router.get("/standata", response_model=list[StandataSummary])
+async def list_standata(
+    category: Optional[str] = Query(None, description="Filter by category: BCI, BCB, FCB, PCB"),
+    search: Optional[str] = Query(None, description="Search in title, summary, keywords"),
+    limit: int = Query(50, ge=1, le=200),
+    db: Session = Depends(get_db)
+):
+    """
+    List all STANDATA bulletins with optional filtering.
+
+    Returns a summary list of bulletins for browsing.
+    """
+    query = db.query(Standata)
+
+    if category:
+        query = query.filter(Standata.category == category.upper())
+
+    if search:
+        from sqlalchemy import or_
+        pattern = f"%{search}%"
+        query = query.filter(
+            or_(
+                Standata.title.ilike(pattern),
+                Standata.summary.ilike(pattern),
+                func.array_to_string(Standata.keywords, ',').ilike(pattern),
+                Standata.bulletin_number.ilike(pattern)
+            )
+        )
+
+    bulletins = query.order_by(Standata.effective_date.desc()).limit(limit).all()
+
+    return [
+        StandataSummary(
+            id=b.id,
+            bulletin_number=b.bulletin_number,
+            title=b.title,
+            category=b.category,
+            effective_date=b.effective_date,
+            summary=b.summary,
+            code_references=b.code_references
+        )
+        for b in bulletins
+    ]
+
+
+@router.get("/standata/{bulletin_number}")
+async def get_standata_bulletin(
+    bulletin_number: str,
+    db: Session = Depends(get_db)
+):
+    """
+    Get full details of a specific STANDATA bulletin.
+    """
+    bulletin = db.query(Standata).filter(
+        Standata.bulletin_number == bulletin_number
+    ).first()
+
+    if not bulletin:
+        raise HTTPException(status_code=404, detail=f"Bulletin '{bulletin_number}' not found")
+
+    return {
+        "id": str(bulletin.id),
+        "bulletin_number": bulletin.bulletin_number,
+        "title": bulletin.title,
+        "category": bulletin.category,
+        "effective_date": bulletin.effective_date.isoformat() if bulletin.effective_date else None,
+        "supersedes": bulletin.supersedes,
+        "summary": bulletin.summary,
+        "full_text": bulletin.full_text,
+        "code_references": bulletin.code_references or [],
+        "keywords": bulletin.keywords or [],
+        "related_bulletins": bulletin.related_bulletins or [],
+        "pdf_filename": bulletin.pdf_filename,
+        "extraction_confidence": bulletin.extraction_confidence
+    }

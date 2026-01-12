@@ -103,13 +103,30 @@ async def public_explore_search(
             func.ts_rank(Article.search_vector, search_query_obj).desc()
         )
     else:
-        # Fall back to ILIKE search
-        search_pattern = f"%{query.query}%"
-        base_query = base_query.filter(
-            Article.full_text.ilike(search_pattern) |
-            Article.title.ilike(search_pattern) |
-            Article.article_number.ilike(search_pattern)
-        )
+        # Fall back to ILIKE search with individual words (OR logic)
+        # This allows "egress window requirements" to match articles containing any of these words
+        from sqlalchemy import or_
+        words = query.query.strip().split()
+        # Filter out common stop words and short words
+        stop_words = {'what', 'is', 'the', 'a', 'an', 'are', 'for', 'to', 'of', 'in', 'on', 'at', 'and', 'or', 'between', 'how', 'why', 'when', 'where'}
+        search_terms = [w.strip('?.,!') for w in words if len(w) >= 3 and w.lower() not in stop_words]
+
+        if search_terms:
+            conditions = []
+            for word in search_terms:
+                pattern = f"%{word}%"
+                conditions.append(Article.full_text.ilike(pattern))
+                conditions.append(Article.title.ilike(pattern))
+                conditions.append(Article.article_number.ilike(pattern))
+            base_query = base_query.filter(or_(*conditions))
+        else:
+            # Fallback to full query if no valid terms
+            search_pattern = f"%{query.query}%"
+            base_query = base_query.filter(
+                Article.full_text.ilike(search_pattern) |
+                Article.title.ilike(search_pattern) |
+                Article.article_number.ilike(search_pattern)
+            )
 
     # Execute query with PUBLIC limit (only 2 results for free users)
     raw_results = base_query.limit(PUBLIC_RESULT_LIMIT).all()
@@ -127,12 +144,27 @@ async def public_explore_search(
             Article.search_vector.op('@@')(search_query_obj)
         )
     else:
-        search_pattern = f"%{query.query}%"
-        count_query = count_query.filter(
-            Article.full_text.ilike(search_pattern) |
-            Article.title.ilike(search_pattern) |
-            Article.article_number.ilike(search_pattern)
-        )
+        # Same word-splitting logic as above for consistent counts
+        from sqlalchemy import or_
+        words = query.query.strip().split()
+        stop_words = {'what', 'is', 'the', 'a', 'an', 'are', 'for', 'to', 'of', 'in', 'on', 'at', 'and', 'or', 'between', 'how', 'why', 'when', 'where'}
+        search_terms = [w.strip('?.,!') for w in words if len(w) >= 3 and w.lower() not in stop_words]
+
+        if search_terms:
+            conditions = []
+            for word in search_terms:
+                pattern = f"%{word}%"
+                conditions.append(Article.full_text.ilike(pattern))
+                conditions.append(Article.title.ilike(pattern))
+                conditions.append(Article.article_number.ilike(pattern))
+            count_query = count_query.filter(or_(*conditions))
+        else:
+            search_pattern = f"%{query.query}%"
+            count_query = count_query.filter(
+                Article.full_text.ilike(search_pattern) |
+                Article.title.ilike(search_pattern) |
+                Article.article_number.ilike(search_pattern)
+            )
 
     total_available = count_query.scalar() or 0
 
@@ -142,7 +174,7 @@ async def public_explore_search(
         # Truncate full_text for preview
         preview_text = row.full_text[:300] + "..." if len(row.full_text) > 300 else row.full_text
         results.append(ArticleSearchResult(
-            id=row.id,
+            id=str(row.id),  # Convert UUID to string for JSON serialization
             article_number=row.article_number,
             title=row.title,
             full_text=preview_text,
@@ -163,7 +195,7 @@ async def public_explore_search(
     # Return response with rate limit headers
     response = JSONResponse(
         content={
-            **response_data.model_dump(),
+            **response_data.model_dump(mode='json'),  # mode='json' converts UUIDs to strings
             "is_limited": True,
             "results_shown": len(results),
             "total_available": total_available,

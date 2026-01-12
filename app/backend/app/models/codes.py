@@ -180,11 +180,17 @@ class Article(Base):
     section_number = Column(Integer, nullable=True)
     page_number = Column(Integer, nullable=True)
 
-    # Full-text search vector (Text for SQLite, TSVECTOR for PostgreSQL)
-    search_vector = Column(Text, nullable=True)
+    # Full-text search vector (TSVECTOR for PostgreSQL)
+    search_vector = Column(TSVECTOR, nullable=True)
 
     # Vector embedding for semantic search (1536 dimensions for OpenAI, 384 for sentence-transformers)
     embedding = Column(Vector(384), nullable=True)
+
+    # Extraction tracking (for VLM re-extraction)
+    extraction_model = Column(String(100), nullable=True)  # e.g., "qwen3-vl:30b", "pdfplumber"
+    extraction_confidence = Column(String(20), nullable=True)  # HIGH, MEDIUM, LOW
+    vlm_extracted = Column(Boolean, default=False)  # True if extracted via VLM
+    extraction_date = Column(DateTime, nullable=True)
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -196,7 +202,7 @@ class Article(Base):
 
     __table_args__ = (
         Index("idx_articles_code_number", "code_id", "article_number"),
-        Index("idx_articles_search", "search_vector", postgresql_using="gin", postgresql_ops={"search_vector": "gin_trgm_ops"}),
+        Index("idx_articles_search", "search_vector", postgresql_using="gin"),
     )
 
 

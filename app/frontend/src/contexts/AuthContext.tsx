@@ -4,15 +4,21 @@ import {
   useState,
   useEffect,
   useCallback,
+  useMemo,
   type ReactNode,
 } from 'react';
-import { authApi, type User, type LoginCredentials, type RegisterData, AuthApiError } from '../api/auth';
+import { authApi, type User, type UserRole, type LoginCredentials, type RegisterData, AuthApiError } from '../api/auth';
 
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
   isAuthenticated: boolean;
   error: string | null;
+  // Role helpers
+  isAdmin: boolean;
+  isReviewer: boolean;
+  hasRole: (role: UserRole) => boolean;
+  // Actions
   login: (credentials: LoginCredentials) => Promise<void>;
   register: (data: RegisterData) => Promise<void>;
   logout: () => Promise<void>;
@@ -98,11 +104,24 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setError(null);
   }, []);
 
+  // Role checking helpers
+  const isAdmin = useMemo(() => user?.role === 'admin', [user]);
+  const isReviewer = useMemo(() => user?.role === 'reviewer' || user?.role === 'admin', [user]);
+  const hasRole = useCallback((role: UserRole) => {
+    if (!user) return false;
+    if (user.role === 'admin') return true; // Admin has all roles
+    if (user.role === 'reviewer' && role === 'user') return true; // Reviewer includes user
+    return user.role === role;
+  }, [user]);
+
   const value: AuthContextType = {
     user,
     isLoading,
     isAuthenticated,
     error,
+    isAdmin,
+    isReviewer,
+    hasRole,
     login,
     register,
     logout,

@@ -34,7 +34,26 @@ async function request<T>(
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
-    throw new ApiError(response.status, error.detail || `HTTP ${response.status}`);
+
+    // Handle FastAPI validation errors (array of objects)
+    let errorMessage: string;
+    if (Array.isArray(error.detail)) {
+      // Format validation errors: "field: message"
+      errorMessage = error.detail
+        .map((e: { loc?: string[]; msg?: string }) => {
+          const field = e.loc?.slice(-1)[0] || 'field';
+          return `${field}: ${e.msg || 'Invalid value'}`;
+        })
+        .join(', ');
+    } else if (typeof error.detail === 'string') {
+      errorMessage = error.detail;
+    } else if (error.detail?.message) {
+      errorMessage = error.detail.message;
+    } else {
+      errorMessage = `HTTP ${response.status}`;
+    }
+
+    throw new ApiError(response.status, errorMessage);
   }
 
   return response.json();
@@ -106,6 +125,29 @@ export const exploreApi = {
       code: { id: string; name: string; short_name: string; version: string };
       parts: { part_number: number; title?: string; article_count: number }[];
     }>(`/explore/browse/${codeType}`);
+  },
+
+  // Get related Standata bulletins for an article
+  getRelatedStandata: (articleNumber: string) => {
+    return request<import('../types').StandataByCodeResponse>(
+      `/explore/articles/${encodeURIComponent(articleNumber)}/related-standata`
+    );
+  },
+
+  // List all Standata bulletins
+  listStandata: (params?: { category?: string; search?: string; limit?: number }) => {
+    const searchParams = new URLSearchParams();
+    if (params?.category) searchParams.set('category', params.category);
+    if (params?.search) searchParams.set('search', params.search);
+    if (params?.limit) searchParams.set('limit', String(params.limit));
+    return request<import('../types').StandataSummary[]>(`/explore/standata?${searchParams}`);
+  },
+
+  // Get full Standata bulletin details
+  getStandataBulletin: (bulletinNumber: string) => {
+    return request<import('../types').StandataDetail>(
+      `/explore/standata/${encodeURIComponent(bulletinNumber)}`
+    );
   },
 };
 
@@ -407,6 +449,145 @@ export const permitsApi = {
   },
 };
 
+// --- Fees API ---
+export interface FeeBreakdown {
+  processing_fee: number;
+  base_fee: number;
+  scc_fee: number;
+  subtotal: number;
+  gst: number;
+  total: number;
+  notes: string[];
+}
+
+export interface BuildingPermitFeeResponse {
+  building_type: string;
+  construction_value: number;
+  fee_breakdown: FeeBreakdown;
+  includes_trade_permits: boolean;
+  work_started_multiplier: number;
+}
+
+export interface TradePermitFeeResponse {
+  trades: Array<{
+    trade_type: string;
+    construction_value: number;
+    fee_breakdown: FeeBreakdown;
+  }>;
+  combined_total: number;
+  work_started_multiplier: number;
+}
+
+export interface ProjectFeeEstimateResponse {
+  project_name: string;
+  development_permit?: {
+    required: boolean;
+    estimated_fee: number;
+    notes: string[];
+  };
+  building_permit: BuildingPermitFeeResponse;
+  trade_permits?: TradePermitFeeResponse;
+  lot_grading?: {
+    fee: number;
+    notes: string;
+  };
+  additional_fees: Array<{
+    fee_type: string;
+    amount: number;
+    description: string;
+  }>;
+  subtotal: number;
+  gst: number;
+  grand_total: number;
+  fee_schedule_version: string;
+  disclaimer: string;
+}
+
+export const feesApi = {
+  // Get complete project fee estimate
+  estimateProjectFees: (data: {
+    project_name?: string;
+    project_type: string;
+    building_type: string;
+    construction_value: number;
+    floor_area_sqm?: number;
+    dwelling_units?: number;
+    requires_development_permit?: boolean;
+    requires_building_permit?: boolean;
+    include_lot_grading?: boolean;
+    work_started_without_permit?: boolean;
+  }) => {
+    return request<ProjectFeeEstimateResponse>('/fees/estimate', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+
+  // Get building permit fee
+  calculateBuildingPermitFee: (data: {
+    building_type: string;
+    construction_value?: number;
+    floor_area_sqm?: number;
+    alteration_type?: string;
+    dwelling_units?: number;
+    work_started_without_permit?: boolean;
+  }) => {
+    return request<BuildingPermitFeeResponse>('/fees/building-permit', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+
+  // Get quick estimate
+  quickEstimate: (data: {
+    building_type: string;
+    construction_value: number;
+  }) => {
+    return request<{
+      building_permit_fee: number;
+      trade_permit_fee: number | null;
+      total_estimate: number;
+      notes: string[];
+    }>('/fees/quick-estimate', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+
+  // Get fee schedule
+  getFeeSchedule: () => {
+    return request<{
+      building_permits: Record<string, unknown>;
+      trade_permits: Record<string, unknown>;
+      additional_fees: Record<string, unknown>;
+      policies: Record<string, unknown>;
+      effective_date: string;
+      version: string;
+    }>('/fees/schedule');
+  },
+
+  // Get building types
+  getBuildingTypes: () => {
+    return request<{
+      residential: Array<{ value: string; label: string }>;
+      multi_family: Array<{ value: string; label: string }>;
+      commercial: Array<{ value: string; label: string }>;
+      other: Array<{ value: string; label: string }>;
+    }>('/fees/building-types');
+  },
+
+  // Get alteration types
+  getAlterationTypes: () => {
+    return request<{
+      alterations: Array<{
+        value: string;
+        label: string;
+        total_fee: number;
+      }>;
+    }>('/fees/alteration-types');
+  },
+};
+
 // --- Public API (Rate Limited) ---
 export const publicApi = {
   // Get rate limit status
@@ -514,6 +695,67 @@ export const addressesApi = {
     if (params?.zone) searchParams.set('zone', params.zone);
     if (params?.limit) searchParams.set('limit', String(params.limit));
     return request<AddressAutocompleteResult[]>(`/addresses/search?${searchParams}`);
+  },
+};
+
+// --- Chat API ---
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export interface ContextItem {
+  source_type: string;
+  source_id: string;
+  source_title: string;
+  source_reference: string;
+  excerpt: string;
+  relevance_score: number;
+  search_type?: string;  // 'vector' | 'keyword' | 'both'
+  citation_number?: number;  // [1], [2], etc.
+}
+
+export interface Reference {
+  number: number;  // [1], [2], etc.
+  source_type: string;  // 'article' | 'standata' | 'guide'
+  reference: string;  // e.g., "ABC 9.25.3.1" or "STANDATA 05-BCI-001"
+  title: string;  // Title of the source
+  source_id: string;  // UUID for linking
+}
+
+export interface ChatResponse {
+  answer: string;
+  answer_with_citations: string;  // Answer with [1], [2] markers
+  sources: ContextItem[];
+  references: Reference[];  // Formatted reference list
+  search_query: string;
+  search_method: string;  // 'hybrid' | 'keyword' | 'vector'
+  llm_available: boolean;
+  disclaimer: string;
+}
+
+export interface SuggestedQuestion {
+  name: string;
+  questions: string[];
+}
+
+export const chatApi = {
+  // Ask a question
+  ask: (message: string, options?: { include_standata?: boolean; include_guides?: boolean; max_context_items?: number }) => {
+    return request<ChatResponse>('/chat/ask', {
+      method: 'POST',
+      body: JSON.stringify({
+        message,
+        include_standata: options?.include_standata ?? true,
+        include_guides: options?.include_guides ?? true,
+        max_context_items: options?.max_context_items ?? 5,
+      }),
+    });
+  },
+
+  // Get suggested questions
+  getSuggestedQuestions: () => {
+    return request<{ categories: SuggestedQuestion[] }>('/chat/suggested-questions');
   },
 };
 

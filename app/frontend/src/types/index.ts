@@ -413,36 +413,46 @@ export interface PermitStatistics {
   pending_review: number;
 }
 
+export interface ContactInfo {
+  name: string;
+  email?: string;
+  phone?: string;
+  company?: string;
+  address?: string;
+}
+
 export interface CreatePermitApplicationInput {
-  applicant_name: string;
-  applicant_email: string;
-  applicant_phone?: string;
-  company_name?: string;
-  project_address: string;
-  project_description?: string;
   permit_type: string;
-  work_type: string;
+  address: string;
+  project_name?: string;
+  description?: string;
+  project_type?: string;
   estimated_value?: number;
+  classification?: string;
+  occupancy_group?: string;
   building_area_sqm?: number;
-  storeys?: number;
-  occupancy_type?: string;
-  construction_type?: string;
+  building_height_storeys?: number;
+  dwelling_units?: number;
+  proposed_use?: string;
+  applicant?: ContactInfo;
+  agent?: ContactInfo;
+  contractor?: ContactInfo;
 }
 
 export interface UpdatePermitApplicationInput {
-  applicant_name?: string;
-  applicant_email?: string;
-  applicant_phone?: string;
-  company_name?: string;
-  project_address?: string;
-  project_description?: string;
-  permit_type?: string;
-  work_type?: string;
+  project_name?: string;
+  description?: string;
+  project_type?: string;
   estimated_value?: number;
+  classification?: string;
+  occupancy_group?: string;
   building_area_sqm?: number;
-  storeys?: number;
-  occupancy_type?: string;
-  construction_type?: string;
+  building_height_storeys?: number;
+  dwelling_units?: number;
+  proposed_use?: string;
+  applicant?: ContactInfo;
+  agent?: ContactInfo;
+  contractor?: ContactInfo;
 }
 
 export interface PermitApplicationsListParams {
@@ -496,4 +506,32 @@ export interface SampleQuestionsResponse {
     url: string;
     benefits: string[];
   };
+}
+
+// --- Standata Types ---
+export type StandataCategory = 'BCI' | 'BCB' | 'FCB' | 'PCB';
+
+export interface StandataSummary {
+  id: string;
+  bulletin_number: string;
+  title: string;
+  category: StandataCategory;
+  effective_date?: string;
+  summary?: string;
+  code_references?: string[];
+}
+
+export interface StandataDetail extends StandataSummary {
+  full_text: string;
+  supersedes?: string;
+  keywords?: string[];
+  related_bulletins?: string[];
+  pdf_filename: string;
+  extraction_confidence?: string;
+}
+
+export interface StandataByCodeResponse {
+  code_reference: string;
+  total_results: number;
+  bulletins: StandataSummary[];
 }

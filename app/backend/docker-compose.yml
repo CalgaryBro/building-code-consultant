@@ -18,5 +18,50 @@ services:
       retries: 5
     restart: unless-stopped
 
+  llm-service:
+    build:
+      context: ./llm_service
+      dockerfile: Dockerfile
+    container_name: calgary_codes_llm
+    ports:
+      - "${LLM_SERVICE_PORT:-8081}:8081"
+    environment:
+      - LLM_SERVICE_PORT=8081
+      - PRELOAD_MODEL=${PRELOAD_MODEL:-true}
+      - MODEL_DIR=/models
+      - CONTEXT_SIZE=${LLM_CONTEXT_SIZE:-4096}
+      - N_THREADS=${LLM_N_THREADS:-4}
+      # Model configuration - LiquidAI LFM2.5-1.2B (now supported by llama.cpp 0.3.x)
+      - MODEL_REPO=LiquidAI/LFM2.5-1.2B-Instruct-GGUF
+      - MODEL_FILE=LFM2.5-1.2B-Instruct-Q4_K_M.gguf
+    volumes:
+      # Persist model cache to avoid re-downloading
+      - llm_model_cache:/models
+      - llm_hf_cache:/root/.cache/huggingface
+    # Resource limits for llama.cpp (much lighter than transformers)
+    deploy:
+      resources:
+        limits:
+          cpus: '4'           # Limit to 4 CPU cores
+          memory: 4G          # Only need 4GB with quantization (vs 8GB for transformers)
+        reservations:
+          cpus: '2'           # Reserve at least 2 CPU cores
+          memory: 2G          # Reserve at least 2GB RAM
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 180s     # Give time for model download + load
+      retries: 3
+    restart: unless-stopped
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+
 volumes:
   postgres_data:
+  llm_model_cache:
+  llm_hf_cache:

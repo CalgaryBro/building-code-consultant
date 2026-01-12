@@ -58,3 +58,13 @@ reportlab>=4.0.0
 python-jose[cryptography]==3.3.0
 passlib[argon2]==1.7.4
 argon2-cffi==23.1.0
+
+# Price API Integration
+apscheduler>=3.10.0
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+
+# LiquidAI LFM Model for AI Q&A
+transformers>=4.40.0
+torch>=2.2.0
+accelerate>=0.27.0

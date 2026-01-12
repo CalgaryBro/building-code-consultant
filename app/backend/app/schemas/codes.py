@@ -69,7 +69,7 @@ class ArticleResponse(ArticleBase):
 
 class ArticleSearchResult(BaseModel):
     """Schema for article search results."""
-    id: UUID
+    id: str  # String for JSON serialization compatibility
     article_number: str
     title: Optional[str]
     full_text: str
@@ -147,7 +147,7 @@ class RequirementResponse(RequirementBase):
 
 class CodeSearchQuery(BaseModel):
     """Schema for searching codes."""
-    query: str = Field(..., min_length=2, max_length=500)
+    query: str = Field(..., min_length=1, max_length=500)  # Allow single char for browse mode (*)
     code_types: Optional[List[str]] = None  # building, fire, zoning, etc.
     part_numbers: Optional[List[int]] = None  # 3, 9, etc.
     limit: int = Field(default=20, ge=1, le=100)

@@ -4,12 +4,20 @@ Models for user authentication and authorization.
 import uuid
 from datetime import datetime
 from typing import Optional
+from enum import Enum
 from sqlalchemy import (
-    Column, String, Text, Boolean, DateTime, Index
+    Column, String, Text, Boolean, DateTime, Index, Enum as SQLEnum
 )
 
 from ..database import Base
 from .codes import UUID  # Import cross-database UUID type
+
+
+class UserRole(str, Enum):
+    """User roles for access control."""
+    USER = "user"          # Regular free user
+    REVIEWER = "reviewer"  # Can review permit applications
+    ADMIN = "admin"        # Full system access
 
 
 class User(Base):
@@ -26,6 +34,9 @@ class User(Base):
 
     # Profile
     full_name = Column(String(255), nullable=True)
+
+    # Role
+    role = Column(String(20), default=UserRole.USER.value)
 
     # Account status
     is_active = Column(Boolean, default=True)
